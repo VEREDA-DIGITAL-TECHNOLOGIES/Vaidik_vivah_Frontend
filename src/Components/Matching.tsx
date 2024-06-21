@@ -28,7 +28,7 @@ const Matching = () => {
       </div>
       <div className="md:flex  ml-10 justify-between items-center  w-[90%] gap-40  bg-[#8E69B4] rounded-3xl px-10 py-5 opacity-95	">
         <div>
-          <Image src="/matching.svg" width={450} height={400} alt="couple" />
+          <Image src="/matching.svg" width={600} height={500} alt="couple" />
         </div>
         <div className="space-y-5 mr-40">
           <p className="md:w-96 text-white">

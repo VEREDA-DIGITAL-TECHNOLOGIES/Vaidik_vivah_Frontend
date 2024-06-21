@@ -42,7 +42,7 @@ const Stories = () => {
           Dive into stories of unexpected friendships, love that blossoms in the most extraordinary places, and dreams that come true against all odds.
         </p>
       </div>
-      <div className="md:flex items-center justify-between  ">
+      <div className="md:flex items-center justify-between gap-10 mt-8">
         {stories.map((story, index) => (
           <div key={index} className={`relative ${index == currentSlide ? 'block' : ''}`}>
             <img src={story.src} alt={`Story ${story.index}`} className="rounded-3xl w-[25rem] h-[30rem] object-cover z-2" />

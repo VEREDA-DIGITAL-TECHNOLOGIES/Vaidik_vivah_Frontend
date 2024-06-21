@@ -60,7 +60,7 @@ function Hero() {
   ];
 
   return (
-    <div className="relative xl:h-[52rem] h-[100vh] overflow-hidden">
+    <div className="relative xl:h-[46rem] h-[100vh] overflow-hidden">
        <div className="absolute inset-0 bg-black">
         <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-8 gap-1 md:gap-2 rotate-12 h-full scale-[1.39]">
           {imagePaths.map((path, index) => (
@@ -81,66 +81,9 @@ function Hero() {
               Application
             </p>
           </div>
-          {/* <div className=" backdrop-blur-md backdrop-brightness-125 rounded-2xl w-96 p-6 flex gap-5 text-white">
-            <div className="space-y-2 ">
-              <h1>I am</h1>
-              <div className=" group hover:bg-white  rounded-full w-40 h-12 flex items-center px-2">
-                <div className="flex items-center  gap-3 ">
-                  <div className="rounded-full border-2  border-white group-hover:border-black  w-8 h-8 flex items-center justify-center">
-                    <div className="group-hover:bg-black rounded-full w-4 h-4"></div>
-                  </div>
-                  <h1 className="text-white group-hover:text-black">a man</h1>
-                </div>
-              </div>
-              <div className=" group hover:bg-white  rounded-full w-40 h-12 flex items-center px-2">
-                <div className="flex items-center  gap-3 ">
-                  <div className="rounded-full border-2  border-white group-hover:border-black  w-8 h-8 flex items-center justify-center">
-                    <div className="group-hover:bg-black rounded-full w-4 h-4"></div>
-                  </div>
-                  <h1 className="text-white group-hover:text-black">a women</h1>
-                </div>
-              </div>
-              <div className=" group hover:bg-white  rounded-full w-40 h-12 flex items-center px-2">
-                <div className="flex items-center  gap-3 ">
-                  <div className="rounded-full border-2  border-white group-hover:border-black  w-8 h-8 flex items-center justify-center">
-                    <div className="group-hover:bg-black rounded-full w-4 h-4"></div>
-                  </div>
-                  <h1 className="text-white group-hover:text-black">
-                    nonbinary
-                  </h1>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <h1>I am looking for</h1>
-              <div className=" group hover:bg-white  rounded-full w-40 h-12 flex items-center px-2">
-                <div className="flex items-center  gap-3 ">
-                  <div className="rounded-full border-2  border-white group-hover:border-black  w-8 h-8 flex items-center justify-center">
-                    <div className="group-hover:bg-black rounded-full w-4 h-4"></div>
-                  </div>
-                  <h1 className="text-white group-hover:text-black">a man</h1>
-                </div>
-              </div>
-              <div className=" group hover:bg-white  rounded-full w-40 h-12 flex items-center px-2">
-                <div className="flex items-center  gap-3 ">
-                  <div className="rounded-full border-2  border-white group-hover:border-black  w-8 h-8 flex items-center justify-center">
-                    <div className="group-hover:bg-black rounded-full w-4 h-4"></div>
-                  </div>
-                  <h1 className="text-white group-hover:text-black">a women</h1>
-                </div>
-              </div>
-              <div className=" group hover:bg-white  rounded-full w-40 h-12 flex items-center px-2">
-                <div className="flex items-center  gap-3 ">
-                  <div className="rounded-full border-2  border-white group-hover:border-black  w-8 h-8 flex items-center justify-center">
-                    <div className="group-hover:bg-black rounded-full w-4 h-4"></div>
-                  </div>
-                  <h1 className="text-white group-hover:text-black">
-                    nonbinary
-                  </h1>
-                </div>
-              </div>
-            </div>
-          </div> */}
+          <div className="absolute top-[60px] right-[130px] backdrop-blur backdrop-brightness-125 rounded-3xl w-64 h-3/5 border-8 border-white-2 flex items-center justify-center hidden md:block ">
+  
+          </div>
 
           <Link href={"/questions"}  className="flex items-center justify-between bg-[#009BDA] rounded-full w-56 h-12 px-5 text-lg ml-10" >
             <div className="flex items-center gap-6">

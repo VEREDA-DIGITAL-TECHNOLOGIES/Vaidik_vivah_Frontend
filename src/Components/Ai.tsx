@@ -11,7 +11,7 @@ const Ai = () => {
       />
       <div className="bg-[#009BDA] md:space-y-40 md:px-20 md:pt-20 p-10  ">
         <div className="relative text-white space-y-10">
-          <p className="md:text-5xl text-2xl font-bold">
+          <p className="md:text-6xl text-2xl font-bold">
             AI-driven match <br /> recommendations to suit your <br />{" "}
             preferences
           </p>

@@ -15,7 +15,7 @@ const Archive = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-6 text-center bg-[#007EAF] py-6">
           <CiHeart className="text-4xl" />
-          <h1 className="text-4xl font-bold">The #1 Trusted <br /> Dating App</h1>
+          <h1 className="text-4xl font-bold">The #1 Trusted <br /> Matrimonial App</h1>
           <p className="text-lg" style={{ fontFamily: 'Proxima-Nova-Regular, sans-serif' }}>Privacy with your account</p>
         </div>
         <div className="flex flex-col items-center justify-center gap-6 text-center  py-6">

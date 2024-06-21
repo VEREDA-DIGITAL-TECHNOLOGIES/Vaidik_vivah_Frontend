@@ -13,7 +13,7 @@ const Feature = () => {
         <div className='bg-[#007EAF] flex flex-col md:flex-row justify-between text-white md:p-24 p-8  '>
       <div className='space-y-12 '>
         
-          <h1 className='text-[64px] ' style={{fontFamily:'Proxima-Nova-Bold, sans-serif', lineHeight:'89.6px'}}>Connect with matches <br /> the way you like
+          <h1 className='text-[52px] ' style={{fontFamily:'Proxima-Nova-Bold, sans-serif', lineHeight:'89.6px'}}>Connect with matches <br /> the way you like
           </h1>
           <p className='text-[28px] 'style={{fontFamily:'Proxima-Nova-Regular, sans-serif',lineHeight:'42px', letterSpacing:'2%'}}>Cras at pellentesque eros. Nullam vitae <br />sapien et felis eleifend luctus. Nam ac dui</p>
           <div className="">

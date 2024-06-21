@@ -38,10 +38,27 @@ const GetApp = () => {
             </div>
           </div>
           <div className="mt-8 lg:mt-0 relative flex justify-center lg:justify-end w-full lg:w-1/2">
-            <div className="relative">
-              <Image src="/qr.svg" width={200} height={150} alt="QR code" className="absolute w-[150px] sm:w-[200px] lg:w-[280px] right-22 md:right-24 lg:right-64 bottom-20 md:bottom-32 lg:bottom-44" />
-              <Image src="/ph.svg" width={300} height={200} alt="Phone" className="w-3/4 sm:w-1/2 md:w-2/3 lg:w-auto mx-auto" />
-            </div>
+          <div className="mt-8 lg:mt-0 relative flex justify-end items-center w-full lg:w-1/2">
+          <div className="relative">
+            
+            <Image
+              src="/ph.svg"
+              width={300}
+              height={400}
+              alt="Phone"
+              className="w-64 h-3/5 mx-auto relative z-10"
+            />
+          
+            <Image
+              src="/qr.svg"
+              width={150}
+              height={113}
+              alt="QR code"
+              className="absolute w-[50px] sm:w-[100px] lg:w-[280px] -right-5 sm:right-0 lg:right-0 bottom-10 sm:bottom-0 lg:bottom-0 z-20"
+            />
+          </div>
+</div>
+
           </div>
         </div>
       </div>
