@@ -96,12 +96,12 @@ function Hero() {
         <div className="absolute bottom-0 right-0 md:bottom-0 xl:bottom-40 xl:left-[72rem] 2xl:left-[80rem] hidden md:block"
   style={{ transform: 'translateY(50%)' }}
 >
-  <div className="flex flex-col items-center gap-4">
+  <div className="flex flex-col items-center gap-2">
     <Image src="/veri.png" width={50} height={50} alt="logo" />
     <p className="text-center md:text-[14px]" style={{ fontFamily: 'Proxima-Nova-Bold, sans-serif' }}>
       #1 matrimony <br /> website and mobile <br /> app
     </p>
-    <p className="text-[6px] md:text-[10px] mt-6" style={{ fontFamily: 'Proxima-Nova-Thin, sans-serif' }}>
+    <p className="text-[6px] md:text-[10px] mt-1s" style={{ fontFamily: 'Proxima-Nova-Thin, sans-serif' }}>
       All photos are used for illustrative purposes only.
     </p>
   </div>

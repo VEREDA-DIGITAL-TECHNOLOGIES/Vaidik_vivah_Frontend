@@ -24,7 +24,7 @@ const Stories = () => {
   };
 
   return (
-    <div className="md:space-y-16 md:px-20 md:py-20 space-y-5 p-8  overflow-hidden bg-[#007EAF] text-white relative">
+    <div className="md:space-y-16 md:px-20 md:py-5 space-y-5 p-8  overflow-hidden bg-[#007EAF] text-white relative">
        <img
         src="/curvewhite.svg"
         alt="arw"

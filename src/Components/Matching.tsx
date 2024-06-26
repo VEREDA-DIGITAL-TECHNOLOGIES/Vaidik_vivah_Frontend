@@ -7,7 +7,7 @@ import { IoMdArrowForward } from "react-icons/io";
 import '../app/font.css';
 const Matching = () => {
   return (
-    <div className="bg-[#DCD1E8] px-20  py-12 relative  ">
+    <div className="bg-[#DCD1E8] px-6  py-6 relative  ">
       <div className="bg-[url('/shadow.png')] -rotate-342 absolute w-[80rem] h-[100%]  top-0 right-0 "></div>
       <Image
     src="/curve.png"
@@ -20,16 +20,22 @@ const Matching = () => {
 
 
       <div className="text-[#4E3A63] py-10 pb-10 px-14   ">
-        <h1 className="text-lg md:text-2xl xl:text-6xl font-bold" style={{ fontFamily: 'Proxima-Nova-Bold, sans-serif', lineHeight: '89.5px' }}>Exclusive matchmaking</h1>
-        <p className=" md:text-[28px] " style={{ fontFamily: 'Proxima-Nova-Regular, sans-serif', letterSpacing: '2px' ,lineHeight: '42px',opacity: '0.8' }}>
+        <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold" style={{ fontFamily: 'Proxima-Nova-Bold, sans-serif', lineHeight: '89.5px' }}>Exclusive matchmaking</h1>
+        <p className=" md:text-[28px] " style={{ fontFamily: 'Proxima-Nova-Regular, sans-serif', letterSpacing: '1px' ,lineHeight: '42px',opacity: '0.8' }}>
           Cras at pellentesque eros. Nullam vitae sapienet felis eleifend
           luctus. Nam ac dui
         </p>
       </div>
       <div className="md:flex  ml-10 justify-between items-center  w-[90%] gap-40  bg-[#8E69B4] rounded-3xl px-10 py-5 opacity-95	">
-        <div>
-          <Image src="/matching.svg" width={600} height={500} alt="couple" />
-        </div>
+      <div className="relative w-full h-full flex justify-center items-center">
+        <Image
+          src="/matching.svg"
+          width={800}
+          height={600}
+          alt="couple"
+          className="max-w-full max-h-full object-contain"
+        />
+      </div>
         <div className="space-y-5 mr-40">
           <p className="md:w-96 text-white">
             Aenean interdum arcu sit amet nulla lacinia <br /> suscipit. Vivamus at
