@@ -6,7 +6,7 @@ import Footer from "@/Components/Footer";
 
 
 export const metadata: Metadata = {
-  title: "WedLock",
+  title: "VaidikVivah",
   description: "This is metromonial website",
 };
 

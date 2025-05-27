@@ -21,7 +21,7 @@ const Verification = () => {
   };
 
   return (
-    <div className="min-w-screen min-h-screen flex flex-col items-center justify-top  bg-[#007EAF] ">
+    <div className="min-w-screen min-h-screen flex flex-col items-center justify-top  bg-[#E65555] ">
       <div className="flex items-center justify-center mb-14 ">
         <Image src="/logowhite.png" alt="" width={268} height={90} />
       </div>
@@ -46,7 +46,7 @@ const Verification = () => {
                label=""
                value={verificationCode[index]}
                onChange={(value) => handleChange(index, value)}
-               className="w-16 h-16 text-center rounded-xl text-3xl text-[#007EAF] placeholder-[#007EAF] outline-gray-400"
+               className="w-16 h-16 text-center rounded-xl text-3xl text-[#E65555] placeholder-[#E65555] outline-gray-400"
                type="text"
                inputMode="numeric"
                maxLength={1}
@@ -59,7 +59,7 @@ const Verification = () => {
               <p>Did you not receive code? </p>
               <button> Click to resend.</button>
             </div>
-            <button className="bg-white text-[#007EAF] w-full h-12 rounded-xl">
+            <button className="bg-white text-[#E65555] w-full h-12 rounded-xl">
               Confirm
             </button>
           </form>

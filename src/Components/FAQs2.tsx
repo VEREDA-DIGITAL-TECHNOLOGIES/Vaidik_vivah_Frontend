@@ -47,7 +47,7 @@ const FAQItem: React.FC<FAQItemProps> = ({ faq, isOpen, onClick }) => (
   <div >
     <button
       className={`w-[70rem]  h-20 py-4 px-6 flex justify-between  items-center  ${
-        isOpen ? "bg-[#007EAF] rounded-t-2xl" : "bg-[#F9FAFB] rounded-2xl"
+        isOpen ? "bg-[#E65555] rounded-t-2xl" : "bg-[#F9FAFB] rounded-2xl"
       }`}
       onClick={onClick}
     >

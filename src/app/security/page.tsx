@@ -37,7 +37,7 @@ const page = () => {
     
     <div className="pt-[83.5px] font-lato">
       <div className="bg-[#E6F2F7] text-center p-24 space-y-8">
-        <h3 className="text-[#007EAF] font-semibold text-base">Current as of 20 Jan 2024</h3>
+        <h3 className="text-[#E65555] font-semibold text-base">Current as of 20 Jan 2024</h3>
         <h1 className="text-5xl font-semibold">Security</h1>
         <p className="text-[#475467] text-xl">
           Your privacy is important to us at Untitled. We respect your privacy

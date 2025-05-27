@@ -75,7 +75,7 @@ const Search = () => {
         
         <div className="md:space-y-10 space-y-5">
           <div className="flex items-center  justify-between pr-20">
-            <h1 className=" text-[64px]  text-[#007EAF]" style={{fontFamily: 'Proxima-Nova-Bold, sans-serif', lineHeight: '89.6px'}}>
+            <h1 className=" text-[64px]  text-[#E65555]" style={{fontFamily: 'Proxima-Nova-Bold, sans-serif', lineHeight: '89.6px'}}>
               Browse matrimonial profiles by
             </h1>
           </div>
@@ -85,16 +85,16 @@ const Search = () => {
           </p>
         </div>
         <div className="md:flex justify-left gap-10 items-center ">
-          <div className="rounded-full cursor-pointer hover:bg-[#009BDA] hover:text-white text-[#838E9E] p-4 text-[24px]" style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'36px', letterSpacing:'3%'}}>
+          <div className="rounded-full cursor-pointer hover:bg-[#f6a137] hover:text-white text-[#838E9E] p-4 text-[24px]" style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'36px', letterSpacing:'3%'}}>
             Mother Tongue
           </div>
-          <div className="rounded-full cursor-pointer hover:bg-[#009BDA] hover:text-white text-[#838E9E] p-4  text-[24px]" style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'36px', letterSpacing:'3%'}}>
+          <div className="rounded-full cursor-pointer hover:bg-[#f6a137] hover:text-white text-[#838E9E] p-4  text-[24px]" style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'36px', letterSpacing:'3%'}}>
             Religion
           </div>
-          <div className="rounded-full cursor-pointer hover:bg-[#009BDA] hover:text-white text-[#838E9E] p-4  text-[24px]" style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'36px', letterSpacing:'3%'}}>
+          <div className="rounded-full cursor-pointer hover:bg-[#f6a137] hover:text-white text-[#838E9E] p-4  text-[24px]" style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'36px', letterSpacing:'3%'}}>
             Community
           </div>
-          <div className="rounded-full cursor-pointer hover:bg-[#009BDA] hover:text-white text-[#838E9E] p-4  text-[24px]" style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'36px', letterSpacing:'3%'}}>
+          <div className="rounded-full cursor-pointer hover:bg-[#f6a137] hover:text-white text-[#838E9E] p-4  text-[24px]" style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'36px', letterSpacing:'3%'}}>
             Nationality
           </div>
         </div>
@@ -115,7 +115,7 @@ const Search = () => {
         ))}
          
         </div>
-        <div className="underline  flex justify-end text-[28px] text-[#009BDA] relative " style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'42px'}}>
+        <div className="underline  flex justify-end text-[28px] text-[#E65555] relative " style={{fontFamily:'Proxima-Nova-SemiBold, sans-serif',lineHeight:'42px'}}>
           <span>More Matrimonial</span>
           <span>{">"}</span>
         </div>

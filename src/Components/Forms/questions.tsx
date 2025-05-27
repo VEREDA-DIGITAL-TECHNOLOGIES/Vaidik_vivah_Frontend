@@ -176,14 +176,14 @@ const MultiStepForm: React.FC = () => {
 
  
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#007EAF] text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#E65555] text-white">
       <div className="w-full max-w-md p-2 space-y-6">
         <div className="text-center">
           <Image
             src="/logowhite.png"
             width={400}
             height={500}
-            alt="Wedlock Logo"
+            alt="VaidikVivah Logo"
             className="w-72 h-24 mx-auto mb-4"
           />
          

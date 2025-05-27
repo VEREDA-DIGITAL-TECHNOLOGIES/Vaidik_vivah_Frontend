@@ -24,7 +24,7 @@ const Stories = () => {
   };
 
   return (
-    <div className="md:space-y-16 md:px-20 md:py-5 space-y-5 p-8  overflow-hidden bg-[#007EAF] text-white relative">
+    <div className="md:space-y-16 md:px-20 md:py-5 space-y-5 p-8  overflow-hidden bg-[#FF6666] text-white relative">
        <img
         src="/curvewhite.svg"
         alt="arw"
@@ -34,8 +34,8 @@ const Stories = () => {
         <div className="flex items-center justify-between pr-20">
           <h1 className="md:text-6xl text-3xl " style={{ fontFamily: 'Proxima-Nova-Bold, sans-serif', lineHeight: '89.5px' }}>Happy Stories</h1>
           <div className="flex items-center gap-4 z-10">
-            <IoArrowBack className="md:w-10 md:h-10 hover:bg-[#009BDA] rounded-full cursor-pointer" onClick={prevSlide} />
-            <IoArrowForward className="md:w-10 md:h-10 hover:bg-[#009BDA] rounded-full cursor-pointer" onClick={nextSlide} />
+            <IoArrowBack className="md:w-10 md:h-10 hover:bg-[#f6a137] rounded-full cursor-pointer" onClick={prevSlide} />
+            <IoArrowForward className="md:w-10 md:h-10 hover:bg-[#f6a137] rounded-full cursor-pointer" onClick={nextSlide} />
           </div>
         </div>
         <p className="md:text-2xl text-xl w-[50rem]" style={{ fontFamily: 'Proxima-Nova-Regular, sans-serif',letterSpacing: '2%', lineHeight: '42px' }}>

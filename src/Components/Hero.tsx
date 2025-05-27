@@ -77,7 +77,7 @@ function Hero() {
               Love At <br /> First Swipe
             </h1>
             <p className=" text-2xl "  style={{ fontFamily: 'Proxima-Nova-Thin, sans-serif', letterSpacing: '2px' }}>
-              Australia{`'`}s most trusted Matrimony <br /> Website and Mobile
+              India{`'`}s most trusted Matrimony <br /> Website and Mobile
               Application
             </p>
           </div>
@@ -85,7 +85,7 @@ function Hero() {
   
           </div>
 
-          <Link href={"/questions"}  className="flex items-center justify-between bg-[#009BDA] rounded-full w-56 h-12 px-5 text-lg ml-10" >
+          <Link href={"/questions"}  className="flex items-center justify-between bg-[#E65555] rounded-full w-56 h-12 px-5 text-lg ml-10" >
             <div className="flex items-center gap-6">
               <span>  Start free today </span>
               <span className="text-2xl"> <IoMdArrowForward /></span>

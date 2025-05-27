@@ -6,7 +6,7 @@ import '../app/font.css';
 
 const GetApp = () => {
   return (
-    <div className="bg-[#007EAF] text-white relative overflow-hidden p-6">
+    <div className="bg-[#E65555] text-white relative overflow-hidden p-6">
       <div className="flex flex-col lg:flex-row justify-between lg:justify-between flex-wrap">
         <div className="bg-container flex flex-col lg:flex-row justify-between w-full px-6 md:px-16 py-8 md:py-12">
           <div className="flex flex-col space-y-12 lg:space-y-32 ml-4 md:ml-20 w-full lg:w-1/2">

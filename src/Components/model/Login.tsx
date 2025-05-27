@@ -24,7 +24,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
           <div className="mb-4 md:col-span-2">
             <Input label='' type="password" className="border w-full bg-white border-gray-300 px-10 p-2 rounded-3xl"  placeholder='Enter your password'/>
           </div>
-          <button type="submit" className="bg-[#007EAF] text-white px-4 py-2  h-10 w-full rounded-3xl">Login</button>
+          <button type="submit" className="bg-[#E65555] text-white px-4 py-2  h-10 w-full rounded-3xl">Login</button>
          
         </form>
         <div className="flex flex-col xl:flex-row items-center justify-between xl:justify-between  mb-4 mt-2 ">

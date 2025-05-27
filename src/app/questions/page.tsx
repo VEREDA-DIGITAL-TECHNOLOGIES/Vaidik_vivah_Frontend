@@ -312,12 +312,12 @@ const MultiStepForm: React.FC = () => {
   };
 
   return (
-    <div className="min-w-screen min-h-screen flex flex-col items-center justify-top  bg-[#007EAF] text-white ">
+    <div className="min-w-screen min-h-screen flex flex-col items-center justify-top  bg-[#E65555] text-white ">
         <Image
             src="/logowhite.png"
             width={400}
             height={500}
-            alt="Wedlock Logo"
+            alt="VaidikVivah Logo"
             className="w-72 h-24 mx-auto  mb-2 "
           />
           
@@ -349,7 +349,7 @@ const MultiStepForm: React.FC = () => {
             {questions[currentQuestion].skip && (
               <button
                 type="button"
-                className="px-4 xl:mt-20 py-2 text-white bg-[#007EAF] border rounded-md h-[48px]"
+                className="px-4 xl:mt-20 py-2 text-white bg-[#E65555] border rounded-md h-[48px]"
                 onClick={handleSkip}
               >
                 Skip the question
@@ -357,7 +357,7 @@ const MultiStepForm: React.FC = () => {
             )}
             <button
               type="submit"
-              className="px-4 mb-4 xl:mb-0 xl:mt-20 py-2 text-[#007EAF] bg-white rounded-md flex items-center gap-2 h-[48px]"
+              className="px-4 mb-4 xl:mb-0 xl:mt-20 py-2 text-[#E65555] bg-white rounded-md flex items-center gap-2 h-[48px]"
               >
               Continue <FaArrowRightLong />
 

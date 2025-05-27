@@ -36,11 +36,7 @@ const Footer = () => {
             <h1 className="-rotate-90 relative top-4 right-2 text-lg text-center xl:text-xl">.au</h1>
           </div>
           <p>
-            In the spirit of reconciliation, Wedlock acknowledges the
-            Traditional Custodians of country throughout Australia and their
-            connections to land, sea and community. We pay our respect to their
-            elders past and present and extend that respect to all Aboriginal
-            and Torres Strait Islander peoples today.
+          In the spirit of reverence and unity, VaidikVivah honors the ancient traditions and sacred heritage that connect us all. We pay deep respect to the elders, ancestors, and spiritual custodians who preserve the wisdom and values that guide our communities. We extend our respect and gratitude to all those who uphold these dharmik traditions today.
           </p>
         </div>
         <div>
@@ -80,7 +76,7 @@ const Footer = () => {
       </div>
       <div className="flex items-center justify-between">
       <div className="rounded-full bg-[#FFFFFF80] h-1 w-[95%] "></div> 
-       <button className="text-white  rounded-full bg-[#007EAF] w-12 h-12 flex items-center justify-center text-2xl" >
+       <button className="text-white  rounded-full bg-[#E65555] w-12 h-12 flex items-center justify-center text-2xl" >
           <Image src="/arrowup.png" alt="logo" width={20} height={50} />
         </button>
         </div>
@@ -94,7 +90,7 @@ const Footer = () => {
             dating website.
           </p>
         </div>
-        <h1 className="mt-2 text-balance text-[16px]  mx-20" style={{letterSpacing: '3%' , lineHeight:'22px'}} >© 2024 Wedlock Australia. All rights reserved.</h1>
+        <h1 className="mt-2 text-balance text-[16px]  mx-20" style={{letterSpacing: '3%' , lineHeight:'22px'}} >© 2025 VaidikVivah India. All rights reserved.</h1>
        
       </div>
     </div>

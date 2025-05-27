@@ -7,7 +7,7 @@ const Mission = () => {
       <div className="pt-16 space-y-16 px-16">
         <div className="flex">
           <h1 className="text-[#101828E5] text-7xl ">
-            At the heart of Wedlock.
+            At the heart of VaidikVivah.
           </h1>
           <p className="text-[#42526B] text-lg">
             Cras imperdiet est eget nulla fringilla, sit amet volutpat sem
@@ -85,11 +85,11 @@ const Mission = () => {
           </div>
           <div className="bg-white  rounded-lg p-6 shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Decide with Principles</h2>
-            <p>We are highly thoughtful and intentional with every decision at Wedlock. Decisions are driven by principles, not arbitrary personal judgment.</p>
+            <p>We are highly thoughtful and intentional with every decision at VaidikVivah. Decisions are driven by principles, not arbitrary personal judgment.</p>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-lg">
             <h2 className="text-2xl font-semibold mb-4">Tend to Trust</h2>
-            <p>At Wedlock, we tend to trust each other; we also put in the work to nurture and rebuild trust through transparency and open collaboration. When trust is missing, we speak up.</p>
+            <p>At VaidikVivah, we tend to trust each other; we also put in the work to nurture and rebuild trust through transparency and open collaboration. When trust is missing, we speak up.</p>
           </div>
         </div>
       </div>
@@ -97,16 +97,16 @@ const Mission = () => {
 
       {/* value in action end */}
 
-      {/* wedlock difference */}
+      {/* VaidikVivah difference */}
 
       <div className="bg-white text-[#061C3D] py-12">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-4">The Wedlock Difference</h2>
+        <h2 className="text-3xl font-bold mb-4">The VaidikVivah Difference</h2>
         <p className="text-lg mb-12 text-gray-600">Our principles guide us to put our values first with every decision.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-white  rounded-lg p-6 ">
             <h3 className="text-2xl font-semibold mb-4">Detailed Profiles</h3>
-            <p className="mb-4">Go ahead, be picky. Wedlock profiles encourage you to share your religion, education, and day-to-day life so we can introduce you to the best people for you.</p>
+            <p className="mb-4">Go ahead, be picky. VaidikVivah profiles encourage you to share your religion, education, and day-to-day life so we can introduce you to the best people for you.</p>
             <a href="#" className="text-blue-500 hover:text-blue-700">Learn more →</a>
           </div>
           <div className="bg-white  rounded-lg p-6 ">
@@ -116,12 +116,12 @@ const Mission = () => {
           </div>
           <div className="bg-white  rounded-lg p-6 ">
             <h3 className="text-2xl font-semibold mb-4">Conversation Starters</h3>
-            <p className="mb-4">Our research found that liking specific pictures or prompts leads to better matches and more dates than liking a profile in general. So now users must like a specific part of a Wedlock profile—they can even add a comment to their like to kickstart a conversation.</p>
+            <p className="mb-4">Our research found that liking specific pictures or prompts leads to better matches and more dates than liking a profile in general. So now users must like a specific part of a VaidikVivah profile—they can even add a comment to their like to kickstart a conversation.</p>
             <a href="#" className="text-blue-500 hover:text-blue-700">Learn more →</a>
           </div>
           <div className="bg-white rounded-lg p-6 ">
             <h3 className="text-2xl font-semibold mb-4">Matchmaking Algorithm</h3>
-            <p className="mb-4">Wedlock uses a Nobel-Prize-winning algorithm that helps you go on better quality dates, not just more dates. You’re eight times more likely to have a great date with your Most Compatible suggestions, aka the people you’re most likely to have mutual chemistry with.</p>
+            <p className="mb-4">VaidikVivah uses a Nobel-Prize-winning algorithm that helps you go on better quality dates, not just more dates. You’re eight times more likely to have a great date with your Most Compatible suggestions, aka the people you’re most likely to have mutual chemistry with.</p>
             <a href="#" className="text-blue-500 hover:text-blue-700">Learn more →</a>
           </div>
           <div className="bg-white rounded-lg p-6 ">
@@ -148,7 +148,7 @@ const Mission = () => {
       </div>
     </div>
 
-      {/* wedlock difference end */}
+      {/* VaidikVivah difference end */}
     </div>
   );
 };

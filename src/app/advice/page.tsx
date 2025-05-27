@@ -16,42 +16,42 @@ function page() {
           <div className="rounded border-2 border-[#E6E8EC] hover:border-none hover:rounded-3xl hover:shadow-2xl px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
           <div className="rounded border-2 border-[#E6E8EC] hover:border-none hover:rounded-3xl hover:shadow-2xl px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
           <div className="rounded border-2 border-[#E6E8EC] hover:border-none hover:rounded-3xl hover:shadow-2xl px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
           <div className="rounded border-2 border-[#E6E8EC] hover:border-none hover:rounded-3xl hover:shadow-2xl px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
           <div className="rounded border-2 border-[#E6E8EC] hover:border-none hover:rounded-3xl hover:shadow-2xl px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
           <div className="rounded border-2 border-[#E6E8EC] hover:border-none hover:rounded-3xl hover:shadow-2xl px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
@@ -71,21 +71,21 @@ function page() {
           <div className="rounded  px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
           <div className="rounded  px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
           <div className="rounded  px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
@@ -107,14 +107,14 @@ function page() {
           <div className="rounded border-2 border-[#E6E8EC] hover:border-none hover:rounded-3xl hover:shadow-2xl px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>
           <div className="rounded border-2 border-[#E6E8EC] hover:border-none hover:rounded-3xl hover:shadow-2xl px-4 space-y-8">
             <Image src="/ProjectPh.svg" width={650} height={400} alt="" />
             <h1 className="text-[#061C3D] text-2xl">Horoscope information </h1>
-            <div className="text-[#007EAF] underline pb-3">
+            <div className="text-[#E65555] underline pb-3">
               <h1>Read More →</h1>
             </div>
           </div>

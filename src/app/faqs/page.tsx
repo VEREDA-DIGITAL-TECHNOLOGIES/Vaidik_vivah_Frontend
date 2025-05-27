@@ -21,7 +21,7 @@ const page = () => {
       <div className="grid grid-cols-3 p-20 gap-8 bg-[#F5F4F4]">
         <div className="flex flex-col items-center justify-center gap-8">
           <div className="rounded-full bg-[#F4EBFF] w-10 h-10 flex items-center justify-center">
-            <CiHeart className="text-[#007EAF] text-2xl"/>
+            <CiHeart className="text-[#E65555] text-2xl"/>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
           <h1 className="text-xl font-semibold">Is there a free trial available?</h1>
@@ -33,7 +33,7 @@ const page = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-8">
           <div className="rounded-full bg-[#F4EBFF] w-10 h-10 flex items-center justify-center">
-            <CiHeart className="text-[#007EAF] text-2xl"/>
+            <CiHeart className="text-[#E65555] text-2xl"/>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
           <h1 className="text-xl font-semibold">Is there a free trial available?</h1>
@@ -45,7 +45,7 @@ const page = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-8">
           <div className="rounded-full bg-[#F4EBFF] w-10 h-10 flex items-center justify-center">
-            <CiHeart className="text-[#007EAF] text-2xl"/>
+            <CiHeart className="text-[#E65555] text-2xl"/>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
           <h1 className="text-xl font-semibold">Is there a free trial available?</h1>
@@ -57,7 +57,7 @@ const page = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-8">
           <div className="rounded-full bg-[#F4EBFF] w-10 h-10 flex items-center justify-center">
-            <CiHeart className="text-[#007EAF] text-2xl"/>
+            <CiHeart className="text-[#E65555] text-2xl"/>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
           <h1 className="text-xl font-semibold">Is there a free trial available?</h1>
@@ -69,7 +69,7 @@ const page = () => {
         </div>
          <div className="flex flex-col items-center justify-center gap-8">
           <div className="rounded-full bg-[#F4EBFF] w-10 h-10 flex items-center justify-center">
-            <CiHeart className="text-[#007EAF] text-2xl"/>
+            <CiHeart className="text-[#E65555] text-2xl"/>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
           <h1 className="text-xl font-semibold">Is there a free trial available?</h1>
@@ -81,7 +81,7 @@ const page = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-8">
           <div className="rounded-full bg-[#F4EBFF] w-10 h-10 flex items-center justify-center">
-            <CiHeart className="text-[#007EAF] text-2xl"/>
+            <CiHeart className="text-[#E65555] text-2xl"/>
           </div>
           <div className="flex flex-col items-center justify-center gap-3">
           <h1 className="text-xl font-semibold">Is there a free trial available?</h1>

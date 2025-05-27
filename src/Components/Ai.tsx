@@ -9,8 +9,8 @@ const Ai = () => {
         alt="arw"
         className="absolute  w-[40rem] rotate-12 -right-10 -top-32"
       />
-      <div className="bg-[#009BDA] md:space-y-40 md:px-20 md:pt-20 p-10  ">
-        <div className="relative text-white space-y-10">
+      <div className="bg-[#F2DCDC] md:space-y-40 md:px-20 md:pt-20 p-10  ">
+        <div className="relative space-y-10" style={{ color: '#E65555' }}>
           <p className="md:text-6xl text-2xl font-bold">
             AI-driven match <br /> recommendations to suit your <br />{" "}
             preferences
@@ -25,7 +25,7 @@ const Ai = () => {
           />
         </div>
         <div className="">
-          <div className="bg-[#D3D3D380] border-[#FFFFFF] rounded-t-3xl md:w-[50rem] md:h-[34.5rem] h-52 relative md:left-52 -bottom-10 ">
+          <div className="bg-[#E65555] border-[#FFFFFF] rounded-t-3xl md:w-[50rem] md:h-[34.5rem] h-52 relative md:left-52 -bottom-10 ">
             <div>
               <Image
                 src="/Ai.svg"

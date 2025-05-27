@@ -5,10 +5,10 @@ import '../app/font.css';
 
 function Pre() {
   return (
-    <div className='xl:p-10 p-2 space-y-10 bg-[#E6F2F7] relative overflow-hidden'>
+    <div className='xl:p-10 p-2 space-y-10 bg-[#F2DCDC] relative overflow-hidden'>
         <img src="/Vector.png" alt='arw' className='absolute  w-[38rem] -right-4 -top-40'/>
         <div className='space-y-7'>
-            <h1 className='text-[#007EAF] text-2xl text-left md:text-3xl xl:text-6xl ' style={{fontFamily: 'Proxima-Nova-Bold, sans-serif'}}>The premier matrimony application </h1>
+            <h1 className='text-[#E65555] text-2xl text-left md:text-3xl xl:text-6xl ' style={{fontFamily: 'Proxima-Nova-Bold, sans-serif'}}>The premier matrimony application </h1>
             <p className='text-[#475467] text-lg text-balance xl:text-xl text-left' style={{fontFamily: 'Proxima-Nova-Regular, sans-serif'}}>With over two decades of reliable matchmaking experience, supported by a <br /> committed Trust and Safety team at your service.
             </p>
         </div>

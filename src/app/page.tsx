@@ -20,7 +20,7 @@ export default function Home() {
        <Navbar />
       <Hero />
       <Archive />
-      <GetApp />
+      {/* <GetApp /> */}
       <Matching />
       <YouTube />
       <Stories />

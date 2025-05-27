@@ -10,12 +10,12 @@ const Feature = () => {
           alt="arw"
           className="absolute  w-[42rem] left-10 -top-10 -rotate-[128deg]"
         />
-        <div className='bg-[#007EAF] flex flex-col md:flex-row justify-between text-white md:p-24 p-8  '>
+        <div className='bg-[#FF6666] flex flex-col md:flex-row justify-between text-white md:p-24 p-8  '>
       <div className='space-y-12 '>
         
           <h1 className='text-[52px] ' style={{fontFamily:'Proxima-Nova-Bold, sans-serif', lineHeight:'89.6px'}}>Connect with matches <br /> the way you like
           </h1>
-          <p className='text-[28px] 'style={{fontFamily:'Proxima-Nova-Regular, sans-serif',lineHeight:'42px', letterSpacing:'2%'}}>Cras at pellentesque eros. Nullam vitae <br />sapien et felis eleifend luctus. Nam ac dui</p>
+          <p className='text-[28px] 'style={{fontFamily:'Proxima-Nova-Regular, sans-serif',lineHeight:'42px', letterSpacing:'2%'}}>Meet matches with comfort. Choose <br />how to bond and take the first step with grace.</p>
           <div className="">
           <div className="flex flex-col px-8 py-7 mt-9 rounded-3xl backdrop-blur-[4.6px] bg-white bg-opacity-80 md:w-1/2 lg:w-11/12 w-full max-w-lg mr-0 md:mr-20">
           <div className="flex gap-5 max-md:flex-wrap">
@@ -29,8 +29,7 @@ const Feature = () => {
               Video call
             </div>
             <div className="mt-1 text-[20px] leading-7 text-slate-600 max-md:max-w-full" style={{fontFamily:'Proxima-Nova-Regular, sans-serif',lineHeight:'28px'}}>
-              Etiam sed vulputate nisl, eu elementum arcu. Vivamus dignissim
-              tortor in tellus dictum pellentesque.{" "}
+            Connect face-to-face with ease. Experience meaningful conversations that honor tradition and values, from the comfort of your home.{" "}
             </div>
           </div>
         </div>
@@ -46,8 +45,7 @@ const Feature = () => {
               Message
             </div>
             <div style={{fontFamily:'Proxima-Nova-Regular, sans-serif',lineHeight:'28px'}} className="mt-1 text-xl leading-7 text-slate-600 max-md:max-w-full" >
-              Vivamus dignissim tortor in tellus dictum pellentesque. Praesent
-              mauris metus, dictum quis velit non.
+            Send heartfelt messages to get to know each other with grace and respect — every connection starts with meaningful words.
             </div>
           </div>
         </div>
@@ -63,8 +61,7 @@ const Feature = () => {
               Voice call
             </div>
             <div style={{fontFamily:'Proxima-Nova-Regular, sans-serif',lineHeight:'28px'}} className="mt-1 text-xl leading-7 text-slate-600 max-md:max-w-full">
-              Vivamus dignissim tortor in tellus dictum pellentesque. Praesent
-              mauris metus, dictum quis velit non.
+            Engage in soulful conversations and express yourself clearly — voice calls bring warmth and authenticity to every interaction.
             </div>
           </div>
         </div>

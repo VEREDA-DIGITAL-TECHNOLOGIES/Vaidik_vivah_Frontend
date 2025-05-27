@@ -28,7 +28,7 @@ const PersonalDetailsForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center  pt-[83.5px] font-lato bg-[#007EAF] ">
+    <div className="min-h-screen flex items-center justify-center  pt-[83.5px] font-lato bg-[#E65555] ">
       <div className=" w-full max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-center text-white">Add your personal details</h1>
         <form onSubmit={handleSubmit}>
@@ -127,7 +127,7 @@ const PersonalDetailsForm = () => {
           </div>
 
           <div className="relative -right-[50rem]">
-            <button type="submit" className=" bg-[#F9F5FFE5] text-[#007EAF]  px-4 py-2 rounded">
+            <button type="submit" className=" bg-[#F9F5FFE5] text-[#E65555]  px-4 py-2 rounded">
               Save
             </button>
           </div>

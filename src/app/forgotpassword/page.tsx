@@ -10,7 +10,7 @@ const ForgotPassword = () => {
 
   const [username, setUsername] = useState("");
   return (
-    <div className="min-w-screen min-h-screen flex flex-col items-center justify-top  bg-[#007EAF] ">
+    <div className="min-w-screen min-h-screen flex flex-col items-center justify-top  bg-[#E65555] ">
       <div className="flex items-center justify-center mb-14 w-[268px] h-[90px]">
         <Image src="/logowhite.png" alt="Logo" width={238} height={90}  />
       </div>
@@ -41,7 +41,7 @@ const ForgotPassword = () => {
           <button
             onClick={() => window.location.href = "/verification"}
             type="submit"
-            className="w-full py-2 px-4 text-[#007EAF] rounded bg-[#ffffff]"
+            className="w-full py-2 px-4 text-[#E65555] rounded bg-[#ffffff]"
             
           >
             Send email
