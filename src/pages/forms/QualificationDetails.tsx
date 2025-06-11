@@ -41,6 +41,7 @@ const QualificationDetails = () => {
 
   // const dispatch = useDispatch();
   const [qualificationDetails, { isLoading }] = useQualificationDetailsMutation();
+  console.log(qualifications);
   const navigate = useNavigate();
   const {
     register,
@@ -140,6 +141,7 @@ const QualificationDetails = () => {
                     {qualification.value}
                   </option>
                 ))}
+                
               </select>
               {errors.qualification && (
                 <p className="text-orange-200 text-sm mt-1">

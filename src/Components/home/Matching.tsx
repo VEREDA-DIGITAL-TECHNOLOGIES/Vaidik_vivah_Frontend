@@ -1,89 +1,64 @@
-import {FaStar} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
 import '../../font.css';
 
 const Matching = () => {
     const navigate = useNavigate();
+
     return (
-        <div className="bg-[#DCD1E8] bg-gradient-to-bl from-[white] to-[#DCD1E8]     relative w-100   ">
+        <div className="bg-white py-16 px-6 sm:px-10">
+            <div className="max-w-6xl mx-auto text-center">
+                <h2 className="text-sm  font-Bembo-MT-Pro-Bold text-gray-500 uppercase tracking-widest">
+                    Personalized Matchmaking Service
+                </h2>
+                <h1 className="text-4xl font-Bembo-MT-Pro-Bold mt-4 text-[#a44949]">
+                    VIP Membership
+                </h1>
 
-            <div className="relative overflow-hidden px-5 sm:px-20   container m-auto space-y-6  py-5 md:py-12">
-            <div className="bg-[url('/shadow.png')] -rotate-342 absolute w-[80rem] h-[100%]  top-0 right-0  sm:hidden hidden  "></div>
-            <img
-                src="/curve.png"
-                alt="arw"
-                className="absolute w-[50%] left-[50%] "
-            
-            />
-            <div className=" flex   flex-col  justify-between w-full">
-
-            <div
-                className="text-[#60457E] w-100  ">
-                <h1 className="font-Proxima-Nova-Bold text-h2-mobile md:text-h2-desktop text-[#4E3A63] ">Exclusive
-                    matchmaking</h1>
-                <p className="text-[20px]  font-Proxima-Nova-Light sm:text-[16px] md:text-[20px] lg:text-[24px]     xl:text-[28px] pt-[21px] leading-[30px] sm:leading-[10px] md:leading-[24px] lg:leading-[28px] xl:leading-[42px] md:text-start mr-1 ">
-                Our Exclusive Matchmaking service is designed for exceptional individuals who prioritise meaningful, long-term relationships. Whether you're ready to find your life partner or are looking for someone who shares your vision of a future together, our approach is tailored to your unique needs.
-                </p>
+                <div className="mt-6 flex justify-center">
+                    <button
+                        onClick={() => navigate("/exclusive")}
+                        className="bg-[#a44949] text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-[Proxima-Nova-SemiBold] transition-transform hover:scale-105 shadow-lg"
+                    >
+                        Start Today
+                    </button>
+                </div>
             </div>
 
+            <div className="flex flex-col lg:flex-row items-center justify-between mt-16 gap-10 max-w-6xl mx-auto">
+                <img
+                    src="/talkpeople.jpg"
+                    alt="Relationship advisor with client"
+                    className="rounded-xl shadow-2xl w-full max-w-xl object-cover"
+                />
 
-            <div className="lg:flex m-auto mt-9 justify-between items-center w-full max-w-[1200px] gap-12 bg-[#60457E] rounded-3xl px-4 lg:px-12 py-5 md:py-10 opacity-95">
- 
-                <div className="relative  h-full flex justify-center items-center lg:w-1/2 ">
-                    <div className="">
-                        <img
-                            src="/matching.svg"
-                            alt="couple"
-                            className="max-w-full max-h-full  object-contain"
-                        />
-                    </div>
-                </div>
-                <div className="space-y-10 relative  top_rating lg:w-1/2">
-                  <h2 className="w-[100%] text-white pt-6 md:pt-10 sm:pt-0 text-[24px] font-Proxima-Nova-SemiBold max-md:text-[16px] text-center  lg:text-start">
-                    Key Features
-                  </h2>
-                  <div className="space-y-2 ">
-                        <div className="flex items-center gap-5 rounded-xl bg-[#FFFFFF80] lg:w-96 h-10 px-2 md:px-5">
-                            <FaStar className="text-2xl text-yellow-400 "/>
-                            <h1 className="lg:text-xl text-sm font-[Proxima-Nova-semiBold] ">Get access to Exclusive profiles</h1>
-                        </div>
-                        <div className="flex items-center gap-5 rounded-xl bg-[#FFFFFF80] lg:w-96 h-10 px-2 md:px-5">
-                        <FaStar className="text-2xl text-yellow-400 "/>
-                            <h1 className="lg:text-xl text-sm font-[Proxima-Nova-semiBold] ">Personalised matchmaking</h1>
-                        </div>
-                        <div className="flex items-center gap-5 rounded-xl bg-[#FFFFFF80] lg:w-96 h-10 px-2 md:px-5">
-                        <FaStar className="text-2xl text-yellow-400 "/>
-                            <h1 className="lg:text-xl text-sm font-[Proxima-Nova-semiBold] ">
-                         Control over privacy and visibility
-                         </h1>
-                        </div>
-                        <div className="flex items-center gap-5 rounded-xl bg-[#FFFFFF80] lg:w-96 h-10 px-2  md:px-5">
-                        <FaStar className="text-2xl text-yellow-400 "/>
-                            <h1 className="lg:text-xl text-sm font-[Proxima-Nova-semiBold] ">
-                            Personality assessments
-                             </h1>
-                        </div>
-                        <div className="flex items-center gap-5 rounded-xl bg-[#FFFFFF80] lg:w-96 h-10 px-2 md:px-5">
-                        <FaStar className="text-2xl text-yellow-400 "/>
-                            <h1 className="lg:text-xl text-sm font-[Proxima-Nova-semiBold] ">
-                            Top-tier profile visibility
-                            </h1>
-                        </div>
-
-                    </div>
-                    <div className="flex items-center justify-center md:justify-between  gap-2">
-                        <button
-                            onClick={ ()=>{navigate("/exclusive")} }
-                            className="flex items-center justify-center px-4 text-[#3C2C4C] bg-[white] rounded-full md:w-60 lg:h-16 h-10  ">
-                            <p className="text-sm md:text-lg font-[Proxima-Nova-SemiBold]">Check your eligibility
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
+                    {[
+                        {
+                            icon: "/user.png",
+                            title: "Meet Your Relationship Manager",
+                            description: "Connect with our experienced advisor who manages your profile personally.",
+                        },
+                        {
+                            icon: "/chathrt.svg", // Consider replacing the second /guard.png with something unique
+                            title: "Communicate Your Preferences",
+                            description: "Consult with us to convey expectations in a prospective partner.",
+                        },
+                        {
+                            icon: "/match3.svg", // Replace with a better match icon if possible
+                            title: "Choose From Handpicked Profiles",
+                            description: "Receive exclusive profile suggestions tailored to your criteria.",
+                        },
+                    ].map((item, index) => (
+                        <div key={index} className="text-center">
+                            <div className="bg-[#a44949]   rounded-full w-20 h-20 flex justify-center items-center mx-auto shadow-md">
+                                <img src={item.icon} alt={item.title} className="w-10 h-10 " />
+                            </div>
+                            <h3 className="font-semibold text-lg mt-4">{item.title}</h3>
+                            <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+                                {item.description}
                             </p>
-                        </button>
-                        {/* <p className="text-white text-[0.7rem] lg:text-lg cursor-pointer   ">Read more</p> */}
-                    </div>
-                </div>
-                </div>
-
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

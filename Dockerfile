@@ -2,12 +2,12 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Install dependencies
 COPY package*.json ./
 COPY tsconfig*.json ./
-RUN npm ci
+RUN npm install --legacy-peer-deps
 
-# Copy all files and build
+# Copy source files and build
 COPY . .
 RUN npm run build
 
@@ -15,16 +15,10 @@ RUN npm run build
 FROM node:20-alpine
 WORKDIR /app
 
-# Copy built files
 COPY --from=builder /app/dist ./dist
+COPY .env .env
 
-# Copy .env to the root if it exists
-COPY .env ./.env
-
-
-# Install serve for serving static files
 RUN npm install -g serve
 
-# Expose port and run the app
 EXPOSE 5173
 CMD ["serve", "-s", "dist", "-l", "5173"]

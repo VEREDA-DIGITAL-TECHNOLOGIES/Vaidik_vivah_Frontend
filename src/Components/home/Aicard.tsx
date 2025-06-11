@@ -7,15 +7,15 @@ interface AicardProps {
 
 const Aicard = ({ name, description, imageSrc }: AicardProps) => {
   return (
-    <div className="h-full w-full   max-w-xl  rounded-t-3xl bg-[white] p-2 text-[#231F20E5] lg:p-10">
-      <div className="mb-4 flex justify-center rounded-3xl">
+    <div className="h-full w-full  flex gap-3 max-w-5xl  rounded-t-3xl bg-[white] p-2 text-[#231F20E5] lg:p-10">
+      <div className="mb-4 w-1/2 rounded-3xl">
         <img
-          className="w-full object-fill "
+          className="w-full object-fill h-[50vh] "
           src={imageSrc}
           alt={`${name} Profile`}
         />
       </div>
-      <div className="text-left">
+      <div className=" w-1/2">
         <h2
           className="left-7 mb-4 text-xl lg:text-2xl font-Proxima-Nova-Bold"
         >

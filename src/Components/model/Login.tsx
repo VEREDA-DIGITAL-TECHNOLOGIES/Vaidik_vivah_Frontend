@@ -161,7 +161,7 @@ const Login: React.FC<LoginProps> = ({ isOpen, onClose }) => {
           </div>
           <button
             type="submit"
-            className="bg-[#007EAF] text-white px-4 py-2  h-10 w-full rounded-3xl"
+            className="bg-[#9e2727] text-white px-4 py-2  h-10 w-full rounded-3xl"
           >
             {isLoading ? (
               <LoadingOutlined className="text-white animate-spin" />

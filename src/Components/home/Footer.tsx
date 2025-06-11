@@ -57,7 +57,8 @@ const Footer = () => {
           {/* About Section */}
           <div className="space-y-5 lg:col-span-2">
             <div className="flex items-center">
-              <img src="/newlogo.png" alt="logo" className="w-42 h-16" />
+              {/* <img src="/newlogo.png" alt="logo" className="w-20 h-auto" /> */}
+              <h1 className="text-[30px]">Vaidik Vivah</h1>
             </div>
             <p className="font-Proxima-Nova-Regular text-pretty">
               In the spirit of reconciliation, Wedlock acknowledges the
@@ -115,9 +116,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider and Back to Top */}
+        {/* Divider and Back to Top
         <div className="flex items-center justify-between pt-4">
-          <div className="rounded-full bg-[#a5a4a480] h-[2px] w-[95%]"></div>
+          
           <button 
             onClick={scrollToTop} 
             className="text-white rounded-full ml-4 bg-[#007EAF] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-2xl md:text-3xl hover:bg-[#006494] transition-colors"
@@ -125,27 +126,9 @@ const Footer = () => {
           >
             <MdKeyboardArrowUp />
           </button>
-        </div>
+        </div> */}
 
-        {/* Copyright and Legal */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mt-6">
-          <div className="font-Proxima-Nova-Regular">
-            <h1 className="font-semibold text-base md:text-lg italic">
-              Connecting Hearts Worldwide
-            </h1>
-            <p className="text-xs md:text-sm">
-              This website is strictly for matrimonial purposes only and not a dating website.
-            </p>
-          </div>
-          <div className="text-left md:text-right">
-            <p className="text-xs sm:text-sm md:text-base font-Proxima-Nova-Regular">
-              © {currentYear} Wedlock Global Services (Australia) Pty Ltd. All rights reserved.
-            </p>
-            <p className="text-xs sm:text-sm md:text-base font-Proxima-Nova-Regular">
-              ABN: 36 679 422 738
-            </p>
-          </div>
-        </div>
+     
       </div>
     </div>
   );

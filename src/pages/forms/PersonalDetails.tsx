@@ -44,6 +44,7 @@ const PersonalDetails = () => {
   const [maritalStatus, setMaritalStatus] = useState<{ id: string; value: string }[]>([]);
 
   const { data: maritalStatusData } = useGetMaritalStatusQuery();
+  console.log(maritalStatusData);
 
   useEffect(() => {
     const isExclusive = localStorage.getItem("isExclusive");

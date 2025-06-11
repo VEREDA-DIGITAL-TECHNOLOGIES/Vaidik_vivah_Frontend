@@ -60,7 +60,7 @@ const Search = () => {
   };
 
   return (
-    <div className="w-100  bg-[#E6F2F7] ">
+    <div className="w-100  bg-[#a44949] ">
       <div className="relative overflow-hidden px-5 sm:px-20  container m-auto space-y-6  py-5 md:py-12">
         <img
           src="/curvesm.svg"
@@ -70,11 +70,11 @@ const Search = () => {
 
         <div className="">
           <div className="flex items-center justify-between w-[100%] browse">
-            <h1 className="text-h2-mobile md:text-h2-desktop  font-[Proxima-Nova-Bold]  text-[#007EAF]">
+            <h1 className="text-h2-mobile md:text-h2-desktop  font-[Proxima-Nova-Bold]  text-[white]">
               Find Your Perfect Match
             </h1>
           </div>
-          <p className="text-[#101828E5] text-[20px]  font-Proxima-Nova-Light sm:text-[16px] md:text-[20px] lg:text-[24px]     xl:text-[28px] pt-[21px] leading-[30px] sm:leading-[10px] md:leading-[24px] lg:leading-[28px] xl:leading-[42px] md:text-start mr-1">
+          <p className="text-[white] text-[20px]  font-Proxima-Nova-Light sm:text-[16px] md:text-[20px] lg:text-[24px]     xl:text-[28px] pt-[21px] leading-[30px] sm:leading-[10px] md:leading-[24px] lg:leading-[28px] xl:leading-[42px] md:text-start mr-1">
             Because meaningful relationships start with the right connection,   we make it easy to find someone who  truly complements your matrimonial 
             journey.
           </p>

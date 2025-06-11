@@ -24,4 +24,7 @@ config
 *.sln
 *.sw?
 
+.env
+/.env
+
 

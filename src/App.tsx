@@ -188,7 +188,7 @@ useEffect(() => {
             <Route path="/verification" element={<Verification />} />
             <Route path="/verify-otp" element={<VerifyOtp />} />
           </Route>
-
+          
           <Route element={<ProtectedRoute isAuthenticated={!!accessToken}  />}>
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route path="/photoupload" element={<Photoupload />} />
