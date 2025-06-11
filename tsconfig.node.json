@@ -3,6 +3,7 @@
     "target": "ES2022",
     "lib": ["ES2023"],
     "module": "ESNext",
+    "jsx": "react-jsx", 
     "allowJs": true,
     "skipLibCheck": true,
 
@@ -20,10 +21,11 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["src/*"] // Here... try with correct values and the issue should get fixed
+      "@/*": ["src/*"]
     }
     
   },
-  "include": ["vite.config.ts","src"],
+  "include": ["vite.config.ts","src","src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules", ".vscode"]
   
 }
