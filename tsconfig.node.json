@@ -17,7 +17,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"] // Here... try with correct values and the issue should get fixed
+    }
+    
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts","src"],
+  
 }
