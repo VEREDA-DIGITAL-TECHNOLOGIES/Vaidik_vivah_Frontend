@@ -1,6 +1,6 @@
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { MdKeyboardArrowUp } from "react-icons/md";
+// import { MdKeyboardArrowUp } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import '../../font.css';
 
@@ -40,14 +40,14 @@ const Footer = () => {
     return null;
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
 
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
   return (
     <div className="w-full h-auto bg-[#2A2A2A]">
@@ -97,21 +97,21 @@ const Footer = () => {
           <div className="md:col-span-2 lg:col-span-1">
             <h3 className="font-Proxima-Nova-Bold text-lg mb-4">Social</h3>
             <div className="flex gap-5 text-2xl">
-              <a href="https://www.facebook.com/profile.php?id=61569605309016" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              <Link title="link" to="https://www.facebook.com/profile.php?id=61569605309016" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaFacebookF />
-              </a>
-              <a href="https://x.com/wedlockglobal?s=11" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              </Link>
+              <Link to="https://x.com/wedlockglobal?s=11" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaSquareXTwitter />
-              </a>
-              <a href="http://www.youtube.com/@Wedlock_Global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              </Link>
+              <Link to="http://www.youtube.com/@Wedlock_Global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaYoutube />
-              </a>
-              <a href="https://www.instagram.com/wedlock_global?igsh=MWF5NWU0M2sxeXdlMQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              </Link>
+              <Link to="https://www.instagram.com/wedlock_global?igsh=MWF5NWU0M2sxeXdlMQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaInstagram />
-              </a>
-              <a href="https://www.linkedin.com/company/wedlock-global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              </Link>
+              <Link to="https://www.linkedin.com/company/wedlock-global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaLinkedin />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

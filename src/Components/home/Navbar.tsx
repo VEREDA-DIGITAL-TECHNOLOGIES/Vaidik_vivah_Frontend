@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { RiArrowDropDownLine, RiCloseLine } from "react-icons/ri";
+
+import {  RiCloseLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useLocation } from "react-router-dom";
 import Login from "../model/Login";
-import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/store";
+import { useState } from "react";
+// import { useSelector } from "react-redux";
+// import { RootState } from "../../Redux/store";
 
 const Navbar: React.FC = () => {
-  const { accessToken } = useSelector((state: RootState) => state.userReducer);
+  // const { accessToken } = useSelector((state: RootState) => state.userReducer);
 
   const location = useLocation(); // Use useLocation to get the current path
   const pathname = location.pathname;
@@ -15,7 +16,7 @@ const Navbar: React.FC = () => {
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
-  const openLogin = () => setLoginOpen(true);
+  // const openLogin = () => setLoginOpen(true);
   const closeLogin = () => setLoginOpen(false);
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
 
@@ -118,7 +119,7 @@ const Navbar: React.FC = () => {
               
               
               
-              <button className="md:hidden text-3xl" onClick={toggleSidebar}>
+              <button title="button" className="md:hidden text-3xl" onClick={toggleSidebar}>
                 <GiHamburgerMenu />
               </button>
             </div>
