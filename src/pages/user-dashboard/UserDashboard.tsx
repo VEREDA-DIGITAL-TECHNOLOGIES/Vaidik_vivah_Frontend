@@ -5,15 +5,15 @@ import type { TabsProps } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type{ RootState } from "../../Redux/store";
-import Mydetails from "../../components/user-dashboard/Mydetails";
-import Discover from "../../components/user-dashboard/Discover";
-import Favourate from "../../components/user-dashboard/Favourate";
+import Mydetails from "../../Components/user-dashboard/Mydetails";
+import Discover from "../../Components/user-dashboard/Discover";
+import Favourate from "../../Components/user-dashboard/Favourate";
 import Plan from "../plan/Plan";
-import BillingInfo from "../../components/BillingInfo/BillingInfo";
-import Notification from "../../components/user-dashboard/Notification";
-import FAQs from "../../components/user-dashboard/FAQs";
-import Header from "../../components/header-footer-profile/Header";
-import Footer from "../../components/header-footer-profile/Footer";
+import BillingInfo from "../../Components/BillingInfo/BillingInfo";
+import Notification from "../../Components/user-dashboard/Notification";
+import FAQs from "../../Components/user-dashboard/FAQs";
+import Header from "../../Components/header-footer-profile/Header";
+import Footer from "../../Components/header-footer-profile/Footer";
 
 
 

@@ -1,5 +1,5 @@
 
-import Input from '../../components/input/Input';
+import Input from '../../Components/input/Input';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";

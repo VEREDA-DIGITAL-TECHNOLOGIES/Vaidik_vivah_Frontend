@@ -6,7 +6,7 @@ import type{ SubmitHandler } from "react-hook-form";
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import Cookies from 'js-cookie';
-import Input from '../../components/input/Input';
+import Input from '../../Components/input/Input';
 import { Link, useNavigate } from "react-router-dom";
 import { LoadingOutlined } from '@ant-design/icons';
 import { IoEyeOutline } from "react-icons/io5";

@@ -14,12 +14,12 @@ import { setUserType } from "./Redux/Reducers/user.reducer";
 import { useDispatch } from "react-redux";
 
 import './App.css'
-import ScrollToTop from "./components/ScrollTop/ScrollToTop";
-import Loading from "../src/components/Loading";
-import Footer from "../src/components/home/Footer";
-import Navbar from "../src/components/home/Navbar";
+import ScrollToTop from "./Components/ScrollTop/ScrollToTop";
+import Loading from "./Components/Loading";
+import Footer from "./Components/home/Footer";
+import Navbar from "./Components/home/Navbar";
 
-import ProtectedRoute from "../src/components/ProtectedRoute";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 
 const Home = lazy(() => import("./pages/home/Home"));

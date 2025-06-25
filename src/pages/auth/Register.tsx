@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Input from '../../components/input/Input';
+import Input from '../../Components/input/Input';
 import { useRegisterUserMutation } from "../../Redux/Api/user.api";
 import { setActivationToken } from "../../Redux/Reducers/user.reducer";
 import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';

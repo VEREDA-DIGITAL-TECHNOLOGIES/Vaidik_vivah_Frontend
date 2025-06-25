@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../font.css";
 import { useGetPlansQuery } from "../../Redux/Api/plan.api";
 
-import Loading from "../../components/Loading";
+import Loading from "../../Components/Loading";
 import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { useCreateCheckoutSessionMutation, useGetSubscriptionHistoryQuery } from "../../Redux/Api/checkout.api";
 import { toast } from 'sonner';
@@ -17,7 +17,7 @@ import {
   Button,
 
 } from "@mui/material";
-import PlanCard from "../../components/PlanCard/PlanCard";
+import PlanCard from "../../Components/PlanCard/PlanCard";
 const columns = [
   {
     field: "serial",

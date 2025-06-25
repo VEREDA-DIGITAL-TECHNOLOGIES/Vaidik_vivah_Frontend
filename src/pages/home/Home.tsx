@@ -1,17 +1,17 @@
-import Ai from '../../components/home/Ai'
+import Ai from '../../Components/home/Ai'
 
 // import Archive from '../../components/home/Archive'
 
-import GetApp from '../../components/home/GetApp'
-import Hero from '../../components/home/Hero'
+import GetApp from '../../Components/home/GetApp'
+import Hero from '../../Components/home/Hero'
 
-import Matching from '../../components/home/Matching'
-import Feature from '../../components/home/Feature'
-import MembershipPlans from '../../components/home/MembershipPlans'
+import Matching from '../../Components/home/Matching'
+import Feature from '../../Components/home/Feature'
+import MembershipPlans from '../../Components/home/MembershipPlans'
 
 import "./home.css"
-import WeddingSlider from '../../components/home/WeddingSlider'
-import Pre from '../../components/home/Pre'
+import WeddingSlider from '../../Components/home/WeddingSlider'
+import Pre from '../../Components/home/Pre'
 const Home = () => {
     return (
         <div>
