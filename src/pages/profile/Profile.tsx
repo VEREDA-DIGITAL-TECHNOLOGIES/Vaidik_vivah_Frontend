@@ -10,7 +10,7 @@ import Discover from "../../components/user-dashboard/Discover";
 import Favourate from "../../components/user-dashboard/Favourate";
 import Notification from "../../components/user-dashboard/Notification";
 import { useParams } from "react-router-dom";
-import { RootState } from "./../../Redux/store";
+import type{ RootState } from "./../../Redux/store";
 import { useSelector } from "react-redux";
 
 

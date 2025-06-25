@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { ReactElement } from "react";
+import type{ ReactElement } from "react";
 
 
 
@@ -16,14 +16,14 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     redirect = '/login',
 }) => {
 
-   
+
     if (!isAuthenticated) {
         return <Navigate to={redirect} />;
     }
-   
-    
 
-    return children ? children: <Outlet />;
+
+
+    return children ? children : <Outlet />;
 };
 
 export default ProtectedRoute;

@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../Redux/store";
-import ConnectionAccepted from "../ConnectionAccepted";
+import type{ RootState } from "../../Redux/store";
+
 import {
   setNotification,
   removeNotificationData
 } from "../../Redux/Reducers/notification.reducers";
-import Connection from "../../components/Connection";
+
 import { useGetNotificationQuery } from "../../Redux/Api/notification.api";
-import {useRemoveNotificationMutation} from "../../Redux/Api/notification.api";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
-import { useCancelConnectionMutation,useAcceptConnectionMutation } from "../../Redux/Api/connection.api";
+import { useRemoveNotificationMutation } from "../../Redux/Api/notification.api";
+import type{ FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
+import { useCancelConnectionMutation, useAcceptConnectionMutation } from "../../Redux/Api/connection.api";
 import { toast } from "sonner";
+import Connection from "../user-dashboard-model/Connection";
+import ConnectionAccepted from "../user-dashboard-model/ConnectionAccepted";
 
 const Notification = () => {
   const dispatch = useDispatch();
@@ -19,7 +21,7 @@ const Notification = () => {
   const { data: notificationData, isLoading } = useGetNotificationQuery<any>();
 
   const [removeNotification,] = useRemoveNotificationMutation<any>();
-  const [cancel,{isLoading:isLoadingCancel}] = useCancelConnectionMutation();
+  const [cancel, { isLoading: isLoadingCancel }] = useCancelConnectionMutation();
   const [accept, { isLoading: isLoadingAccept }] = useAcceptConnectionMutation();
 
 
@@ -46,7 +48,7 @@ const Notification = () => {
   }, [notificationData, isLoading, dispatch]);
 
 
-  
+
   type ApiResponse = {
     success: boolean;
     message: string;
@@ -54,34 +56,34 @@ const Notification = () => {
   };
 
 
-  const acceptConnection = async(notificationId: string, senderId: string) => {
+  const acceptConnection = async (notificationId: string, senderId: string) => {
     try {
-    const response = await accept(senderId);
-    if (response.error) {
-      const errorData = response.error as FetchBaseQueryError;
-      toast.error((errorData.data as ApiResponse).message);
-      return;
-    }
-    await removeNotification(notificationId);
-    dispatch(removeNotificationData(notificationId));
-    toast.success("Connection accepted!");
+      const response = await accept(senderId);
+      if (response.error) {
+        const errorData = response.error as FetchBaseQueryError;
+        toast.error((errorData.data as ApiResponse).message);
+        return;
+      }
+      await removeNotification(notificationId);
+      dispatch(removeNotificationData(notificationId));
+      toast.success("Connection accepted!");
     } catch (error) {
       toast.error("Failed to accept connection. Please try again later.");
     }
   };
 
-  const rejectConnection = async(notificationId: string, senderId: string) => {
+  const rejectConnection = async (notificationId: string, senderId: string) => {
     try {
       const recieverId = senderId;
-    const response = await cancel(recieverId);
-    if (response.error) {
-      const errorData = response.error as FetchBaseQueryError;
-      toast.error((errorData.data as ApiResponse).message);
-      return;
-    }
-    await removeNotification(notificationId);
-    dispatch(removeNotificationData(notificationId));
-    toast.success("Connection rejected!");
+      const response = await cancel(recieverId);
+      if (response.error) {
+        const errorData = response.error as FetchBaseQueryError;
+        toast.error((errorData.data as ApiResponse).message);
+        return;
+      }
+      await removeNotification(notificationId);
+      dispatch(removeNotificationData(notificationId));
+      toast.success("Connection rejected!");
     } catch (error) {
       toast.error("Failed to reject connection. Please try again later.");
     }
@@ -91,7 +93,7 @@ const Notification = () => {
 
   return (
     <div className="space-y-4 min-h-screen">
-      {notifications?.length === 0 && !isLoading  ? (
+      {notifications?.length === 0 && !isLoading ? (
         <p className="text-center">No notifications yet</p>
       ) : (
         notifications?.map((notification) => (
@@ -108,9 +110,9 @@ const Notification = () => {
                 Remove
               </button>
             </div>
-            
-            {notification.body?.type === "connection_request" ?(
-            
+
+            {notification.body?.type === "connection_request" ? (
+
               <Connection
                 senderImage={notification.body?.senderImage}
                 senderName={notification.body?.senderName}
@@ -123,22 +125,20 @@ const Notification = () => {
                       )
                     }
                     disabled={isLoadingAccept || isLoadingCancel}
-                    className={`px-4 py-2 text-white rounded ${
-                      isLoadingAccept
+                    className={`px-4 py-2 text-white rounded ${isLoadingAccept
                         ? "bg-green-300 cursor-not-allowed"
                         : "bg-green-500"
-                    }`}
+                      }`}
                   >
                     {isLoadingAccept ? "Accepting..." : "Accept"}
                   </button>
                 }
                 RejectButton={
                   <button
-                    className={`px-4 py-2 text-white rounded ${
-                      isLoadingCancel
+                    className={`px-4 py-2 text-white rounded ${isLoadingCancel
                         ? "bg-red-300 cursor-not-allowed"
                         : "bg-red-500"
-                    }`}
+                      }`}
                     onClick={() =>
                       rejectConnection(
                         notification.notificationId,
@@ -152,10 +152,10 @@ const Notification = () => {
                 }
               />
 
-            ):(
-              
+            ) : (
+
               <ConnectionAccepted senderImage={notification.body?.senderImage} senderName={notification.body?.senderName} />
-            
+
             )}
           </div>
         ))

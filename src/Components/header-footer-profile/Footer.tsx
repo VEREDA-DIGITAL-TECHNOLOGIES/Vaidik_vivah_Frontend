@@ -59,7 +59,7 @@ const Footer = () => {
 </p>
               </div>
               <div className="text-center md:text-right">
-                <span className="text-sm">© {currentYear} Wedlock Global Services (Australia) Pty Ltd.   All rights reserved.</span>
+                <span className="text-sm">© {currentYear} Vaidik vivah Global Services (India) Pty Ltd.   All rights reserved.</span>
               </div>
             </div>
           </div>

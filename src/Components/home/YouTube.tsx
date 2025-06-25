@@ -13,11 +13,7 @@ const YouTube = () => {
       />
     <div className='   youtube'>
   
-        {/* <h1 className='font-Proxima-Nova-Bold text-h2-mobile md:text-h2-desktop text-[#007EAF] '>Introducing: A new wedlock experience
-        </h1>
-        <p className=' text-[#475467] text-[20px]  font-Proxima-Nova-Light sm:text-[16px] md:text-[20px] lg:text-[24px]  xl:text-[28px] pt-[21px] leading-[30px] sm:leading-[10px] md:leading-[24px] lg:leading-[28px] xl:leading-[42px] md:text-start mr-1 '>Your search for a great matrimonial profile has never been easier with groundbreaking overhaul of the Wedlock you know and trust.
-        </p>
-        <h4 className=' text-[#007EAF] pt-10 font-[Proxima-Nova-SemiBold] text-p-mobile md:text-p-desktop  '>Get a sneek peek:</h4> */}
+
 
       
         <div className="mt-10 aspect-video">

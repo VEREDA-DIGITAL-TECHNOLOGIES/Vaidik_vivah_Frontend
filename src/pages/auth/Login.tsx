@@ -1,5 +1,7 @@
-import Input from "../../components/input/Input";
-import { SubmitHandler, useForm } from "react-hook-form";
+import Input from "../../components/input/Input.tsx";
+import { useForm } from "react-hook-form";
+import type{ SubmitHandler } from "react-hook-form";
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import {useLoginMutation} from "../../Redux/Api/user.api";
 import {setUser} from "../../Redux/Reducers/user.reducer";
@@ -7,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useState ,useEffect} from "react";
 import {connectSocket} from "../../services/socketservice";
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { toast } from 'sonner'
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -126,6 +128,7 @@ const Login = () => {
     
       } catch (error) {
         toast.error("An error occurred");
+        console.log(error);
       }
     };
     
@@ -133,13 +136,18 @@ const Login = () => {
     
 
   return (
-    <div className={`min-w-screen h-screen flex flex-col items-center justify-center  ${isExclusive? 'bg-[#60457E]': 'bg-[#007EAF]'}
+    <div className={`min-w-screen h-screen flex flex-col items-center justify-center  ${isExclusive ? 'bg-[#ffffff]' : 'bg-[#ffffff]'}
 } `}>
     <div className="flex items-center justify-center mb-10  ">
-      <Link to="/" className="fixed top-2">
-      <img src="/logowhite.png" alt=""  className='w-auto md:w-60 lg:w-70 h-24 ' />
-      </Link>
+        <Link to={"/"} className="mx-auto mb-2 fixed top-10">
+          <img
+            src="/logotest3.png"
+            alt="logo"
+            className="h-24 w-auto md:h-24 ml-3"
+          />
+        </Link>
     </div>
+      <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
 
     <div className="flex flex-col items-center justify-center  mt-12">
       <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
@@ -190,6 +198,7 @@ const Login = () => {
               Create an account
             </button>
 
+          </div>
           </div>
 
   </div> 

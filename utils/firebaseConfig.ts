@@ -5,14 +5,14 @@ import { getDatabase } from 'firebase/database';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBOG_Yg-2kKeH1a0sdjc_zBvn_p7A_WaJE",
-    authDomain: "wedlock-4f698.firebaseapp.com",
-    databaseURL: "https://wedlock-4f698-default-rtdb.firebaseio.com",
-    projectId: "wedlock-4f698",
-    storageBucket: "wedlock-4f698.appspot.com",
-    messagingSenderId: "539956268610",
-    appId: "1:539956268610:web:f01a4dbc2ced2e96c027db",
-    measurementId: "G-95Z5LR49PG"
+    apiKey: "AIzaSyCWu-erLUsLXFSxbD-xKLbS0j3Sd5veNFQ",
+    authDomain: "vaidikvibah.firebaseapp.com",
+    databaseURL: "https://vaidikvibah-default-rtdb.firebaseio.com",
+    projectId: "vaidikvibah",
+    storageBucket: "vaidikvibah.firebasestorage.app",
+    messagingSenderId: "46448607357",
+    appId: "1:46448607357:web:f4601196fab75bfacd7114",
+    measurementId: "G-BFY5SQQT5J"
 };
 
 
