@@ -4,16 +4,18 @@ import { ConfigProvider } from "antd";
 import type { TabsProps } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "../../Redux/store";
-
-import Header from "../../components/header-footer-profile/Header";
-import Footer from "../../components/header-footer-profile/Footer";
-import Plan from "../../pages/plan/Plan";
-import BillingInfo from "../../components/BillingInfo/BillingInfo";
-import Notification from "../../components/user-dashboard/Notification";
+import type{ RootState } from "../../Redux/store";
+import Mydetails from "../../components/user-dashboard/Mydetails";
 import Discover from "../../components/user-dashboard/Discover";
 import Favourate from "../../components/user-dashboard/Favourate";
-import MyDetails from "../../components/user-dashboard/Mydetails";
+import Plan from "../plan/Plan";
+import BillingInfo from "../../components/BillingInfo/BillingInfo";
+import Notification from "../../components/user-dashboard/Notification";
+import FAQs from "../../components/user-dashboard/FAQs";
+import Header from "../../components/header-footer-profile/Header";
+import Footer from "../../components/header-footer-profile/Footer";
+
+
 
 const UserDashboard: React.FC = () => {
   const location = useLocation();
@@ -43,7 +45,7 @@ const UserDashboard: React.FC = () => {
     {
       key: "details",
       label: `My Details`,
-      children: <MyDetails />,
+      children: <Mydetails />,
     },
     {
       key: "discover",
@@ -51,8 +53,8 @@ const UserDashboard: React.FC = () => {
       children: <Discover />,
     },
     {
-      key: "favorite-profiles",
-      label: `Favorite Profiles`,
+      key: "favourite-profiles",
+      label: `Favourite Profiles`,
       children: <Favourate />,
     },
     {
@@ -71,28 +73,33 @@ const UserDashboard: React.FC = () => {
       label: `Notifications`,
       children: <Notification />,
     },
+    {
+      key: "FAQs",
+      label: `FAQs`,
+      children: <FAQs />,
+    },
   ];
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col ">
       <Header />
-      <div className="flex-grow bg-[#E6F2F7]">
+      <div className="flex-grow bg-[#fceef2]">
         <div className="flex justify-center">
-          <img src="/bigad.png" className="h-14 w-full" />
+          <img title="bigad" src="/bigad.png" className="h-14 w-full" />
         </div>
 
-        <div className="px-4 py-6">
+        <div className="px-4 py-6 ">
           <div className="p-0 md:p-4">
             <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: isExclusive ? "#60457E" : "#007EAF",
+                  colorPrimary: isExclusive ? "#60457E" : "#fa4e85",
                 },
                 components: {
                   Tabs: {
-                    colorBgContainer: "#E6F2F7",
+                    colorBgContainer: "#fa4e85",
                     colorText: "black",
-                    colorBgTextActive: "#363636",
+                    colorBgTextActive: "#fa4e85",
                     colorBorder: "#E6F2F7",
                     fontSize: 18,
                     fontFamily: "Proxima-Nova-Semibold",
@@ -104,7 +111,7 @@ const UserDashboard: React.FC = () => {
                 activeKey={activeTab}
                 onChange={handleTabChange}
                 items={items}
-                tabBarStyle={{ backgroundColor: "#E6F2F7" }}
+                tabBarStyle={{ backgroundColor: "#f8e4ea" }}
               />
             </ConfigProvider>
           </div>

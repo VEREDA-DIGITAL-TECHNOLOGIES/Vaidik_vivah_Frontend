@@ -1,7 +1,7 @@
-import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
-import { RootState } from '../store';
+import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import type { RootState } from '../store';
 import { setCredentials, logout } from '../Reducers/user.reducer';
-
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_BASE_URL}/api/v1/`,

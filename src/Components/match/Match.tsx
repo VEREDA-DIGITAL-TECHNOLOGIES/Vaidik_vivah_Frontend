@@ -22,7 +22,7 @@ import { FaUserXmark } from "react-icons/fa6";
 import "../../font.css";
 import Loading from "../Loading";
 import { toast } from "sonner";
-import { RootState } from "./../../Redux/store";
+import type{ RootState } from "./../../Redux/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ProfileSection from "./profileSection";

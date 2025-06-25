@@ -1,79 +1,43 @@
 const Ai = () => {
   return (
-    <div className="w-full text-[#a44949] overflow-hidden py-12 md:py-20">
-      <div className="relative overflow-hidden px-5 sm:px-10 lg:px-20 container mx-auto">
-        <div className="relative space-y-12 md:space-y-20 bg-white">
-          
+    <div className="bg-[#FECEDC] py-12 px-6 flex justify-center">
+      <div className="relative max-w-4xl w-full">
+        {/* Skewed white background */}
+        <div className="absolute top-6 left-6 w-full h-full bg-white transform -rotate-1 rounded-xl z-0"></div>
 
-          {/* Testimonial Card */}
-          <div className="relative flex justify-center">
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl w-full max-w-6xl p-6 md:p-8 lg:p-10 relative overflow-hidden">
-              {/* Recommended Badge */}
-              {/* <div className="absolute -top-6 right-4 md:-top-8 md:right-8 w-28 md:w-40 lg:w-48 z-10">
-                <img
-                  src="/recomended.png"
-                  alt="Recommended"
-                  className="w-full h-auto drop-shadow-lg"
-                />
-              </div> */}
+        {/* Main Card */}
+        <div className="relative z-10 bg-[#FD5C90] rounded-xl px-6 py-10 flex flex-col md:flex-row items-center text-white">
 
-              {/* Content */}
-              <div className="flex flex-col lg:flex-row gap-[90px] md:gap-[120px] items-center">
-                {/* Image Section */}
-                <div className="w-full lg:w-1/2">
-                  <div className="relative overflow-hidden rounded-xl aspect-[4/5] shadow-2xl">
-                    <img
-                      src="/aadityneha.jpeg"
-                      alt="Aaditya & Sneha Sharma"
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  </div>
-                </div>
-
-                {/* Text Content */}
-                <div className="w-full lg:w-1/2 space-y-6">
-                  <div className="space-y-4">
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold italic">
-                      "Aaditya & Sneha Sharma"
-                    </h2>
-                    <p className="text-lg md:text-xl leading-relaxed">
-                      We met on Vaidik Vivah and felt an instant connection rooted in shared values and Sanatan dharma. Today, we are not just husband and wife, but soul companions on a spiritual journey.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <span className="text-yellow-300 text-xl">⭐</span>
-                      <span className="text-lg">Married in: March 2025</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <span className="text-blue-200 text-xl">📍</span>
-                      <span className="text-lg">From: Gaya, Bihar</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <span className="text-orange-200 text-xl">🛕</span>
-                      <span className="text-lg">Common Bond: Both initiated in Gayatri Parivar</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Profile Image */}
+          <div className="mb-6 md:mb-0 md:mr-8 flex-shrink-0">
+            <img
+              src="Ai.jpg" // Replace with /public/ URL if needed
+              alt="Utkarsh Sinha"
+              className="w-48 h-48 object-cover rounded-[40%_40%_0_0] shadow-lg"
+            />
           </div>
 
-          {/* Header Section */}
-          <div className="text-center md:text-center space-y-6 w-full mx-auto md:mx-0">
-            <h1 className="font-Bembo-MT-Pro-Bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
-              Smarter connections with{" "}
-              <span className="block md:inline">AI-Powered match suggestions</span>
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl leading-relaxed opacity-90 font-Bembo-MT-Pro-Regular">
-              Match recommendations to suit your preferences and interests. Our AI-powered algorithm ensures you connect with the right people.
+          {/* Text Content */}
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Utkarsh Sinha</h2>
+            <p className="text-white text-lg leading-relaxed mb-6">
+              Lorem ipsum dolor sit amet consectetur. Metus sollicitudin massa in commodo vel sollicitudin vulputate.
+              Fusce sapien donec suspendisse eget diam. Sagittis eget
             </p>
+
+            {/* Button */}
+            <button className="flex items-center gap-4 bg-pink-100 text-pink-600 font-semibold rounded-xl px-6 py-3 shadow-md hover:bg-pink-200 transition">
+              <div className="w-8 h-8 bg-pink-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                20
+              </div>
+              Recommended matches
+              <span className="text-xl">→</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
+
   );
 };
 

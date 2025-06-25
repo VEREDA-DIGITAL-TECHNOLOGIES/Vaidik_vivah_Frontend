@@ -1,6 +1,6 @@
 import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
-import { MdKeyboardArrowUp } from "react-icons/md";
+// import { MdKeyboardArrowUp } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import '../../font.css';
 
@@ -40,14 +40,14 @@ const Footer = () => {
     return null;
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
 
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
   return (
     <div className="w-full h-auto bg-[#2A2A2A]">
@@ -57,22 +57,26 @@ const Footer = () => {
           {/* About Section */}
           <div className="space-y-5 lg:col-span-2">
             <div className="flex items-center">
-              {/* <img src="/newlogo.png" alt="logo" className="w-20 h-auto" /> */}
-              <h1 className="text-[30px]">Vaidik Vivah</h1>
+              <img
+                src="/logotest3.png"
+                alt="logo"
+                className="h-24 w-auto md:h-24"
+              />
+              {/* <h1 className="text-[30px]">Vaidik Vivah</h1> */}
             </div>
-            <p className="font-Proxima-Nova-Regular text-pretty">
-              In the spirit of reconciliation, Wedlock acknowledges the
-              Traditional Custodians of country throughout Australia and their
-              connections to land, sea and community. We pay our respect to
-              their elders past and present and extend that respect to all
-              Aboriginal and Torres Strait Islander peoples today.
+            <p className="font-Proxima-Nova-Regular text-pretty font-[Bembo-MT-Pro-Light]">
+              In the spirit of respect and inclusion, Vaidik Vivah acknowledges the Indigenous
+               communities and traditional custodians of the diverse regions across India. We 
+               honour their deep spiritual connection to the land, water, and culture. We pay 
+               our respects to their elders past and present and extend that respect to all 
+               Indigenous peoples across the nation today.
             </p>
           </div>
 
           {/* Mission Links */}
           <div>
-            <h3 className="font-Proxima-Nova-Bold text-lg mb-4">Mission</h3>
-            <ul className="font-Proxima-Nova-Regular space-y-2">
+            <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">Mission</h3>
+            <ul className="font-[Bembo-MT-Pro-Regular] space-y-2">
               <li><Link to="/advice" className="hover:text-[#007EAF]">Advice</Link></li>
               <li><Link to="/services" className="hover:text-[#007EAF]">Services</Link></li>
               <li><Link to="/subscription-tiers" className="hover:text-[#007EAF]">Subscription Tiers</Link></li>
@@ -84,8 +88,8 @@ const Footer = () => {
 
           {/* About Us Links */}
           <div>
-            <h3 className="font-Proxima-Nova-Bold text-lg mb-4">About Us</h3>
-            <ul className="font-Proxima-Nova-Regular space-y-2">
+            <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">About Us</h3>
+            <ul className="font-[Bembo-MT-Pro-Regular] space-y-2">
               <li><Link to="/community-guidelines" className="hover:text-[#007EAF]">Community Guidelines</Link></li>
               <li><Link to="/terms-conditions" className="hover:text-[#007EAF]">Terms & Conditions</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-[#007EAF]">Privacy Policy</Link></li>
@@ -95,23 +99,23 @@ const Footer = () => {
 
           {/* Social Links - Now appears after Mission on tablet */}
           <div className="md:col-span-2 lg:col-span-1">
-            <h3 className="font-Proxima-Nova-Bold text-lg mb-4">Social</h3>
+            <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">Social</h3>
             <div className="flex gap-5 text-2xl">
-              <a href="https://www.facebook.com/profile.php?id=61569605309016" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              <Link title="link" to="https://www.facebook.com/profile.php?id=61569605309016" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaFacebookF />
-              </a>
-              <a href="https://x.com/wedlockglobal?s=11" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              </Link>
+              <Link to="https://x.com/vaidikvivahglobal?s=11" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaSquareXTwitter />
-              </a>
-              <a href="http://www.youtube.com/@Wedlock_Global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              </Link>
+              <Link to="http://www.youtube.com/@vaidikvivah_Global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaYoutube />
-              </a>
-              <a href="https://www.instagram.com/wedlock_global?igsh=MWF5NWU0M2sxeXdlMQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              </Link>
+              <Link to="https://www.instagram.com/vaidikvivah_global?igsh=MWF5NWU0M2sxeXdlMQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaInstagram />
-              </a>
-              <a href="https://www.linkedin.com/company/wedlock-global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              </Link>
+              <Link to="https://www.linkedin.com/company/vaidikvivah-global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaLinkedin />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

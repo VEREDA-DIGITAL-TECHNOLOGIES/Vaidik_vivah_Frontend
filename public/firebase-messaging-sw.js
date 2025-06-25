@@ -1,15 +1,19 @@
+
+
+
+// In firebase-messaging-sw.js
 importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBOG_Yg-2kKeH1a0sdjc_zBvn_p7A_WaJE",
-    authDomain: "wedlock-4f698.firebaseapp.com",
-    databaseURL: "https://wedlock-4f698-default-rtdb.firebaseio.com",
-    projectId: "wedlock-4f698",
-    storageBucket: "wedlock-4f698.appspot.com",
-    messagingSenderId: "539956268610",
-    appId: "1:539956268610:web:f01a4dbc2ced2e96c027db",
-    measurementId: "G-95Z5LR49PG",
+    apiKey: "AIzaSyCWu-erLUsLXFSxbD-xKLbS0j3Sd5veNFQ",
+    authDomain: "vaidikvibah.firebaseapp.com",
+    databaseURL: "https://vaidikvibah-default-rtdb.firebaseio.com",
+    projectId: "vaidikvibah",
+    storageBucket: "vaidikvibah.firebasestorage.app",
+    messagingSenderId: "46448607357",
+    appId: "1:46448607357:web:f4601196fab75bfacd7114",
+    measurementId: "G-BFY5SQQT5J"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -37,4 +41,3 @@ messaging.onBackgroundMessage(async (payload) => {
     // Show notification
     self.registration.showNotification(notificationTitle, notificationOptions);
 });
-

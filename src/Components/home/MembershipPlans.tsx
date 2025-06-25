@@ -1,52 +1,107 @@
-const MembershipPlans = () => {
+import React from "react";
+
+type Plan = {
+    name: string;
+    monthly: string;
+    yearly: string;
+    features: { text: string; included: boolean }[];
+};
+
+const plans: Plan[] = [
+    {
+        name: "Silver",
+        monthly: "₹1149",
+        yearly: "₹24449",
+        features: [
+            { text: "Browse Profiles", included: true },
+            { text: "Shortlist & Send Interest", included: true },
+            { text: "Message & chat with unlimited users", included: true },
+            { text: "Get up to 3x more matches daily", included: false },
+            { text: "Unlock access to advanced search", included: false },
+            { text: "View contact details", included: false },
+            { text: "Make unlimited voice and video calls", included: false },
+            { text: "Get 3 free Spotlights", included: false },
+        ],
+    },
+    {
+        name: "Gold",
+        monthly: "₹1149",
+        yearly: "₹24449",
+        features: [
+            { text: "Browse Profiles", included: true },
+            { text: "Shortlist & Send Interest", included: true },
+            { text: "Message & chat with unlimited users", included: true },
+            { text: "Get up to 3x more matches daily", included: false },
+            { text: "Unlock access to advanced search", included: false },
+            { text: "View contact details", included: false },
+            { text: "Make unlimited voice and video calls", included: false },
+            { text: "Get 3 free Spotlights", included: false },
+        ],
+    },
+    {
+        name: "Diamond",
+        monthly: "₹1149",
+        yearly: "₹24449",
+        features: [
+            { text: "Browse Profiles", included: true },
+            { text: "Shortlist & Send Interest", included: true },
+            { text: "Message & chat with unlimited users", included: true },
+            { text: "Get up to 3x more matches daily", included: false },
+            { text: "Unlock access to advanced search", included: false },
+            { text: "View contact details", included: false },
+            { text: "Make unlimited voice and video calls", included: false },
+            { text: "Get 3 free Spotlights", included: false },
+        ],
+    },
+];
+
+const MembershipPlans: React.FC = () => {
     return (
-        <div className="bg-white py-16 px-6 lg:px-20 text-center">
-            <h2 className="text-[28px] md:text-[48px] xl:text-[64px]  text-gray-800">
-                <span className="text-[#a44949] font-Bembo-MT-Pro-Bold ">Membership</span> Plans
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mt-4 font-Bembo-MT-Pro-light">
-                Upgrade your plan as per your customized requirements. With a paid membership, you can seamlessly
-                connect with your prospects and get more responses. Here are some key benefits:
-            </p>
+        <section className="bg-gradient-to-b from-[#FD5C90] to-[#FFFFFF] py-16 px-4 text-center">
+            <h2 className="text-3xl font-bold mb-12 text-white">Membership Plan</h2>
 
-            <div className="mt-12 flex flex-col lg:flex-row items-center justify-center gap-10">
-                {/* Free Plan */}
-                <div className="w-full max-w-sm bg-[#955454] text-white border border-gray-200 shadow rounded-lg p-6 text-left">
-                    <h3 className="text-[20px] font-semibold mb-4">Free</h3>
-                    <ul className="space-y-3 text-md text-white">
-                        <li>✅ Browse Profiles</li>
-                        <li>✅ Shortlist & Send Interest</li>
-                        <li>✅ Message & chat with unlimited users</li>
-                        <li >❌ Get up to 3x more matches daily</li>
-                        <li >❌ Unlock access to advanced search</li>
-                        <li >❌ View contact details</li>
-                        <li >❌ Make unlimited voice and video calls</li>
-                        <li >❌ Get 3 free Spotlights</li>
-                    </ul>
-                    <button className="mt-6 w-full text-[#a44949] bg-white py-2 rounded-md font-semibold text-md transition">
-                        Register Free
-                    </button>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {plans.map((plan, idx) => (
+                    <div
+                        key={idx}
+                        className="bg-[#FECEDC] rounded-xl shadow-lg p-6 flex flex-col items-center"
+                    >
+                        {/* Header */}
+                        <div className="bg-gradient-to-r from-[#FFFFFF] to-[#FD5C90] text-black font-bold text-xl py-3 w-[250px]  rounded-md shadow mb-4">
+                            {plan.name}
+                        </div>
 
-                {/* Paid Plan */}
-                <div className="w-full max-w-sm bg-[#a44949] text-white shadow-lg rounded-lg p-6 text-left">
-                    <h3 className="text-[20px] font-semibold mb-4">Paid</h3>
-                    <ul className="space-y-3 text-md">
-                        <li>✅ Browse Profiles</li>
-                        <li>✅ Shortlist & Send Interest</li>
-                        <li>✅ Message & chat with unlimited users</li>
-                        <li>✅ Get up to 3x more matches daily</li>
-                        <li>✅ Unlock access to advanced search</li>
-                        <li>✅ View contact details</li>
-                        <li>✅ Make unlimited voice and video calls</li>
-                        <li>✅ Get 3 free Spotlights</li>
-                    </ul>
-                    <button className="mt-6 w-full bg-white text-[#a44949] text-md font-semibold py-2 rounded-md transition">
-                        Browse Membership Plans
-                    </button>
-                </div>
+                        {/* Prices */}
+                        <div className="text-sm text-left w-full border-t border-b py-3 space-y-1 border-white">
+                            <div className="flex justify-between">
+                                <span>Monthly Price</span>
+                                <span>{plan.monthly}</span>
+                            </div>
+                            <div className="flex justify-between">
+                                <span>Yearly Price</span>
+                                <span>{plan.yearly}</span>
+                            </div>
+                        </div>
+
+                        {/* Features */}
+                        <ul className="mt-4 text-left w-full space-y-2">
+                            {plan.features.map((feature, i) => (
+                                <li
+                                    key={i}
+                                    className="flex items-start gap-2 text-sm text-black" 
+                                        
+                                >
+                                    <span className="text-lg">
+                                        {feature.included ? "✅" : "❌"}
+                                    </span>
+                                    {feature.text}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
             </div>
-        </div>
+        </section>
     );
 };
 

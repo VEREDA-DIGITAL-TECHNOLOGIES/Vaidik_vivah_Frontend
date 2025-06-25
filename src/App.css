@@ -1,0 +1,9 @@
+.custom-switch.ant-switch-checked {
+    background-color: #fa4e85;
+    /* Tailwind green-500 */
+}
+
+.custom-switch {
+    background-color:#fa4e85;
+    /* Tailwind gray-300 */
+}

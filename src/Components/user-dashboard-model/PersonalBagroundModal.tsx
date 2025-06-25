@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Select, Form,  Col, Row } from "antd";
 import { createStyles } from "antd-style";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
+import type{ FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 import { useUpdatePersonalBackgroundMutation } from "../../Redux/Api/profile.api";
 import { toast } from "sonner";
 // import { bodyType, Complexions, Diet, DrinkingHabbit, Heights, motherTongue, SmokingHabbit, } from "../../data/data";
 import { useGetBodyTypeQuery,useGetComplexionQuery,useGetDietQuery,useGetDrinkingHabbitQuery,useGetHeightQuery,useGetMotherToungueQuery,useGetSmokingHabbitQuery } from "../../Redux/Api/dropdown.api";
-import { RootState } from "./../../Redux/store";
+import type{ RootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updatePersonalDetails } from "../../Redux/Reducers/user.reducer";

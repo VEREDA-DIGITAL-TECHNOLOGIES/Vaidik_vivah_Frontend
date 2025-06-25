@@ -2,59 +2,50 @@ import React from "react";
 
 const question = [
     {
-        id: 6,
+        id: 3,
         text: "For whom are you looking?",
         summary:
-          "Specifying for whom you are looking for helps our AI algorithm & matchmaking to be more accurate & intelligent",
+            "Specifying for whom you are looking for helps our AI algorithm & matchmaking to be more accurate and intelligent",
         options: ["Child", "Myself", "Sibling", "Friend", "Relative"],
-      },
+    },
 ];
 
 type QuestionProps = {
-  selectedOptions: { questionId: number; answerValue: string | string[] }[];
-  handleOptionChange: (questionId: number, answerValue: string | string[]) => void;
+    selectedOptions: { questionId: number; answerValue: string | string[] }[];
+    handleOptionChange: (questionId: number, answerValue: string | string[]) => void;
 };
 
-const Question5 : React.FC<QuestionProps> = ({ selectedOptions, handleOptionChange }) => {
+const Question5: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChange }) => {
+    const getSelectedValue = (questionId: number) => {
+        const selected = selectedOptions.find((sel) => sel.questionId === questionId);
+        return typeof selected?.answerValue === "string" ? selected.answerValue : "";
+    };
 
+    return (
+        <div>
+            {question.map((ques) => (
+                <div key={ques.id} className="text-left md:text-center">
+                    <h2 className="w-full text-2xl font-bold md:text-3xl mb-4">{ques.text}</h2>
+                    <p className="text-[#FFFFFF90]">{ques.summary}</p>
 
-  return (
-    <div>
-      {question.map((ques) => (
-        <div className="text-left md:text-center ">
-            <h2 className="w-full  text-2xl font-bold  md:text-3xl mb-4">
-            {ques.text}
-        </h2>
-        <p className="text-[#FFFFFF90]">{ques.summary}</p>
-
-        <div className="grid grid-cols-1 gap-4  md:w-auto py-4">
-            {ques.options.map((option, index) => (
-              <label
-                key={index}
-                className={`flex items-center justify-between rounded-xl text-sm h-10 cursor-pointer px-6 ${
-                  selectedOptions.some(
-                    (sel) => sel.questionId === ques.id && sel.answerValue === option
-                  )        
-                    ? "bg-white text-[#007EAF] h-12"
-                    : "bg-[#FFFFFF80] text-white"
-                }`}
-              >
-                {option} 
-                <input
-                  type="checkbox"
-                  className="ml-2 w-4 h-4 "
-                  checked={selectedOptions.some(
-                    (sel) => sel.questionId === ques.id && sel.answerValue === option
-                  )}  onChange={() => handleOptionChange(ques.id, option)}
-                />
-              </label>
+                    <div className="py-4 flex justify-center">
+                        <select title="options"
+                            value={getSelectedValue(ques.id)}
+                            onChange={(e) => handleOptionChange(ques.id, e.target.value)}
+                            className="bg-white text-[#007EAF] px-6 py-4 rounded-xl w-full  text-lg"
+                        >
+                            <option value="" disabled>Select an option</option>
+                            {ques.options.map((option, index) => (
+                                <option key={index} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
             ))}
-          </div>
-
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default Question5;

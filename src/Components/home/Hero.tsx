@@ -1,41 +1,42 @@
 import { Link } from "react-router-dom";
 // import heroImg from "../../assets/bg.png";
-import heroImg from "../../assets/Banner-3.jpeg";
+import heroImg from "../../assets/Banner-8.png";
+import Archive from "./Archive";
+import { ArrowRight } from "lucide-react";
 
 function Hero() {
   return (
     <div
-      className="relative hero_section bg-cover  bg-no-repeat bg-black  overflow-hidden min-h-screen 7xl:h-[100vh]   top-0 py-0   sm:py-0 3xl:h-[100vh]  xl:h-[100vh]   5xl:h-[100vh]   4xl:h-[100vh]  "
+      className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{
-        backgroundImage: `url(${heroImg})`,
-        width: "100%",
-        // Zoom effect (adjust percentage as needed)
-      }}
+    backgroundImage: `linear-gradient(to top, #FD5C90 5%, #00000033 30%), url(${heroImg})`,
+    opacity: 0.95,
+  }}
     >
       <div className="absolute inset-0"></div>
 
-      <div className="relative 3xl:pl-30  bg-black bg-opacity-40 text-white min-h-screen md:pl-16 md:flex md:px-10 gap-80 ">
+      <div className="relative 3xl:pl-30   bg-opacity-40 text-white min-h-screen md:pl-16 md:flex md:px-10 gap-80 ">
         <div className="  2xl:px-20 py-28 max-md:mt-0 mt-10 xl:w-[100%] flex justify-center items-start">
           <div className=" text-center container   xl:w-[100%]  hero_content ">
-            <h1 className="text-[3rem] sm:text-[60px]  md:text-[80px] lg:text-[100px] xl:text-[80px] text-[#FFFFFF] font-Bembo-MT-Pro-Bold leading-[60px] md:leading-[80px] lg:leading-[150px] xl:leading-[120px]  pt-32 xl:-tracking-normal">
-              जहाँ मिलती हैं पूर्वजन्म की जोड़ियाँ
+            <h1 className="text-[2rem] sm:text-[50px]  md:text-[70px] lg:text-[90px] xl:text-[70px] text-[#FFFFFF] font-[Bembo-MT-Pro-Bold] leading-[60px] md:leading-[80px] lg:leading-[150px] xl:leading-[120px]  pt-32 xl:-tracking-normal">
+              जहां मिलेंगीे पूर्व जन्म जोड़ियां
             </h1>
             <p
-              className="  text-[#FFFFFF] py-10 text-[18px] xl:text-[28px] xl:pt-5 px-2 font-Bembo-MT-Pro-Regular"
+              className="  text-[#FFFFFF] py-10 text-[18px] xl:text-[28px] xl:pt-5 px-2 font-[Bembo-MT-Pro-Regular]"
               style={{
-                lineHeight: "42px",
+                lineHeight: "48px",
                 letterSpacing: "2%",
                 fontWeight: "400",
               }}
             >
-              यहाँ हर विवाह एक धर्म है, हर मिलन एक मंत्र।
+              वहां होगी वैदिक विवाह की शहनाइयां| 
             </p>
 
             <Link
               to="/questions"
-              className="relative z-10 flex items-center justify-center bg-[#9e2727] rounded-full w-[249px] h-[64px] text-[22px] text-white mx-auto xl:mt-8 font-Proxima-Nova-SemiBold"
+              className="relative z-10 flex gap-3 items-center justify-center bg-gradient-to-r from-[#FFFFFF] to-[#FD5C90] rounded-3xl w-[247px] h-[71px] text-[22px] text-black mx-auto xl:mt-8 font-[Bembo-MT-Pro-Regular]"
             >
-              <span>Start free today</span>
+              <span>Get Started  </span> <span><ArrowRight /></span>
             </Link>
           </div>
 
@@ -50,6 +51,7 @@ function Hero() {
           
         </div>
       </div>
+      <Archive/>
     </div>
   );
 }

@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { PiSlidersLight } from "react-icons/pi";
-import ProfileCard from "./ProfileCard";
-import DiscoverModal from "../DiscoverPageModal/DiscoverModal";
+
 import { useGetProfilesQuery } from "../../Redux/Api/profile.api";
 import { useToggleFavMutation } from "../../Redux/Api/fav.api";
 import { useGetFavQuery } from "../../Redux/Api/fav.api";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
-import Pagination from "./Pagination";
-import SkeletonCard from "../SkeletonCard/SkeletonCard";
-import { toast } from "sonner";
+import type{ FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 
+import { toast } from "sonner";
+import DiscoverModal from "../DiscoverPageModal/DiscoverModal";
+import ProfileCard from "./ProfileCard";
+import Pagination from "./Pagination";
+import SkeletonCard from "../SkeletonCard/SkeletonCard"
 // Define type for filters
 
 const Discover = () => {

@@ -1,50 +1,43 @@
 @font-face {
-    font-family: 'Proxima-Nova-Bold-Italic'; 
-    src: url('/proxima-nova-2/Proxima-Nova-Bold-Italic.otf') format('opentype');
-  }
-  
-  @font-face {
-    font-family: 'Proxima-Nova-Bold';
-    src: url('/proxima-nova-2/Proxima-Nova-Bold.otf') format('opentype');
-    font-weight: 700;
-  }
-  
-  @font-face {
-    font-family: 'Proxima-Nova-Regular';
-    src: url('/proxima-nova-2/Proxima-Nova-Regular.otf') format('opentype');
-  }
-  
-    @font-face {
-      font-family: 'Proxima-Nova-Thin';
-      src: url('/proxima-nova-2/Proxima-Nova-Thin.otf') format('opentype');
-    }
-  
-  @font-face {
-    font-family: 'Proxima-Nova-Semibold';
-    src: url('/proxima-nova-2/Proxima-Nova-Semibold.otf') format('opentype');
-  }
-  
-  @font-face {
-    font-family: 'Proxima-Nova-Semibold-Italic';
-    src: url('/proxima-nova-2/Proxima-Nova-Semibold-Italic.otf') format('opentype');
-  }
-  
-  @font-face {
-    font-family: 'Proxima-Nova-Regular-Italic';
-    src: url('/proxima-nova-2/Proxima-Nova-Regular-Italic.otf') format('opentype');
-  }
-  
-  @font-face {
-    font-family: 'Proxima-Nova-Light';
-    src: url('/proxima-nova-2/Proxima-Nova-Light.otf') format('opentype');
-  }
-  
-  @font-face {
-    font-family: 'Proxima-Nova-Light-Italic';
-    src: url('/proxima-nova-2/Proxima-Nova-Light-Italic.otf') format('opentype');
-  }
+    font-family: 'Bembo';
+    src: url('/fonts/Bembo-MT-Pro-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
 
-  @font-face {
-    font-family: 'Proxima-Nova-ExtraBold';
-    src: url('/proxima-nova-2/Proxima-Nova-Extrabold.otf') format('opentype');
-  }
+@font-face {
+    font-family: 'Bembo';
+    src: url('/fonts/Bembo-MT-Pro-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bembo';
+    src: url('/fonts/Bembo-MT-Pro-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bembo';
+    src: url('/fonts/Bembo-MT-Pro-Bold-Italic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Bembo';
+    src: url('/fonts/Bembo-MT-Pro-Light.otf') format('opentype');
+    /* If available */
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bembo';
+    src: url('/fonts/Bembo-MT-Pro-Light-Italic.otf') format('opentype');
+    /* If available */
+    font-weight: 300;
+    font-style: italic;
+}
