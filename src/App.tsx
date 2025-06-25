@@ -14,7 +14,7 @@ import { setUserType } from "./Redux/Reducers/user.reducer";
 import { useDispatch } from "react-redux";
 
 import './App.css'
-import ScrollToTop from "../src/components/ScrollTop/ScrollToTop";
+import ScrollToTop from "./components/ScrollTop/ScrollToTop";
 import Loading from "../src/components/Loading";
 import Footer from "../src/components/home/Footer";
 import Navbar from "../src/components/home/Navbar";
