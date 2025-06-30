@@ -315,24 +315,27 @@ const Multistep = () => {
 
 
     return (
-        <div className={`min-w-screen relative flex min-h-screen flex-col items-center  ${isExclusive ? 'bg-[#ffffff]' : 'bg-[#ffffff]'} px-2 text-white md:px-28 lg:px-60 3xl:px-60`}>
+        <div className={`min-w-screen relative flex min-h-screen flex-col items-center   px-2 text-black md:px-28 lg:px-60 3xl:px-60`}
+            style={{
+                backgroundImage: 'linear-gradient(to bottom right, #f8dee6 30%, #FD5C90 80%)',
+            }}
+        >
             <div className="mt-5 flex w-full items-center justify-between md:mt-10  font-[Bembo-MT-Pro-Bold] ">
                 {page > 0 ? (
-                    <button
-                        type="button"
-                        className="h-[48px] gap-2 text-xl text-white bg-[#FD5C90] p-6 rounded-3xl flex items-center  cursor-pointer"
+                    <span
+                        className="h-[48px] gap-2 text-4xl text-[#FD5C90]  flex items-center  cursor-pointer"
                         onClick={handlePrevious}
                     >
-                        <FaArrowLeftLong />   Back
-                    </button>
+                        <FaArrowLeftLong /> 
+                    </span>
                 ) : (
-                    <button
-                        type="button"
-                            className="h-[48px] gap-2 text-xl text-white bg-[#FD5C90] p-6 rounded-3xl flex items-center  cursor-pointer"
+                    <span
+                        
+                            className="h-[48px] gap-2 text-4xl text-[#FD5C90] flex items-center  cursor-pointer"
                         onClick={() => navigate("/")}
                     >
-                        <FaArrowLeftLong />   Back
-                    </button>
+                        <FaArrowLeftLong /> 
+                    </span>
                 )}
 
                 <Link to={"/"} className="mx-auto  " >
@@ -345,15 +348,15 @@ const Multistep = () => {
             </div>
             {
                 isWelcome ? <Welcome handleNext={handleWelcomeContinue} /> :
-                    <div className="rounded-3xl bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 ">
+                    <div className="rounded-3xl bg-white p-8 ">
 
                         <div className="mt-10 w-full text-center ">
                             {/* <h2 className="text-2xl" style={{ fontFamily: "Bembo-MT-Pro-Bold, sans-serif" }}>
                                 {PageTitles[page]}
                             </h2> */}
-                            <div className="mb-6 mt-1 h-2.5 rounded-full bg-[#9e2727]">
+                            <div className="mb-6 mt-1 h-2.5 rounded-full bg-[#FFB6CC]">
                                 <div
-                                    className="h-2.5 rounded-full bg-[#31F7C8]"
+                                    className="h-2.5 rounded-full bg-[#FD5C90]"
                                     style={{
                                         width: `${((page + 1) / PageTitles.length) * 100}%`,
                                     }}
@@ -362,7 +365,7 @@ const Multistep = () => {
                         </div>
 
                         <div className="form-container w-full md:w-auto">
-                            <div className="form-body font-[Bembo-MT-Pro-Bold] ">{PageDisplay()}</div>
+                            <div className="form-body font-[Bembo-MT-Pro-Bold]  ">{PageDisplay()}</div>
 
                             <div className="form-footer">
                                 <div className="max-md:bottom-5 2xl:bottom-10  flex w-full flex-col items-center justify-end   md:absolute md:right-20 md:flex-row lg:right-40 xl:mt-6 3xl:right-60">
@@ -370,7 +373,7 @@ const Multistep = () => {
 
                                         <button
                                             type="button"
-                                            className={`flex  h-[48px] w-full mb-5 items-center justify-center gap-2 cursor-pointer rounded-md bg-[#FD5C90]  px-4 py-4 ${isExclusive ? 'text-[#fffff]' : 'text-[#ffffff]'} md:w-auto xl:mt-20 md:mt-0 mb-5r`}
+                                            className={`flex  h-[48px] w-full mb-5 items-center justify-center gap-2 cursor-pointer rounded-3xl bg-[#ffffff]  px-6 py-6 ${isExclusive ? 'text-[#fffff]' : 'text-[#FD5C90]'} md:w-auto xl:mt-20 md:mt-0 mb-5r`}
                                             onClick={handleNext}
                                         >
                                             Continue <FaArrowRightLong />

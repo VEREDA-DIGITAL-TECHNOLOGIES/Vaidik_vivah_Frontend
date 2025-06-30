@@ -34,7 +34,8 @@ const Question2: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChang
                         <select title="options"
                             value={getSelectedValue(ques.id)}
                             onChange={(e) => handleOptionChange(ques.id, e.target.value)}
-                            className="bg-white text-[#007EAF] px-6 py-4 rounded-xl w-full  text-lg"
+                            className="w-full appearance-none bg-[#FD5C90]  text-[#fffff] border border-[#FD5C90] rounded-xl px-5 py-3  text-lg  shadow-md focus:outline-none focus:ring-2 focus:ring-[#FD5C90] transition duration-200"
+
                         >
                             <option value="" disabled>Select an option</option>
                             {ques.options.map((option, index) => (

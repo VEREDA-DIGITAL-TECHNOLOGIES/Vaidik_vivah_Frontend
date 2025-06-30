@@ -72,16 +72,17 @@ const Question11: React.FC<Question11Props> = ({ selectedOptions, handleOptionCh
                             <label
                                 key={index}
                                 className={`flex items-center justify-between rounded-xl text-sm h-10 cursor-pointer px-2 ${localSelectedOptions.includes(option)
-                                        ? "bg-white text-[#007EAF] h-11"
-                                        : "bg-[#FFFFFF80] text-white"
+                                    ? "bg-white text-[#FD5C90] h-11"
+                                    : "bg-[#FFFFFF80] text-[#FD5C90]"
                                     }`}
                             >
                                 {option}
                                 <input
                                     type="checkbox"
-                                    className="ml-1 w-4 h-4"
+                                    className="ml-1 w-5 h-5 text-pink-500 bg-[#FD5C90] border-gray-300 rounded focus:ring-pink-500 focus:ring-2 cursor-pointer"
                                     checked={localSelectedOptions.includes(option)}
                                     onChange={() => handleOptionChangeLocal(option)}
+                                   
                                 />
                             </label>
                         ))}

@@ -110,12 +110,24 @@ export interface ProfilePercentage {
       method:'GET',
     })
     
-  })
-
-
   }),
+
+
+  userProfileNotification: builder.query({
+    query: ({ targetUserId, viewerId }) => ({
+      url: 'profile/userDetailsNotification',
+      method: 'POST',
+      body: { targetUserId, viewerId },
+    }),
+  })
+}),
  
 });
 
- export const { useMyDetailsQuery,useUpdateEducationAndFinancialDetailsMutation,useUpdateFamilyDetailsMutation,useUpdateLocationDetailsMutation,useUpdatePersonalBackgroundMutation,useUpdatePersonalDetailsMutation,useUpdateReligiousBackgroundMutation,useGetProfilesQuery,useUserByidMutation ,useFilterProflesMutation,useFilterFieldCountQuery,useGetUserImageQuery,useGetProfilePercentageQuery} = profileApi;
+ export const { useMyDetailsQuery,useUpdateEducationAndFinancialDetailsMutation,
+  useUpdateFamilyDetailsMutation,useUpdateLocationDetailsMutation,
+  useUpdatePersonalBackgroundMutation,useUpdatePersonalDetailsMutation,
+  useUpdateReligiousBackgroundMutation,useGetProfilesQuery,useUserByidMutation ,
+  useFilterProflesMutation,useFilterFieldCountQuery,useGetUserImageQuery,
+  useGetProfilePercentageQuery,useUserProfileNotificationQuery} = profileApi;
 

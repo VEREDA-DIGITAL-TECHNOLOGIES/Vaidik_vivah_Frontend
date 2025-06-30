@@ -24,6 +24,7 @@ const Profile: React.FC = () => {
     const navigate = useNavigate();
 
   const [isExclusive, setIsExclusive] = useState(false);
+  
 
   useEffect(() => {
     const isExclusive = localStorage.getItem("isExclusive");
@@ -32,6 +33,8 @@ const Profile: React.FC = () => {
     }
     [];
   });
+  
+  
 
     // Get the current tab from URL parameters
     const params = new URLSearchParams(location.search);

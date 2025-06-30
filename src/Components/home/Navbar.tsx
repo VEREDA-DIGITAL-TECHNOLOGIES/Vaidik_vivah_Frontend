@@ -68,22 +68,28 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Sidebar */}
         <aside
-          className={`fixed top-0 left-0 h-full w-64 bg-[#9e2727] z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+          className={`fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-[#fff3f7] to-[#FD5C90] z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
           <div className="flex items-center justify-between p-6 border-b border-white">
-            <img src="/logotest3.png" alt="logo" className="h-16 w-auto" />
+            <Link to="/" className="flex-shrink-0">
+              <img
+                src="/logotest3.png"
+                alt="logo"
+                className="h-24 w-auto md:h-24 ml-3"
+              />
+            </Link>
             <button title="button" className="text-white text-3xl ml-0 cursor-pointer" onClick={toggleSidebar}>
               <RiCloseLine />
             </button>
           </div>
           <ul className="flex flex-col p-4 space-y-3 text-white text-lg font-[Bembo-MT-Pro-Regular]">
-            <li><Link to="/mission" onClick={toggleSidebar}>Mission</Link></li>
+            {/* <li><Link to="/mission" onClick={toggleSidebar}>Mission</Link></li>
             <li><Link to="/advice" onClick={toggleSidebar}>Advice</Link></li>
             <li><Link to="/help" onClick={toggleSidebar}>Help</Link></li>
             <li><Link to="/services" onClick={toggleSidebar}>Services</Link></li>
             <li><Link to="/subscription-tiers" onClick={toggleSidebar}>Subscription Tiers</Link></li>
             <li><Link to="/faqs" onClick={toggleSidebar}>FAQs</Link></li>
-            <li><Link to="/contact-us" onClick={toggleSidebar}>Contact Us</Link></li>
+            <li><Link to="/contact-us" onClick={toggleSidebar}>Contact Us</Link></li> */}
             <li><Link to="/register" onClick={toggleSidebar}>Register</Link></li>
             <li><Link to="/login" onClick={toggleSidebar}>Login</Link></li>
           </ul>

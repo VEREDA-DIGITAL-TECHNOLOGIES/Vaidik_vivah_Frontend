@@ -27,6 +27,8 @@ import PersonalBagroundModal from "../user-dashboard-model/PersonalBagroundModal
 import ReligiousModel from "../user-dashboard-model/ReligiousModel";
 import LocationBackgroundModal from "../user-dashboard-model/LocationBackgroundModal";
 import EducationFinancialModal from "../user-dashboard-model/EducationFinancialModal";
+import { BadgeCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 
 
@@ -402,6 +404,11 @@ const MyDetails = () => {
                                         <div className="my-auto justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-3 py-1.5 text-center capitalize tracking-normal">
                                             {myDetails?.basic_and_lifestyle?.age}
                                         </div>
+                                        <div>
+                                            <Link to="/document-verification">
+                                            <BadgeCheck/>
+                                            </Link>
+                                        </div>    
                                     </div>
                                         <div className="mt-6 flex flex-col rounded-xl bg-[#fa4e85] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
                                         <div className="text-base font-bold leading-6 tracking-wide text-white text-opacity-90 max-md:max-w-full">

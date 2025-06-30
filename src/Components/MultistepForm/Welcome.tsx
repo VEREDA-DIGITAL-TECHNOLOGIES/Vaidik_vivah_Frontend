@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 
@@ -15,7 +16,10 @@ const Welcome = ({ handleNext }: { handleNext: () => void }) => {
 
     return (
         <div
-            className={`min-w-6xl rounded-3xl bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] relative  flex-col  px-2 text-white md:px-28 lg:px-40 3xl:px-60`}
+            className={`min-w-6xl rounded-3xl relative  flex-col  px-2 text-black bg-white md:px-28 lg:px-40 3xl:px-60`}
+          
+               
+          
         >
 
             {/* Main Content */}
@@ -36,11 +40,11 @@ const Welcome = ({ handleNext }: { handleNext: () => void }) => {
                     </Link> */}
                     <button
                         type="button"
-                        className={`flex h-[48px] px-10  items-center justify-center gap-2 cursor-pointer rounded-md bg-white  md:px-20 py-2 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                        className={`flex h-[48px] px-10 text-lg items-center justify-center gap-2 cursor-pointer rounded-md bg-[#FD5C90]  md:px-20 py-2 ${isExclusive ? "text-[#ffffff]" : "text-[#ffffff]"
                             } md:w-auto xl:mt-10 md:mt-0 mb-4`}
                         onClick={handleNext}
                     >
-                        Click to continue
+                         Continue <span><ArrowRight/> </span>
                     </button>
                 </div>
             </div>

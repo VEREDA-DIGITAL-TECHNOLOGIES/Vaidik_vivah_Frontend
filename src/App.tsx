@@ -43,6 +43,10 @@ const Photoupload = lazy(() => import("./pages/forms/PhotoUpload"));
 const Other = lazy(() => import("./pages/forms/OtherDetails"));
 const Success = lazy(() => import("./pages/forms/SuccessPage"));
 const UserDashboard = lazy(() => import("./pages/user-dashboard/UserDashboard"));
+const Document = lazy(() => import("./pages/document-verification/Document"));
+const Documentshow = lazy(() => import("./pages/document-verification/Documentshow"));
+
+
 
 
 
@@ -180,6 +184,18 @@ function App() {
            <Route path="/other-details" element={<Other />} /> 
            <Route path="/success" element={<Success />} />
             <Route path="/Payment-Success" element={<Sucessfull />} />
+          {/* call Route */}
+          {/* 
+           <Route path="/room/:roomId" element={<Roomid />} /> 
+           <Route path="/other-details" element={<Other />} /> 
+            
+           */}
+           
+           <Route path="/document-verification" element={<Document />} />
+            <Route path="/document-show" element={<Documentshow />} /> 
+
+           
+          
           </Route>
 
 
