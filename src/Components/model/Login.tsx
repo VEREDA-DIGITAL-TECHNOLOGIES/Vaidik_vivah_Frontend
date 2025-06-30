@@ -180,7 +180,7 @@ const LoginModal: React.FC<LoginProps> = ({ isOpen, onClose }) => {
 
                     <button
                         type="submit"
-                        className="w-full bg-[#FD5C90] cursor-pointer text-white py-2 text-lg rounded-lg hover:bg-[#FD5C90] transition font-[Bembo-MT-Pro-Regular]"
+                        className="w-full bg-[#FD5C90] cursor-pointer text-white py-2 text-lg rounded-lg  border-1 hover:bg-[#FD5C90] transition font-[Bembo-MT-Pro-Regular]"
                     >
                         {isLoading ? (
                             <LoadingOutlined className="text-white animate-spin" />

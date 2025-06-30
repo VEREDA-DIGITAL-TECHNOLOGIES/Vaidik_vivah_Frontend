@@ -104,7 +104,7 @@ const LocationDetails: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#ffffff] flex flex-col items-center justify-center px-4">
+        <div className="min-h-screen bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90] flex flex-col items-center justify-center px-4">
                 <div className="flex  justify-center">
                 <img
                     src="/logotest3.png"
@@ -112,7 +112,7 @@ const LocationDetails: React.FC = () => {
                     className="h-24 w-auto md:h-24 ml-3"
                 />
                 </div>
-            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+            <div className=''>
 
             <div className="text-center text-white mb-8">
                 <h1 className="text-4xl font-[Bembo-MT-Pro-Bold] mb-2">Your Location details</h1>

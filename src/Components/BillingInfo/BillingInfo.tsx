@@ -259,7 +259,7 @@ const BillingInfo = () => {
                             </>
                             {!isExclusive || billingData?.currentPlan === "Standard" &&
                                 <strong
-                                    className="rounded-full bg-[#e9e9fc] p-2 px-2 text-sm text-[#666CFF] ml-2"
+                                    className="rounded-full bg-[#e9e9fc] p-2 px-2 text-sm text-[#FD5C90] ml-2"
                                     style={{ fontFamily: "Proxima-Nova-Regular, sans-serif" }}
                                 >
                                     Popular
@@ -275,7 +275,7 @@ const BillingInfo = () => {
                     </div>
 
                     {isExclusive ? <div> </div> : <div>
-                        <Button variant="contained" onClick={handleUpgradeClick} sx={{ backgroundColor: `${isExclusive ? '#8E69B4' : '#007EAF'}`, textTransform: 'none', }}>
+                        <Button variant="contained" onClick={handleUpgradeClick} sx={{ backgroundColor: `${isExclusive ? '#FD5C90' : '#FD5C90'}`, textTransform: 'none', }}>
                             Upgrade Plan
                         </Button>
                     </div>

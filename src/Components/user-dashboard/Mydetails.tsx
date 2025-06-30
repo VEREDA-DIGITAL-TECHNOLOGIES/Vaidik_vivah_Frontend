@@ -410,14 +410,14 @@ const MyDetails = () => {
                                             </Link>
                                         </div>    
                                     </div>
-                                        <div className="mt-6 flex flex-col rounded-xl bg-[#fa4e85] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
-                                        <div className="text-base font-bold leading-6 tracking-wide text-white text-opacity-90 max-md:max-w-full">
+                                        <div className="mt-6 flex flex-col rounded-xl bg-[#FFF0F5] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
+                                        <div className="text-base font-bold leading-6 tracking-wide text-black text-opacity-90 max-md:max-w-full">
                                             About{" "}
                                             {myDetails?.basic_and_lifestyle?.firstName +
                                                 " " +
                                                 myDetails?.basic_and_lifestyle?.lastName}
                                         </div>
-                                        <div className="mt-4 text-sm leading-7 tracking-wide text-white max-md:max-w-full md:text-lg">
+                                        <div className="mt-4 text-sm leading-7 tracking-wide text-black max-md:max-w-full md:text-lg">
                                             {myDetails?.basic_and_lifestyle?.about}
                                         </div>
                                     </div>
@@ -450,7 +450,7 @@ const MyDetails = () => {
                                         </div>
                                     </div>
                                 </div>
-                                    <div className="h-[28rem] xl:w-[30%]  w-auto mr-4 rounded-lg bg-[#fa4e85] text-white  md:p-5 md:h-[26rem]">
+                                    <div className="h-[28rem] xl:w-[30%]  w-auto mr-4 rounded-lg bg-[#fcf2f2] text-[#FD5C90]  md:p-5 md:h-[26rem]">
                                         <h2 className="font-[Bembo-MT-Pro-Bold] text-xl md:text-2xl text-center mt-2 md:text-start">Complete your profile</h2>
                                     <div className="flex flex-col items-center justify-center p-5 ">
                                         <Gauge

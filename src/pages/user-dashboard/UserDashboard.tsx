@@ -14,6 +14,15 @@ import Notification from "../../Components/user-dashboard/Notification";
 import FAQs from "../../Components/user-dashboard/FAQs";
 import Header from "../../Components/header-footer-profile/Header";
 import Footer from "../../Components/header-footer-profile/Footer";
+import {
+  UserOutlined,
+  CompassOutlined,
+  HeartOutlined,
+  ProfileOutlined,
+  CreditCardOutlined,
+  BellOutlined,
+  QuestionCircleOutlined,
+} from "@ant-design/icons";
 
 
 
@@ -44,41 +53,70 @@ const UserDashboard: React.FC = () => {
   const items: TabsProps["items"] = [
     {
       key: "details",
-      label: `My Details`,
+      label: (
+        <span>
+          <UserOutlined /> My Details
+        </span>
+      ),
       children: <Mydetails />,
     },
     {
       key: "discover",
-      label: `Discover`,
+      label: (
+        <span>
+          <CompassOutlined /> Discover
+        </span>
+      ),
       children: <Discover />,
     },
     {
       key: "favourite-profiles",
-      label: `Favourite Profiles`,
+      label: (
+        <span>
+          <HeartOutlined /> Favourite Profiles
+        </span>
+      ),
       children: <Favourate />,
     },
     {
       key: "plans",
-      label: `Plan`,
+      label: (
+        <span>
+          <ProfileOutlined /> Plan
+        </span>
+      ),
       children: <Plan />,
     },
     {
       key: "billings",
-      label: `Billing`,
+      label: (
+        <span>
+          <CreditCardOutlined /> Billing
+        </span>
+      ),
       children: <BillingInfo />,
-      // disabled: !(user?.usertype === "Exclusive" || user?.usertype === "Premium"),
     },
     {
       key: "notifications",
-      label: `Notifications`,
+      label: (
+        <span>
+          <BellOutlined /> Notifications
+        </span>
+      ),
       children: <Notification />,
     },
     {
       key: "FAQs",
-      label: `FAQs`,
+      label: (
+        <span>
+          <QuestionCircleOutlined /> FAQs
+        </span>
+      ),
       children: <FAQs />,
     },
   ];
+  
+
 
   return (
     <div className="flex min-h-screen flex-col ">

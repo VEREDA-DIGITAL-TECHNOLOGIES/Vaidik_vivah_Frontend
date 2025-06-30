@@ -129,7 +129,7 @@ const OtherDetails: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#ffffff] flex flex-col items-center justify-center px-4">
+        <div className="min-h-screen bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90] flex flex-col items-center justify-center px-4">
                 <div className="flex  justify-center">
                 <img
                     src="/logotest3.png"
@@ -137,7 +137,7 @@ const OtherDetails: React.FC = () => {
                     className="h-24 w-auto md:h-24 ml-3"
                 />
                 </div>
-            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+            <div className=''>
 
             <div className="max-w-4xl w-full  text-white p-8 rounded-lg">
                 <h1 className="text-3xl font-bold mb-2 text-center font-[Bembo-MT-Pro-Bold]">Other Details</h1>

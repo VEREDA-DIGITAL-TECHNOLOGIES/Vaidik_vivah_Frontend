@@ -113,11 +113,11 @@ export interface ProfilePercentage {
   }),
 
 
-  userProfileNotification: builder.query({
-    query: ({ targetUserId, viewerId }) => ({
+  userProfileNotification: builder.mutation({
+    query: ({ targetUserId }) => ({
       url: 'profile/userDetailsNotification',
       method: 'POST',
-      body: { targetUserId, viewerId },
+      body: { targetUserId },
     }),
   })
 }),
@@ -129,5 +129,5 @@ export interface ProfilePercentage {
   useUpdatePersonalBackgroundMutation,useUpdatePersonalDetailsMutation,
   useUpdateReligiousBackgroundMutation,useGetProfilesQuery,useUserByidMutation ,
   useFilterProflesMutation,useFilterFieldCountQuery,useGetUserImageQuery,
-  useGetProfilePercentageQuery,useUserProfileNotificationQuery} = profileApi;
+  useGetProfilePercentageQuery,useUserProfileNotificationMutation} = profileApi;
 

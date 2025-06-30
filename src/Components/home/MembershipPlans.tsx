@@ -9,18 +9,15 @@ type Plan = {
 
 const plans: Plan[] = [
     {
-        name: "Silver",
-        monthly: "₹1149",
-        yearly: "₹24449",
+        name: "Free",
+        monthly: "0",
+        yearly: "0",
         features: [
             { text: "Browse Profiles", included: true },
-            { text: "Shortlist & Send Interest", included: true },
-            { text: "Message & chat with unlimited users", included: true },
-            { text: "Get up to 3x more matches daily", included: false },
-            { text: "Unlock access to advanced search", included: false },
-            { text: "View contact details", included: false },
-            { text: "Make unlimited voice and video calls", included: false },
-            { text: "Get 3 free Spotlights", included: false },
+            { text: "View profiles (with blurry effect)", included: true },
+            { text: "Cannot view mobile numbers", included: false },
+            { text: "Call and video features are disabled", included: false },
+            
         ],
     },
     {
@@ -28,14 +25,27 @@ const plans: Plan[] = [
         monthly: "₹1149",
         yearly: "₹24449",
         features: [
-            { text: "Browse Profiles", included: true },
-            { text: "Shortlist & Send Interest", included: true },
-            { text: "Message & chat with unlimited users", included: true },
-            { text: "Get up to 3x more matches daily", included: false },
-            { text: "Unlock access to advanced search", included: false },
-            { text: "View contact details", included: false },
-            { text: "Make unlimited voice and video calls", included: false },
-            { text: "Get 3 free Spotlights", included: false },
+            { text: "Includes all features from Free Tier, plus", included: true },
+            { text: "Unlimited chat with your matches or connections", included: true },
+            { text: "Send unlimited requests", included: true },
+            { text: "View profiles and photos without blur", included: true },
+            { text: "15-minute video/audio call limit per profile", included: true },
+            { text: "Access mobile numbers", included: true },
+            { text: "View hidden photos (up to 3)", included: true },
+           
+        ],
+    },
+    {
+        name: "Platinum",
+        monthly: "₹1149",
+        yearly: "₹24449",
+        features: [
+            { text: "Includes all features from Gold, plus", included: true },
+            { text: "Unlimited chat with any user (even if not connected)", included: true },
+            { text: "View hidden photos (up to 3)", included: true },
+            { text: " 30-minute video/audio call limit per profile", included: true },
+            {text: "Priority listing – your profile appears at the top in search results (SEO optimized)", included: true },
+            
         ],
     },
     {
@@ -43,14 +53,10 @@ const plans: Plan[] = [
         monthly: "₹1149",
         yearly: "₹24449",
         features: [
-            { text: "Browse Profiles", included: true },
-            { text: "Shortlist & Send Interest", included: true },
-            { text: "Message & chat with unlimited users", included: true },
-            { text: "Get up to 3x more matches daily", included: false },
-            { text: "Unlock access to advanced search", included: false },
-            { text: "View contact details", included: false },
-            { text: "Make unlimited voice and video calls", included: false },
-            { text: "Get 3 free Spotlights", included: false },
+            { text: "Includes all features from the above Platinum tiers, plus", included: true },
+            { text: "Personal Relationship Manager to improve your profile", included: true },
+            { text: " Free access to Astrologer / Panditji / Jyotish consultations", included: true },
+        
         ],
     },
 ];

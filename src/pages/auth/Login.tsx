@@ -139,7 +139,7 @@ const Login = () => {
     <div className={`min-w-screen h-screen flex flex-col items-center justify-center  ${isExclusive ? 'bg-[#ffffff]' : 'bg-[#ffffff]'}
 } `}>
     <div className="flex items-center justify-center mb-10  ">
-        <Link to={"/"} className="mx-auto mb-2 fixed top-10">
+        <Link to={"/"} className="mx-auto mb-2 fixed top-5">
           <img
             src="/logotest3.png"
             alt="logo"
@@ -147,11 +147,11 @@ const Login = () => {
           />
         </Link>
     </div>
-      <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+      <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] px-4 rounded-3xl'>
 
     <div className="flex flex-col items-center justify-center  mt-12">
       <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
-        <img src="/login.png" alt="login"  className='w-8 h-8'/>
+        <img src="/login.png" alt="login"  className='w-12 h-12'/>
       </div>
     </div>
 

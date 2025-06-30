@@ -74,7 +74,7 @@ const Question6: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChang
                                 }),
                                 placeholder: (baseStyles) => ({
                                     ...baseStyles,
-                                    color: '#FD5C90', // Tailwind-like gray-400
+                                    color: 'white', // Tailwind-like gray-400
                                 }),
                                 input: (baseStyles) => ({
                                     ...baseStyles,
