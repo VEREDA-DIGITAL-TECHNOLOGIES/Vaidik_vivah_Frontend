@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useState, useEffect } from 'react';
-import Input from '../../components/input/Input';
+import Input from '../../Components/input/Input';
 import { useVerifyOtpMutation } from "../../Redux/Api/user.api";
 import {  useForm } from "react-hook-form";
 import type{ SubmitHandler} from "react-hook-form";

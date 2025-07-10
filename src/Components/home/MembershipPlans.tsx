@@ -9,18 +9,17 @@ type Plan = {
 
 const plans: Plan[] = [
     {
-        name: "Silver",
-        monthly: "₹1149",
-        yearly: "₹24449",
+        name: "Free",
+        monthly: "0",
+        yearly: "0",
         features: [
-            { text: "Browse Profiles", included: true },
-            { text: "Shortlist & Send Interest", included: true },
-            { text: "Message & chat with unlimited users", included: true },
-            { text: "Get up to 3x more matches daily", included: false },
-            { text: "Unlock access to advanced search", included: false },
-            { text: "View contact details", included: false },
-            { text: "Make unlimited voice and video calls", included: false },
-            { text: "Get 3 free Spotlights", included: false },
+            { text: "Blurred  two profile shown rest will be blurred photo or locked", included: true },
+            { text: "Profile view- 50", included: true },
+            { text: "Request  can sent", included: true },
+            { text: "Chat initiate- Hi", included: true },
+            { text: "Horoscope view", included: true },
+
+            
         ],
     },
     {
@@ -28,14 +27,29 @@ const plans: Plan[] = [
         monthly: "₹1149",
         yearly: "₹24449",
         features: [
-            { text: "Browse Profiles", included: true },
-            { text: "Shortlist & Send Interest", included: true },
-            { text: "Message & chat with unlimited users", included: true },
-            { text: "Get up to 3x more matches daily", included: false },
-            { text: "Unlock access to advanced search", included: false },
-            { text: "View contact details", included: false },
-            { text: "Make unlimited voice and video calls", included: false },
-            { text: "Get 3 free Spotlights", included: false },
+            { text: "Includes all features from Free Tier, plus", included: true },
+            { text: "Initiate chat", included: true },
+            { text: "View unlimited verified users", included: true },
+            { text: "Send unlimited message", included: true },
+            { text: "Connect with your preferred match", included: true },
+            {text: "RequestView - city, cast, horoscope, age, height, color, income, food,Audio, VC - 15 minutes ", included: true },
+            
+           
+        ],
+    },
+    {
+        name: "Platinum",
+        monthly: "₹1149",
+        yearly: "₹24449",
+        features: [
+            { text: "Includes all features from Gold, plus", included: true },
+            { text: "Ac/ Vc Limitation - 30 minute", included: true },
+            { text: "Send unlimited msg", included: true },
+            { text: "Connect with match", included: true },
+            { text: "Astrologer support by vaidik vivah", included: true },
+            { text: "Dedicated customer support", included: true },
+
+            
         ],
     },
     {
@@ -43,14 +57,15 @@ const plans: Plan[] = [
         monthly: "₹1149",
         yearly: "₹24449",
         features: [
-            { text: "Browse Profiles", included: true },
-            { text: "Shortlist & Send Interest", included: true },
-            { text: "Message & chat with unlimited users", included: true },
-            { text: "Get up to 3x more matches daily", included: false },
-            { text: "Unlock access to advanced search", included: false },
-            { text: "View contact details", included: false },
-            { text: "Make unlimited voice and video calls", included: false },
-            { text: "Get 3 free Spotlights", included: false },
+            {
+                text: "Videochat unlimited", included: true },
+            { text: "Dedicated relationship manager", included: true },
+            { text: "Astrologer support", included: true },
+            { text: "Provide pandit jee for shadi", included: true },
+            { text: "Astrologer  support by vaidik vivah", included: true },
+            { text: "5 profiles daily will be provide by Vadik team", included: true },
+            { text: "We will arrange a meeting with your preferred match…", included: true },
+
         ],
     },
 ];

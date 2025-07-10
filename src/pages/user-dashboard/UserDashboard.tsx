@@ -5,15 +5,25 @@ import type { TabsProps } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type{ RootState } from "../../Redux/store";
-import Mydetails from "../../components/user-dashboard/Mydetails";
-import Discover from "../../components/user-dashboard/Discover";
-import Favourate from "../../components/user-dashboard/Favourate";
+import Mydetails from "../../Components/user-dashboard/Mydetails";
+import Discover from "../../Components/user-dashboard/Discover";
+import Favourate from "../../Components/user-dashboard/Favourate";
 import Plan from "../plan/Plan";
-import BillingInfo from "../../components/BillingInfo/BillingInfo";
-import Notification from "../../components/user-dashboard/Notification";
-import FAQs from "../../components/user-dashboard/FAQs";
-import Header from "../../components/header-footer-profile/Header";
-import Footer from "../../components/header-footer-profile/Footer";
+import BillingInfo from "../../Components/BillingInfo/BillingInfo";
+import Notification from "../../Components/user-dashboard/Notification";
+import FAQs from "../../Components/user-dashboard/FAQs";
+import Header from "../../Components/header-footer-profile/Header";
+import Footer from "../../Components/header-footer-profile/Footer";
+import {
+  UserOutlined,
+  CompassOutlined,
+  HeartOutlined,
+  ProfileOutlined,
+  CreditCardOutlined,
+  BellOutlined,
+  QuestionCircleOutlined, MessageOutlined
+} from "@ant-design/icons";
+import ChatScreen from "../chat/ChatScreen";
 
 
 
@@ -44,41 +54,79 @@ const UserDashboard: React.FC = () => {
   const items: TabsProps["items"] = [
     {
       key: "details",
-      label: `My Details`,
+      label: (
+        <span>
+          <UserOutlined /> My Details
+        </span>
+      ),
       children: <Mydetails />,
     },
     {
       key: "discover",
-      label: `Discover`,
+      label: (
+        <span>
+          <CompassOutlined /> Discover
+        </span>
+      ),
       children: <Discover />,
     },
     {
       key: "favourite-profiles",
-      label: `Favourite Profiles`,
+      label: (
+        <span>
+          <HeartOutlined /> Favourite Profiles
+        </span>
+      ),
       children: <Favourate />,
     },
     {
       key: "plans",
-      label: `Plan`,
+      label: (
+        <span>
+          <ProfileOutlined /> Plan
+        </span>
+      ),
       children: <Plan />,
     },
     {
       key: "billings",
-      label: `Billing`,
+      label: (
+        <span>
+          <CreditCardOutlined /> Billing
+        </span>
+      ),
       children: <BillingInfo />,
-      // disabled: !(user?.usertype === "Exclusive" || user?.usertype === "Premium"),
     },
     {
       key: "notifications",
-      label: `Notifications`,
+      label: (
+        <span>
+          <BellOutlined /> Notifications
+        </span>
+      ),
       children: <Notification />,
     },
     {
+      key: "Chats",
+      label: (
+        <span>
+          <MessageOutlined  /> Chats
+        </span>
+      ),
+      children: <ChatScreen />,
+    },
+    {
       key: "FAQs",
-      label: `FAQs`,
+      label: (
+        <span>
+          <QuestionCircleOutlined /> FAQs
+        </span>
+      ),
       children: <FAQs />,
     },
   ];
+  
+
 
   return (
     <div className="flex min-h-screen flex-col ">

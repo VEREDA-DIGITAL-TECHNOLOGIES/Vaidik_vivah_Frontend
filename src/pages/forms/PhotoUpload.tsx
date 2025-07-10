@@ -2,8 +2,8 @@ import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import { useProfileImageUploadMutation } from "../../Redux/Api/form.api";
 import { useNavigate } from "react-router-dom";
-// import {auth,database} from '../../../utils/firebaseConfig.ts';
-// import {ref,update} from "firebase/database";
+import {auth,database} from '../../../utils/firebaseConfig.ts';
+import {ref,update} from "firebase/database";
 import { LoadingOutlined } from '@ant-design/icons';
 import { FaTimes } from "react-icons/fa";
 
@@ -94,11 +94,13 @@ const PhotoUpload = () => {
                         return;
                     }
                 } else {
-                    // const successData = response.data as ApiResponse;
-                    //  const imageUrl = successData?.imageUploadData?.[0];
-                    //  await update(ref(database, `users/${auth.currentUser?.uid}`), {
-                    //   profilePic: imageUrl,
-                    //  })
+                    const successData = response.data as ApiResponse;
+                    const imageUrl = successData?.imageUploadData?.image?.[0];
+                    console.log("image url is", imageUrl);
+                    //  console.log("image url is ",successData);
+                     await update(ref(database, `users/${auth.currentUser?.uid}`), {
+                         profilePic: imageUrl,
+                     })
 
                     toast.success(response.data.message);
                     navigate("/other-details");
@@ -115,7 +117,7 @@ const PhotoUpload = () => {
 
 
     return (
-        <div className={`flex min-h-screen flex-col items-center justify-center ${isExclusive ? 'bg-[#ffffff]' : 'bg-[#ffffff]'} px-5 md:px-20 lg:px-40 3xl:px-60`}>
+        <div className={`flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90] px-5 md:px-20 lg:px-40 3xl:px-60`}>
             <div className="flex  justify-center">
                 <img
                     src="/logotest3.png"
@@ -123,7 +125,7 @@ const PhotoUpload = () => {
                     className="h-24 w-auto md:h-24 ml-3"
                 />
             </div>
-            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+            <div className=''>
 
 
             <div className="mt-5 w-full flex-grow xl:mt-20 2xl:mt-10">

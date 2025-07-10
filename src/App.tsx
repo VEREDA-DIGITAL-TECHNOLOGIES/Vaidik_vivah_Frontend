@@ -7,23 +7,28 @@ import type{ RootState } from "./Redux/store";
 import { messaging } from "../utils/firebaseConfig";
 import { getToken } from "firebase/messaging";
 import { useUpdateFcmTokenMutation } from "./Redux/Api/user.api";
-
+import {database} from "../utils/firebaseConfig";
+import {ref,update} from "firebase/database";
 import { connectSocket, disconnectSocket } from "./services/socketservice";
 import { useGetUserSubscriptionStatusQuery } from "./Redux/Api/checkout.api";
 import { setUserType } from "./Redux/Reducers/user.reducer";
 import { useDispatch } from "react-redux";
 
 import './App.css'
-import ScrollToTop from "../src/components/ScrollTop/ScrollToTop";
-import Loading from "../src/components/Loading";
-import Footer from "../src/components/home/Footer";
-import Navbar from "../src/components/home/Navbar";
+import ScrollToTop from "./Components/ScrollTop/ScrollToTop";
+import Loading from "./Components/Loading";
+import Footer from "./Components/home/Footer";
 
-import ProtectedRoute from "../src/components/ProtectedRoute";
+
+import ProtectedRoute from "./Components/ProtectedRoute";
+import ChatRoom from "./pages/chat/ChatRoom";
+import Messageuser from "./pages/chat/Messageuser";
+import Roomid from "./pages/zegocall/Room/Roomid";
 
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/auth/Login"));
+
 
 const Question = lazy(() => import("./pages/questionare/Questionare"));
 const Register = lazy(() => import("./pages/auth/Register"));
@@ -43,6 +48,10 @@ const Photoupload = lazy(() => import("./pages/forms/PhotoUpload"));
 const Other = lazy(() => import("./pages/forms/OtherDetails"));
 const Success = lazy(() => import("./pages/forms/SuccessPage"));
 const UserDashboard = lazy(() => import("./pages/user-dashboard/UserDashboard"));
+const Document = lazy(() => import("./pages/document-verification/Document"));
+const Documentshow = lazy(() => import("./pages/document-verification/Documentshow"));
+
+
 
 
 
@@ -111,7 +120,7 @@ function App() {
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
       const token = await getToken(messaging, {
-        vapidKey: 'BDMJ1bttVFT8x_Im4tTOPjWMXR4lqlb193pBRAfRYPWx2JkkvSk9eZkjf3d0dfDPlMfcwawtCd21WTMPq_0x2_w'
+        vapidKey: 'BEmEk6pqL4wqupnLzIRrwvOu53SycF_ZIacvRrE6sa3lE18wAc4q9tx8FpmwS-VGFBx_tmEcV9cZWGgx27l5RWA'
       });
 
       localStorage.setItem("fcmToken", token!);
@@ -123,23 +132,52 @@ function App() {
 
 
 
-  useEffect(() => {
-    const useruid = user?.uid;
+  // useEffect(() => {
+  //   const useruid = user?.uid;
 
+  //   const fcmToken = localStorage.getItem("fcmToken");
+  //   const uid = localStorage.getItem("uid") || useruid;
+  //   const userStatus = "false";
+
+  //   const data = {
+  //     fcmToken,
+  //     uid,
+  //     userStatus
+  //   }
+  //   console.log("data fcm uid userStatus are ",data);
+  //   update(ref(database, `users/${auth.currentUser?.uid}`), {
+  //    fcmToken: fcmToken,
+  //                  })
+  //   if (fcmToken) {
+  //     updateFcmToken(data);
+  //   }
+
+  // }, [])
+
+  useEffect(() => {
+    const uid = user?.uid || localStorage.getItem("uid");
     const fcmToken = localStorage.getItem("fcmToken");
-    const uid = localStorage.getItem("uid") || useruid;
     const userStatus = "false";
 
     const data = {
       fcmToken,
       uid,
       userStatus
-    }
-    if (fcmToken) {
+    };
+
+    console.log("data fcm uid userStatus are", data);
+
+    if (uid && fcmToken) {
+      // Update Realtime Database
+      update(ref(database, `users/${uid}`), {
+        fcmToken: fcmToken,
+      });
+
+      // Call your API or function to sync token
       updateFcmToken(data);
     }
-
-  }, [])
+  }, [user]);
+  
 
   useEffect(() => {
     requestPermission();
@@ -148,7 +186,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
+     
       <ScrollToTop />
 
       
@@ -180,6 +218,22 @@ function App() {
            <Route path="/other-details" element={<Other />} /> 
            <Route path="/success" element={<Success />} />
             <Route path="/Payment-Success" element={<Sucessfull />} />
+          {/* call Route */}
+          
+           <Route path="/room/:roomId" element={<Roomid />} /> 
+           
+            
+          
+           
+           <Route path="/document-verification" element={<Document />} />
+            <Route path="/document-show" element={<Documentshow />} /> 
+            <Route path="/chats" element={<ChatRoom />} />
+            <Route path="/chat/:id" element={<Messageuser />} /> 
+
+
+
+           
+          
           </Route>
 
 

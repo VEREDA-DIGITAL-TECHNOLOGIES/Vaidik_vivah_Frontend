@@ -1,5 +1,5 @@
 
-import Input from '../../components/input/Input';
+import Input from '../../Components/input/Input';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -90,7 +90,7 @@ const ForgotPassword = () => {
 
 
     return (
-        <div className={`min-w-screen min-h-screen flex flex-col items-center bg-[#9e2727] `}>
+        <div className={`min-w-screen min-h-screen flex flex-col items-center bg-[#ffffff] `}>
             <div className="flex items-center justify-center mb-14 w-[268px] h-[90px]">
                <Link to={"/"} className="mx-auto mb-2 fixed top-10">
                          <img
@@ -100,7 +100,8 @@ const ForgotPassword = () => {
                          />
                        </Link>
             </div>
-
+                            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+                
             <div className="flex flex-col items-center justify-center  mt-8 mb-4">
                 <div className="bg-white flex items-center justify-center rounded-full w-12 h-12">
                     <div className="bg-[#D1FADF] rounded-full w-9 h-9 flex items-center justify-center ">
@@ -136,6 +137,8 @@ const ForgotPassword = () => {
                         {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : 'Send Email'}
                     </button>
                 </form>
+            </div>
+
             </div>
         </div>
     )

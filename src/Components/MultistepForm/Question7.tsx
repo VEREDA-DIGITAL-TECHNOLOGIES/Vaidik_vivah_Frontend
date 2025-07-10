@@ -1,7 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-
-// Define the type for options used in the Select component
+import type { StylesConfig } from 'react-select';
 type Option = {
     value: string;
     label: string;
@@ -29,6 +28,45 @@ type QuestionProps = {
     handleOptionChange: (questionId: number, answerValue: string) => void;
 };
 
+
+
+const customSelectStyles: StylesConfig<Option, false> = {
+    control: (base, state) => ({
+        ...base,
+        backgroundColor: '#FD5C90',
+        color: 'white',
+        borderColor: state.isFocused ? '#3b82f6' : '#374151',
+        boxShadow: 'none',
+    }),
+    singleValue: (base) => ({
+        ...base,
+        color: 'white',
+    }),
+    menu: (base) => ({
+        ...base,
+        backgroundColor: '#1f2937',
+    }),
+    option: (base, state) => ({
+        ...base,
+        backgroundColor: state.isSelected
+            ? '#FD5C90'
+            : state.isFocused
+                ? '#ffffff'
+                : '#FD5C90',
+        color: 'black',
+        cursor: 'pointer',
+    }),
+    placeholder: (base) => ({
+        ...base,
+        color: 'white',
+    }),
+    input: (base) => ({
+        ...base,
+        color: 'white',
+    }),
+};
+
+
 const Question7: React.FC<QuestionProps> = ({
     selectedOptions,
     handleOptionChange,
@@ -51,7 +89,6 @@ const Question7: React.FC<QuestionProps> = ({
         const currentValue = currentOption?.answerValue || "";
         const [firstAge, secondAge] = (currentValue as string).split("-");
 
-        // Update the value based on which select was changed
         let updatedValue;
         if (isFirst) {
             updatedValue = `${selectedOption?.value || ""}-${secondAge || ""}`;
@@ -59,11 +96,9 @@ const Question7: React.FC<QuestionProps> = ({
             updatedValue = `${firstAge || ""}-${selectedOption?.value || ""}`;
         }
 
-        // Call the change handler with the updated value
         handleOptionChange(question[0].id, updatedValue.trim());
     };
 
-    // Get the current selected option for this question
     const currentOption = selectedOptions.find(
         (opt) => opt.questionId === question[0].id
     );
@@ -83,7 +118,8 @@ const Question7: React.FC<QuestionProps> = ({
                     <div className="md:w-auto py-6 flex items-center justify-center space-x-4">
                         <Select
                             options={ageOptions}
-                            className="text-black w-full"
+                            styles={customSelectStyles}
+                            className="w-full"
                             placeholder="Select age"
                             value={ageOptions.find(
                                 (option) => option.value === selectedFirstAge?.trim()
@@ -93,11 +129,12 @@ const Question7: React.FC<QuestionProps> = ({
                             }
                         />
 
-                        <span>{ques.text2}</span>
+                        <span className="text-white">{ques.text2}</span>
 
                         <Select
                             options={ageOptions1}
-                            className="text-black w-full"
+                            styles={customSelectStyles}
+                            className="w-full"
                             placeholder="Select age"
                             value={ageOptions1.find(
                                 (option) => option.value === selectedSecondAge?.trim()

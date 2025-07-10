@@ -1,0 +1,30 @@
+services:
+    web_green:
+        build:
+            context: .
+            dockerfile: ${DOCKERFILE}
+            args:
+               CACHEBUST: ${CACHEBUST:-$(date +%s)}
+               DOCKER_AWS_ACCESS_KEY_ID: ${DOCKER_AWS_ACCESS_KEY_ID}
+               DOCKER_AWS_SECRET_ACCESS_KEY: ${DOCKER_AWS_SECRET_ACCESS_KEY}
+            no_cache: true
+        image: wedlock-frontend:green
+        container_name: wedlock-frontend-green
+        ports:
+            - '5174:5173'
+        networks:
+            - backend
+        restart: always
+        env_file:
+            - .env
+        environment:
+            - TZ=Asia/Kolkata
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:5173/health"]
+          interval: 10s
+          timeout: 5s
+          retries: 5
+          start_period: 10s
+networks:
+    backend:
+        external: true

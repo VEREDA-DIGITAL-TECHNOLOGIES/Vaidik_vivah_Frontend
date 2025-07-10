@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Input from '../../components/input/Input';
+import Input from '../../Components/input/Input';
 import { useRegisterUserMutation } from "../../Redux/Api/user.api";
 import { setActivationToken } from "../../Redux/Reducers/user.reducer";
 import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
@@ -100,8 +100,8 @@ const Register = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center mt-8 mb-2  ">
-        <div className=" flex items-center justify-center rounded-md w-10 h-10">
-          <img src="/star.png" alt="Star" />
+        <div className=" flex items-center justify-center rounded-md w-15 h-15">
+          <img src="/user22.png" alt="Star" />
         </div>
         <div className="flex flex-col items-center justify-center text-white mt-4 text-center">
           <h1 className="text-4xl font-bold">Create an account</h1>
@@ -113,7 +113,7 @@ const Register = () => {
       </div>
 
       <div className="w-full  px-2 py-4 flex justify-center">
-        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+        <form className="space-y-6 w-full" onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="Email"
             type="email"
@@ -125,10 +125,10 @@ const Register = () => {
 
           <button
             type="submit"
-            className={`w-full py-2 px-4 ${isExclusive ? 'text-[#8E69B4]' : 'text-[#60457E]'} rounded bg-[#ffffff]`}
+              className={`w-full py-2 px-4 ${isExclusive ? 'text-[#FD5C90]' : 'text-[#FD5C90]'} cursor-pointer rounded bg-[#ffffff]`}
             disabled={isSubmitting}
           >
-            {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : '         Create an account'}
+              {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#FD5C90]' : 'text-[#FD5C90]'} animate-spin`} /> : '         Create an account'}
           </button>
         </form>
       </div>

@@ -44,9 +44,45 @@ const Question6: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChang
                             onChange={(selected) =>
                                 handleOptionChange(ques.id, selected?.value || "")
                             }
-                            className="w-full text-black"
+                            className="w-full"
                             placeholder="Select your age"
+                            styles={{
+                                control: (baseStyles, state) => ({
+                                    ...baseStyles,
+                                    backgroundColor: '#FD5C90', // Dark background
+                                    color: 'white',
+                                    borderColor: state.isFocused ? '#3b82f6' : '#374151', // Tailwind-like blue on focus
+                                    boxShadow: 'none',
+                                }),
+                                singleValue: (baseStyles) => ({
+                                    ...baseStyles,
+                                    color: 'white',
+                                }),
+                                menu: (baseStyles) => ({
+                                    ...baseStyles,
+                                    backgroundColor: '#1f2937',
+                                }),
+                                option: (baseStyles, state) => ({
+                                    ...baseStyles,
+                                    backgroundColor: state.isSelected
+                                        ? '#FD5C90'
+                                        : state.isFocused
+                                            ? '#ffffff'
+                                            : '#FD5C90',
+                                    color: 'black',
+                                    cursor: 'pointer',
+                                }),
+                                placeholder: (baseStyles) => ({
+                                    ...baseStyles,
+                                    color: 'white', // Tailwind-like gray-400
+                                }),
+                                input: (baseStyles) => ({
+                                    ...baseStyles,
+                                    color: 'white',
+                                }),
+                            }}
                         />
+
                     </div>
                 </div>
             ))}

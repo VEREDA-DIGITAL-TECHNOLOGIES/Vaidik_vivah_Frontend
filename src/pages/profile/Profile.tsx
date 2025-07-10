@@ -1,21 +1,21 @@
 import React,{useState,useEffect} from "react";
-import Header from "../../components/header-footer-profile/Header";
-import Footer from "../../components/header-footer-profile/Footer";
+import Header from "../../Components/header-footer-profile/Header";
+import Footer from "../../Components/header-footer-profile/Footer";
 import { ConfigProvider } from "antd";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
 import { useNavigate } from "react-router-dom";
-import Discover from "../../components/user-dashboard/Discover";
+import Discover from "../../Components/user-dashboard/Discover";
 // import {Messaging} from 'firebase/messaging'
-import Favourate from "../../components/user-dashboard/Favourate";
-import Notification from "../../components/user-dashboard/Notification";
+import Favourate from "../../Components/user-dashboard/Favourate";
+import Notification from "../../Components/user-dashboard/Notification";
 import { useParams } from "react-router-dom";
 import type{ RootState } from "./../../Redux/store";
 import { useSelector } from "react-redux";
 
 
 
-import Match from "../../components/match/Match";
+import Match from "../../Components/match/Match";
 
 const Profile: React.FC = () => {
   
@@ -24,6 +24,7 @@ const Profile: React.FC = () => {
     const navigate = useNavigate();
 
   const [isExclusive, setIsExclusive] = useState(false);
+  
 
   useEffect(() => {
     const isExclusive = localStorage.getItem("isExclusive");
@@ -32,6 +33,8 @@ const Profile: React.FC = () => {
     }
     [];
   });
+  
+  
 
     // Get the current tab from URL parameters
     const params = new URLSearchParams(location.search);

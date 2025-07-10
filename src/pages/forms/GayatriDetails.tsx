@@ -57,10 +57,10 @@ const GayatriDetails = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col justify-center items-center bg-[#ffffff] ">
+        <div className="min-h-screen bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90] flex flex-col items-center justify-center px-4 py-10">
             
 
-            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+            <div className=' '>
 
             <form
                 onSubmit={onSubmit}

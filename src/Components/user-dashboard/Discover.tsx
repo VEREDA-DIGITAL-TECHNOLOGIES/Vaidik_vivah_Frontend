@@ -11,6 +11,7 @@ import DiscoverModal from "../DiscoverPageModal/DiscoverModal";
 import ProfileCard from "./ProfileCard";
 import Pagination from "./Pagination";
 import SkeletonCard from "../SkeletonCard/SkeletonCard"
+
 // Define type for filters
 
 const Discover = () => {
@@ -106,6 +107,9 @@ const Discover = () => {
   const isFavourite = (userId: string) => {
     return favData?.data?.some((fav: any) => fav.userId === userId);
   };
+  
+
+  
 
   return (
     <div>
@@ -136,6 +140,7 @@ const Discover = () => {
                 profiles={[profile]}
                 isFavourite={isFavourite(profile.userId)}
                 handleFavouriteToggle={handleToggleFav}
+                
               />
             ))
           ) : (

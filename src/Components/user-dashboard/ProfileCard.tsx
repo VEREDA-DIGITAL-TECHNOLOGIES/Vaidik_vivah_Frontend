@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { MdVerified } from "react-icons/md";
 import "../../font.css";
 import { FaStar } from "react-icons/fa";
+import { useUserProfileNotificationMutation } from "../../Redux/Api/profile.api";
 
 
 interface Profile {
@@ -41,7 +42,7 @@ interface ProfileCardProps {
 const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handleFavouriteToggle }) => {
     const { user } = useSelector((state: RootState) => state.userReducer);
 
-
+    const [userprofilesdetailsnotification] = useUserProfileNotificationMutation()
 
 
     const navigate = useNavigate();
@@ -90,6 +91,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handle
 
 
     const handleCardClick = (userId: string, name: string) => {
+        userprofilesdetailsnotification({ targetUserId: userId });
         navigate(`/profile/${name}/${userId}`);
         window.location.reload();
     };
@@ -102,6 +104,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handle
             {profiles.map((data) => (
                 <div
                     onClick={() => handleCardClick(data.userId, data.firstName)}
+                   
+                    
                     key={data.id}
                     className={`relative w-full cursor-pointer md:w-[24rem] ${data.userType !== "Standard" ? "h-[33.1rem]" : "h-[33.1rem]"} rounded-[1.9rem] ${data.userType !== "Standard" ? "border-t-[1rem]" : ""
                         } ${getBorderColor(data.userType)}`}
@@ -153,7 +157,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handle
                                         {" "}
                                         {data.displayName || data.firstName}{" "}
                                         {data.verified ? (
-                                            <MdVerified className="text-2xl text-[#0788F5]" />
+                                            <MdVerified className="text-2xl text-[#FD5C90]" />
                                         ) : (
                                             ""
                                         )}
@@ -174,7 +178,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handle
                                     <h1 className="font-semibold">{data.maritalStatus}</h1>
                                 </div>
                             </div>
-                            <div className="w-max rounded-full bg-[#F0F5FF] px-2 text-[#0B63E5]">
+                            <div className="w-max rounded-full bg-[#F0F5FF] px-2 text-[#FD5C90]">
                                 <h1
                                     className="flex items-center justify-around"
                                     style={{ fontFamily: "Proxima-Nova-Semibold, sans-serif" }}

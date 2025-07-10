@@ -14,6 +14,7 @@ import { useCancelConnectionMutation, useAcceptConnectionMutation } from "../../
 import { toast } from "sonner";
 import Connection from "../user-dashboard-model/Connection";
 import ConnectionAccepted from "../user-dashboard-model/ConnectionAccepted";
+import { Link } from "react-router-dom";
 
 const Notification = () => {
   const dispatch = useDispatch();
@@ -89,7 +90,7 @@ const Notification = () => {
     }
   };
 
-
+ 
 
   return (
     <div className="space-y-4 min-h-screen">
@@ -98,6 +99,9 @@ const Notification = () => {
       ) : (
         notifications?.map((notification) => (
           console.log(notification, "notification"),
+         
+
+         
           <div
             key={notification.notificationId}
             className="p-4 bg-white border rounded-lg shadow-md mb-4"
@@ -157,9 +161,37 @@ const Notification = () => {
               <ConnectionAccepted senderImage={notification.body?.senderImage} senderName={notification.body?.senderName} />
 
             )}
+            
+          
+          
           </div>
+          
         ))
       )}
+
+      {notifications?.length === 0 && !isLoading ? (
+        <p className="text-center">No Profiles views</p>
+      ) : (
+        notifications?.map((notification) => (
+          <div key={notification.notificationId} className="bg-white p-8 rounded-3xl ">
+              <p>{notification.title}</p>
+            <div className="flex justify-end">
+              <button
+                className="mt-2 text-red-500"
+                onClick={() => handleRemoveNotification(notification.notificationId)}
+              >
+                Remove
+              </button>
+            </div>
+        <p>{notification.message}</p>
+        {/* {
+             notification?.message?.split(" viewed")[0]
+        } */}
+            <Link to={`/profile/${notification?.message?.split(" viewed")[0]}/${notification.body?.senderId}`}>
+        See Profiles
+        </Link>
+      </div>
+       )))}
     </div>
   );
 };
