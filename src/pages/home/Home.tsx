@@ -12,9 +12,11 @@ import MembershipPlans from '../../Components/home/MembershipPlans'
 import "./home.css"
 import WeddingSlider from '../../Components/home/WeddingSlider'
 import Pre from '../../Components/home/Pre'
+import Navbar from '../../Components/home/Navbar'
 const Home = () => {
     return (
         <div>
+             <Navbar />
             <Hero />
             {/* <Archive /> */}
             <Matching />

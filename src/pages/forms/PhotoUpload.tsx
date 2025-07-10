@@ -2,8 +2,8 @@ import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import { useProfileImageUploadMutation } from "../../Redux/Api/form.api";
 import { useNavigate } from "react-router-dom";
-// import {auth,database} from '../../../utils/firebaseConfig.ts';
-// import {ref,update} from "firebase/database";
+import {auth,database} from '../../../utils/firebaseConfig.ts';
+import {ref,update} from "firebase/database";
 import { LoadingOutlined } from '@ant-design/icons';
 import { FaTimes } from "react-icons/fa";
 
@@ -94,11 +94,13 @@ const PhotoUpload = () => {
                         return;
                     }
                 } else {
-                    // const successData = response.data as ApiResponse;
-                    //  const imageUrl = successData?.imageUploadData?.[0];
-                    //  await update(ref(database, `users/${auth.currentUser?.uid}`), {
-                    //   profilePic: imageUrl,
-                    //  })
+                    const successData = response.data as ApiResponse;
+                    const imageUrl = successData?.imageUploadData?.image?.[0];
+                    console.log("image url is", imageUrl);
+                    //  console.log("image url is ",successData);
+                     await update(ref(database, `users/${auth.currentUser?.uid}`), {
+                         profilePic: imageUrl,
+                     })
 
                     toast.success(response.data.message);
                     navigate("/other-details");

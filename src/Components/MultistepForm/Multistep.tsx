@@ -19,6 +19,10 @@ import Question7 from "./Question7";
 import Question9 from "./Question9";
 import Question10 from "./Question10";
 import Question11 from "./Question11";
+import Question12 from "./Question12";
+import Question13 from "./Question13";
+import Question14 from "./Question14";
+import Question15 from "./Question15";
 
 const Multistep = () => {
     const [isExclusive, setExclusive] = useState(false);
@@ -57,6 +61,11 @@ const Multistep = () => {
         "Question 9/11",
         "Question 10/11",
         "Question 11/11",
+        "Question 12/12",
+        "Question 13/13",
+        "Question 14/14",
+        "Question 15/15",
+
     ];
 
 
@@ -136,6 +145,35 @@ const Multistep = () => {
             case 6:
                 return (
                     <Question11
+                        selectedOptions={selectedOptions}
+                        handleOptionChange={handleOptionChange}
+                    />
+                );
+            case 7:
+                return (
+                    <Question12
+                        selectedOptions={selectedOptions}
+                        handleOptionChange={handleOptionChange}
+                    />
+                );
+            case 8:
+                return (
+                    <Question13
+                        selectedOptions={selectedOptions}
+                        handleOptionChange={handleOptionChange}
+                    />
+                    );
+
+            case 9:
+                return (
+                    <Question14
+                        selectedOptions={selectedOptions}
+                        handleOptionChange={handleOptionChange}
+                    />
+                            );
+            case 10:
+                return (
+                    <Question15
                         selectedOptions={selectedOptions}
                         handleOptionChange={handleOptionChange}
                     />
@@ -257,16 +295,7 @@ const Multistep = () => {
             }
         }
 
-        // if (page === 5) {
-        //     const hasAnsweredAll = selectedOptions.some(
-        //         (sel) => sel.questionId === 7
-        //     );
-        //     if (!hasAnsweredAll) {
-        //         toast.error("Please answer Are you looking for a partner living in Australia? before proceeding!");
-        //         return;
-        //     }
-        // }
-
+        
         if (page === 4) {
             const hasAnsweredAll = selectedOptions.some(
                 (sel) => sel.questionId === 6
@@ -295,8 +324,38 @@ const Multistep = () => {
                 return;
             }
         }
+        if (page === 7) {
+            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 9)?.answerValue;
 
+            if (!selectedAnswer || selectedAnswer.length === 0) {
+                toast.error("Please answer 'Which spiritual organization do you follow?' before proceeding!");
+                return;
+            }
+        }
+        if (page === 8) {
+            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 10)?.answerValue;
 
+            if (!selectedAnswer || selectedAnswer.length === 0) {
+                toast.error("Please answer 'How important are daily spiritual practices to you?' before proceeding!");
+                return;
+            }
+        }
+        if (page === 9) {
+            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 11)?.answerValue;
+
+            if (!selectedAnswer || selectedAnswer.length === 0) {
+                toast.error("Please answer 'Describe your seva (selfless service) involvement' before proceeding!");
+                return;
+            }
+        }
+        if (page === 10) {
+            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 12)?.answerValue;
+
+            if (!selectedAnswer || selectedAnswer.length === 0) {
+                toast.error("Please answer 'What are your spiritual goals for the future?' before proceeding!");
+                return;
+            }
+        }
 
 
         if (page < PageTitles.length - 1) {

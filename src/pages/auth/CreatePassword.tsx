@@ -91,8 +91,9 @@ const CreatePassword = () => {
 
                 const userCredential = await createUserWithEmailAndPassword(auth, email!, confirmPassword!);
                 const user = userCredential.user;
-                    // console.log(email,confirmPassword);
-                localStorage.setItem("uid", user.uid);
+                // console.log("user uid is ",user);
+                //     // console.log(email,confirmPassword);
+                // localStorage.setItem("uid", user.uid);
 
                 if (user !== null) {
                     await set(ref(database, 'users/' + user.uid), {
@@ -106,6 +107,10 @@ const CreatePassword = () => {
                         createdAt: new Date().toISOString(),
                     });
                 }
+                
+                console.log("user uid is ", user);
+                // console.log(email,confirmPassword);
+                localStorage.setItem("uid", user.uid);
 
                 localStorage.removeItem("email");
                 Cookies.remove("answers");

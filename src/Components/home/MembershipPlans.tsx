@@ -13,10 +13,12 @@ const plans: Plan[] = [
         monthly: "0",
         yearly: "0",
         features: [
-            { text: "Browse Profiles", included: true },
-            { text: "View profiles (with blurry effect)", included: true },
-            { text: "Cannot view mobile numbers", included: false },
-            { text: "Call and video features are disabled", included: false },
+            { text: "Blurred  two profile shown rest will be blurred photo or locked", included: true },
+            { text: "Profile view- 50", included: true },
+            { text: "Request  can sent", included: true },
+            { text: "Chat initiate- Hi", included: true },
+            { text: "Horoscope view", included: true },
+
             
         ],
     },
@@ -26,12 +28,12 @@ const plans: Plan[] = [
         yearly: "₹24449",
         features: [
             { text: "Includes all features from Free Tier, plus", included: true },
-            { text: "Unlimited chat with your matches or connections", included: true },
-            { text: "Send unlimited requests", included: true },
-            { text: "View profiles and photos without blur", included: true },
-            { text: "15-minute video/audio call limit per profile", included: true },
-            { text: "Access mobile numbers", included: true },
-            { text: "View hidden photos (up to 3)", included: true },
+            { text: "Initiate chat", included: true },
+            { text: "View unlimited verified users", included: true },
+            { text: "Send unlimited message", included: true },
+            { text: "Connect with your preferred match", included: true },
+            {text: "RequestView - city, cast, horoscope, age, height, color, income, food,Audio, VC - 15 minutes ", included: true },
+            
            
         ],
     },
@@ -41,10 +43,12 @@ const plans: Plan[] = [
         yearly: "₹24449",
         features: [
             { text: "Includes all features from Gold, plus", included: true },
-            { text: "Unlimited chat with any user (even if not connected)", included: true },
-            { text: "View hidden photos (up to 3)", included: true },
-            { text: " 30-minute video/audio call limit per profile", included: true },
-            {text: "Priority listing – your profile appears at the top in search results (SEO optimized)", included: true },
+            { text: "Ac/ Vc Limitation - 30 minute", included: true },
+            { text: "Send unlimited msg", included: true },
+            { text: "Connect with match", included: true },
+            { text: "Astrologer support by vaidik vivah", included: true },
+            { text: "Dedicated customer support", included: true },
+
             
         ],
     },
@@ -53,10 +57,15 @@ const plans: Plan[] = [
         monthly: "₹1149",
         yearly: "₹24449",
         features: [
-            { text: "Includes all features from the above Platinum tiers, plus", included: true },
-            { text: "Personal Relationship Manager to improve your profile", included: true },
-            { text: " Free access to Astrologer / Panditji / Jyotish consultations", included: true },
-        
+            {
+                text: "Videochat unlimited", included: true },
+            { text: "Dedicated relationship manager", included: true },
+            { text: "Astrologer support", included: true },
+            { text: "Provide pandit jee for shadi", included: true },
+            { text: "Astrologer  support by vaidik vivah", included: true },
+            { text: "5 profiles daily will be provide by Vadik team", included: true },
+            { text: "We will arrange a meeting with your preferred match…", included: true },
+
         ],
     },
 ];

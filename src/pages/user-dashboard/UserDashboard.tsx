@@ -21,8 +21,9 @@ import {
   ProfileOutlined,
   CreditCardOutlined,
   BellOutlined,
-  QuestionCircleOutlined,
+  QuestionCircleOutlined, MessageOutlined
 } from "@ant-design/icons";
+import ChatScreen from "../chat/ChatScreen";
 
 
 
@@ -104,6 +105,15 @@ const UserDashboard: React.FC = () => {
         </span>
       ),
       children: <Notification />,
+    },
+    {
+      key: "Chats",
+      label: (
+        <span>
+          <MessageOutlined  /> Chats
+        </span>
+      ),
+      children: <ChatScreen />,
     },
     {
       key: "FAQs",
