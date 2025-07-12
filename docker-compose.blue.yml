@@ -3,13 +3,8 @@ services:
         build:
             context: .
             dockerfile: ${DOCKERFILE}
-            args:
-               CACHEBUST: ${CACHEBUST:-$(date +%s)}
-               DOCKER_AWS_ACCESS_KEY_ID: ${DOCKER_AWS_ACCESS_KEY_ID}
-               DOCKER_AWS_SECRET_ACCESS_KEY: ${DOCKER_AWS_SECRET_ACCESS_KEY}
-            no_cache: true
-        image: wedlock-frontend:blue
-        container_name: wedlock-frontend-blue
+        image: vedvivah-frontend:blue
+        container_name: vedvivah-frontend-blue
         ports:
             - '5173:5173'
         networks:
