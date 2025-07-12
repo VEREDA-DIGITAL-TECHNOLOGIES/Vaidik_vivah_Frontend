@@ -68,7 +68,9 @@ const PhotoUpload = () => {
     type ApiResponse = {
         success: boolean;
         message: string;
-        imageUploadData?: Array<string>;
+        imageUploadData?: {
+            image: string[];
+        };
     };
     type FetchBaseQueryErrorWithData = FetchBaseQueryError & {
         data: ApiResponse;

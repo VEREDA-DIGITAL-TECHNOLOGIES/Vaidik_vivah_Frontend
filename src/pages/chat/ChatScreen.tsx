@@ -20,8 +20,8 @@ interface UserModel {
 export default function ChatScreen() {
     const [users, setUsers] = useState<UserModel[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [unseenCount, setUnseenCount] = useState<{ [key: string]: number }>({});
-    const [lastMessages, setLastMessages] = useState<{ [key: string]: any }>({});
+    const [unseenCount, ] = useState<{ [key: string]: number }>({});
+    const [lastMessages, ] = useState<{ [key: string]: any }>({});
 
     const currentUser = getAuth().currentUser;
     const navigate = useNavigate();
