@@ -1,0 +1,98 @@
+# .github/workflows/deploy.yml
+name: Deploy to VPS
+
+on:
+  repository_dispatch:
+    types: [deploy-latest-to-vps]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository (optional if needed)
+        uses: actions/checkout@v3
+
+      - name: Set up SSH key
+        run: |
+          echo "$SSH_PRIVATE_KEY" | base64 -d > key.pem
+          chmod 600 key.pem
+        env:
+          SSH_PRIVATE_KEY: LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0KYjNCbGJuTnphQzFyWlhrdGRqRUFBQUFBQkc1dmJtVUFBQUFFYm05dVpRQUFBQUFBQUFBQkFBQUFNd0FBQUF0emMyZ3RaVwpReU5UVXhPUUFBQUNEUjcxSmk3SlNDd3ZTaUo1Y2dETW1HYWltbEpSczhYWHpxaGdZR2ZqZTI3QUFBQUpoK2ttOHpmcEp2Ck13QUFBQXR6YzJndFpXUXlOVFV4T1FBQUFDRFI3MUppN0pTQ3d2U2lKNWNnRE1tR2FpbWxKUnM4WFh6cWhnWUdmamUyN0EKQUFBRUFvRWtmekZEUUhUay9CR1FLMEI2ZUtqY2lybjlWU0t0MzhiYWd5TFFtY2s5SHZVbUxzbElMQzlLSW5seUFNeVlacQpLYVVsR3p4ZGZPcUdCZ1orTjdic0FBQUFFM0poYUhWc2EwQm9ZV3h2Wm05eVoyVXVhVzRCQWc9PQotLS0tLUVORCBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS0K
+
+      - name: SSH to VPS and deploy
+        run: |
+          ssh -i key.pem -o StrictHostKeyChecking=no root@31.97.60.154 << EOF
+            set -e
+
+            echo "Changing directory to Vaidik_vivah_Frontend "
+            cd ~/Vaidik_vivah_Frontend 
+
+            echo "Pulling latest changes from GitHub"
+            git pull origin main
+
+            echo "Detecting currently running deployment color..."
+            CURRENT_RUNNING=\$(docker ps --filter "name=vedvivah-frontend-green" --filter "status=running" --format "{{.Names}}")
+            echo "Running containers: \$CURRENT_RUNNING"
+
+            if echo "\$CURRENT_RUNNING" | grep -q "vedvivah-frontend-green"; then
+              CURRENT_COLOR="green"
+              NEW_COLOR="blue"
+              NEW_PORT=5173
+            else
+              CURRENT_COLOR="blue"
+              NEW_COLOR="green"
+              NEW_PORT=5174
+            fi
+
+            echo "Current color: \$CURRENT_COLOR"
+            echo "Deploying \$NEW_COLOR on port \$NEW_PORT"
+            docker compose -f docker-compose.\$NEW_COLOR.yml build --build-arg CACHEBUST=\$(date +%s)
+            docker compose -f docker-compose.\$NEW_COLOR.yml up -d
+
+            echo "Waiting for \$NEW_COLOR container to be created..."
+            sleep 5
+
+            echo "Checking if container vedvivah-frontend -\$NEW_COLOR exists..."
+            if ! docker inspect vedvivah-frontend -\$NEW_COLOR &> /dev/null; then
+              echo "Container vedvivah-frontend -\$NEW_COLOR not found!"
+              docker ps -a
+              exit 1
+            fi
+
+            echo "Waiting for \$NEW_COLOR container to become healthy..."
+            MAX_RETRIES=30
+            COUNT=0
+            until [ "\$(docker inspect --format='{{.State.Health.Status}}' frontend-\$NEW_COLOR)" = "healthy" ]; do
+              echo "Current health status: \$(docker inspect --format='{{.State.Health.Status}}' frontend-\$NEW_COLOR)"
+              sleep 5
+              COUNT=\$((COUNT + 1))
+              if [ \$COUNT -ge \$MAX_RETRIES ]; then
+                echo "Healthcheck timeout. Exiting deployment."
+                exit 1
+              fi
+            done
+
+            echo "\$NEW_COLOR container is healthy! Proceeding with Nginx port swap..."
+
+            echo "Backing up Nginx config"
+            sudo cp /etc/nginx/sites-available/halotrades.com.conf /etc/nginx/sites-available/halotrades.com.conf.bak
+
+            echo "Replacing port in Nginx config with \$NEW_PORT"
+            sudo sed -i -E "s/localhost:[0-9]+/localhost:\$NEW_PORT/g" /etc/nginx/sites-available/halotrades.com.conf
+
+            echo "Reloading Nginx"
+            sudo nginx -t && sudo nginx -s reload
+
+            echo "Stopping and removing old \$CURRENT_COLOR container"
+            docker stop vedvivah-frontend-\$CURRENT_COLOR || true
+            docker rm vedvivah-frontend-\$CURRENT_COLOR || true
+
+            echo "Removing old \$CURRENT_COLOR image"
+            docker rmi vedvivah-frontend:\$CURRENT_COLOR || true
+
+            echo "Removing cached files"
+            docker system prune -a -f || true
+
+            echo "✅ Deployment complete: \$NEW_COLOR is now live"
+          EOF
