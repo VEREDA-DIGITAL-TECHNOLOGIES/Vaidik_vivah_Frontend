@@ -20,8 +20,7 @@ RUN npm run build
 ENV TZ=Asia/Kolkata
 
 # Install tzdata to handle timezone configuration (using apk for Alpine)
-RUN apk update && \
-    apk add --no-cache tzdata && \
+RUN apk add --no-cache curl tzdata && \
     cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
     echo ${TZ} > /etc/timezone
 
