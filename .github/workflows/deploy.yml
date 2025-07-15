@@ -73,10 +73,10 @@ jobs:
             echo "\$NEW_COLOR container is healthy! Proceeding with Nginx port swap..."
 
             echo "Backing up Nginx config"
-            sudo cp /etc/nginx/sites-available/halotrades.com.conf /etc/nginx/sites-available/halotrades.com.conf.bak
+            sudo cp /etc/nginx/sites-available/frontend.vedvivah.in.conf /etc/nginx/sites-available/frontend.vedvivah.in.conf.bak
 
             echo "Replacing port in Nginx config with \$NEW_PORT"
-            sudo sed -i -E "s/localhost:[0-9]+/localhost:\$NEW_PORT/g" /etc/nginx/sites-available/halotrades.com.conf
+            sudo sed -i -E "s/localhost:[0-9]+/localhost:\$NEW_PORT/g" /etc/nginx/sites-available/frontend.vedvivah.in.conf
 
             echo "Reloading Nginx"
             sudo nginx -t && sudo nginx -s reload
