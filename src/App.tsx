@@ -13,6 +13,7 @@ import { connectSocket, disconnectSocket } from "./services/socketservice";
 import { useGetUserSubscriptionStatusQuery } from "./Redux/Api/checkout.api";
 import { setUserType } from "./Redux/Reducers/user.reducer";
 import { useDispatch } from "react-redux";
+const Hello = lazy(() => import('./health'));
 
 import './App.css'
 import ScrollToTop from "./Components/ScrollTop/ScrollToTop";
@@ -229,6 +230,7 @@ function App() {
             <Route path="/document-show" element={<Documentshow />} /> 
             <Route path="/chats" element={<ChatRoom />} />
             <Route path="/chat/:id" element={<Messageuser />} /> 
+            <Route path='/health' element={<Hello />} />
 
 
 
