@@ -3,8 +3,8 @@ services:
         build:
             context: .
             dockerfile: ${DOCKERFILE}
-        image: vedvivah-frontend:blue
-        container_name: vedvivah-frontend-blue
+        image: frontend:blue
+        container_name: frontend-blue
         ports:
             - '5173:5173'
         networks:
