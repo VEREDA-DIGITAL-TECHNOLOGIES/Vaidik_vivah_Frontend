@@ -42,6 +42,7 @@
     "redux-persist": "^6.0.0",
     "socket.io-client": "^4.8.1",
     "sonner": "^2.0.5",
+    "serve": "^14.2.4",
     "tailwindcss": "^4.1.10",
     "zego-express-engine-webrtc": "^3.9.0",
     "zod": "^3.25.64"
