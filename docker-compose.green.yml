@@ -15,7 +15,7 @@ services:
         environment:
             - TZ=Asia/Kolkata
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://localhost:5173]
+          test: ["CMD", "curl", "-f", "http://localhost:5173"]
           interval: 10s
           timeout: 5s
           retries: 5
