@@ -75,7 +75,7 @@ const Navbar: React.FC = () => {
               <img
                 src="/logotest3.png"
                 alt="logo"
-                className="h-24 w-auto md:h-24 ml-3"
+                className="h-24 w-auto md:h-24 ml-3 "
               />
             </Link>
             <button title="button" className="text-white text-3xl ml-0 cursor-pointer" onClick={toggleSidebar}>

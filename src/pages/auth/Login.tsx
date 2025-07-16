@@ -133,7 +133,7 @@ const Login = () => {
     
 
   return (
-    <div className={`min-w-screen h-screen flex flex-col items-center justify-center  ${isExclusive ? 'bg-[#ffffff]' : 'bg-[#ffffff]'}
+    <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90] '}
 } `}>
     <div className="flex items-center justify-center mb-10  ">
         <Link to={"/"} className="mx-auto mb-2 fixed top-5">
@@ -144,7 +144,7 @@ const Login = () => {
           />
         </Link>
     </div>
-      <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] px-4 rounded-3xl'>
+      <div className='bg-white/50 px-4 rounded-2xl'>
 
     <div className="flex flex-col items-center justify-center  mt-12">
       <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
@@ -152,7 +152,7 @@ const Login = () => {
       </div>
     </div>
 
-     <div className="flex flex-col items-center justify-center text-white mt-2">
+     <div className="flex flex-col items-center justify-center text-black mt-2">
         <h1 className="text-2xl md:text-4xl font-bold">Log in to your account</h1>
         <p className="mt-4 md:text-lg text-center"> Welcome back! Please enter your details. </p>
       </div>
@@ -176,7 +176,7 @@ const Login = () => {
 
           
           </div>
-          <div className="flex items-center justify-end mb-8  text-[#F9F5FF] gap-1 text-lg">
+          <div className="flex items-center justify-end mb-8  text-[black] gap-1 text-lg">
             
             
               <Link to={"/forgot-password"}>Forgot password</Link>
@@ -184,14 +184,14 @@ const Login = () => {
           </div>
 
           
-            <button type="submit" className={`bg-white ${isExclusive? 'text-[#60457E]': 'text-[#007EAF]'}  w-full h-12 rounded-md`}>
+            <button type="submit" className={`bg-[#FD5C90] ${isExclusive? 'text-[#60457E]': 'text-[white]'}  w-full h-12 rounded-md cursor-pointer`}>
                
-              {isLoading ? <LoadingOutlined className={`${isExclusive? 'text-[#60457E]': 'text-[#007EAF]'} animate-spin`} /> : 'Confirm'}
+              {isLoading ? <LoadingOutlined className={`${isExclusive? 'text-[#60457E]': 'text-[white]'} animate-spin`} /> : 'Confirm'}
 
             </button>
 
           </form>
-            <button  className=" bg-transparent border  text-[#ffffff] mt-2 w-full h-12 rounded-md" onClick={() => navigate("/questions")} >
+          <button className=" bg-transparent border cursor-pointer  text-[#FD5C90] mt-2 w-full h-12 rounded-md" onClick={() => navigate("/questions")} >
               Create an account
             </button>
 

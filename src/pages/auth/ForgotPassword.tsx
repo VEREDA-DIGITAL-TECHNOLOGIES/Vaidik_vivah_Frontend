@@ -90,26 +90,27 @@ const ForgotPassword = () => {
 
 
     return (
-        <div className={`min-w-screen min-h-screen flex flex-col items-center bg-[#ffffff] `}>
+        <div className={`min-w-screen min-h-screen flex flex-col items-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]`}>
+            
             <div className="flex items-center justify-center mb-14 w-[268px] h-[90px]">
                <Link to={"/"} className="mx-auto mb-2 fixed top-10">
-                         <img
-                           src="/logotest3.png"
-                           alt="logo"
-                           className="h-24 w-auto md:h-24 ml-3"
-                         />
+                    <img
+                        src="/logotest3.png"
+                        alt="logo"
+                        className="h-24 w-auto md:h-24 ml-3"
+                    />
                        </Link>
             </div>
-                            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+         <div className='bg-white/50 p-6 rounded-2xl '>
                 
             <div className="flex flex-col items-center justify-center  mt-8 mb-4">
-                <div className="bg-white flex items-center justify-center rounded-full w-12 h-12">
-                    <div className="bg-[#D1FADF] rounded-full w-9 h-9 flex items-center justify-center ">
+                {/* <div className="bg-white flex items-center justify-center rounded-full w-12 h-12">
+                     <div className="bg-[#D1FADF] rounded-full w-9 h-9 flex items-center justify-center ">
                         <img src="/confirm.png" alt="Star" className="w-6 h-6" />
-                    </div>
-                </div>
+                    </div> 
+                </div> */}
 
-                <div className="flex flex-col items-center justify-center text-center text-white mt-4">
+                <div className="flex flex-col items-center justify-center text-center text-black mt-4">
                     <h1 className="text-4xl  font-[Bembo-MT-Pro-Bold]">Forgot password</h1>
                     <p className="mt-4  text-md font-[Bembo-MT-Pro-Light]">
                         You will receive OTP verification code via email for resetting your password
@@ -130,11 +131,11 @@ const ForgotPassword = () => {
 
                     <button
                         type="submit"
-                        className={`w-full py-2 px-4 ${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} rounded bg-[#ffffff]`}
+                            className={`w-full py-2 px-4 ${isExclusive ? 'text-[#60457E]' : 'text-[#FFFFFF]'} rounded-3xl bg-[#FD5C90] cursor-pointer`}
                         disabled={isSubmitting}
 
                     >
-                        {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} /> : 'Send Email'}
+                        {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#FFFFFF]'} animate-spin cursor-pointer`} /> : 'Send Email'}
                     </button>
                 </form>
             </div>

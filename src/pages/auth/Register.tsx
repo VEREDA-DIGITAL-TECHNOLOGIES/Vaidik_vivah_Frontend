@@ -85,17 +85,17 @@ const Register = () => {
 
 
   return (
-    <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center bg-[#fffff]`}>
-      <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+    <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center  bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]`}>
+      <div className='bg-white/50 p-6 rounded-3xl'>
 
     
       <div className="flex items-center justify-center mb-14">
         <Link to={"/"} className="mx-auto mb-2 fixed top-10">
-          <img
-            src="/logotest3.png"
-            alt="logo"
-            className="h-24 w-auto md:h-24 ml-3"
-          />
+            <img
+              src="/logotest3.png"
+              alt="logo"
+              className="h-24 w-auto md:h-24 ml-3"
+            />
         </Link>
       </div>
 
@@ -103,7 +103,7 @@ const Register = () => {
         <div className=" flex items-center justify-center rounded-md w-15 h-15">
           <img src="/user22.png" alt="Star" />
         </div>
-        <div className="flex flex-col items-center justify-center text-white mt-4 text-center">
+        <div className="flex flex-col items-center justify-center text-black mt-4 text-center">
           <h1 className="text-4xl font-bold">Create an account</h1>
           <p className="mt-4 md:text-xl">
             By tapping the button, you agree to our Terms. Learn how we process
@@ -125,10 +125,10 @@ const Register = () => {
 
           <button
             type="submit"
-              className={`w-full py-2 px-4 ${isExclusive ? 'text-[#FD5C90]' : 'text-[#FD5C90]'} cursor-pointer rounded bg-[#ffffff]`}
+              className={`w-full py-2 px-4 ${isExclusive ? 'text-[#ffffff]' : 'text-[#ffffff]'} cursor-pointer rounded-3xl bg-[#FD5C90]`}
             disabled={isSubmitting}
           >
-              {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#FD5C90]' : 'text-[#FD5C90]'} animate-spin`} /> : '         Create an account'}
+              {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#ffffff]' : 'text-[#ffffff]'} animate-spin`} /> : '         Create an account'}
           </button>
         </form>
       </div>

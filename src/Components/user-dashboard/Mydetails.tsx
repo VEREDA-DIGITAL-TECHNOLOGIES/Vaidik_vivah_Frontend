@@ -371,7 +371,7 @@ const MyDetails = () => {
                     </div>
 
                     <div className="col-span-1 xl:grid w-full md:col-span-2 gap-10">
-                            <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-[#ffffff] p-6 md:col-span-2   md:w-auto  xl:h-[29rem]">
+                        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-[#ffffff] p-6 md:col-span-2   md:w-auto  xl:h-[29rem]">
                             <div className="flex w-full flex-col  items-center justify-between gap-10 xl:flex-row">
                                 <div className=" xl:w-[70%] w-full ">
                                     <div className="flex items-center justify-between self-start  text-xl font-semibold leading-5 text-gray-800">
@@ -395,7 +395,7 @@ const MyDetails = () => {
                                     </div>
 
                                     <div className="mt-2.5  flex flex-wrap py-6 items-center gap-2.5 self-start text-base font-medium  leading-4 text-slate-900">
-                                            <div className={`self-stretch text-xl font-bold leading-10 ${isExclusive ? 'text-[#60457E]' : 'text-slate-900'} lg:text-3xl`}>
+                                            <div className={`self-stretch text-xl font-bold leading-10 ${isExclusive ? 'text-[#60457E]' : 'text-[#FD5C90]'} lg:text-3xl`}>
                                             {`${capitalize(myDetails?.basic_and_lifestyle?.firstName)} ${capitalize(myDetails?.basic_and_lifestyle?.lastName)}`}
                                         </div>
                                         <div className="my-auto justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-3 py-1.5 text-center capitalize tracking-normal">
@@ -489,7 +489,7 @@ const MyDetails = () => {
                 </div> */}
                                 </div>
                             </div>
-                        </div>
+                </div>
 
                         {/* Family details */}
 

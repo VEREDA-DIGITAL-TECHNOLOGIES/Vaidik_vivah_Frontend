@@ -1,4 +1,3 @@
-// src/components/CallReceiverPopup.tsx
 import { ref, update } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../../utils/firebaseConfig";
@@ -6,19 +5,15 @@ import { db } from "../../../utils/firebaseConfig";
 const CallReceiverPopup = ({ call, clearCall }: any) => {
   const navigate = useNavigate();
 
-  const acceptCall = async() => {
-    // clearCall();
-    // localStorage.setItem("uid", call.roomId.split("_")[1]);
-    // localStorage.setItem("name", "You");
-    // navigate(`/room/${call.roomId}`);
+  const acceptCall = async () => {
     await update(ref(db, `calls/${call.to}`), {
       status: "accepted",
     });
 
-    // navigate immediately
-    localStorage.setItem("uid", call.roomId.split("_")[1]); // for Zego
+    localStorage.setItem("uid", call.roomId.split("_")[1]);
     localStorage.setItem("name", "You");
-    navigate(`/room/${call.roomId}`);
+
+    navigate(`/${call.type}-call/${call.roomId}`);
   };
 
   const rejectCall = () => {

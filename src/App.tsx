@@ -23,7 +23,10 @@ import Footer from "./Components/home/Footer";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import ChatRoom from "./pages/chat/ChatRoom";
 import Messageuser from "./pages/chat/Messageuser";
-import Roomid from "./pages/zegocall/Room/Roomid";
+
+import VoiceCallScreen from "./pages/zegocall/Room/VoiceCallScreen";
+import VideoCallScreen from "./pages/zegocall/Room/VideoCallScreen";
+
 
 
 const Home = lazy(() => import("./pages/home/Home"));
@@ -220,7 +223,7 @@ function App() {
             <Route path="/Payment-Success" element={<Sucessfull />} />
           {/* call Route */}
           
-           <Route path="/room/:roomId" element={<Roomid />} /> 
+           
            
             
           
@@ -229,6 +232,8 @@ function App() {
             <Route path="/document-show" element={<Documentshow />} /> 
             <Route path="/chats" element={<ChatRoom />} />
             <Route path="/chat/:id" element={<Messageuser />} /> 
+            <Route path="/voice-call/:roomId" element={<VoiceCallScreen />} />
+            <Route path="/video-call/:roomId" element={<VideoCallScreen />} />
 
 
 

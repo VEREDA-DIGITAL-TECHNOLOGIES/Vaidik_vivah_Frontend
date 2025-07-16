@@ -137,8 +137,10 @@ const DocumentVerification: React.FC = () => {
     );
 
     return (
-        <div className="max-w-2xl mx-auto my-8 p-4 sm:p-6">
-            <div className="flex border-b border-gray-200 mb-4 space-x-4">
+        <div className='bg-[#FFF0F5]'>
+
+        <div className="max-w-3xl mx-auto my-8 p-4 sm:p-6">
+            <div className=" flex border-b border-gray-200 mb-4 space-x-4">
                 <button
                     onClick={() => handleTabSwitch('manual')}
                     className={`px-4 py-2 text-sm font-medium border-b-2 transition-all duration-200 ${selectedTab === 'manual'
@@ -166,7 +168,7 @@ const DocumentVerification: React.FC = () => {
                             <h2 className="text-xl font-semibold text-gray-800">Manual Document Upload</h2>
                             <button
                                 onClick={() => handleTabSwitch('manual')}
-                                className="text-sm text-blue-600 hover:text-blue-800 flex items-center cursor-pointer"
+                                    className="text-sm text-[#FD5C90] hover:text-[#FD5C90] flex items-center cursor-pointer"
                             >
                                 <FiArrowRight className="mr-1 transform rotate-180" />
                                 Go to Manual Verification
@@ -188,7 +190,7 @@ const DocumentVerification: React.FC = () => {
                             <h2 className="text-xl font-semibold text-gray-800">Manual Document Upload</h2>
                             <button
                                 onClick={() => handleTabSwitch('ndls')}
-                                className="text-sm text-blue-600 gap-1 hover:text-blue-800 flex items-center cursor-pointer"
+                                    className="text-sm text-[#FD5C90] gap-1 hover:text-[#f68aac] flex items-center cursor-pointer"
                             >
                                 Go to NDLS Verification
                                 <FiArrowLeft className="mr-1 transform rotate-180" />
@@ -288,6 +290,7 @@ const DocumentVerification: React.FC = () => {
                     </div>
                 )}
             </div>
+        </div>
         </div>
     );
 };

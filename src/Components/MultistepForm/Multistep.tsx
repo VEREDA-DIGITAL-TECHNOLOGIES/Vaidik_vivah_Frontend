@@ -398,11 +398,11 @@ const Multistep = () => {
                 )}
 
                 <Link to={"/"} className="mx-auto  " >
-                <img
-              src="/logotest3.png"
-              alt="logo"
-              className="h-24 w-auto md:h-24 ml-3"
-            />
+                    <img
+                        src="/logotest3.png"
+                        alt="logo"
+                        className="h-24 w-auto md:h-24 ml-3"
+                    />
                 </Link>
             </div>
             {

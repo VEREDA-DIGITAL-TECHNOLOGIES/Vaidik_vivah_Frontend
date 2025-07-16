@@ -101,7 +101,7 @@ const Footer = () => {
           <div className="md:col-span-2 lg:col-span-1">
             <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">Social</h3>
             <div className="flex gap-5 text-2xl">
-              <Link title="link" to="https://www.facebook.com/profile.php?id=61569605309016" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              <Link title="link" to="https://www.facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaFacebookF />
               </Link>
               <Link to="https://x.com/vaidikvivahglobal?s=11" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">

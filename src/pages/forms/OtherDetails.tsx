@@ -139,9 +139,9 @@ const OtherDetails: React.FC = () => {
                 </div>
             <div className=''>
 
-            <div className="max-w-4xl w-full  text-white p-8 rounded-lg">
-                <h1 className="text-3xl font-bold mb-2 text-center font-[Bembo-MT-Pro-Bold]">Other Details</h1>
-                <p className="text-center mb-8 font-[Bembo-MT-Pro-Light]">
+                <div className="max-w-4xl w-full   p-8 rounded-lg">
+                    <h1 className="text-3xl font-bold mb-2 text-center font-[Bembo-MT-Pro-Bold] text-[#FD5C90]">Other Details</h1>
+                    <p className="text-center mb-8 font-[Bembo-MT-Pro-Light] text-[#FD5C90]">
                     Including additional details enriches your profile, making it easier to find meaningful and compatible connections
                 </p>
 

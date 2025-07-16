@@ -81,7 +81,7 @@ const ChangePassword = () => {
     };
 
     return (
-        <div className={`min-w-screen bg-[#ffffff]  h-screen flex flex-col items-center justify-center `}>
+        <div className={`min-w-screen bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]  h-screen flex flex-col items-center justify-center `}>
             <Link to="/" className="fixed top-10">
                 <img
                     src="/logotest3.png"
@@ -89,7 +89,7 @@ const ChangePassword = () => {
                     className="h-24 w-auto md:h-24 ml-3"
                 />
             </Link>
-            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+            <div className='bg-white/50 p-6 rounded-3xl'>
 
             <div className="flex flex-col items-center justify-center mt-20">
                 <div className="bg-white rounded-full w-12 h-12 flex items-center justify-center">

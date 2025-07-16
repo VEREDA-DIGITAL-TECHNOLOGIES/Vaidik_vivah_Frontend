@@ -114,7 +114,7 @@ const LocationDetails: React.FC = () => {
                 </div>
             <div className=''>
 
-            <div className="text-center text-white mb-8">
+                <div className="text-center text-[#FD5C90] mb-8">
                 <h1 className="text-4xl font-[Bembo-MT-Pro-Bold] mb-2">Your Location details</h1>
                 <p className="text-lg font-[Bembo-MT-Pro-Light]">
                     Adding your location helps us find matches nearby or in regions that

@@ -98,7 +98,7 @@ const Verification = () => {
     };
 
   return (
-      <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center  bg-[#ffffff] `}>
+      <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center  bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90] `}>
           <div className="flex items-center justify-center mb-14">
               <Link to={"/"} className='fixed top-4'>
                   <img
@@ -108,13 +108,13 @@ const Verification = () => {
                   />
               </Link>
           </div>
-          <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+          <div className='bg-white/50 p-8 rounded-3xl'>
           <div className="flex flex-col items-center justify-center mt-8 mb-2">
               <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
                   <img src="/lock.png" alt="Star" className='w-8 h-8' />
               </div>
 
-              <div className="flex flex-col items-center justify-center text-white mt-4">
+              <div className="flex flex-col items-center justify-center text-black mt-4">
                   <h1 className="text-4xl font-bold">Verification code</h1>
                   <p className="mt-4 md:text-lg text-center">
                       Enter verification code which is sent to your email <br /> address
@@ -155,8 +155,8 @@ const Verification = () => {
             {
               registerationLoading ? <LoadingOutlined className={`${isExclusive? 'text-[#60457E]': 'text-[#007EAF]'} animate-spin`} /> : */}
 
-                          <button className={`bg-white ${isExclusive ? 'text-[#60457E]' : 'text-[#FD5C90]'}  w-full h-12 rounded-xl mt-6`}>
-                              {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#FD5C90]'} animate-spin cursor-pointer `} /> : 'Verify'}
+                          <button className={`bg-[#FD5C90] ${isExclusive ? 'text-[#60457E]' : 'text-[#ffffff]'}  w-full h-12 rounded-2xl mt-6 cursor-pointer`}>
+                              {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#ffffff]'} animate-spin cursor-pointer `} /> : 'Verify'}
                       </button>
 
                       {/* } */}
