@@ -18,7 +18,7 @@ interface UserModel {
 }
 
 export default function ChatScreen() {
-    const [users, setUsers] = useState<UserModel[]>([]);
+    // const [users, setUsers] = useState<UserModel[]>([]);
     const [connectedUsers, setConnectedUsers] = useState<UserModel[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [unseenCount, ] = useState<{ [key: string]: number }>({});
