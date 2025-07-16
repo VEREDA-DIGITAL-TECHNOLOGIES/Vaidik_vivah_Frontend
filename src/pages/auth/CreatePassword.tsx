@@ -127,7 +127,7 @@ const CreatePassword = () => {
 
 
     return (
-        <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-[#fffff]`}>
+        <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]`}>
             <div className="flex items-center justify-center mb-2 md:mb-10">
                 <Link to={"/"} className="mx-auto mb-2 fixed top-10">
                           <img
@@ -137,15 +137,15 @@ const CreatePassword = () => {
                           />
                         </Link>
             </div>
-            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+            <div className='bg-white/50 p-6 rounded-3xl'>
 
             <div className="flex flex-col items-center justify-center mt-4">
-                <div className="bg-white flex items-center justify-center rounded-full w-12 h-12">
+                {/* <div className="bg-white flex items-center justify-center rounded-full w-12 h-12">
                     <div className="bg-[#D1FADF] rounded-full w-9 h-9 flex items-center justify-center">
                         <img src="/confirm.png" alt="Star" className="w-6 h-6" />
                     </div>
-                </div>
-                <div className="flex flex-col items-center justify-center text-white mt-2">
+                </div> */}
+                <div className="flex flex-col items-center justify-center text-black mt-2">
                     <h1 className="text-3xl font-bold">Create Your Password</h1>
                     <p className="mt-4 md:text-lg text-center">
                         Choose a strong password that is long, random, and unique.{" "}
@@ -195,9 +195,9 @@ const CreatePassword = () => {
                         )}
                     </div>
 
-                    <button type="submit" className={`bg-white ${isExclusive ? 'text-[#8E69B4]' : 'text-[#007EAF]'} w-full h-10 rounded-md mt-4`}>
+                        <button type="submit" className={`bg-[#FD5C90] ${isExclusive ? 'text-[#8E69B4]' : 'text-[#ffffff]'} w-full h-10 rounded-3xl cursor-pointer mt-4`}>
                         {isLoading ? (
-                            <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#007EAF]'} animate-spin`} />
+                            <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#ffffff]'} animate-spin`} />
                         ) : (
                             "Create Password"
                         )}

@@ -123,7 +123,7 @@ const PersonalDetails: React.FC = () => {
             </div>
             <div className=''>
 
-                <div className="w-full max-w-4xl bg-transparent text-white text-center mb-8">
+                <div className="w-full max-w-4xl bg-transparent text-[#FD5C90] text-center mb-8">
                     <h1 className="text-3xl font-[Bembo-MT-Pro-Bold]">Add your personal details</h1>
                     <p className="mt-2 text-sm font-[Bembo-MT-Pro-Light]">
                         Share your details to build a tailored profile and connect with compatible matches.

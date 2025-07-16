@@ -12,8 +12,8 @@ type FAQ = {
 
 const faqs: FAQ[] = [
   {
-    question: 'What is Vaidik Vivah India?',
-    answer: 'Viadik Vivah is an innovative, subscription-based matrimonial and matchmaking service powered by artificial intelligence. We connect individuals from diverse nationalities, communities, and religious backgrounds, making it easier for people to find meaningful relationships in India.'
+    question: 'What is Vad Vivah India?',
+    answer: 'Vad Vivah is an innovative, subscription-based matrimonial and matchmaking service powered by artificial intelligence. We connect individuals from diverse nationalities, communities, and religious backgrounds, making it easier for people to find meaningful relationships in India.'
   },
   {
     question: 'How does the matchmaking process work?',
@@ -27,7 +27,7 @@ const faqs: FAQ[] = [
       Exclusive Membership: Tailored service for elite members seeking personalized matchmaking support.`
   },
   {
-    question: 'Can I use Vaidik Vivah for free?',
+    question: 'Can I use Vad Vivah for free?',
     answer: 'Yes! The Standard Membership plan allows you to create a profile and access limited matches at no cost. This is a great way to explore our platform before deciding to upgrade to a paid subscription.'
   },
   {
@@ -35,15 +35,15 @@ const faqs: FAQ[] = [
     answer: 'The Premium Plan includes all Standard Membership features plus unlimited matches, advanced search filters, profile visibility enhancements, priority customer support, and access to monthly webinars on relationship advice.'
   },
   {
-    question: 'What makes Vaidik vivah different from other matchmaking and matrimonial platforms?',
-    answer: 'Vaidik vivah is unique because it focuses on providing a comprehensive matrimonial service that caters to individuals from all backgrounds. Our AI-powered matchmaking system is designed specifically for meaningful connections rather than casual dating, ensuring a more serious approach to finding perfect match.'
+    question: 'What makes Vad vivah different from other matchmaking and matrimonial platforms?',
+    answer: 'Vad vivah is unique because it focuses on providing a comprehensive matrimonial service that caters to individuals from all backgrounds. Our AI-powered matchmaking system is designed specifically for meaningful connections rather than casual dating, ensuring a more serious approach to finding perfect match.'
   },
   {
-    question: 'How do I create a profile on Vaidik Vivah?',
+    question: 'How do I create a profile on Vad Vivah?',
     answer: 'Creating a profile is simple! Visit our website, click on the "Start free today" button, and follow the prompts to fill out your details. You’ll be asked to provide information about yourself, your interests, and what you’re looking for in a partner. You can also download our App on Playstore or Appstore.'
   },
   {
-    question: 'Is my personal information safe with Vaidik Vivah?',
+    question: 'Is my personal information safe with Vad Vivah?',
     answer: 'Absolutely! We prioritize your privacy and employ advanced security measures to protect your personal information. Your data will only be used for matchmaking purposes and will not be shared with third parties without your consent.'
   },
   {
@@ -55,15 +55,15 @@ const faqs: FAQ[] = [
     answer: 'While we strive to provide quality matches based on your preferences, finding the right partner can take time. We encourage you to stay active on the platform by updating your profile and engaging with other members to increase your chances of finding a match.'
   },
   {
-    question: 'Are there any age restrictions for using Vaidik Vivah?',
-    answer: 'Yes, users must be at least 18 years old to create an account on Viadik Vaivah India. This ensures that all members are legally able to enter into relationships.'
+    question: 'Are there any age restrictions for using Vad Vivah?',
+    answer: 'Yes, users must be at least 18 years old to create an account on Vad Vaivah India. This ensures that all members are legally able to enter into relationships.'
   },
   {
     question: 'How can I contact customer support if I have questions?',
-    answer: 'You can reach our customer support team via email at info@vaidikvivah.in or by calling our dedicated support line listed on our website. We’re here to assist you with any inquiries or issues you may encounter.'
+    answer: 'You can reach our customer support team via email at info@vadvivah.in or by calling our dedicated support line listed on our website. We’re here to assist you with any inquiries or issues you may encounter.'
   },
   {
-    question: 'Does Vaidik Vivah offer any events or workshops?',
+    question: 'Does Vad Vivah offer any events or workshops?',
     answer: 'Yes! As part of our Premium and Exclusive Membership Plans, we occasionally host exclusive events and workshops designed for networking and relationship-building among our members. These events provide valuable opportunities to meet like-minded individuals in a relaxed setting.'
   },
   {

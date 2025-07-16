@@ -105,17 +105,17 @@ const VerifyOtp = () => {
        
 
     return (
-        <div className="min-w-screen min-h-screen flex flex-col items-center justify-center bg-[#ffffff]">
+        <div className="min-w-screen min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]">
             <div className="flex items-center justify-center mb-14">
                 <Link to={"/"} className="mx-auto mb-2 fixed top-10">
-                          <img
-                            src="/logotest3.png"
-                            alt="logo"
-                            className="h-24 w-auto md:h-24 ml-3"
-                          />
+                    <img
+                        src="/logotest3.png"
+                        alt="logo"
+                        className="h-24 w-auto md:h-24 ml-3"
+                    />
                         </Link>
             </div>
-            <div className='bg-gradient-to-r from-[#FECEDC] to-[#FD5C90] p-8 rounded-3xl'>
+            <div className='bg-white/50 p-6 rounded-3xl'>
 
             <div className="flex flex-col items-center justify-center mt-8 mb-2">
                 <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
@@ -160,8 +160,8 @@ const VerifyOtp = () => {
 
 
 
-                            <button className={`bg-white ${isExclusive ? 'text-[#8E69B4]' : 'text-[#FD5C90]'} w-full h-12 rounded-xl mt-6`}>
-                                {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#FD5C90]'} animate-spin cursor-pointer`} /> : 'Verify'}
+                            <button className={`bg-[#FD5C90] ${isExclusive ? 'text-[#8E69B4]' : 'text-[#ffffff]'} w-full h-12 rounded-3xl cursor-pointer mt-6`}>
+                                {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[#ffffff]'} animate-spin cursor-pointer`} /> : 'Verify'}
                         </button>
                     </form>
                 </div>

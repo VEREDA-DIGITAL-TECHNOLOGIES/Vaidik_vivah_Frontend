@@ -60,18 +60,18 @@ const Question11: React.FC<Question11Props> = ({ selectedOptions, handleOptionCh
         <div >
             {question.map((ques) => (
                 <div key={ques.id}>
-                    <div className="text-left md:text-center">
-                        <h2 className="w-full text-2xl font-bold md:text-3xl mb-4">
+                    <div className="text-left md:text-center mb-3">
+                        <h2 className="w-full text-2xl font-bold md:text-3xl mb-4 text-[#FD5C90]">
                             {ques.text}
                         </h2>
-                        <p className="text-[#FFFFFF90]">{ques.summary}</p>
+                        <p className="text-[#FD5C90]">{ques.summary}</p>
                     </div>
 
                     <div className="grid grid-cols-1 gap-1 md:grid-cols-5 py-4">
                         {ques.options.map((option, index) => (
                             <label
                                 key={index}
-                                className={`flex items-center justify-between rounded-xl text-sm h-10 cursor-pointer px-2 ${localSelectedOptions.includes(option)
+                                className={`flex items-center justify-between rounded-xl  text-balance h-10 cursor-pointer px-2 ${localSelectedOptions.includes(option)
                                     ? "bg-white text-[#FD5C90] h-11"
                                     : "bg-[#FFFFFF80] text-[#FD5C90]"
                                     }`}

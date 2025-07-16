@@ -116,7 +116,7 @@ const Header = memo(() => {
                         <img
                             src="/logotest3.png"
                             alt="logo"
-                            className="h-24 w-auto md:h-24 ml-3 mt-4"
+                            className="h-12 w-auto md:h-15 ml-3 mb-3"
                         />
                     </Link>
                 </div>

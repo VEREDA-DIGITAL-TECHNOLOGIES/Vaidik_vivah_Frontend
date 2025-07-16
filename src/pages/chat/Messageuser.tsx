@@ -8,6 +8,7 @@ import { useBlockuserMutation, useUnblockuserMutation } from "../../Redux/Api/bl
 import { useReportuserMutation } from "../../Redux/Api/report.api";
 import { db } from "../../../utils/firebaseConfig";
 import { ScreenCall } from "../zegocall/ScreenCall";
+import { Phone, Video } from "lucide-react";
 
 interface Message {
     senderId: string;
@@ -29,6 +30,8 @@ export default function Messageuser() {
     const [modalAction, setModalAction] = useState<null | "block" | "report">(null);
     const [reportText, setReportText] = useState("");
     const [isBlocked, setIsBlocked] = useState(false);
+  const [callType, setCallType] = useState<"voice" | "video">("voice");
+
 
     const [isCalling, setIsCalling] = useState(false);
     const [callRefPath, setCallRefPath] = useState<string | null>(null);
@@ -112,39 +115,41 @@ export default function Messageuser() {
         setNewMessage("");
     };
 
-    const handleStartCall = async () => {
-        if (!currentUserId || !recipientId) return;
+  const handleStartCall = async (type: "voice" | "video") => {
+    if (!currentUserId || !recipientId) return;
 
-        localStorage.setItem("uid", currentUserId);
-        localStorage.setItem("name", currentUser?.displayName || "You");
+    localStorage.setItem("uid", currentUserId);
+    localStorage.setItem("name", currentUser?.displayName || "You");
 
-        const roomId = `${currentUserId}_${recipientId}`;
-        const path = `calls/${recipientId}`;
-        const callRef = ref(db, path);
+    const roomId = `${currentUserId}_${recipientId}`;
+    const path = `calls/${recipientId}`;
+    const callRef = ref(db, path);
 
-        setIsCalling(true);
-        setCallRefPath(path);
+    setIsCalling(true);
+    setCallType(type);
+    setCallRefPath(path);
 
-        await set(callRef, {
-            from: currentUserId,
-            fromName: currentUser?.displayName || "Unknown",
-            roomId,
-            status: "pending",
-            to: recipientId,
-            timestamp: Date.now(),
-        });
+    await set(callRef, {
+      from: currentUserId,
+      fromName: currentUser?.displayName || "Unknown",
+      roomId,
+      type,
+      status: "pending",
+      to: recipientId,
+      timestamp: Date.now(),
+    });
 
-        let navigated = false;
-        const listener = onValue(callRef, (snapshot) => {
-            const data = snapshot.val();
-            if (data?.status === "accepted" && !navigated) {
-                navigated = true;
-                off(callRef, "value", listener);
-                setIsCalling(false);
-                navigate(`/room/${roomId}`);
-            }
-        });
-    };
+    let navigated = false;
+    const listener = onValue(callRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data?.status === "accepted" && !navigated) {
+        navigated = true;
+        off(callRef, "value", listener);
+        setIsCalling(false);
+        navigate(`/${data.type}-call/${roomId}`);
+      }
+    });
+  };
 
     const handleCancelCall = async () => {
         if (callRefPath) {
@@ -223,12 +228,20 @@ export default function Messageuser() {
             </div>
       
             <div className="relative flex items-center gap-3">
-              <button
-                onClick={handleStartCall}
-                        className="bg-white cursor-pointer text-[#FD5C90] px-4 py-1 rounded-full border border-white shadow hover:bg-[#FD5C90] hover:text-white transition text-sm"
-              >
-                Call
-              </button>
+            <button
+              onClick={() => handleStartCall("voice")}
+              className="p-2 rounded-full bg-white text-[#007EAF] hover:bg-[#005f88] hover:text-white border transition"
+              title="Voice Call"
+            >
+              <Phone className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => handleStartCall("video")}
+              className="p-2 rounded-full bg-white text-[#007EAF] hover:bg-[#005f88] hover:text-white border transition"
+              title="Video Call"
+            >
+              <Video className="w-5 h-5" />
+            </button>
       
               <button
                 onClick={() => setShowMenu(!showMenu)}
@@ -268,17 +281,25 @@ export default function Messageuser() {
       
           {/* Calling Modal */}
           {isCalling && (
-            <div className="fixed inset-0  bg-opacity-40 flex items-center justify-center z-50">
-              <div className="bg-white rounded-2xl p-8 shadow-xl text-center w-80">
-                <p className="text-xl font-semibold mb-6">Calling...</p>
-                <button
-                  onClick={handleCancelCall}
-                            className="bg-red-500 text-white cursor-pointer px-6 py-2 rounded-full hover:bg-red-600 transition"
-                >
-                  Cancel Call
-                </button>
-              </div>
-            </div>
+          <div className="fixed inset-0 bg-black/60 flex flex-col items-center justify-center text-white z-50">
+            <img
+              src={recipientUser?.profilePic || "/default-avatar.png"}
+              alt="Calling"
+              className="w-28 h-28 rounded-full border-4 border-white shadow-lg mb-4"
+            />
+            <h2 className="text-xl font-semibold mb-1">
+              {recipientUser?.displayName || "Calling..."}
+            </h2>
+            <p className="text-sm text-gray-200 mb-6 capitalize">
+              {callType} calling...
+            </p>
+            <button
+              onClick={handleCancelCall}
+              className="px-5 py-2 bg-red-600 rounded-full hover:bg-red-700"
+            >
+              Cancel
+            </button>
+          </div>
           )}
       
           {/* Chat Messages */}

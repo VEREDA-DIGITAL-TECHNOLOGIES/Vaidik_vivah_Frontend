@@ -110,7 +110,7 @@ const QualificationDetailsForm: React.FC = () => {
                 </div>
             <div className=''>
 
-            <div className="w-full max-w-4xl text-center text-white mb-10">
+                <div className="w-full max-w-4xl text-center text-[#FD5C90] mb-10">
                 <h2 className="text-3xl  mb-2 font-[Bembo-MT-Pro-Bold]">Your Qualification details</h2>
                 <p className="text-sm font-[Bembo-MT-Pro-Light]">
                     Sharing your qualifications allows us to match you with individuals who align with your educational and career aspirations

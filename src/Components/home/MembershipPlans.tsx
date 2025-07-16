@@ -8,20 +8,20 @@ type Plan = {
 };
 
 const plans: Plan[] = [
-    {
-        name: "Free",
-        monthly: "0",
-        yearly: "0",
-        features: [
-            { text: "Blurred  two profile shown rest will be blurred photo or locked", included: true },
-            { text: "Profile view- 50", included: true },
-            { text: "Request  can sent", included: true },
-            { text: "Chat initiate- Hi", included: true },
-            { text: "Horoscope view", included: true },
+    // {
+    //     name: "Free",
+    //     monthly: "0",
+    //     yearly: "0",
+    //     features: [
+    //         { text: "Blurred  two profile shown rest will be blurred photo or locked", included: true },
+    //         { text: "Profile view- 50", included: true },
+    //         { text: "Request  can sent", included: true },
+    //         { text: "Chat initiate- Hi", included: true },
+    //         { text: "Horoscope view", included: true },
 
             
-        ],
-    },
+    //     ],
+    // },
     {
         name: "Gold",
         monthly: "₹1149",

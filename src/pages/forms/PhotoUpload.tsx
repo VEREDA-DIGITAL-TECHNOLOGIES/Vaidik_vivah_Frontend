@@ -131,7 +131,7 @@ const PhotoUpload = () => {
 
 
             <div className="mt-5 w-full flex-grow xl:mt-20 2xl:mt-10">
-                <div className="mb-6 text-center text-white md:mb-20">
+                    <div className="mb-6 text-center text-[#FD5C90] md:mb-20">
                     <h1
                         className="text-xl md:mb-2 md:text-3xl 2xl:text-5xl"
                         style={{ fontFamily: "Bembo-MT-Pro-Regular, sans-serif" }}
