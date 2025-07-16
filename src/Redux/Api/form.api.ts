@@ -11,14 +11,7 @@ export const formApi = apiSlice.injectEndpoints({
         }),
       
       }),
-      gayatriDetials: build.mutation({
-        query: (data) => ({
-          url: 'form/gayatriDetails',
-          method: 'POST',
-          body: data
-        }),
       
-      }),
       qualificationDetails: build.mutation({
         query: (data) => ({
           url: 'form/qualificationDetails',
@@ -60,5 +53,5 @@ export const {
     useLocationDetailsMutation,
      useOtherDetailsMutation, 
      useProfileImageUploadMutation ,
-     useGayatriDetialsMutation
+     
     } = formApi;

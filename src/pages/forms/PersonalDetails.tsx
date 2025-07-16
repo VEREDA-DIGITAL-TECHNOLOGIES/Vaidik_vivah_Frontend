@@ -102,7 +102,7 @@ const PersonalDetails: React.FC = () => {
                 // const isPersonalDetailsFormFilled = true
                 toast.success(successData.message);
                 // dispatch(setUser(isPersonalDetailsFormFilled));
-                navigate("/gayatri-details");
+                navigate("/qualification-details");
             }
 
         } catch (error) {

@@ -42,7 +42,7 @@ const ChangePassword = lazy(() => import("./pages/auth/ChangePassword"));
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
 const CreatePassword = lazy(() => import("./pages/auth/CreatePassword"));
 const Personal = lazy(() => import("./pages/forms/PersonalDetails"));
-const Gayatri = lazy(() => import("./pages/forms/GayatriDetails"));
+
 const Sucessfull = lazy(() => import("./pages/sucessfull/Sucessfull"))
 const Profile = lazy(() => import("./pages/profile/Profile"))
 
@@ -214,7 +214,7 @@ function App() {
           <Route element={<ProtectedRoute isAuthenticated={!!accessToken}  />}>
            <Route path="/user-dashboard" element={<UserDashboard />} />
            <Route path="/personal-details" element={<Personal />} />
-            <Route path="/gayatri-details" element={<Gayatri/>} />
+            
             <Route path="/profile/:name/:userId" element={<Profile />} />
            <Route path="/qualification-details" element={<Qualification />} />
            <Route path="/location-details" element={<Location />} />
