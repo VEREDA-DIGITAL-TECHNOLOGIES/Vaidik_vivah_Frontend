@@ -15,12 +15,12 @@ const GetApp = () => {
                     <p className="text-gray-700 text-lg mb-4">
                         Find your right match with{" "}
                         <a
-                            href="https://vaidik-vivah-front.vercel.app"
-                            className="text-pink-500 underline"
+                            href="https://vedvivah.com/"
+                            className="text-pink-500 "
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Vaidikvivah
+                            Ved vivah
                         </a>
                     </p>
 

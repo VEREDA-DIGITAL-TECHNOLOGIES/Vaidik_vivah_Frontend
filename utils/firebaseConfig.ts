@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth} from 'firebase/auth';
 import { getMessaging } from 'firebase/messaging';
 import { getDatabase } from 'firebase/database';
-import { getFirestore } from "firebase/firestore";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyCWu-erLUsLXFSxbD-xKLbS0j3Sd5veNFQ",

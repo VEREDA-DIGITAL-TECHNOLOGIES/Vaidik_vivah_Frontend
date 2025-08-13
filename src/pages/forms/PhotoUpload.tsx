@@ -94,7 +94,7 @@ const PhotoUpload = () => {
                         return;
                     }
                 } else {
-                    const successData = response.data as ApiResponse;
+                    const successData = response.data as any;
                     const imageUrl = successData?.imageUploadData?.image?.[0];
                     console.log("image url is", imageUrl);
                     //  console.log("image url is ",successData);
