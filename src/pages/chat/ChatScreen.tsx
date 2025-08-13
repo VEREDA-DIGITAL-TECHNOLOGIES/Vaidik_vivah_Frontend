@@ -21,13 +21,8 @@ export default function ChatScreen() {
     // const [users, setUsers] = useState<UserModel[]>([]);
     const [connectedUsers, setConnectedUsers] = useState<UserModel[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
-<<<<<<< HEAD
     const [unseenCount, ] = useState<{ [key: string]: number }>({});
     const [lastMessages, ] = useState<{ [key: string]: any }>({});
-=======
-    const [unseenCount ] = useState<{ [key: string]: number }>({});
-    const [lastMessages] = useState<{ [key: string]: any }>({});
->>>>>>> master-sujit
 
     const currentUser = getAuth().currentUser;
     const navigate = useNavigate();
