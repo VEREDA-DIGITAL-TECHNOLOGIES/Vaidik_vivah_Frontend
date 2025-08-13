@@ -9,10 +9,10 @@ const Feature = () => {
             <h1 className="text-[28px] font-[Bembo-MT-Pro-Bold] md:text-[48px] xl:text-[64px] font-bold leading-tight tracking-tight">
               Introducing
               <br className="hidden xl:block" />
-              <span className="text-white">Vaidik Vivah Meet!</span>
+              <span className="text-white">Ved Vivah Meet!</span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-lg font-[Bembo-MT-Pro-Regular]">
-            Where ancient Vedic wisdom meets today’s technology — find your true match with Vaidik Vivah.
+            Where ancient Vedic wisdom meets today’s technology — find your true match with Ved Vivah.
             </p>
             <ChatCard/>
            

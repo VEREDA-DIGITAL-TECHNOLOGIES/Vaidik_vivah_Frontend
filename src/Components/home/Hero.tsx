@@ -19,17 +19,18 @@ function Hero() {
         <div className="  2xl:px-20 py-28 max-md:mt-0 mt-10 xl:w-[100%] flex justify-center items-start">
           <div className=" text-center container   xl:w-[100%]  hero_content ">
             <h1 className="text-[2rem] sm:text-[50px]  md:text-[70px] lg:text-[90px] xl:text-[70px] text-[#FFFFFF] font-[Bembo-MT-Pro-Bold] leading-[60px] md:leading-[80px] lg:leading-[150px] xl:leading-[120px]  pt-32 xl:-tracking-normal">
-              जहां मिलेंगीे पूर्व जन्म जोड़ियां
+              जहां कुंडली भी मिलेंगे और विचार भी
             </h1>
             <p
-              className="  text-[#FFFFFF] py-10 text-[18px] xl:text-[28px] xl:pt-5 px-2 font-[Bembo-MT-Pro-Regular]"
+              className="  text-[#FFFFFF] py-10 text-[24px] xl:text-[46px] xl:pt-5 px-2 font-[Bembo-MT-Pro-Regular]"
               style={{
                 lineHeight: "48px",
                 letterSpacing: "2%",
                 fontWeight: "400",
               }}
             >
-              वहां होगी वेद विवाह की शहनाइयां|
+              दो रिश्तों की नींव
+
             </p>
 
             <Link

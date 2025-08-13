@@ -7,14 +7,14 @@ const features = [
       "Search by location, community, Profession & more from lakhs of active profile",
   },
   {
-    title: "100% Screened Profile",
+    title: "100% Secure ",
     description:
-      "Search by location, community, Profession & more from lakhs of active profile",
+      "Your data will be kept completely secure with us. You can be sure about it.",
   },
   {
-    title: "100% Screened Profile",
+    title: "100%  Privacy ",
     description:
-      "Search by location, community, Profession & more from lakhs of active profile",
+      "We take complete care of your privacy. All your information will never be shared anywhere without your permission",
   },
 ];
 

@@ -75,12 +75,12 @@ const features = [
             "Connect with our experienced advisor who manages your profile personally",
     },
     {
-        title: "Communicate Your Preferences",
+        title: "Astrologer Support",
         description:
             "Consult with us to convey expectations in a prospective partner.",
     },
     {
-        title: "Choose From Handpicked Profiles",
+        title: "Unlimited Video & Audio Call",
         description:
             "Receive exclusive profile suggestions tailored to your criteria.",
     },
@@ -104,7 +104,7 @@ const Matching: React.FC = () => {
                         key={index}
                         className="border rounded-md p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-300"
                     >
-                        <div className="w-6 h-6 bg-gray-300 rounded-full mx-auto mb-4" />
+                        <div className="w-6 h-6 bg-[#FD5C90] rounded-full mx-auto mb-4" />
                         <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                         <p className="text-sm text-gray-600">{feature.description}</p>
                     </div>

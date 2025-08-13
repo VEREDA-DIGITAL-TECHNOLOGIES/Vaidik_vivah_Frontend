@@ -1,5 +1,5 @@
-import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
+
 // import { MdKeyboardArrowUp } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import '../../font.css';
@@ -65,21 +65,20 @@ const Footer = () => {
               {/* <h1 className="text-[30px]">Vaidik Vivah</h1> */}
             </div>
             <p className="font-Proxima-Nova-Regular text-pretty font-[Bembo-MT-Pro-Light]">
-              In the spirit of respect and inclusion, Vaidik Vivah acknowledges the Indigenous
-               communities and traditional custodians of the diverse regions across India. We 
-               honour their deep spiritual connection to the land, water, and culture. We pay 
-               our respects to their elders past and present and extend that respect to all 
-               Indigenous peoples across the nation today.
+              Culture is the heritage and pride of our country. In which Indian Marriage has a Different identity and is the main basis. The foundation of the Coming Generations is laid only after marriage. All traditional and system are connected to this. ( Tow people one Life) is not a story. This is the truth of two lives and this truth is strengthened further. Marriage were conducted in the Vedic manner with Ved mantras.
+              Today's youth must coperate in keeping the values of this culture alive and strengthening them.
             </p>
           </div>
 
           {/* Mission Links */}
           <div>
-            <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">Mission</h3>
+            
             <ul className="font-[Bembo-MT-Pro-Regular] space-y-2">
+              <li><Link to="/mission" className="hover:text-[#007EAF]">Mission</Link></li>
               <li><Link to="/advice" className="hover:text-[#007EAF]">Advice</Link></li>
+
               <li><Link to="/services" className="hover:text-[#007EAF]">Services</Link></li>
-              <li><Link to="/subscription-tiers" className="hover:text-[#007EAF]">Subscription Tiers</Link></li>
+
               <li><Link to="/help" className="hover:text-[#007EAF]">Help</Link></li>
               <li><Link to="/faqs" className="hover:text-[#007EAF]">FAQs</Link></li>
               <li><Link to="/contact-us" className="hover:text-[#007EAF]">Contact Us</Link></li>
@@ -88,8 +87,9 @@ const Footer = () => {
 
           {/* About Us Links */}
           <div>
-            <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">About Us</h3>
+            
             <ul className="font-[Bembo-MT-Pro-Regular] space-y-2">
+              <li><Link to="/about-us" className="hover:text-[#007EAF]">About Us</Link></li>
               <li><Link to="/community-guidelines" className="hover:text-[#007EAF]">Community Guidelines</Link></li>
               <li><Link to="/terms-conditions" className="hover:text-[#007EAF]">Terms & Conditions</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-[#007EAF]">Privacy Policy</Link></li>
@@ -104,18 +104,11 @@ const Footer = () => {
               <Link title="link" to="https://www.facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaFacebookF />
               </Link>
-              <Link to="https://x.com/vaidikvivahglobal?s=11" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
-                <FaSquareXTwitter />
-              </Link>
-              <Link to="http://www.youtube.com/@vaidikvivah_Global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
-                <FaYoutube />
-              </Link>
+
               <Link to="https://www.instagram.com/vaidikvivah_global?igsh=MWF5NWU0M2sxeXdlMQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaInstagram />
               </Link>
-              <Link to="https://www.linkedin.com/company/vaidikvivah-global" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
-                <FaLinkedin />
-              </Link>
+             
             </div>
           </div>
         </div>
@@ -134,6 +127,12 @@ const Footer = () => {
 
      
       </div>
+      {/* Footer */}
+      <footer className="border-t border-white/10 bg-black/40">
+        <div className="mx-auto max-w-6xl px-4 py-6 text-center text-white/60 text-sm">
+          © {new Date().getFullYear()} Ved Vivah — All Rights Reserved.
+        </div>
+      </footer>
     </div>
   );
 };

@@ -28,6 +28,21 @@ import Messageuser from "./pages/chat/Messageuser";
 import VoiceCallScreen from "./pages/zegocall/Room/VoiceCallScreen";
 import VideoCallScreen from "./pages/zegocall/Room/VideoCallScreen";
 
+import AboutVedvivah from "./pages/user-dashboard/AboutVedvivah";
+import HelpDashboard from "./pages/user-dashboard/Help";
+import AboutUs from "./pages/footer/AboutUs";
+import Advice from "./pages/footer/Advice"
+import Services from "./pages/footer/Services";
+import ContactUs from "./pages/footer/ContactUs";
+import Help from "./pages/footer/Help";
+import Community from "./pages/footer/Community";
+import Terms from "./pages/footer/TermConditions";
+import Privacy from "./pages/footer/PrivacyPolicy";
+import Cookiespage from "./pages/footer/CookiesPolicy";
+import ChildSafety from "./pages/footer/ChildSafety";
+import DeleteAccount from "./pages/footer/DeleteAccount";
+import Mission from "./pages/footer/Mission";
+
 
 
 const Home = lazy(() => import("./pages/home/Home"));
@@ -209,6 +224,23 @@ function App() {
             <Route path="/change-password" element={<ChangePassword />} />
             <Route path="/verification" element={<Verification />} />
             <Route path="/verify-otp" element={<VerifyOtp />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/advice" element={<Advice />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/faqs" element={<Help />} />
+            <Route path="/community-guidelines" element={<Community />} />
+            <Route path="/terms-conditions" element={<Terms />} />
+            <Route path="/privacy-policy" element={<Privacy />} />
+            <Route path="/cookies-policy" element={<Cookiespage />} />
+            <Route path="/child-safety-policy" element={<ChildSafety />} />
+            <Route path="/delete-account" element={<DeleteAccount />} />
+            <Route path="/mission" element={<Mission />} />
+
+
+            
+            
+            
           </Route>
 
           <Route element={<ProtectedRoute isAuthenticated={!!accessToken}  />}>
@@ -222,6 +254,10 @@ function App() {
            <Route path="/other-details" element={<Other />} /> 
            <Route path="/success" element={<Success />} />
             <Route path="/Payment-Success" element={<Sucessfull />} />
+            <Route path="/about-vedvivah" element={<AboutVedvivah />} />
+            <Route path="/help" element={<HelpDashboard />} />
+
+
           {/* call Route */}
           
            
