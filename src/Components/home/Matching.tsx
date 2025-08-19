@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+
 import '../../font.css';
 
 // const Matching = () => {
@@ -66,7 +66,7 @@ import '../../font.css';
 // };
 
 import React from "react";
-import { ArrowRight } from "lucide-react";
+
 
 const features = [
     {
@@ -86,7 +86,7 @@ const features = [
 ];
 
 const Matching: React.FC = () => {
-    const navigate = useNavigate();
+    
     return (
         <section className="py-16 px-4 bg-white text-black relative">
             {/* Decorative Background (optional, see .png file for styling if needed) */}
