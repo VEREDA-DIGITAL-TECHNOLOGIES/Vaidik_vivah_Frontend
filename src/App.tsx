@@ -25,8 +25,6 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import ChatRoom from "./pages/chat/ChatRoom";
 import Messageuser from "./pages/chat/Messageuser";
 
-import VoiceCallScreen from "./pages/zegocall/Room/VoiceCallScreen";
-import VideoCallScreen from "./pages/zegocall/Room/VideoCallScreen";
 
 import AboutVedvivah from "./pages/user-dashboard/AboutVedvivah";
 import HelpDashboard from "./pages/user-dashboard/Help";
@@ -236,7 +234,7 @@ function App() {
             <Route path="/child-safety-policy" element={<ChildSafety />} />
             <Route path="/delete-account" element={<DeleteAccount />} />
             <Route path="/mission" element={<Mission />} />
-
+            <Route path="/about-vedvivah" element={<AboutVedvivah />} />
 
             
             
@@ -254,7 +252,7 @@ function App() {
            <Route path="/other-details" element={<Other />} /> 
            <Route path="/success" element={<Success />} />
             <Route path="/Payment-Success" element={<Sucessfull />} />
-            <Route path="/about-vedvivah" element={<AboutVedvivah />} />
+            
             <Route path="/help" element={<HelpDashboard />} />
 
 
@@ -269,8 +267,7 @@ function App() {
             <Route path="/document-show" element={<Documentshow />} /> 
             <Route path="/chats" element={<ChatRoom />} />
             <Route path="/chat/:id" element={<Messageuser />} /> 
-            <Route path="/voice-call/:roomId" element={<VoiceCallScreen />} />
-            <Route path="/video-call/:roomId" element={<VideoCallScreen />} />
+            
 
 
 

@@ -115,7 +115,7 @@ const Header = memo(() => {
 
 
     return (
-        <div className={`fixed z-10 h-20 w-full ${isExclusive ? 'bg-[#fdeaf0]' : 'bg-[#fdeaf0]'}`}>
+        <div className={` h-20 w-full ${isExclusive ? 'bg-[#fdeaf0]' : 'bg-[#fdeaf0]'}`}>
             <div className="flex h-full items-center justify-between px-4 md:px-10 ">
                 <div className="">
                     <Link to="/user-dashboard">

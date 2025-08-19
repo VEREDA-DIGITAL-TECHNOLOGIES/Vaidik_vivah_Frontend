@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
-import { useDocumentgetMutation, useDocumentdeleteMutation } from "../../Redux/Api/document.api"; // adjust path
+import { ExclamationTriangleIcon, CheckCircleIcon, ClockIcon } from "@heroicons/react/24/outline";
+import { useDocumentgetMutation, useDocumentdeleteMutation } from "../../Redux/Api/document.api";
+import { useNavigate } from "react-router-dom";
 
 interface DocumentData {
     id: string;
     userId: string;
     documentFrontUrl: string;
     documentBackUrl: string;
+    documentType: string;
+    isVerified: string; // 'pending', 'verified', 'rejected'
+    createdAt: string;
 }
 
 const Documentshow: React.FC = () => {
@@ -16,6 +20,7 @@ const Documentshow: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [successMsg, setSuccessMsg] = useState<string | null>(null);
     const [confirmOpen, setConfirmOpen] = useState(false);
+    const navigate = useNavigate();
 
     const [getDocument] = useDocumentgetMutation();
     const [deleteDocumentApi] = useDocumentdeleteMutation();
@@ -24,9 +29,7 @@ const Documentshow: React.FC = () => {
         setLoading(true);
         setError(null);
         try {
-            
-            const res: any = await getDocument({}).unwrap();
-
+            const res: any = await getDocument().unwrap();
             setDocument(res.data);
         } catch (err: any) {
             setError(err?.data?.message || "Failed to fetch document");
@@ -39,9 +42,7 @@ const Documentshow: React.FC = () => {
         setLoading(true);
         setError(null);
         try {
-            
             await deleteDocumentApi({}).unwrap();
-
             setSuccessMsg("Document deleted successfully");
             setDocument(null);
         } catch (err: any) {
@@ -52,9 +53,25 @@ const Documentshow: React.FC = () => {
         }
     };
 
+    const goToDashboard = () => {
+        navigate('/user-dashboard'); // Adjust the route as needed
+    };
+
     useEffect(() => {
         fetchDocument();
     }, []);
+
+    // Format date for display
+    const formatDate = (dateString: string) => {
+        const options: Intl.DateTimeFormatOptions = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    };
 
     return (
         <div className="p-6 max-w-2xl mx-auto space-y-6">
@@ -80,30 +97,99 @@ const Documentshow: React.FC = () => {
             )}
 
             {document && (
-                <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="rounded-lg shadow-md overflow-hidden border">
-                        <img
-                            src={document.documentFrontUrl}
-                            alt="Front"
-                            className="w-full h-48 object-cover"
-                        />
-                        <div className="p-4">
-                            <p className="text-lg font-semibold">Front Side</p>
+                <div className="space-y-6">
+                    {/* Verification Status Banner */}
+                    <div className={`p-4 rounded-lg ${document.isVerified === 'verified'
+                            ? 'bg-green-100 text-green-800'
+                            : document.isVerified === 'rejected'
+                                ? 'bg-red-100 text-red-800'
+                                : 'bg-blue-100 text-blue-800'
+                        }`}>
+                        <div className="flex items-center gap-2">
+                            {document.isVerified === 'verified' ? (
+                                <CheckCircleIcon className="h-5 w-5" />
+                            ) : (
+                                <ClockIcon className="h-5 w-5" />
+                            )}
+                            <p className="font-medium">
+                                {document.isVerified === 'verified'
+                                    ? 'Your document has been verified!'
+                                    : document.isVerified === 'rejected'
+                                        ? 'Your document was rejected. Please upload again.'
+                                        : `Your document is under verification (submitted on ${formatDate(document.createdAt)})`}
+                            </p>
+                        </div>
+                        {document.isVerified === 'pending' && (
+                            <p className="mt-1 text-sm">
+                                Verification typically takes 2-3 business days. Thank you for your patience.
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Document Images */}
+                    <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="rounded-lg shadow-md overflow-hidden border">
+                            <img
+                                src={document.documentFrontUrl}
+                                alt="Front"
+                                className="w-full h-48 object-cover"
+                            />
+                            <div className="p-4">
+                                <p className="text-lg font-semibold">Front Side</p>
+                            </div>
+                        </div>
+
+                        <div className="rounded-lg shadow-md overflow-hidden border">
+                            <img
+                                src={document.documentBackUrl}
+                                alt="Back"
+                                className="w-full h-48 object-cover"
+                            />
+                            <div className="p-4">
+                                <p className="text-lg font-semibold">Back Side</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="rounded-lg shadow-md overflow-hidden border">
-                        <img
-                            src={document.documentBackUrl}
-                            alt="Back"
-                            className="w-full h-48 object-cover"
-                        />
-                        <div className="p-4">
-                            <p className="text-lg font-semibold">Back Side</p>
+                    {/* Document Details */}
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                        <h3 className="font-medium text-lg mb-2">Document Details</h3>
+                        <div className="grid grid-cols-2 gap-2">
+                            <div>
+                                <p className="text-gray-600">Document Type:</p>
+                                <p className="font-medium">{document.documentType || 'Not specified'}</p>
+                            </div>
+                            <div>
+                                <p className="text-gray-600">Upload Date:</p>
+                                <p className="font-medium">{formatDate(document.createdAt)}</p>
+                            </div>
+                            <div>
+                                <p className="text-gray-600">Status:</p>
+                                <p className="font-medium capitalize">{document.isVerified}</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="col-span-2">
+                    {/* Action Buttons */}
+                    <div className="flex flex-wrap gap-3">
+                        {document.isVerified === 'verified' ? (
+                            <button
+                                onClick={goToDashboard}
+                                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow"
+                            >
+                                Go to Dashboard
+                            </button>
+                        ) : (
+                            <button
+                                disabled
+                                className="bg-gray-300 text-gray-600 px-5 py-2 rounded-lg shadow cursor-not-allowed"
+                            >
+                                {document.isVerified === 'rejected'
+                                    ? 'Please upload new documents'
+                                    : 'Verification in progress (2-3 days)'}
+                            </button>
+                        )}
+
                         <button
                             onClick={() => setConfirmOpen(true)}
                             className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg shadow"
@@ -115,7 +201,15 @@ const Documentshow: React.FC = () => {
             )}
 
             {!document && !loading && !error && (
-                <p className="text-gray-500">No document uploaded yet.</p>
+                <div className="text-center py-8">
+                    <p className="text-gray-500 mb-4">No document uploaded yet.</p>
+                    <button
+                        onClick={() => navigate('/upload-document')} // Adjust the route as needed
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow"
+                    >
+                        Upload Document
+                    </button>
+                </div>
             )}
 
             {/* Confirmation Modal */}

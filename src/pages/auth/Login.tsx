@@ -1,116 +1,115 @@
 import Input from "../../Components/input/Input.tsx";
 import { useForm } from "react-hook-form";
-import type{ SubmitHandler } from "react-hook-form";
+import type { SubmitHandler } from "react-hook-form";
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import {useLoginMutation} from "../../Redux/Api/user.api";
-import {setUser} from "../../Redux/Reducers/user.reducer";
+import { useLoginMutation } from "../../Redux/Api/user.api";
+import { setUser } from "../../Redux/Reducers/user.reducer";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useState ,useEffect} from "react";
-import {connectSocket} from "../../services/socketservice";
-import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import { useState, useEffect } from "react";
+import { connectSocket } from "../../services/socketservice";
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { toast } from 'sonner'
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../utils/firebaseConfig.ts";
-
+import { useDocumentcheckexistsQuery } from "../../Redux/Api/document.api";
 import { z } from 'zod'
 
 import { LoadingOutlined } from '@ant-design/icons';
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
-  password: z.string().min(8, "Password is required"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
 type FormData = z.infer<typeof loginSchema>;
 
-
 const Login = () => {
   const [isExclusive, setExclusive] = useState(false);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     const isExclusive = localStorage.getItem("isExclusive");
-    if(isExclusive){
+    if (isExclusive) {
       setExclusive(true)
     }
-  },[])
+  }, [])
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { data: docData } = useDocumentcheckexistsQuery();
+  const [login, { isLoading }] = useLoginMutation();
 
-    const dispatch = useDispatch();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: zodResolver(loginSchema),
+  });
 
-  
-  
-    const [login, { isLoading }] = useLoginMutation();
-  
-    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
-      defaultValues: {
-        email: "",
-        password: "",
-      },
-      resolver: zodResolver(loginSchema),
-    });
-  
-    type ApiResponse = {
-      success: boolean;
-      message: string;
-      user: any;
+  type ApiResponse = {
+    success: boolean;
+    message: string;
+    user: {
+      isLocationFormFilled: boolean;
+      isPersonalFormFilled: boolean;
+      isImageFormFilled: boolean;
+      isQualificationFormFilled: boolean;
+      isOtherFormFilled: boolean;
     };
-  
-    type FetchBaseQueryErrorWithData = FetchBaseQueryError & {
-      data: ApiResponse;
-    };
+  };
 
+  type FetchBaseQueryErrorWithData = FetchBaseQueryError & {
+    data: ApiResponse;
+  };
 
-    const onSubmit: SubmitHandler<FormData> = async (data) => {
-      try {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const res = await login(data);
 
-      
-        const res = await login(data);
-       
-        if ('error' in res && res.error) {
-          const errorData = res.error as FetchBaseQueryErrorWithData;
-    
-          if (errorData.data?.success === false) {
-            toast.error(errorData.data.message);
-            return;
-          }
-
+      if ('error' in res && res.error) {
+        const errorData = res.error as FetchBaseQueryErrorWithData;
+        if (errorData.data?.success === false) {
+          toast.error(errorData.data.message);
+          return;
         }
+      }
 
-        const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
-        const user = userCredential.user;
-      
-       
-        console.log("User signed in:", user);
-  
+      // Firebase authentication
+      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
+      console.log("User signed in:", user);
+
+      if ('data' in res && res.data) {
+        const successData = res.data as ApiResponse;
         dispatch(setUser(res.data));
         connectSocket();
-
-        const successData = res.data as ApiResponse;
         toast.success(successData.message);
+
         if (successData.success === true) {
-        const isLocationFormFilled = successData?.user?.isLocationFormFilled;
-        const isPersonalFormFilled = successData?.user?.isPersonalFormFilled;
-        const isImageFormFilled = successData?.user?.isImageFormFilled;
-        const isQualificationFormFilled = successData?.user?.isQualificationFormFilled;
-        const isOtherFormFilled = successData?.user?.isOtherFormFilled;
+          const {
+            isLocationFormFilled,
+            isPersonalFormFilled,
+            isImageFormFilled,
+            isQualificationFormFilled,
+            isOtherFormFilled
+          } = successData.user;
 
-
-
-
-          const allFormsFilled = isLocationFormFilled && isPersonalFormFilled && isImageFormFilled && isQualificationFormFilled && isOtherFormFilled
-    
-          if (allFormsFilled) {
-            navigate('/user-dashboard');
-          } 
-          else {
+          // Check document status
+          if (docData?.exists) {
+            // If document uploaded
+            if (docData.data?.isVerified === "verified") {
+              navigate("/user-dashboard");
+            } else {
+              // Not verified (pending/rejected)
+              navigate("/document-show");
+            }
+          } else {
             if (!isPersonalFormFilled) {
               navigate('/personal-details');
-            } else if (!isQualificationFormFilled) { 
+            } else if (!isQualificationFormFilled) {
               navigate('/qualification-details');
             } else if (!isLocationFormFilled) {
               navigate('/location-details');
@@ -118,24 +117,22 @@ const Login = () => {
               navigate('/photoupload');
             } else if (!isOtherFormFilled) {
               navigate('/other-details');
+            } else {
+              // If all forms filled but no document → go to upload
+              navigate("/upload-document");
             }
           }
         }
-
-    
-      } catch (error) {
-        toast.error("An error occurred");
-        console.log(error);
       }
-    };
-    
-    
-    
+    } catch (error) {
+      toast.error("An error occurred during login");
+      console.error("Login error:", error);
+    }
+  };
 
   return (
-    <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90] '}
-} `}>
-    <div className="flex items-center justify-center mb-10  ">
+    <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]`}>
+      <div className="flex items-center justify-center mb-10">
         <Link to={"/"} className="mx-auto mb-2 fixed top-5">
           <img
             src="/logotest3.png"
@@ -143,63 +140,59 @@ const Login = () => {
             className="h-24 w-auto md:h-24 ml-3"
           />
         </Link>
-    </div>
+      </div>
       <div className='bg-white/50 px-4 rounded-2xl'>
+        <div className="flex flex-col items-center justify-center mt-12">
+          <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
+            <img src="/login.png" alt="login" className='w-12 h-12' />
+          </div>
+        </div>
 
-    <div className="flex flex-col items-center justify-center  mt-12">
-      <div className="bg-white flex items-center justify-center rounded-md w-12 h-12">
-        <img src="/login.png" alt="login"  className='w-12 h-12'/>
+        <div className="flex flex-col items-center justify-center text-black mt-2">
+          <h1 className="text-2xl md:text-4xl font-bold">Log in to your account</h1>
+          <p className="mt-4 md:text-lg text-center">Welcome back! Please enter your details.</p>
+        </div>
+
+        <div className="w-full max-w-md px-2 py-2 mt-2">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="rounder-[8px]">
+              <Input
+                {...register("email")}
+                placeholder="Enter your email"
+                label="Email"
+              />
+              {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+
+              <Input
+                {...register("password")}
+                type="password"
+                placeholder="Enter your password"
+                label="Password"
+              />
+              {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+            </div>
+            <div className="flex items-center justify-end mb-8 text-[black] gap-1 text-lg">
+              <Link to={"/forgot-password"}>Forgot password</Link>
+            </div>
+
+            <button
+              type="submit"
+              className={`bg-[#FD5C90] ${isExclusive ? 'text-[#60457E]' : 'text-[white]'} w-full h-12 rounded-md cursor-pointer`}
+              disabled={isLoading}
+            >
+              {isLoading ? <LoadingOutlined className={`${isExclusive ? 'text-[#60457E]' : 'text-[white]'} animate-spin`} /> : 'Confirm'}
+            </button>
+          </form>
+          <button
+            className="bg-transparent border cursor-pointer text-[#FD5C90] mt-2 w-full h-12 rounded-md"
+            onClick={() => navigate("/questions")}
+          >
+            Create an account
+          </button>
+        </div>
       </div>
     </div>
-
-     <div className="flex flex-col items-center justify-center text-black mt-2">
-        <h1 className="text-2xl md:text-4xl font-bold">Log in to your account</h1>
-        <p className="mt-4 md:text-lg text-center"> Welcome back! Please enter your details. </p>
-      </div>
-
-      <div  className="w-full max-w-md px-2   py-2 mt-2">
-        <form  onSubmit={handleSubmit(onSubmit)}>
-          <div className="rounder-[8px]">
-            <Input
-            {...register("email")}
-            placeholder="Enter your email" label="Email"  
-            />
-          {errors.email && <p className="text-orange-200">{errors.email.message}</p>}
-
-            <Input
-            {...register("password")}
-            type="password"
-            placeholder="Enter your password" label="Password"
-
-            />
-          {errors.password && <p className="text-orange-200">{errors.password.message}</p>}
-
-          
-          </div>
-          <div className="flex items-center justify-end mb-8  text-[black] gap-1 text-lg">
-            
-            
-              <Link to={"/forgot-password"}>Forgot password</Link>
-
-          </div>
-
-          
-            <button type="submit" className={`bg-[#FD5C90] ${isExclusive? 'text-[#60457E]': 'text-[white]'}  w-full h-12 rounded-md cursor-pointer`}>
-               
-              {isLoading ? <LoadingOutlined className={`${isExclusive? 'text-[#60457E]': 'text-[white]'} animate-spin`} /> : 'Confirm'}
-
-            </button>
-
-          </form>
-          <button className=" bg-transparent border cursor-pointer  text-[#FD5C90] mt-2 w-full h-12 rounded-md" onClick={() => navigate("/questions")} >
-              Create an account
-            </button>
-
-          </div>
-          </div>
-
-  </div> 
-  )
+  );
 }
 
-export default Login
+export default Login;

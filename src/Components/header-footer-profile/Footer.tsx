@@ -1,7 +1,7 @@
 import "../../font.css";
-import { BiLogoPlayStore } from "react-icons/bi";
+
 import{Link } from "react-router-dom";
-import { FaApple } from "react-icons/fa";
+import {FaFacebookF, FaInstagram } from "react-icons/fa";
 
 
 const Footer = () => {
@@ -29,13 +29,20 @@ const Footer = () => {
               </div>
 
               <div className="flex w-full justify-center md:w-auto md:justify-start">
-                <ul className="flex flex-col items-center gap-2 text-lg md:flex-row md:gap-4">
-                  <li className="text-[#BDC1CA]">Get the App</li>
-                  <li className="flex items-center gap-2">
-                    <BiLogoPlayStore size={30} />
-                    <FaApple size={30} />
-                  </li>
-                </ul>
+               {/* Social Links - Now appears after Mission on tablet */}
+                         <div className="md:col-span-2 lg:col-span-1">
+                           <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">Social</h3>
+                           <div className="flex gap-5 text-2xl">
+                             <Link title="link" to="https://www.facebook.com/share/15NawNjVBu/" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+                               <FaFacebookF />
+                             </Link>
+               
+                             <Link title="link" to="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=ysvejqr " target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+                               <FaInstagram />
+                             </Link>
+                            
+                           </div>
+                         </div>
               </div>
             </div>
 

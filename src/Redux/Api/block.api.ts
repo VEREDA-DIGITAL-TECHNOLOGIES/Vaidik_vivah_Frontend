@@ -1,35 +1,34 @@
-
-import { apiSlice } from './apiSlice';
+import { apiSlice } from "./apiSlice";
 
 export const blockApi = apiSlice.injectEndpoints({
-    endpoints: (build) => ({
-      blockuser: build.mutation({
-        query: (data: { userId: string }) => ({
-          url: 'block/block',
-          method: 'POST',
-          body: data,
-        }),
-      
+  endpoints: (builder) => ({
+    blockUser: builder.mutation({
+      query: (blockedUserId: string) => ({
+        url: 'block/block',
+        method: 'POST',
+        body: { blockedUserId },
       }),
-      unblockuser: build.mutation({
-        query: (data) => ({
-          url: 'block/unblock',
-          method: 'POST',
-          body: data
-        }),
-      
+    }),
+
+    unblockUser: builder.mutation({
+      query: (blockedUserId: string) => ({
+        url: 'block/unblock',
+        method: 'POST',
+        body: { blockedUserId },
       }),
-      blockuserlist: build.mutation({
-        query: () => ({
-          url: 'block/blocked',
-          method: 'GET',
-        //   body: data
-        }),
-      
+    }),
+
+    getBlockedUsersByMe: builder.query({
+      query: () => ({
+        url: 'block/blocked-by-me',
+        method: 'GET',
       }),
-   })
+    }),
+  }),
 });
+
 export const {
-   useBlockuserMutation,useUnblockuserMutation,useBlockuserlistMutation
-    
-    } = blockApi;
+  useBlockUserMutation,
+  useUnblockUserMutation,
+  useGetBlockedUsersByMeQuery,
+} = blockApi;

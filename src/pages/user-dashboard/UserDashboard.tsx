@@ -24,6 +24,7 @@ import {
   QuestionCircleOutlined, MessageOutlined
 } from "@ant-design/icons";
 import ChatScreen from "../chat/ChatScreen";
+import BannerPage from "../../Components/Banner/Banner";
 
 
 
@@ -130,11 +131,12 @@ const UserDashboard: React.FC = () => {
 
   return (
     <div className="flex min-h-screen flex-col ">
+      <BannerPage/>
       <Header />
       <div className="flex-grow bg-[#fceef2]">
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <img title="bigad" src="/bigad.png" className="h-14 w-full" />
-        </div>
+        </div> */}
 
         <div className="px-4 py-6 ">
           <div className="p-0 md:p-4">

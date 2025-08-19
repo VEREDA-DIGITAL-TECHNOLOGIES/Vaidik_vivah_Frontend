@@ -90,6 +90,8 @@ const Footer = () => {
             
             <ul className="font-[Bembo-MT-Pro-Regular] space-y-2">
               <li><Link to="/about-us" className="hover:text-[#007EAF]">About Us</Link></li>
+              <li><Link to="/about-vedvivah" className="hover:text-[#007EAF]">About Vedvivah</Link></li>
+
               <li><Link to="/community-guidelines" className="hover:text-[#007EAF]">Community Guidelines</Link></li>
               <li><Link to="/terms-conditions" className="hover:text-[#007EAF]">Terms & Conditions</Link></li>
               <li><Link to="/privacy-policy" className="hover:text-[#007EAF]">Privacy Policy</Link></li>
