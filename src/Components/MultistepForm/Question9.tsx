@@ -3,7 +3,7 @@ import React from "react";
 const question = [
     {
         id: 6,
-        text: "Do you believe in horoscope match?",
+        text: "Do you believe in Kundali match?",
         summary:
             "Share whether astrological compatibility is important in your search for a life partner",
         options: ["It's must", "Doesn't matter", "Prefer not to say"],

@@ -76,14 +76,13 @@ const features = [
     },
     {
         title: "Astrologer Support",
-        description:
-            "Consult with us to convey expectations in a prospective partner.",
+        description: "Get personalized guidance from our astrologers to find your ideal partner.",
     },
     {
         title: "Unlimited Video & Audio Call",
-        description:
-            "Receive exclusive profile suggestions tailored to your criteria.",
+        description: "Connect anytime with unlimited high-quality video and audio calls.",
     },
+
 ];
 
 const Matching: React.FC = () => {
@@ -113,11 +112,11 @@ const Matching: React.FC = () => {
 
             {/* CTA Button */}
             <div className="flex justify-center mt-10">
-                <button onClick={() => navigate("/exclusive")}
+                {/* <button onClick={() => navigate("/exclusive")}
                     className="bg-gradient-to-r from-[#FFFFFF] to-[#FD5C90] text-black px-6 py-2 rounded-full shadow hover:scale-105 transition-transform duration-300 font-medium flex items-center gap-2">
                     Start Today
                     <span><ArrowRight /></span>
-                </button>
+                </button> */}
             </div>
         </section>
     );

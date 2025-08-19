@@ -21,8 +21,7 @@ const Ai = () => {
           <div className="flex-1 text-center md:text-left">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Utkarsh Sinha</h2>
             <p className="text-white text-lg leading-relaxed mb-6">
-              Lorem ipsum dolor sit amet consectetur. Metus sollicitudin massa in commodo vel sollicitudin vulputate.
-              Fusce sapien donec suspendisse eget diam. Sagittis eget
+              Believing in the power of sacred connections, I’m here to find a life partner who values tradition and togetherness. Let’s begin this beautiful journey towards a blissful married lif
             </p>
 
             {/* Button */}

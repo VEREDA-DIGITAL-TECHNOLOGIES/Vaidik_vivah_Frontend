@@ -101,11 +101,11 @@ const Footer = () => {
           <div className="md:col-span-2 lg:col-span-1">
             <h3 className="font-[Bembo-MT-Pro-Bold] text-lg mb-4">Social</h3>
             <div className="flex gap-5 text-2xl">
-              <Link title="link" to="https://www.facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              <Link title="link" to="https://www.facebook.com/share/15NawNjVBu/" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaFacebookF />
               </Link>
 
-              <Link to="https://www.instagram.com/vaidikvivah_global?igsh=MWF5NWU0M2sxeXdlMQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
+              <Link title="link" to="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=ysvejqr " target="_blank" rel="noreferrer" className="hover:text-[#007EAF]">
                 <FaInstagram />
               </Link>
              

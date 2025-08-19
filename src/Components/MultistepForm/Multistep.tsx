@@ -22,7 +22,7 @@ import Question11 from "./Question11";
 import Question12 from "./Question12";
 import Question13 from "./Question13";
 import Question14 from "./Question14";
-import Question15 from "./Question15";
+// import Question15 from "./Question15";
 
 const Multistep = () => {
     const [isExclusive, setExclusive] = useState(false);
@@ -64,7 +64,7 @@ const Multistep = () => {
         "Question 12/12",
         "Question 13/13",
         "Question 14/14",
-        "Question 15/15",
+        // "Question 15/15",
 
     ];
 
@@ -171,13 +171,13 @@ const Multistep = () => {
                         handleOptionChange={handleOptionChange}
                     />
                             );
-            case 10:
-                return (
-                    <Question15
-                        selectedOptions={selectedOptions}
-                        handleOptionChange={handleOptionChange}
-                    />
-                );
+            // case 10:
+            //     return (
+            //         <Question15
+            //             selectedOptions={selectedOptions}
+            //             handleOptionChange={handleOptionChange}
+            //         />
+            //     );
 
             default:
                 return null;
@@ -344,18 +344,18 @@ const Multistep = () => {
             const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 11)?.answerValue;
 
             if (!selectedAnswer || selectedAnswer.length === 0) {
-                toast.error("Please answer 'Describe your seva (selfless service) involvement' before proceeding!");
+                toast.error("Please answer 'Are you ready for marriage with Ved Vivah culture' before proceeding!");
                 return;
             }
         }
-        if (page === 10) {
-            const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 12)?.answerValue;
+        // if (page === 10) {
+        //     const selectedAnswer = selectedOptions.find((sel) => sel.questionId === 12)?.answerValue;
 
-            if (!selectedAnswer || selectedAnswer.length === 0) {
-                toast.error("Please answer 'What are your spiritual goals for the future?' before proceeding!");
-                return;
-            }
-        }
+        //     if (!selectedAnswer || selectedAnswer.length === 0) {
+        //         toast.error("Please answer 'What are your spiritual goals for the future?' before proceeding!");
+        //         return;
+        //     }
+        // }
 
 
         if (page < PageTitles.length - 1) {

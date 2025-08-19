@@ -10,7 +10,7 @@ const slides = [
         location: "Gaya, Bihar",
         bond: "Both initiated in Gayatri Parivar",
         description:
-            "We met on Vaidik Vivah and felt an instant connection rooted in shared values and Sanatan dharma. Today, we are not just husband and wife, but soul companions on a spiritual journey.",
+            "We met on Ved Vivah and felt an instant connection rooted in shared values and Sanatan dharma. Today, we are not just husband and wife, but soul companions on a spiritual journey.",
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const slides = [
         location: "Patna, Bihar",
         bond: "Both initiated in Gayatri Parivar",
         description:
-            "We met on Vaidik Vivah and felt an instant connection rooted in shared values and Sanatan dharma. Today, we are not just husband and wife, but soul companions on a spiritual journey.",
+            "We met on Ved Vivah and felt an instant connection rooted in shared values and Sanatan dharma. Today, we are not just husband and wife, but soul companions on a spiritual journey.",
     },
     {
         id: 3,
@@ -30,7 +30,7 @@ const slides = [
         location: "Varanasi, UP",
         bond: "Both initiated in Gayatri Parivar",
         description:
-            "We met on Vaidik Vivah and felt an instant connection rooted in shared values and Sanatan dharma. Today, we are not just husband and wife, but soul companions on a spiritual journey.",
+            "We met on Ved Vivah and felt an instant connection rooted in shared values and Sanatan dharma. Today, we are not just husband and wife, but soul companions on a spiritual journey.",
     },
 ];
 

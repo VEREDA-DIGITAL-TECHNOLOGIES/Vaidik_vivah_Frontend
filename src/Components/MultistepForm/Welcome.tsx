@@ -24,7 +24,7 @@ const Welcome = ({ handleNext }: { handleNext: () => void }) => {
 
             {/* Main Content */}
             <div className="flex mt-40 flex-col items-center justify-center text-center gap-5">
-                <h1 className="text-4xl md:text-3xl font-[Bembo-MT-Pro-Bold]">Begin Your Journey with Vaidik Vivah</h1>
+                <h1 className="text-4xl md:text-3xl font-[Bembo-MT-Pro-Bold]">Begin Your Journey with Ved Vivah</h1>
                 <p className="text-2xl font-[Bembo-MT-Pro-Light]">
                     You’ve taken the first meaningful step toward finding a life partner who shares your values and traditions.
                 </p>
