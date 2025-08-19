@@ -13,9 +13,11 @@ import "./home.css"
 import WeddingSlider from '../../Components/home/WeddingSlider'
 import Pre from '../../Components/home/Pre'
 import Navbar from '../../Components/home/Navbar'
+import BannerPage from '../../Components/Banner/Banner'
 const Home = () => {
     return (
         <div>
+            <BannerPage/>
              <Navbar />
             <Hero />
             {/* <Archive /> */}
