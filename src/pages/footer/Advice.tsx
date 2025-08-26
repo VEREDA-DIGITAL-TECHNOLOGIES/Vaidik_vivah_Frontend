@@ -3,32 +3,32 @@ import { useState } from "react";
 
 const adviceCardData = [
   {
-    imageSrc: "/Advice-1.jpg",
+    imageSrc: "/Advice-11.jpg",
     title: "Attraction vs. Compatibility",
     hoverContent: `Attraction can be instant and exciting, drawing two people together through physical appeal or an emotional connection. However, true compatibility goes deeper—it’s the glue that keeps a relationship thriving over time. Compatibility is about aligning on key life aspects such as values, long-term goals, lifestyles, and emotional needs.`,
   },
   {
-    imageSrc: "/Advice-2.jpg",
+    imageSrc: "/Advice-12.jpeg",
     title: "Finding Yourself First",
     hoverContent: `Before you can form a strong relationship with someone else, you need to have a clear understanding of who you are. Self-awareness forms the foundation of a healthy partnership. It’s about recognising your values, passions, and life goals while identifying what you want and need in a partner.`,
   },
   {
-    imageSrc: "/Advice-3.jpg",
+    imageSrc: "/Advice-13.jpg",
     title: "Effective Communication in Relationships",
     hoverContent: `Effective communication isn’t just about talking; it’s about connecting. Communication allows couples to build trust, resolve conflicts, and understand each other’s needs and perspectives.`,
   },
   {
-    imageSrc: "/Advice-4.jpg",
+    imageSrc: "/Advice-14.jpeg",
     title: "Setting Realistic Expectations",
     hoverContent: `It’s natural to have a vision of your ideal partner, but rigid expectations can prevent you from recognising genuine connections. A healthy relationship thrives on realistic expectations, rooted in mutual respect, shared values, and open-mindedness.`,
   },
   {
-    imageSrc: "/Advice-5.jpg",
+    imageSrc: "/Advice-15.jpeg",
     title: "Building Emotional Intimacy",
     hoverContent: `Emotional intimacy is what transforms a relationship from superficial to profound. It’s about creating a safe space where both partners feel seen, heard, and valued.`,
   },
   {
-    imageSrc: "/Advice-6.jpg",
+    imageSrc: "/Advice-16.jpeg",
     title: "How to Know if They're ‘The One’",
     hoverContent: `Determining if someone is “The One” isn’t about waiting for a perfect person or a magical moment; it’s about recognising a sense of alignment and ease in the relationship.`,
   },

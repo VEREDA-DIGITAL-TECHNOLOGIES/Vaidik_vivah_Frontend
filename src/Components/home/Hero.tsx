@@ -4,6 +4,7 @@ import heroImg from "../../assets/Banner-8.png";
 import Archive from "./Archive";
 import { ArrowRight } from "lucide-react";
 
+
 function Hero() {
   return (
     <div
@@ -14,7 +15,7 @@ function Hero() {
   }}
     >
       <div className="absolute inset-0"></div>
-
+      
       <div className="relative 3xl:pl-30   bg-opacity-40 text-white min-h-screen md:pl-16 md:flex md:px-10 gap-80 ">
         <div className="  2xl:px-20 py-28 max-md:mt-0 mt-10 xl:w-[100%] flex justify-center items-start">
           <div className=" text-center container   xl:w-[100%]  hero_content ">

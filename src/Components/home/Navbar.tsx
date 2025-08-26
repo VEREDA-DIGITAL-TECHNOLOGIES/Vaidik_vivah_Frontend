@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import LoginModal from "../model/Login";
+import WhatsAppButton from "./Whatsapp";
 
 const Navbar: React.FC = () => {
   const location = useLocation();
@@ -34,6 +35,9 @@ const Navbar: React.FC = () => {
         className={`absolute navbar z-50 w-full h-auto  text-white ${isBlueBgRoute ? "bg-[#9e2727] h-5" : " "
              }`}
       >
+        <div>
+          <WhatsAppButton />
+        </div>
         <nav className="container mx-auto px-4 py-2 flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">

@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ContactUs() {
@@ -51,7 +51,7 @@ export default function ContactUs() {
                             </div>
                         </motion.div>
 
-                        {/* <motion.div
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
@@ -61,12 +61,12 @@ export default function ContactUs() {
                             <div>
                                 <p className="text-sm text-black/60">Phone</p>
                                 <a href="tel:+911234567890" className="text-lg font-medium hover:underline">
-                                    +91 12345 67890
+                                    +917888684185
                                 </a>
                             </div>
-                        </motion.div> */}
+                        </motion.div> 
 
-                        {/* <motion.div
+                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
@@ -75,9 +75,9 @@ export default function ContactUs() {
                             <MapPin className="h-6 w-6 text-red-400" />
                             <div>
                                 <p className="text-sm text-black/60">Address</p>
-                                <p className="text-lg font-medium">New Delhi, India</p>
+                                <p className="text-lg font-medium">Aman Nagar, Jalandhar Punjab</p>
                             </div>
-                        </motion.div> */}
+                        </motion.div>
                     </div>
 
                     {/* Contact Form */}
