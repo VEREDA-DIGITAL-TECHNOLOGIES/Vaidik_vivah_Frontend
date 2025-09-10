@@ -1,8 +1,8 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useContactusMutation } from "../../Redux/Api/contactus.api"; 
-import { Toaster, toast } from "sonner"; 
+import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 export default function ContactUs() {
     const [formData, setFormData] = useState({
@@ -12,7 +12,7 @@ export default function ContactUs() {
         message: "",
     });
 
-    const [contactus, { isLoading }] = useContactusMutation();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,12 +20,16 @@ export default function ContactUs() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsLoading(true);
+
         try {
-            await contactus(formData).unwrap();
+            await axios.post("https://api.vedvivah.com/api/admin/contact", formData);
             toast.success("Message sent successfully 🎉");
             setFormData({ name: "", mobile: "", email: "", message: "" });
         } catch (error) {
             toast.error("Failed to send message ❌");
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -89,7 +93,7 @@ export default function ContactUs() {
                                 <Phone className="h-6 w-6 text-green-400" />
                                 <div>
                                     <p className="text-sm text-black/60">Phone</p>
-                                    <a href="tel:+911234567890" className="text-lg font-medium hover:underline">
+                                    <a href="tel:+917888684185" className="text-lg font-medium hover:underline">
                                         +917888684185
                                     </a>
                                 </div>
@@ -168,7 +172,7 @@ export default function ContactUs() {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="w-full rounded-lg bg-[#FD5C90] text-[white] px-4 py-2 font-semibold hover:bg-[#FD5C90] cursor-pointer"
+                                className="w-full rounded-lg bg-[#FD5C90] text-white px-4 py-2 font-semibold hover:bg-[#fd4f80] cursor-pointer"
                             >
                                 {isLoading ? "Sending..." : "Send Message"}
                             </button>
