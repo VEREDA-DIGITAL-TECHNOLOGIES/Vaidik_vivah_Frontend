@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useGetPlansQuery } from "../../Redux/Api/plan.api";
 import PlanForm from "../planform/PlanForm";
 
+
 type Plan = {
   id: string;
   name: string;
@@ -86,25 +87,25 @@ const MembershipPlans: React.FC = () => {
 
   const plans: Plan[] = data.data
     .map((p: ApiPlan) => {
-      const isDiamondPlan = p.planName === "Diamond";
+      const isVivahSansakar = p.planName === "Diamond";
       const monthlyPrice = Number(p.price) + 5000;
       const discountPrice = Number(p.price);
       
       return {
         id: p.id,
-        name: isDiamondPlan ? "Vivah Sansakar" : p.planName,
-        monthly: isDiamondPlan ? "₹1000" : `₹${monthlyPrice}`,
-        discount: isDiamondPlan ? "₹1000" : `₹${discountPrice}`,
+        name: isVivahSansakar ? "Vivah Sansakar" : p.planName,
+        monthly: isVivahSansakar ? "₹1000" : `₹${monthlyPrice}`,
+        discount: isVivahSansakar ? "₹1000" : `₹${discountPrice}`,
         features: p.featureList.map((f: string) => ({
           text: f,
           included: true,
         })),
-        duration: isDiamondPlan 
+        duration: isVivahSansakar 
           ? "Custom Plan" 
           : p.durationInMonths === 1 
             ? "1 Month Plan" 
             : `${p.durationInMonths} Months Plan`,
-        durationInMonths: isDiamondPlan ? 0 : p.durationInMonths,
+        durationInMonths: isVivahSansakar ? 0 : p.durationInMonths,
         description: p.description
       };
     })
@@ -146,7 +147,12 @@ const MembershipPlans: React.FC = () => {
                 <div className={`
                   bg-[#FECEDC] rounded-2xl shadow-xl overflow-hidden h-full flex flex-col
                   transition-all duration-300 hover:shadow-2xl
+                  ${isVivahSansakar ? 'border-2 border-[#FD5C90]' : ''}
                 `}>
+                  
+                  {/* Ribbon for Vivah Sansakar */}
+                  
+
                   {/* Plan Header */}
                   <div className="flex flex-col p-4 items-center">
                     <div className="bg-gradient-to-r from-[#FFFFFF] to-[#FD5C90] text-black py-3 w-[250px] rounded-md shadow mb-4 flex justify-center flex-col items-center">
@@ -184,29 +190,27 @@ const MembershipPlans: React.FC = () => {
                     </ul>
                   </div>
 
-                  {/* CTA Section */}
-                  <div className="p-6 pt-0">
-                    {isVivahSansakar ? (
+                  {/* CTA Section - Only show button for Vivah Sansakar */}
+                  {isVivahSansakar && (
+                    <div className="p-6 pt-0">
                       <button
                         onClick={() => handleApplyNow(plan)}
-                        className="w-full py-3 bg-[#FD5C90] text-white rounded-lg font-semibold hover:bg-[#e04a7d] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                        className="w-full py-3 bg-[#FD5C90] text-white rounded-lg font-semibold hover:bg-[#e04a7d] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
                       >
                         Apply Now - ₹1000
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                         </svg>
                       </button>
-                    ) : (
-                      <button className="w-full py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold cursor-not-allowed opacity-50">
-                        Select Plan
-                      </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
+
+        
       </section>
 
       {/* Application Form Popup */}

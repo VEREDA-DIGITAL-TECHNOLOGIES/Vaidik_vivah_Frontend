@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useCreateApplicationMutation } from '../../Redux/Api/application.api';
+import {toast} from "sonner"
 
 interface FormData {
   planId:string;
@@ -257,7 +258,7 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
       console.log('✅ Application submitted successfully:', result);
 
       // Show success message
-      alert("✅ Application submitted successfully!\n\nYour application is now under review. You will receive a confirmation message shortly.");
+      toast.success("✅ Application submitted successfully!\n\nYour application is now under review. You will receive a confirmation message shortly.");
       onClose();
       
     } catch (error: any) {
@@ -280,7 +281,7 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
         errorMessage = 'Server error. Please try again later.';
       }
       
-      alert(`❌ Submission Error: ${errorMessage}`);
+      toast.error(`❌ Submission Error: ${errorMessage}`);
     }
   };
 
