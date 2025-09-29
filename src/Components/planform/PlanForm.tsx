@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useCreateApplicationMutation } from '../../Redux/Api/application.api';
-import {toast} from "sonner"
+import { toast } from "sonner";
 
 interface FormData {
-  planId:string;
+  planId: string;
   nom: string;
   fatherName: string;
   loginId: string;
@@ -26,7 +26,7 @@ interface FormData {
 }
 
 type Plan = {
-  id:string;
+  id: string;
   name: string;
   monthly: string;
   discount: string;
@@ -38,15 +38,15 @@ type Plan = {
 
 interface DiamondPlanApplicationProps {
   plan: Plan;
-  
   onClose: () => void;
+  onSubmit: (formData: FormData) => void; // Add onSubmit prop
 }
 
-const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
-  const [createApplication, { isLoading, isError, error }] = useCreateApplicationMutation();
+const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubmit }) => {
+  const [createApplication, { isLoading }] = useCreateApplicationMutation();
   
   const [formData, setFormData] = useState<FormData>({
-    planId:"",
+    planId: plan.id,
     nom: '',
     fatherName: '',
     loginId: '',
@@ -129,7 +129,6 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
     const file = e.target.files?.[0] || null;
     
-    // Validate file size (5MB max)
     if (file && file.size > 5 * 1024 * 1024) {
       setErrors(prev => ({
         ...prev,
@@ -138,7 +137,6 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
       return;
     }
 
-    // Validate file type
     if (file) {
       const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
       if (!allowedTypes.includes(file.type)) {
@@ -230,9 +228,8 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
       submissionFormData.append('applicationDate', new Date().toISOString());
       submissionFormData.append('applicationFee', '1000');
 
-      // Log the submission data (without files for security)
       console.log('🚀 ===== VIVAH SANSAKAR APPLICATION SUBMISSION =====', {
-        planId:plan.id,
+        planId: plan.id,
         plan: plan.name,
         applicant: formData.nom,
         partner: formData.partnerName,
@@ -252,19 +249,20 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
         timestamp: new Date().toLocaleString()
       });
 
-      // Call the mutation
+      // Call the mutation to save application
       const result = await createApplication(submissionFormData).unwrap();
 
       console.log('✅ Application submitted successfully:', result);
 
       // Show success message
-      toast.success("✅ Application submitted successfully!\n\nYour application is now under review. You will receive a confirmation message shortly.");
-      onClose();
+      toast.success("✅ Application submitted successfully! Redirecting to payment...");
+      
+      // Call the onSubmit callback with form data
+      onSubmit(formData);
       
     } catch (error: any) {
       console.error('❌ Application submission failed:', error);
       
-      // Handle different error types
       let errorMessage = 'Submission failed. Please check your connection and try again.';
       
       if (error?.data?.message) {
@@ -339,7 +337,6 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
     );
   };
 
-  // Animation styles as CSS-in-JS object
   const animationStyles: React.CSSProperties = {
     animation: isAnimating ? 'none' : 'fadeIn 0.3s ease-out'
   };
@@ -377,18 +374,6 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
               />
             </div>
           </div>
-
-          {/* Error Banner */}
-          {isError && (
-  <div className="mt-3 p-2 bg-red-100 border border-red-300 rounded-lg">
-    <p className="text-red-700 text-sm font-medium flex items-center">
-      ⚠️ {'data' in (error as any) && (error as any).data?.message 
-          ? (error as any).data.message 
-          : 'Submission failed. Please try again.'}
-    </p>
-  </div>
-)}
-
         </div>
         
         {/* Application Form */}
@@ -477,6 +462,7 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
               </div>
             )}
 
+            {/* Other sections remain the same */}
             {/* Penalty Type Section */}
             {currentSection === 1 && (
               <div 
@@ -768,7 +754,6 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose }) => {
         </form>
       </div>
 
-      {/* Add CSS animation */}
       <style>{`
         @keyframes fadeIn {
           from { 

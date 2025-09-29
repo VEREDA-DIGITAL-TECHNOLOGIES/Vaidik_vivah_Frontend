@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useGetPlansQuery } from "../../Redux/Api/plan.api";
-import PlanForm from "../planform/PlanForm";
 
+import { useNavigate } from "react-router-dom";
 
 type Plan = {
   id: string;
@@ -40,18 +40,19 @@ const MembershipPlans: React.FC = () => {
   });
 
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
-  const [showApplicationForm, setShowApplicationForm] = useState(false);
-  const [selectedDiamondPlan, setSelectedDiamondPlan] = useState<Plan | null>(null);
+  // const [_, setShowApplicationForm] = useState(false);
+  // const [_, setSelectedDiamondPlan] = useState<Plan | null>(null);
 
-  const handleApplyNow = (plan: Plan) => {
-    setSelectedDiamondPlan(plan);
-    setShowApplicationForm(true);
-  };
+  // const handleApplyNow = (plan: Plan) => {
+  //   setSelectedDiamondPlan(plan);
+  //   setShowApplicationForm(true);
+  // };
 
-  const handleCloseForm = () => {
-    setShowApplicationForm(false);
-    setSelectedDiamondPlan(null);
-  };
+  // const handleCloseForm = () => {
+  //   setShowApplicationForm(false);
+  //   setSelectedDiamondPlan(null);
+  // };
+  const navigate=useNavigate();
 
   if (isLoading) {
     return (
@@ -191,19 +192,30 @@ const MembershipPlans: React.FC = () => {
                   </div>
 
                   {/* CTA Section - Only show button for Vivah Sansakar */}
-                  {isVivahSansakar && (
-                    <div className="p-6 pt-0">
-                      <button
-                        onClick={() => handleApplyNow(plan)}
-                        className="w-full py-3 bg-[#FD5C90] text-white rounded-lg font-semibold hover:bg-[#e04a7d] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                                  {isVivahSansakar && (
+                  <div className="p-6 pt-0">
+                    <button
+                      onClick={() => navigate("/login")}
+                      className="w-full py-3 bg-[#FD5C90] text-white rounded-lg font-semibold hover:bg-[#e04a7d] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                    >
+                      Apply Now - ₹1000
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        viewBox="0 0 24 24"
                       >
-                        Apply Now - ₹1000
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                        </svg>
-                      </button>
-                    </div>
-                  )}
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                )}
+
                 </div>
               </div>
             );
@@ -213,13 +225,7 @@ const MembershipPlans: React.FC = () => {
         
       </section>
 
-      {/* Application Form Popup */}
-      {showApplicationForm && selectedDiamondPlan && (
-        <PlanForm
-          plan={selectedDiamondPlan}
-          onClose={handleCloseForm}
-        />
-      )}
+      
     </>
   );
 };
