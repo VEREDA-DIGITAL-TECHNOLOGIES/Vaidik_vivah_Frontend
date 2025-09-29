@@ -1,8 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useCreateApplicationMutation } from '../../Redux/Api/application.api';
 import { toast } from "sonner";
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../Redux/store';
 
 interface FormData {
+  userId:string;
   planId: string;
   nom: string;
   fatherName: string;
@@ -44,9 +47,10 @@ interface DiamondPlanApplicationProps {
 
 const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubmit }) => {
   const [createApplication, { isLoading }] = useCreateApplicationMutation();
-  
+   const { user } = useSelector((state: RootState) => state.userReducer);
   const [formData, setFormData] = useState<FormData>({
     planId: plan.id,
+    userId:user!.userId,
     nom: '',
     fatherName: '',
     loginId: '',
@@ -67,7 +71,8 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
     partnerParentsIdPost: null,
     partnerParentsCertified: false,
   });
-
+  
+  // console.log("user data",user?.userId);
   const [currentSection, setCurrentSection] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isAnimating, setIsAnimating] = useState(false);
@@ -193,6 +198,8 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
       
       // Add all form fields
       submissionFormData.append('planId', plan.id);
+      submissionFormData.append('userId', user!.userId);
+
       submissionFormData.append('planName', plan.name);
       submissionFormData.append('nom', formData.nom);
       submissionFormData.append('fatherName', formData.fatherName);
@@ -229,6 +236,7 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
       submissionFormData.append('applicationFee', '1000');
 
       console.log('🚀 ===== VIVAH SANSAKAR APPLICATION SUBMISSION =====', {
+        userId:user?.userId,
         planId: plan.id,
         plan: plan.name,
         applicant: formData.nom,
