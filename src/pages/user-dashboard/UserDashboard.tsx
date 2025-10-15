@@ -53,15 +53,7 @@ const UserDashboard: React.FC = () => {
   };
 
   const items: TabsProps["items"] = [
-    {
-      key: "details",
-      label: (
-        <span>
-          <UserOutlined /> My Details
-        </span>
-      ),
-      children: <Mydetails />,
-    },
+    
     {
       key: "discover",
       label: (
@@ -124,6 +116,15 @@ const UserDashboard: React.FC = () => {
         </span>
       ),
       children: <FAQs />,
+    },
+    {
+      key: "details",
+      label: (
+        <span>
+          <UserOutlined /> My Details
+        </span>
+      ),
+      children: <Mydetails />,
     },
   ];
   

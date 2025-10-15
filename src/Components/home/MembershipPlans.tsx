@@ -94,7 +94,7 @@ const MembershipPlans: React.FC = () => {
       
       return {
         id: p.id,
-        name: isVivahSansakar ? "Vivah Sansakar" : p.planName,
+        name: isVivahSansakar ? "Registration for vedvivah" : p.planName,
         monthly: isVivahSansakar ? "₹1000" : `₹${monthlyPrice}`,
         discount: isVivahSansakar ? "₹1000" : `₹${discountPrice}`,
         features: p.featureList.map((f: string) => ({
@@ -132,7 +132,7 @@ const MembershipPlans: React.FC = () => {
         {/* Plans Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {plans.map((plan) => {
-            const isVivahSansakar = plan.name === "Vivah Sansakar";
+            const isVivahSansakar = plan.name === "Registration for vedvivah";
             const isSelected = selectedPlan === plan.id;
             
             return (
@@ -157,7 +157,7 @@ const MembershipPlans: React.FC = () => {
                   {/* Plan Header */}
                   <div className="flex flex-col p-4 items-center">
                     <div className="bg-gradient-to-r from-[#FFFFFF] to-[#FD5C90] text-black py-3 w-[250px] rounded-md shadow mb-4 flex justify-center flex-col items-center">
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">{plan.name}</h3>
                       <span className="text-gray-700 font-semibold">({plan.duration})</span>
                     </div>
                     <p className="text-gray-600 mt-2 text-sm text-center">{plan.description}</p>

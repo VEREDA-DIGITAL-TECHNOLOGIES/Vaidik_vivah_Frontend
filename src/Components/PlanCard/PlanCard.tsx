@@ -38,7 +38,7 @@ const PlanCard = ({
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   
   const isDiamondPlan = title === "Diamond";
-  const displayTitle = isDiamondPlan ? "Vivah Sansakar" : title;
+  const displayTitle = isDiamondPlan ? "Registration for vedvivah" : title;
 
   const getDuration = () => {
     if (isDiamondPlan) return "";
