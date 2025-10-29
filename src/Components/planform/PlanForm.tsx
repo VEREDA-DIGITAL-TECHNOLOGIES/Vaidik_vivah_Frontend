@@ -479,11 +479,11 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
               >
                 <h2 className="text-xl font-semibold text-gray-900 border-b pb-3 flex items-center">
                   <span className="bg-[#FD5C90] text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
-                  Penalty Type
+                  Acharya(Pandit ji) for VedVivah
                 </h2>
                 <div>
                   <label htmlFor="penaltyType" className="block text-sm font-medium text-gray-700 mb-3">
-                    Select Penalty Type *
+                    Select Option *
                   </label>
                   <select
                     id="penaltyType"
@@ -493,11 +493,11 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
                     disabled={isLoading}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FD5C90] focus:border-transparent transition-all duration-200 bg-white disabled:bg-gray-100"
                   >
-                    <option value="">Choose penalty type</option>
-                    <option value="home-simple">Home simple (1-2 penalty)</option>
-                    <option value="home-voluntary">Home voluntary (4-8 penalty)</option>
-                    <option value="maximize-hall">Maximize hall (simple 1-2 penalty)</option>
-                    <option value="maximize-hall-returns">Maximize hall returns (4-8 penalty)</option>
+                    <option value="">Select One Option</option>
+                    <option value="home-simple">Home Wedding(1-2 Acharya)</option>
+                    <option value="home-voluntary">Home VedVivah(3-4 Acharya)</option>
+                    <option value="maximize-hall">Banquet Hall(1-2 Acharya)</option>
+                    <option value="maximize-hall-returns">Banquet Hall VedVivah(3-4 Acharya)</option>
                   </select>
                   {errors.penaltyType && <p className="text-red-500 text-xs mt-1 flex items-center">⚠️ {errors.penaltyType}</p>}
                 </div>
