@@ -30,7 +30,7 @@ const Privacy = () => {
           </p>
           <p>Who we are
           </p>
-          <p className="pb-4">The App and Sites are operated by the “Wedlock Global Services” (also referred to in this policy as “we” or “us”) which includes all of which are controllers of personal information collected and processed through the Ved Vivah App and Sites.
+          <p className="pb-4">The App and Sites are operated by the “Vedvivah Global Services” (also referred to in this policy as “we” or “us”) which includes all of which are controllers of personal information collected and processed through the Ved Vivah App and Sites.
           </p>
 
           <h3 className="pb-4 font-semibold text-md">1. COLLECTION OF INFORMATION.
@@ -63,7 +63,7 @@ const Privacy = () => {
           </ul>
 
           <p className="pb-4">
-            (this could include, for example, your Facebook accounts). For more information about this, see “Linking other Accounts to Wedlock” in section 7 below.
+            (this could include, for example, your Facebook accounts). For more information about this, see “Linking other Accounts to Vedvivah” in section 7 below.
             Once you register, you will be able to review and change this information at any time just by logging in to Ved Vivah (other than your date of birth and location (which, if you have given Ved Vivah access to your location in your device settings, is automatically updated based on the location of your device)). It is your responsibility to ensure that your account details are kept up to date. If your phone number changes, please ensure that you update this in your account.
           </p>
 
@@ -219,7 +219,7 @@ const Privacy = () => {
 
           <h3 className="text-md font-semibold pb-4">Our Matching Algorithms
           </h3>
-          <p className="pb-4">Wedlock’s mission is to create kind and equitable relationships. We have developed matching algorithms to predict your compatibility with other users so we can show you people we think are a good match for you. We use different indications based on users’ profiles on our app (for example, how you swipe or whether you match with someone). We use these indications to recommend the most relevant profiles to everyone to maximise everyone’s chances of finding meaningful connections on our apps. Our matching algorithms are based on a range of factors and use machine learning to rank profiles for you to maximise your chance of finding compatible matches.</p>
+          <p className="pb-4">Vedvivah’s mission is to create kind and equitable relationships. We have developed matching algorithms to predict your compatibility with other users so we can show you people we think are a good match for you. We use different indications based on users’ profiles on our app (for example, how you swipe or whether you match with someone). We use these indications to recommend the most relevant profiles to everyone to maximise everyone’s chances of finding meaningful connections on our apps. Our matching algorithms are based on a range of factors and use machine learning to rank profiles for you to maximise your chance of finding compatible matches.</p>
           <p className="pb-4">We use the following data about you and other users to predict your compatibility with others and generate profile recommendations: the information you provide us about yourself in your profile such as age, distance or gender so we can show you people who are appropriate and are more likely to like you back; information about how you interact with our app to suggest to you people who are active and available to meet new people; and your device coordinates, which are necessary to understand your proximity to other members. </p>
 
           <p className="pb-4">The legal basis for processing profile and proximity information is that this is necessary for the provision of our contractual services. Where we process information about your app activity, and specifically our legitimate interest in generating more personalised and relevant recommendations for who you can match with in our App. </p>
@@ -333,7 +333,7 @@ const Privacy = () => {
           </ul>
           <p>We cannot guarantee the security of your personal data while it is being transmitted to our site and any transmission is at your own risk.</p>
           <h3>
-            7. LINKING OTHER ACCOUNTS TO WEDLOCK.
+            7. LINKING OTHER ACCOUNTS TO Vedvivah.
           </h3>
           <p className="pb-4">
             Using your social media details to sign in to Ved Vivah
@@ -389,7 +389,7 @@ const Privacy = () => {
           <p>
             Effective date
           </p>
-          <p>This Privacy Policy was last updated on: 7th August 2024</p>
+          <p>This Privacy Policy was last updated on: 7th August 2025</p>
 
 
 

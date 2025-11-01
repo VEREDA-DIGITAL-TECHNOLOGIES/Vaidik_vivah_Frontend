@@ -125,11 +125,7 @@ const Cookiespage = () => {
           <h3 className="text-md font-bold pb-4">3. How can you refuse or withdraw consent to the use of Cookies?</h3>
           <p className="pb-4">When using our Websites, you are in control and may refuse to accept Cookies at any time by managing your preferences in the “Manage Cookies” section (linked at the bottom of our Websites) or by altering the settings on your internet browser (for example Internet Explorer, Chrome and Firefox).</p>
           <p className="pb-4">If you would like to know more about Cookies and how to refuse Cookies, the following websites provide useful information:</p>
-          <ul className="list-disc pl-4 underline pb-4">
-            <li><Link to={"https://www.allaboutcookies.org"}>https://www.allaboutcookies.org</Link></li>
-            <li><Link to={"https://www.youronlinechoices.eu"}>www.youronlinechoices.eu</Link></li>
-            <li><Link to={"http://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html"}>http://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html</Link></li>
-          </ul>
+          
           <p className="pb-4">When using our App,When using our App,you are also in control and may refuse to accept Cookies at any time by managing your Privacy Preferences in your Profile in the App (under “Settings” {`>`} “Security & Privacy” {`>`} “Privacy Settings” on iOS and Android).</p>
           <p>Please note that if you choose not to permit Cookies some areas of our Websites or App may not function properly or be accessible.</p>
         </div>

@@ -78,7 +78,7 @@ const ChildSafety = () => {
                         <li className="pb-4">
                             We have designated a Child Safety Representative who is responsible for addressing child safety concerns and taking necessary actions on reported content.
                             This representative serves as the point of contact for Google Play notifications regarding CSAE content on our platform.
-                            Contact details for child safety concerns: (info@wedlock.au)
+                            Contact details for child safety concerns: (info@vedvivah.in)
                         </li>
                     </ul>
 
@@ -99,7 +99,7 @@ const ChildSafety = () => {
                             By using Ved Vivah, users agree to comply with our Child Safety Policy. Any violations may result in account termination, legal action, or reporting to authorities.
                         </li>
                     </ul>
-                    <h4>For any concerns related to child safety, please reach out to our Child Safety Team at <span className="font-semibold underline">info@wedlock.au.</span> </h4>
+                    <h4>For any concerns related to child safety, please reach out to our Child Safety Team at <span className="font-semibold underline">info@vedvivah.au.</span> </h4>
 
                 </div>
             </div>
