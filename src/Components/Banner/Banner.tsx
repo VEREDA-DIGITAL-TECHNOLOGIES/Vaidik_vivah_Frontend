@@ -64,39 +64,40 @@ export default function BannerPage() {
 
     return (
         <div className="w-full">
-            
+  {/* Banner Section */}
+  <div className="pt-0 flex items-center justify-center bg-[#f7b2c8]">
+    {banners.length === 0 ? (
+      <p className="text-center text-gray-600 py-10">No banners available.</p>
+    ) : (
+      <div className="relative w-[400px] h-[120px]  overflow-hidden rounded-2xl shadow-md">
+        {/* Rotating carousel */}
+        {banners.map((photo, idx) => (
+          <img
+            key={idx}
+            src={photo}
+            alt={`Banner ${idx + 1}`}
+            className={`absolute top-0 left-0 w-full h-full  object-fill transition-opacity duration-1000 ${
+              idx === current ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
 
-            {/* Banner Section */}
-            <div className="pt-0"> {/* padding to avoid navbar overlap */}
-                {banners.length === 0 ? (
-                    <p className="text-center text-gray-600 py-10">No banners available.</p>
-                ) : (
-                    <div className="relative w-full h-[100px] overflow-hidden">
-                        {/* Rotating carousel */}
-                        {banners.map((photo, idx) => (
-                            <img
-                                key={idx}
-                                src={photo}
-                                alt={`Banner ${idx + 1}`}
-                                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${idx === current ? "opacity-100" : "opacity-0"
-                                    }`}
-                            />
-                        ))}
-
-                        {/* Dots Indicator */}
-                        <div className="absolute bottom-4 w-full flex justify-center space-x-2">
-                            {banners.map((_, idx) => (
-                                <button
-                                    key={idx}
-                                    className={`w-3 h-3 rounded-full ${idx === current ? "bg-blue-600" : "bg-gray-400"
-                                        }`}
-                                    onClick={() => setCurrent(idx)}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                )}
-            </div>
+        {/* Dots Indicator */}
+        <div className="absolute bottom-3 sm:bottom-4 w-full flex justify-center space-x-2">
+          {banners.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+                idx === current ? "bg-blue-600 scale-110" : "bg-gray-400"
+              }`}
+              onClick={() => setCurrent(idx)}
+            />
+          ))}
         </div>
+      </div>
+    )}
+  </div>
+</div>
+
     );
 }
