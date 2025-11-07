@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { ExclamationTriangleIcon, CheckCircleIcon, ClockIcon } from "@heroicons/react/24/outline";
 import { useDocumentgetMutation, useDocumentdeleteMutation } from "../../Redux/Api/document.api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface DocumentData {
     id: string;
@@ -171,32 +171,40 @@ const Documentshow: React.FC = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap gap-3">
-                        {document.isVerified === 'verified' ? (
-                            <button
-                                onClick={goToDashboard}
-                                className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow"
-                            >
-                                Go to Dashboard
-                            </button>
-                        ) : (
-                            <button
-                                disabled
-                                className="bg-gray-300 text-gray-600 px-5 py-2 rounded-lg shadow cursor-not-allowed"
-                            >
-                                {document.isVerified === 'rejected'
-                                    ? 'Please upload new documents'
-                                    : 'Verification in progress (2-3 days)'}
-                            </button>
-                        )}
+                                    <div className="flex flex-wrap gap-3">
+                {document.isVerified === 'verified' ? (
+                    <button
+                    onClick={goToDashboard}
+                    className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow"
+                    >
+                    Go to Dashboard
+                    </button>
+                ) : document.isVerified === 'suspended' ? (
+                    <Link
+                    to="/user-suspended"
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg shadow"
+                    >
+                   Account Suspended — Contact Support
+                    </Link>
+                ) : (
+                    <button
+                    disabled
+                    className="bg-gray-300 text-gray-600 px-5 py-2 rounded-lg shadow cursor-not-allowed"
+                    >
+                    {document.isVerified === 'rejected'
+                        ? 'Please upload new documents'
+                        : 'Verification in progress (2-3 days)'}
+                    </button>
+                )}
 
-                        <button
-                            onClick={() => setConfirmOpen(true)}
-                            className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg shadow"
-                        >
-                            Delete Document
-                        </button>
-                    </div>
+                <button
+                    onClick={() => setConfirmOpen(true)}
+                    className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg shadow"
+                >
+                    Delete Document
+                </button>
+                </div>
+
                 </div>
             )}
 
@@ -204,7 +212,7 @@ const Documentshow: React.FC = () => {
                 <div className="text-center py-8">
                     <p className="text-gray-500 mb-4">No document uploaded yet.</p>
                     <button
-                        onClick={() => navigate('/upload-document')} // Adjust the route as needed
+                        onClick={() => navigate('/document-verification')} // Adjust the route as needed
                         className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow"
                     >
                         Upload Document

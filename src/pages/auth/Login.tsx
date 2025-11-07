@@ -28,7 +28,6 @@ type FormData = z.infer<typeof loginSchema>;
 
 const Login = () => {
   const [isExclusive, setExclusive] = useState(false);
-
   useEffect(() => {
     const isExclusive = localStorage.getItem("isExclusive");
     if (isExclusive) {
@@ -38,7 +37,9 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data: docData } = useDocumentcheckexistsQuery();
+  const { data } = useDocumentcheckexistsQuery();
+  const value=data?.data;
+  console.log("doc data are ",value?.isVerified)
   const [login, { isLoading }] = useLoginMutation();
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
@@ -98,10 +99,13 @@ const Login = () => {
           } = successData.user;
 
           // Check document status
-          if (docData?.exists) {
+          if (value?.exists) {
             // If document uploaded
-            if (docData.data?.isVerified === "verified") {
+            if (value?.isVerified === "verified") {
               navigate("/user-dashboard");
+            }
+           else if (value?.isVerified === "suspended") {
+              navigate("/user-suspended");
             } else {
               // Not verified (pending/rejected)
               navigate("/document-show");
@@ -119,7 +123,7 @@ const Login = () => {
               navigate('/other-details');
             } else {
               // If all forms filled but no document → go to upload
-              navigate("/upload-document");
+              navigate("/document-show");
             }
           }
         }

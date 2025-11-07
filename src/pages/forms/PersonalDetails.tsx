@@ -36,7 +36,7 @@ const PersonalDetails: React.FC = () => {
     const [maritalStatus, setMaritalStatus] = useState<{ id: string; value: string }[]>([]);
 
     const { data: maritalStatusData } = useGetMaritalStatusQuery();
-    console.log(maritalStatusData);
+    console.log("marital Status Data are ",maritalStatusData);
 
     useEffect(() => {
         const isExclusive = localStorage.getItem("isExclusive");

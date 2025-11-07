@@ -3,7 +3,16 @@ import { apiSlice } from './apiSlice';
 interface DocumentData {
   id: string;
   documentType: string;
-  isVerified: string; // or boolean depending on your backend
+  exists: boolean;
+  isVerified: string; // 'pending', 'verified', 'rejected', 'suspended'
+  
+}
+interface DocumentDatacheckres {
+  id: string;
+  documentType: string;
+  exists: boolean;
+  isVerified: string; // 'pending' | 'verified' | 'rejected' | 'suspended'
+  data?: DocumentData;
 }
 
 interface DocumentCheckResponse {
@@ -28,7 +37,7 @@ export const documentApi = apiSlice.injectEndpoints({
         method: 'GET',
       }),
     }),
-    documentcheckexists: build.query<DocumentCheckResponse, void>({
+    documentcheckexists: build.query<DocumentDatacheckres, void>({
       query: () => ({
         url: 'uploadDocuments/check-document',
         method: 'GET',

@@ -40,6 +40,7 @@ import Cookiespage from "./pages/footer/CookiesPolicy";
 import ChildSafety from "./pages/footer/ChildSafety";
 import DeleteAccount from "./pages/footer/DeleteAccount";
 import Mission from "./pages/footer/Mission";
+import UserSuspended from "./pages/auth/UserSuspended";
 
 
 
@@ -213,10 +214,13 @@ function App() {
           {/* <Route path="/" element={  <Home />} /> */}
           
           <Route path="/login" element={<Login />} />
+          <Route path="/user-suspended" element={<UserSuspended />} />
 
           <Route element={<ProtectedRoute isAuthenticated={!accessToken} />}>
             <Route path="/questions" element={<Question />} />
             <Route path="/register" element={<Register />} />
+            
+
             <Route path="/create-password" element={<CreatePassword />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/change-password" element={<ChangePassword />} />
