@@ -14,7 +14,7 @@ import { toast } from 'sonner'
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../utils/firebaseConfig.ts";
-import { useDocumentcheckexistsQuery } from "../../Redux/Api/document.api";
+
 import { z } from 'zod'
 
 import { LoadingOutlined } from '@ant-design/icons';
@@ -37,9 +37,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data } = useDocumentcheckexistsQuery();
-  const value=data?.data;
-  console.log("doc data are ",value?.isVerified)
+  
   const [login, { isLoading }] = useLoginMutation();
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
@@ -98,19 +96,8 @@ const Login = () => {
             isOtherFormFilled
           } = successData.user;
 
-          // Check document status
-          if (value?.exists) {
-            // If document uploaded
-            if (value?.isVerified === "verified") {
-              navigate("/user-dashboard");
-            }
-           else if (value?.isVerified === "suspended") {
-              navigate("/user-suspended");
-            } else {
-              // Not verified (pending/rejected)
-              navigate("/document-show");
-            }
-          } else {
+          
+          
             if (!isPersonalFormFilled) {
               navigate('/personal-details');
             } else if (!isQualificationFormFilled) {
@@ -122,10 +109,10 @@ const Login = () => {
             } else if (!isOtherFormFilled) {
               navigate('/other-details');
             } else {
-              // If all forms filled but no document → go to upload
-              navigate("/document-show");
+              // If all forms filled go to user-dashboard
+              navigate("/user-dashboard");
             }
-          }
+          
         }
       }
     } catch (error) {
