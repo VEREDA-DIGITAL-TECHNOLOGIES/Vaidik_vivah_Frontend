@@ -20,7 +20,7 @@ const otherDetailsSchema = z.object({
     caste: z.string().min(1, "Caste is required"),
     community: z.string().min(1, "Community is required"),
     dateOfBirth: z.string().min(1, "Date of Birth is required"),
-    timeOfBirth: z.string().min(1, "Time of Birth is required"),
+    timeOfBirth: z.string().optional().default("00:00"),
     religion: z.string().min(1, "Religion is required"),
     placeOfBirth: z.string().min(1, "Place of Birth is required"),
 });
@@ -88,6 +88,9 @@ const OtherDetails: React.FC = () => {
         formState: { errors },
     } = useForm({
         resolver: zodResolver(otherDetailsSchema),
+        defaultValues: {
+            timeOfBirth: "00:00" // This ensures the field always has a value
+        }
     });
 
 
@@ -103,7 +106,14 @@ const OtherDetails: React.FC = () => {
     const onSubmit = async (data: any) => {
         try {
 
-            const res = await otherDetails(data);
+            const dataToSend = {
+            ...data,
+            timeOfBirth: data.timeOfBirth || "00:00"
+        };
+
+        console.log("Data to send:", dataToSend);
+
+        const res = await otherDetails(dataToSend);
 
             if ('error' in res && res.error) {
                 const errorData = res.error as FetchBaseQueryErrorWithData;

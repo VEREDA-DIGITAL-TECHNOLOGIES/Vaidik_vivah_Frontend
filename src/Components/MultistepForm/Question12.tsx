@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const question = [
     {
@@ -6,9 +6,9 @@ const question = [
         text: "Which spiritual organization do you follow?",
         options: [
             "ISKCON",
-            "Art of Living",
+            "Isha Foundation",
             "Brahma Kumaris",
-            "Ramakrishna Mission",
+            "Premanand Ji Maharaj",
             "Gayatri Pariwar",
             "Other",
         ],
@@ -25,42 +25,17 @@ type QuestionProps = {
 
 const Question12: React.FC<QuestionProps> = ({
     selectedOptions,
-    handleOptionChange,
+    handleOptionChange
 }) => {
     const getSelectedValue = (questionId: number) => {
         const selected = selectedOptions.find((sel) => sel.questionId === questionId);
         return typeof selected?.answerValue === "string" ? selected.answerValue : "";
     };
 
-    const rawSelected = getSelectedValue(9);
-    const isGayatriSelected = rawSelected.startsWith("Gayatri Pariwar");
-    const initialDikshaId = isGayatriSelected && rawSelected.includes(" - ")
-        ? rawSelected.split(" - ")[1]
-        : "";
+    
+    
 
-    const [dikshaId, setDikshaId] = useState(initialDikshaId);
-
-    useEffect(() => {
-        if (isGayatriSelected) {
-            const updatedValue =
-                dikshaId.trim() !== ""
-                    ? `Gayatri Pariwar - ${dikshaId.trim()}`
-                    : "Gayatri Pariwar";
-            handleOptionChange(9, updatedValue);
-        }
-    }, [dikshaId]);
-
-    const handleSelectChange = (value: string) => {
-        if (value !== "Gayatri Pariwar") {
-            handleOptionChange(9, value);
-            setDikshaId(""); // clear if switching away
-        } else {
-            const updatedValue = dikshaId.trim()
-                ? `Gayatri Pariwar - ${dikshaId.trim()}`
-                : "Gayatri Pariwar";
-            handleOptionChange(9, updatedValue);
-        }
-    };
+    
 
     return (
         <div className="text-left md:text-center">
@@ -73,8 +48,8 @@ const Question12: React.FC<QuestionProps> = ({
                     <div className="relative py-4 flex justify-center">
                         <select
                             title="options"
-                            value={isGayatriSelected ? "Gayatri Pariwar" : rawSelected}
-                            onChange={(e) => handleSelectChange(e.target.value)}
+                           value={getSelectedValue(ques.id)}
+                          onChange={(e) => handleOptionChange(ques.id, e.target.value)}
                             className="w-full appearance-none bg-[#FD5C90] text-white border border-[#FD5C90] rounded-xl px-5 py-3 text-lg shadow-md focus:outline-none focus:ring-2 focus:ring-[#FD5C90] transition duration-200"
                         >
                             <option value="" disabled className="text-white">
@@ -104,20 +79,7 @@ const Question12: React.FC<QuestionProps> = ({
                         </div>
                     </div>
 
-                    {isGayatriSelected && (
-                        <div className="mt-4 flex flex-col items-center">
-                            <label className="text-lg font-medium mb-2">
-                                Diksha ID (Optional)
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter your Diksha ID"
-                                value={dikshaId}
-                                onChange={(e) => setDikshaId(e.target.value)}
-                                className="w-full md:w-1/2 px-4 py-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FD5C90]"
-                            />
-                        </div>
-                    )}
+                    
                 </div>
             ))}
         </div>

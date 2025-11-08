@@ -92,7 +92,7 @@ const Profile: React.FC = () => {
 <ConfigProvider
               theme={{
                 token: {
-                  colorPrimary: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                  colorPrimary: `${isExclusive ? "#60457E" : "#FD5C90"}`,
                 },
                 components: {
                   Tabs: {

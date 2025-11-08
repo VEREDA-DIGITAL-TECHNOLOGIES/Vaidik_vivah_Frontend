@@ -18,7 +18,7 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({
     return (
         <div className="h-auto py-4 rounded-xl mb-4 xl:mb-0 bg-white">
             <div
-                className={`justify-center border-b border-solid font-Proxima-Nova-Bold border-zinc-300 px-6 py-1 text-lg leading-6 tracking-wide  ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                className={`justify-center border-b border-solid font-Proxima-Nova-Bold border-zinc-300 px-6 py-1 text-lg leading-6 tracking-wide  ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                     } max-md:max-w-full max-md:px-5 md:text-xl`}
             >
                 {title}
@@ -27,7 +27,7 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({
                 {Object.entries(data).map(([key, value]) => (
                     <div key={key} className="mt-4 flex justify-between gap-0 max-md:flex-wrap">
                         <div className="text-md flex-1 font-normal leading-8 tracking-wide text-slate-600 md:text-xl flex  items-center gap-2">
-                            {icons[key] && <span className={`${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                            {icons[key] && <span className={`${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                                 }`}>{icons[key]}</span>}
                             {key.split(/(?=[A-Z])/).join(" ")} {/* Converts camelCase to readable text */}
                         </div>

@@ -217,7 +217,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
 
           <div className="mt-2.5 flex flex-wrap items-center gap-2.5 self-start text-base font-medium leading-4 text-slate-900">
             <div
-              className={`self-stretch text-xl font-bold leading-10  ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+              className={`self-stretch text-xl font-bold leading-10  ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                 }
  lg:text-3xl`}
             >
@@ -242,7 +242,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                     <>
                       <button
                         onClick={() => acceptConnection(userId)}
-                        className="rounded-[0.5rem] bg-[#007EAF] px-4 py-2 text-white"
+                        className="rounded-[0.5rem] bg-[#FD5C90] px-4 py-2 text-white"
                       >
                         {
                           isLoadingAccept ? (
@@ -325,7 +325,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 connectionStatus !== "accepted" && (
                   <button
                     onClick={() => createConnection(userId)}
-                    className={`rounded-[0.5rem] ${isExclusive ? "bg-[#60457E]" : "bg-[#007EAF]"
+                    className={`rounded-[0.5rem] ${isExclusive ? "bg-[#60457E]" : "bg-[#FD5C90]"
                       } px-4 py-2 text-white`}
                   >
                     {isLoadingConnection ? (
@@ -340,7 +340,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
             </div>
           </div>
 
-          <div className="mt-6 flex flex-col rounded-xl bg-cyan-600 bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
+          <div className="mt-6 flex flex-col rounded-xl bg-[#FD5C90] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
             <div className="text-base font-bold leading-6 tracking-wide text-gray-900 text-opacity-90 max-md:max-w-full">
               About{" "}
               {profileData?.basic_and_lifestyle?.displayName ||
@@ -415,7 +415,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
           <div className="row-span-3 lg:row-span-3 mb-4  xl:mb-0 rounded-xl bg-white ">
             <div className="flex flex-col rounded-xl bg-white pb-6 shadow-sm">
               <div
-                className={`justify-center border-b font-Proxima-Nova-Bold border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide  ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                className={`justify-center border-b font-Proxima-Nova-Bold border-solid border-zinc-300 px-6 py-4 text-lg leading-6 tracking-wide  ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                   } max-md:px-5 md:text-xl`}
               >
                 Personal Background
@@ -423,7 +423,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
               <div className="mt-6 flex flex-col px-6 gap-4 max-md:px-5">
                 <div className="flex items-center gap-1 whitespace-nowrap">
                   <div
-                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                       } md:text-3xl`}
                   >
                     <CiMap />
@@ -433,12 +433,12 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                   </div>
                 </div>
 
-                <div className="text-md ml-8 mt-2 justify-center self-start rounded-[100px] bg-blue-50 px-3 py-1.5 text-center font-medium capitalize leading-7 text-cyan-600 max-md:ml-2.5 md:text-xl">
+                <div className="text-md ml-8 mt-2 justify-center self-start rounded-[100px] bg-blue-50 px-3 py-1.5 text-center font-medium capitalize leading-7 text-[#FD5C90] max-md:ml-2.5 md:text-xl">
                   {profileData?.personal_background?.height}
                 </div>
                 <div className="mt-6 flex items-center gap-1 whitespace-nowrap">
                   <div
-                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                       } md:text-3xl`}
                   >
                     <CiMap />
@@ -447,12 +447,12 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                     Weight
                   </div>
                 </div>
-                <div className="text-md ml-8 mt-2 justify-center self-start rounded-[100px] bg-blue-50 px-3 py-1.5 text-center font-medium capitalize leading-7 text-cyan-600 max-md:ml-2.5 md:text-xl">
+                <div className="text-md ml-8 mt-2 justify-center self-start rounded-[100px] bg-blue-50 px-3 py-1.5 text-center font-medium capitalize leading-7 text-[#FD5C90] max-md:ml-2.5 md:text-xl">
                   {profileData?.personal_background?.weight}
                 </div>
                 <div className="mt-6 flex items-center gap-1">
                   <div
-                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                       } md:text-3xl`}
                   >
                     <CiMap />
@@ -461,12 +461,12 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                     Body Type
                   </div>
                 </div>
-                <div className="text-md ml-8 mt-2 flex justify-center gap-1.5 self-start rounded-[100px] border border-solid border-gray-200 bg-blue-50 bg-opacity-50 px-5 py-2 font-medium capitalize leading-7 text-cyan-600 max-md:ml-2.5 md:py-4 md:text-xl">
+                <div className="text-md ml-8 mt-2 flex justify-center gap-1.5 self-start rounded-[100px] border border-solid border-gray-200 bg-blue-50 bg-opacity-50 px-5 py-2 font-medium capitalize leading-7 text-[#FD5C90] max-md:ml-2.5 md:py-4 md:text-xl">
                   {profileData?.personal_background?.bodyType}
                 </div>
                 <div className="mt-6 flex items-center gap-1 whitespace-nowrap text-xl leading-8 tracking-wide text-slate-600">
                   <div
-                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                       } md:text-3xl`}
                   >
                     <IoLanguage />
@@ -481,7 +481,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 </div>
                 <div className="mt-6 flex items-center gap-1 text-xl leading-8 tracking-wide text-slate-600">
                   <div
-                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                       } md:text-3xl`}
                   >
                     {" "}
@@ -496,7 +496,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 </div>
                 <div className="mt-6 flex items-center gap-1 text-xl leading-8 tracking-wide text-slate-600">
                   <div
-                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                       } md:text-3xl`}
                   >
                     {" "}
@@ -512,7 +512,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 </div>
                 <div className="mt-6 flex items-center gap-1 whitespace-nowrap">
                   <div
-                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                       } md:text-3xl`}
                   >
                     <CiMap />
@@ -526,7 +526,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 </div>
                 <div className="mt-6 flex items-center gap-2 whitespace-nowrap">
                   <div
-                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+                    className={`text-xl leading-8 ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                       } md:text-3xl`}
                   >
                     <CiMap />
@@ -596,7 +596,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
         <div className="h-auto py-4 rounded-xl">
           <div className=" flex max-w-[499px] flex-col pb-9 leading-8 text-slate-900">
             <div
-              className={`w-full text-lg font-Proxima-Nova-Bold leading-[110%]  ${isExclusive ? "text-[#60457E]" : "text-[#007EAF]"
+              className={`w-full text-lg font-Proxima-Nova-Bold leading-[110%]  ${isExclusive ? "text-[#60457E]" : "text-[#FD5C90]"
                 } max-md:max-w-full md:text-xl`}
             >
               Interest and hobbies

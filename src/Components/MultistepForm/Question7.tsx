@@ -14,7 +14,7 @@ type SelectedOption = {
 const question = [
     {
         id: 5,
-        text: "I am looking for a partner of age",
+        text: "I am looking for a partner of age ",
         summary:
             "Specifying the age range of your ideal partner helps us connect you with individuals who match your preferences",
         options: Array.from({ length: 85 - 18 + 1 }, (_, i) => String(i + 18)),
@@ -116,6 +116,8 @@ const Question7: React.FC<QuestionProps> = ({
                     <p className="text-[#FFFFFF90]">{ques.summary}</p>
 
                     <div className="md:w-auto py-6 flex items-center justify-center space-x-4">
+                       
+                      <p className="text-base whitespace-nowrap font-bold text-gray-800">From age</p>
                         <Select
                             options={ageOptions}
                             styles={customSelectStyles}
@@ -130,7 +132,8 @@ const Question7: React.FC<QuestionProps> = ({
                         />
 
                         <span className="text-white">{ques.text2}</span>
-
+                       
+                               <p className="text-base whitespace-nowrap font-bold text-gray-800">To age</p>
                         <Select
                             options={ageOptions1}
                             styles={customSelectStyles}
