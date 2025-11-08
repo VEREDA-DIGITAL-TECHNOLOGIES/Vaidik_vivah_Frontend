@@ -891,17 +891,17 @@ const MyDetails = () => {
                                 </div>
 
                                 <div className="mt-4 flex  gap-2.5 whitespace-nowrap  capitalize tracking-wide max-md:pr-5 flex-wrap">
-                                     {/* {myDetails?.interest_and_hobbies?.map(
-                                    //    (interest: string) => (
-                                      //      <div
-                                      //          key={interest}
-                                      //          className="justify-center rounded-[100px] bg-gray-200 px-3 py-1.5"
-                                     //       >
-                                     //           {interest}
-                                     //       </div>
-                                   //     )
-                                   // )}  */}
-                                        <div>{myDetails?.interest_and_hobbies}</div>
+                                     {myDetails?.interest_and_hobbies?.map(
+                                       (interest: string) => (
+                                           <div
+                                               key={interest}
+                                               className="justify-center rounded-[100px] bg-gray-200 px-3 py-1.5"
+                                           >
+                                               {interest}
+                                           </div>
+                                       )
+                                   )} 
+                                       
                                     
                                         
 
