@@ -25,7 +25,7 @@ import {
 } from "@ant-design/icons";
 import ChatScreen from "../chat/ChatScreen";
 import BannerPage from "../../Components/Banner/Banner";
-import { useDocumentcheckexistsQuery } from "../../Redux/Api/document.api";
+
 
 
 
@@ -42,27 +42,8 @@ const UserDashboard: React.FC = () => {
       setIsExclusive(true);
     }
   }, [user]);
-  // check user verified or suspended
-  const { data } = useDocumentcheckexistsQuery();
-    const value=data?.data;
-    console.log("data are",data)
-     useEffect(() => {
-   
 
-    console.log("doc data are", value?.isVerified);
 
-    // Check document status
-    if (value?.exists) {
-      if (value?.isVerified === "verified") {
-        navigate("/user-dashboard");
-      } else if (value?.isVerified === "suspended") {
-        navigate("/user-suspended");
-      } else {
-        // Not verified (pending/rejected)
-        navigate("/document-show");
-      }
-    } 
-  }, [ value, navigate]);
 
   // Get the current tab from URL parameters
   const params = new URLSearchParams(location.search);

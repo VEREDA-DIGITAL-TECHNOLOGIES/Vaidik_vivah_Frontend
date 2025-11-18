@@ -6,14 +6,14 @@ importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js");
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCWu-erLUsLXFSxbD-xKLbS0j3Sd5veNFQ",
-    authDomain: "vaidikvibah.firebaseapp.com",
-    databaseURL: "https://vaidikvibah-default-rtdb.firebaseio.com",
-    projectId: "vaidikvibah",
-    storageBucket: "vaidikvibah.firebasestorage.app",
-    messagingSenderId: "46448607357",
-    appId: "1:46448607357:web:f4601196fab75bfacd7114",
-    measurementId: "G-BFY5SQQT5J"
+  apiKey: "AIzaSyBW-74U1EYlfU0Y5KT-bFu-goWYk_VadJg",
+  authDomain: "ved-vivah-7ae12.firebaseapp.com",
+  databaseURL: "https://ved-vivah-7ae12-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ved-vivah-7ae12",
+  storageBucket: "ved-vivah-7ae12.firebasestorage.app",
+  messagingSenderId: "1024620095064",
+  appId: "1:1024620095064:web:f815fb002df84044ae0c2d",
+  measurementId: "G-V8JGSR13QP"
 };
 
 firebase.initializeApp(firebaseConfig);

@@ -66,8 +66,6 @@ const Photoupload = lazy(() => import("./pages/forms/PhotoUpload"));
 const Other = lazy(() => import("./pages/forms/OtherDetails"));
 const Success = lazy(() => import("./pages/forms/SuccessPage"));
 const UserDashboard = lazy(() => import("./pages/user-dashboard/UserDashboard"));
-const Document = lazy(() => import("./pages/document-verification/Document"));
-const Documentshow = lazy(() => import("./pages/document-verification/Documentshow"));
 
 
 
@@ -138,7 +136,7 @@ function App() {
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
       const token = await getToken(messaging, {
-        vapidKey: 'BEmEk6pqL4wqupnLzIRrwvOu53SycF_ZIacvRrE6sa3lE18wAc4q9tx8FpmwS-VGFBx_tmEcV9cZWGgx27l5RWA'
+        vapidKey: 'BApCuSOwpyH42FM4URJTY9TZEB8pJHo-kL2bVBaICgGjaLQu3jK_Cwti8WLnAmUyhFMeT8KcrmoAFaXISXaq-qM'
       });
 
       localStorage.setItem("fcmToken", token!);
@@ -267,8 +265,7 @@ function App() {
             
           
            
-           <Route path="/document-verification" element={<Document />} />
-            <Route path="/document-show" element={<Documentshow />} /> 
+           
             <Route path="/chats" element={<ChatRoom />} />
             <Route path="/chat/:id" element={<Messageuser />} /> 
             

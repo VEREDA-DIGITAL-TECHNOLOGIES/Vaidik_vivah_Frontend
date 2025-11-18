@@ -127,7 +127,7 @@ const OtherDetails: React.FC = () => {
 
                 const successData = res.data as ApiResponse;
                 toast.success(successData.message);
-                navigate('/document-verification');
+                navigate('/user-dashboard');
             }
 
         } catch (error) {

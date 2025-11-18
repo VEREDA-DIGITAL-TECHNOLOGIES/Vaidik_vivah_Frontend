@@ -61,6 +61,7 @@ export default function ChatScreen() {
 
         const unsubscribeDB = onValue(usersRef, async (snapshot) => {
             const data = snapshot.val();
+           
             if (data) {
                 const rawUsers: UserModel[] = Object.entries(data).map(([id, user]) => ({
                     id,

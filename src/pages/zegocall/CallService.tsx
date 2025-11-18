@@ -267,7 +267,11 @@ class CallService {
             status: "pending",
             receiverImg: profileImage,
         };
-
+                // if (!receiverId || !this.userId) {
+                //     console.log(receiverId,this.userId)
+                // console.error('Missing user info for call');
+                // return;
+                // }
         await set(ref(db, `calls/${receiverId}`), { ...callData, timestamp: serverTimestamp() });
         await set(ref(db, `calls/${this.userId}`), { ...callData, isOutgoing: true });
 

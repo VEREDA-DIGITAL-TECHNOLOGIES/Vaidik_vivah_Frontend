@@ -63,14 +63,24 @@
 
 
 
+
+import { useEffect } from "react";
 import CallService from "../zegocall/CallService";
 import { Phone, Video } from "lucide-react";
 
 
 function CallButton({ userId, userName, userImage }: any) {
+    
+
+   useEffect(() => {
+    // Initialize call service once on this page
+    CallService.initialize();
+  }, []);
+    
 
     // console.log("here call details are ",userId,userName,userImage);
     const handleStartVideoCall = () => {
+         console.log(`reciver id : ${userId}`);
         CallService.startCall({
             receiverId: userId,
             receiverName: userName,
