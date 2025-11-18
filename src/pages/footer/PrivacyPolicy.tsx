@@ -1,5 +1,3 @@
-
-
 const Privacy = () => {
   const currentDate = new Date().toDateString();
   return (
@@ -20,387 +18,696 @@ const Privacy = () => {
           <Nav activeSectionData={"PRIVACY"} />
         </div>
         <div className=" flex flex-col items-start md:pr-10">
-          <h2 className="font-bold text-md pb-4 ">Privacy Policy</h2>
-          <p className="pb-4">Welcome to the Ved Vivah Privacy Policy (“Policy”)! This explains how we collect, store, protect, and share your information, and with whom we share it. We suggest you read this in conjunction with our Terms and Conditions of Use.</p>
+          <h2 className="font-bold text-md pb-4">Privacy Policy</h2>
 
-          <p className="pb-4">Whilst you’re enjoying the Ved Vivah mobile application (including the desktop version) (“App”), our websites and microsites (such as Ved Vivah.au) or using our digital products and services (such as our competitions or surveys) (together, referred to in this Privacy Policy as our “Sites”), we collect some information about you. In addition, you may choose to use the App or Sites to share information with other users, including your friends and contacts (“Users”). We may also need to share your information sometimes.
-          </p>
-
-          <p className="pb-4">The App and Sites are global, and your information will be sent to and used in the Australia regardless of the country you reside in. This Policy explains how we protect your personal data when we transfer it overseas, so please read very carefully!
-          </p>
-          <p>Who we are
-          </p>
-          <p className="pb-4">The App and Sites are operated by the “Vedvivah Global Services” (also referred to in this policy as “we” or “us”) which includes all of which are controllers of personal information collected and processed through the Ved Vivah App and Sites.
+          <p className="pb-4">
+            Welcome to the Ved Vivah Privacy Policy (“Policy”)! This explains
+            how we collect, store, protect, and share your information, and with
+            whom we share it. We suggest you read this in conjunction with our
+            Terms and Conditions of Use.
           </p>
 
-          <h3 className="pb-4 font-semibold text-md">1. COLLECTION OF INFORMATION.
+          <p className="pb-4">
+            Whilst you’re enjoying the Ved Vivah mobile application, our
+            websites and microsites (such as VedVivah.com), or using our digital
+            products and services (such as our competitions or surveys)
+            (together, referred to in this Privacy Policy as our “Sites”), we
+            collect some information about you. In addition, you may choose to
+            use the App or Sites to share information with other users,
+            including your friends and contacts (“Users”). We may also need to
+            share your information sometimes as described in this Policy.
+          </p>
+
+          <p className="pb-4">
+            The App and Sites are operated and managed in India, and your
+            information will be collected, stored, and processed only within
+            India in accordance with applicable Indian data protection and
+            privacy laws. We take appropriate measures to protect your personal
+            data and ensure it remains secure.
+          </p>
+
+          <p className="font-semibold">Who We Are</p>
+
+          <p className="pb-4">
+            The App and Sites are operated by{" "}
+            <strong>Vedvivah Private Limited</strong> (also referred to in this
+            Policy as “we” or “us”), which is responsible for the collection and
+            processing of personal information through the Ved Vivah App and
+            Sites.
+          </p>
+
+          <h3 className="pb-4 font-semibold text-md">
+            1. COLLECTION OF INFORMATION.
           </h3>
-          <p>Registration Information
-          </p>
-          <p>When you download the App and create an account (“Account”), we may collect certain information (“Registration Information”) about you, such as:
+          <p>Registration Information</p>
+          <p>
+            When you download the App and create an account (“Account”), we may
+            collect certain information (“Registration Information”) about you,
+            such as:
           </p>
 
           <ul className="list-decimal pb-4 pl-4">
             <li>Name;</li>
             <li>Username;</li>
-            <li>Email address
-            </li>
-            <li>Mobile number;
-            </li>
-            <li>Gender identity;
-            </li>
-            <li>Date, time, and location of birth;
-            </li>
-            <li>Sexual preference;
-            </li>
-            <li>Photographs;
-            </li>
-            <li>Location; and
-            </li>
-            <li >
-              Login information for social media accounts that you connect to your Ved Vivah Account
-            </li>
+            <li>Email address</li>
+            <li>Mobile number;</li>
+            <li>Gender identity;</li>
+            <li>Date, time, and location of birth;</li>
+            <li>Sexual preference;</li>
+            <li>Photographs;</li>
+            <li>Location; and</li>
           </ul>
 
           <p className="pb-4">
-            (this could include, for example, your Facebook accounts). For more information about this, see “Linking other Accounts to Vedvivah” in section 7 below.
-            Once you register, you will be able to review and change this information at any time just by logging in to Ved Vivah (other than your date of birth and location (which, if you have given Ved Vivah access to your location in your device settings, is automatically updated based on the location of your device)). It is your responsibility to ensure that your account details are kept up to date. If your phone number changes, please ensure that you update this in your account.
+            The information we collect helps us to enhance the App experience,
+            maintain user safety, and verify our Users (robots are not
+            welcome!). Registration details such as your name, gender, and
+            preferences may be visible to other Users who view your profile
+            based on your choice , as part of the intended functionality of the
+            platform.
           </p>
 
           <p className="pb-4">
-            The information we collect helps to enhance the App and verify our Users (robots are not welcome!). Registration Information such as your sexual preference, name and username may be visible to other Users who view your profile page.
-          </p>
-          <p className="pb-4">
-            For Users in Australia, the data we may collect falls within the following categories of
-            “personal information”, as defined by the Australian Privacy Principles (APP):
+            For Users in India, the data we collect falls within the categories
+            of “personal information” as defined under the Digital Personal Data
+            Protection Act, 2023 (DPDP Act) and other applicable Indian data
+            protection laws. This may include information such as your name,
+            contact details, demographic information, preferences, and any
+            content you choose to share through the Ved Vivah App or Sites.
           </p>
 
           <ul className="list-disc pb-4 pl-4">
-            <li>A. Identifiers, such as name and location;
-            </li>
-            <li>B. Personal information, such as contact (including email and telephone number) and financial information;
-            </li>
-            <li>C. Characteristics of protected classifications (if you choose to provide them), such as age, gender identity, marital status, sexual orientation, race, ancestry, national origin, religion, and medical conditions;
-            </li>
-            <li>D. Commercial information, such as transaction information and purchase history;
-            </li>
-            <li>E. Biometric information;
+            <li>
+              A. <strong>Basic Identifiers</strong> – such as your full name,
+              gender, age/date of birth, city, religion, and caste, which are
+              required for creating a unique and personalized matrimonial
+              profile.
             </li>
             <li>
-              F. Internet or network activity information, such as browsing history and interactions with our Sites and App;
-
+              B. <strong>Contact Information</strong> – including your email
+              address, phone number, and residential address (used for
+              verification and AI-based match recommendations). Your contact
+              details are not publicly visible unless you choose to share them.
             </li>
             <li>
-              G. Geolocation data, such as mobile device location;
-
+              C. <strong>Profile and Matrimonial Details</strong> – such as
+              education, profession, income, marital status, height, and
+              lifestyle preferences. Users may choose whether these details are
+              displayed publicly or only to selected matches.
             </li>
             <li>
-              H. Audio, electronic, visual and similar information, such as photos and videos;
-
+              D. <strong>Photos, Audio, and Media</strong> – users may upload
+              profile photos, and share photos or audio messages in chats. All
+              such data is securely stored and encrypted using Firebase.
             </li>
             <li>
-              I. Professional or employment-related information, such as work history and prior employer;
-
+              E. <strong>Location Information</strong> – we collect manually
+              selected location details (city and state) during registration to
+              help provide relevant match recommendations. The app does not
+              automatically collect GPS data.
             </li>
             <li>
-              J. Non-public education information; and
-
+              F. <strong>Transaction and Payment Information</strong> – if you
+              subscribe to paid plans or services, payment and transaction
+              details are collected and processed securely by trusted
+              third-party payment gateways.
             </li>
             <li>
-              K. Inferences drawn from any of the personal information listed above to create a profile or summary about, for example, an individual’s preferences and characteristics.
-
+              G. <strong>Optional Sensitive Information</strong> – such as
+              religion, community, or personal preferences, which users may
+              choose to provide voluntarily for better matchmaking.
+            </li>
+            <li>
+              H. <strong>Communication Data</strong> – messages and media
+              exchanged between users through the in-app chat feature are
+              encrypted and stored securely for user safety, without active
+              monitoring or profiling.
             </li>
           </ul>
-          <h3 className="text-md font-semibold">Profile Information
-          </h3>
-          <p className="pb-4">We recommend and encourage you (and all our members) to think carefully about the information you disclose about yourself. We also do not recommend that you put email addresses, URLs, instant messaging details, phone numbers, full names or addresses, credit card details, national identity numbers, drivers’ licence details and other sensitive information which is open to abuse and misuse on your profile.
+
+          <h3 className="text-md font-semibold pb-2">Profile Information</h3>
+
+          <p className="pb-4">
+            We encourage all members to carefully consider the information they
+            choose to include in their profiles. As Ved Vivah is a matrimonial
+            platform, certain basic details such as your name, gender, age, and
+            city are required to create a verified profile. However, you have
+            full control over what additional personal details—such as phone
+            number, income, or profession—you wish to display to other members.
           </p>
 
-          <p className="pb-4">When you post information about yourself or use the messaging function to communicate with other Users, the amount of personal information you share is at your own risk. Please see Section 4 below for more information on who can access what you post on Ved Vivah.
-            Profile Verification Information (Including Biometric Information)
+          <p className="pb-4">
+            Users can upload multiple profile photos, which are visible to other
+            members on the platform. Uploaded images are subject to moderation
+            and automated checks to prevent inappropriate or fake content,
+            ensuring a safe and respectful community experience.
+          </p>
+
+          <p className="pb-4">
+            As a matrimonial platform, Ved Vivah may collect personal
+            information such as contact details, religious background, or
+            preferences to help provide relevant matches. Users can decide which
+            details are visible to others from their profile settings. We advise
+            users to share only the information they are comfortable displaying
+            publicly.
+          </p>
+
+          <p className="pb-4">
+            For account security, we verify users through an email or one-time
+            password (OTP) during registration. Ved Vivah does not perform photo
+            or biometric verification, and no facial recognition technologies
+            are used within the platform.
+          </p>
+
+          <p className="pb-4">
+            If you delete your account, your profile data, photos, and any
+            verification-related information are permanently deleted from our
+            systems within seven (7) days, except where retention may be
+            required by law or for fraud prevention.
+          </p>
+
+          <p className="pb-4">
+            To protect our community, Ved Vivah employs automated systems to
+            detect and restrict suspicious, duplicate, or fraudulent accounts.
+            Accounts identified as potentially harmful or fake may be
+            temporarily locked or require re-verification for security reasons.
+          </p>
+
+          <p className="pb-4">
+            Our chat system allows users to send text, photo, and audio messages
+            to their matches. These messages are securely stored in Firebase
+            with encryption-at-rest to maintain data privacy and security. Ved
+            Vivah does not actively monitor or read user conversations.
+          </p>
+
+          <h3 className="text-md font-semibold pb-2">
+            Geolocation Information
+          </h3>
+
+          <p className="pb-4">
+            Ved Vivah does not automatically collect your precise location
+            through GPS, Wi-Fi, or IP tracking. Instead, we ask users to
+            manually provide general location details, such as their city,
+            state, or region, when creating or updating their profile. This
+            helps us offer relevant match recommendations and display
+            approximate location information to other users viewing your
+            profile.
+          </p>
+
+          <p className="pb-4">
+            The location data you provide is stored as plain text (for example,
+            “Delhi, India”) and is not linked to any geographic coordinates. We
+            do not access or request device-level location permissions on your
+            phone.
+          </p>
+
+          <p className="pb-4">
+            You may update or remove your location at any time by editing your
+            profile settings. If you delete your account, all associated
+            location data will also be permanently deleted within seven (7)
+            days, in accordance with our data retention policy.
+          </p>
+
+          <h3 className="text-md font-semibold">
+            Device and Photos Information
+          </h3>
+          <p className="pb-4">
+            Ved Vivah may collect limited technical information about your
+            device that is necessary for the internal functioning of the App —
+            such as system compatibility and display sizing. We do not
+            automatically collect unique device identifiers, model information,
+            or operating system details beyond what is essential for app
+            performance. Device data is never used for personalization or
+            analytics purposes.
           </p>
           <p className="pb-4">
-            For safety and security and to ensure you have the best possible user experience, we require Users to verify their accounts vis 2-factor authentication and might ask for your email address and/or phone number and, in some instances, we might also ask that you carry out photo verification. We want to make sure you are not a robot! And we also want to avoid fake Ved Vivah accounts being created which can be used for malicious activities and cybercrime – they threaten the Ved Vivah network and spoil things for everyone. This verification might be required by us for the prevention of fraud. You can also verify your photo on a voluntary basis (to add the blue ‘verified’ badge to your profile).
-
+            The App may request permission to access your address book solely to
+            enable internal contact-related features within Ved Vivah. This
+            information is not shared with third parties and remains within the
+            App’s secured environment.
           </p>
           <p className="pb-4">
-            If you choose to verify your profile photo, we will scan each photo that you submit. The scan may include the use of facial recognition technology so that we can compare the photo you submit to your profile photo, to help ensure that you are who you say you are. We do not add the verification photos to your profile. We retain the scans so that we can verify you in the future and for our record-keeping purposes until we no longer need them for such purposes or for three years after your last interaction with us, whichever occurs first. After the applicable retention period expires, we take commercially reasonable steps to permanently and securely delete the scans from our systems.
-
-          </p>
-          <h3 className="text-md font-semibold">Purchases Information
-          </h3>
-          <p className="pb-4">If you decide to purchase any of our subscription services, we will process your payment information and retain this securely for the prevention of fraud and for audit/tax purposes.
-            Ved Vivah uses automated decisions to prevent fraudulent payment transactions being processed as part of its anti-fraud procedures. In order to do this, our systems check payment transactions for behaviour that indicates breaches of our Terms and Conditions of Use. If a transaction meets certain criteria that demonstrate that the Terms and Conditions of Use are likely to have been breached and the transaction is likely to be fraudulent, the relevant transaction may automatically be blocked. Where a transaction is blocked, the user will be notified that their transaction cannot be processed and affected Users can contact Ved Vivah to contest the decision.
-          </p>
-
-          <h3 className="text-md font-semibold">Geolocation Information
-          </h3>
-          <p className="pb-4">If you have given Ved Vivah access to your location in your device settings, when you use your mobile, we may in future collect information about WiFi access points as well as other location information about your longitude and latitude and may save your device’s coordinates to offer certain features to you. This information helps us identify your physical location and we use it to personalise the App and make it easier for you to interact with other Users, by enabling the general locality information to be displayed to Users seeing your profile and showing you the profiles of other Users who are near you.</p>
-
-          <p className="pb-4">If you have given Ved Vivah access to your location, but wish to turn this off, you can do so by the following methods:
+            Photos or images are not accessed directly from the device gallery
+            or camera. In cases where users upload photos manually, these are
+            securely stored using Firebase and Cloudinary storage systems with
+            encryption at rest. Basic metadata such as file URLs may be retained
+            to enable proper display, but no photo analytics or sorting
+            algorithms are applied. Currently, uploaded photos cannot be changed
+            or deleted by users after submission.
           </p>
 
-          <ul className="list-decimal pl-4">
-            <li>iPhone app — settings, privacy, location services, Ved Vivah
-            </li>
-            <li>2.	Android — settings, location, Ved Vivah, permissions, location
-            </li>
-          </ul>
-          <h3 className="text-md font-semibold">Device and Photos Information
-          </h3>
-          <p className="pb-4">We may collect information about your device when you use the App including the unique device identifier, device model, and operating system, for a number of purposes, as set out in this policy. In addition, if you permit us to do so, the App may access your device’s address book solely in order to add someone to your contacts.
-            We also collect data about your photos, such as which are the photos that users spend time on or which are the photos that have the best lighting, etc. We may use that data to rearrange your profile photos aiming to position them in a way that is favourable to you. You may opt-out of this feature through our app settings.
-
-          </p>
           <h3 className="text-md font-semibold">Links</h3>
-          <p className="pb-4">We may keep track of how you interact with links available on Ved Vivah including third party services by redirecting clicks or through other means. We may share aggregate click statistics such as how many times a particular link was clicked on.
+          <p className="pb-4">
+            Ved Vivah does not presently track or record how users interact with
+            internal or external links. We do not use click analytics or share
+            such data with any third-party services. This may be reviewed in
+            future to improve in-app navigation and experience.
           </p>
 
-          <h3 className="text-md font-semibold">Ved Vivah Success Stories, Surveys and other Contributions
+          <h3 className="text-md font-semibold">
+            Ved Vivah Success Stories, Surveys, and Other Contributions
           </h3>
-          <p className="pb-4">From time to time, we run surveys for research purposes and we may contact you to find out if you would like to take part. We may also contact you to find out if you would like to provide feedback, a testimonial or take part in marketing campaigns (for example, if you let us know that you have found a match on the App, we may contact you to ask if you would be happy to feature in advertising for Ved Vivah). Such surveys and marketing campaigns are optional and more information will be provided at the point of contact.
-          </p>
-          <h3 className="text-md font-semibold">When you Contact Customer Support
-          </h3>
-          <p className="pb-4">If you contact our Customer Support team, we will receive your email address, and may track your IP address, as well as the information you send to us to help resolve your query. We will keep records of our communications with you, including any complaints that we receive from you about other Users (and from other Users about you) for 6 years after deletion of your account.
-          </p>
-
-          <h3 className="text-md font-semibold">Cookies and similar technologies
-          </h3>
-
-          <p className="pb-4">When you visit our Sites or when you use our App, we may collect personal data from you automatically by using cookies or similar technologies. A cookie is a small file that can be placed on your device or browser that allows us to recognise and remember you.
-            If you would like to find out more about cookies, including how we use them and what choices are available to you, please refer to our Cookie Policy.
+          <p className="pb-4">
+            Ved Vivah may, in the future, invite users to voluntarily share
+            their success stories, feedback, or testimonials for research or
+            promotional purposes. Participation in such activities will be
+            entirely optional and based on explicit user consent. At present,
+            Ved Vivah does not collect or publish user stories or feedback
+            publicly on its website or mobile application.
           </p>
 
-          <h3 className="text-md font-semibold">2. USE OF YOUR INFORMATION.
+          <h3 className="text-md font-semibold">
+            When You Contact Customer Support
           </h3>
-          <p className="pb-4">Our main goal is to ensure your experience on Ved Vivah is an enjoyable one and you don’t end up getting stung! In order to deliver an enjoyable experience to you, we may use your Registration and other information to:
+          <p className="pb-4">
+            When you contact Ved Vivah support through email or our in-app form,
+            we may collect and store the information you provide, such as your
+            email address and details of your query or issue. This information
+            helps us resolve your request efficiently and maintain service
+            quality.
+          </p>
+          <p className="pb-4">
+            We also maintain records of user-initiated queries and complaints
+            (including reports about or from other users) for internal use,
+            safety monitoring, and legal compliance. These records are retained
+            until they are no longer needed for support or compliance purposes,
+            or until we decide to delete them as part of our regular data
+            management processes. The information shared with Customer Support
+            is used strictly for internal purposes and not disclosed to third
+            parties.
+          </p>
+
+          <h3 className="text-md font-semibold">
+            Cookies and Similar Technologies
+          </h3>
+          <p className="pb-4">
+            Ved Vivah uses cookies and similar technologies on our website to
+            support secure logins, session management, and user preferences.
+            Cookies help us remember your account and settings to provide a
+            smoother experience. We do not use cookies for advertising purposes.
+          </p>
+          <p className="pb-4">
+            Our mobile application may use limited session-based identifiers
+            such as Firebase authentication tokens for login and app
+            functionality. These identifiers are not used for analytics or
+            marketing and are automatically cleared when a session expires or a
+            user logs out.
+          </p>
+          <p className="pb-4">
+            You can manage or delete cookies at any time through your browser
+            settings. Continued use of our website or app indicates your consent
+            to our use of cookies for these essential purposes. A separate
+            Cookie Policy page may be provided in the future for detailed
+            information on how we use and manage cookies.
+          </p>
+
+          <h3 className="text-md font-semibold">2. USE OF YOUR INFORMATION.</h3>
+          <p className="pb-4">
+            Our main goal is to ensure your experience on Ved Vivah is an
+            enjoyable one and you don’t end up getting stung! In order to
+            deliver an enjoyable experience to you, we may use your Registration
+            and other information to:
+          </p>
+
+          <h3 className="text-md font-semibold">2. Use of Your Information</h3>
+          <p className="pb-4">
+            Our main goal is to provide a safe, reliable, and personalized
+            matrimonial experience for all users of Ved Vivah. We use the
+            information you provide primarily to operate the platform, enable
+            matchmaking features, and maintain account functionality. The data
+            you share helps us enhance recommendations, improve overall
+            usability, and maintain trust within the community.
           </p>
 
           <ul className="list-decimal pl-4 pb-4">
-            <li>offer you our services and features;
+            <li>
+              Provide and manage our matchmaking and recommendation services;
             </li>
             <li>
-              contact you with information about the App (e.g., updates and new features);
-
+              Facilitate user registration, login, and account management;
             </li>
             <li>
-              personalise the App/Sites and the content we deliver to you;
-
+              Contact users for important account updates, notifications, or
+              support queries;
             </li>
             <li>
-              conduct research and analytics about how you use and interact with the App/Sites;
-
+              Send information about feature improvements or new services
+              offered by Ved Vivah;
             </li>
             <li>
-              to test new technologies and processes designed to enhance and improve the App/Sites;
-
+              Personalize the App and website content based on user preferences
+              such as location, age range, or gender, to display relevant
+              profiles;
             </li>
             <li>
-              resolve disputes, troubleshoot problems and to enforce our Terms & Conditions;
-
+              Maintain platform integrity and prevent misuse by temporarily
+              locking or reviewing accounts reported by other users;
             </li>
             <li>
-              investigate fraud, protect our legal rights, and to enforce our Terms & Conditions.
-
+              Store and review user complaints or chat-related reports when
+              necessary to ensure user protection and maintain a safe
+              environment;
             </li>
             <li>
-              to send you information about the promotions and offers we have available
+              Improve our systems and perform limited technical testing to
+              ensure platform functionality and reliability;
             </li>
-            <p className="pb-4">
-              (e.g., specify the types of goods/services/offers to be provided via direct marketing) by direct marketing or other modes of communication - if you’ve signed up for our communications or otherwise told us it’s OK. We will not use your information in email direct marketing unless you give us your consent during the Account creating process or via Settings in the App (you can withdraw from marketing at any time via Settings in the App or by using the opt-out mechanisms and links provided in each message); and
-
-            </p>
             <li>
-              protect our Users and third parties from harm.
-
+              Share minimal, anonymized data with trusted infrastructure
+              services such as Firebase, solely for performance and stability
+              monitoring;
+            </li>
+            <li>
+              Communicate with users regarding promotions or recommendations
+              within the App, only if the user has provided consent. Users may
+              opt out at any time through app settings or by contacting our
+              support team;
+            </li>
+            <li>
+              Protect our users and the Ved Vivah platform against fraudulent or
+              harmful activities through internal security and reporting
+              mechanisms.
             </li>
           </ul>
 
-          <h3 className="text-md font-semibold pb-4">Our Matching Algorithms
-          </h3>
-          <p className="pb-4">Vedvivah’s mission is to create kind and equitable relationships. We have developed matching algorithms to predict your compatibility with other users so we can show you people we think are a good match for you. We use different indications based on users’ profiles on our app (for example, how you swipe or whether you match with someone). We use these indications to recommend the most relevant profiles to everyone to maximise everyone’s chances of finding meaningful connections on our apps. Our matching algorithms are based on a range of factors and use machine learning to rank profiles for you to maximise your chance of finding compatible matches.</p>
-          <p className="pb-4">We use the following data about you and other users to predict your compatibility with others and generate profile recommendations: the information you provide us about yourself in your profile such as age, distance or gender so we can show you people who are appropriate and are more likely to like you back; information about how you interact with our app to suggest to you people who are active and available to meet new people; and your device coordinates, which are necessary to understand your proximity to other members. </p>
-
-          <p className="pb-4">The legal basis for processing profile and proximity information is that this is necessary for the provision of our contractual services. Where we process information about your app activity, and specifically our legitimate interest in generating more personalised and relevant recommendations for who you can match with in our App. </p>
-
-          <p className="pb-4">Where you have included sensitive information in your profile, such as information about your beliefs, the processing of this information is based on your voluntary and explicit consent.
-          </p>
-          <h3 className="text-md font-semibold">Moderation Practices
-          </h3>
-          <p className="pb-4">We use a combination of automated systems and a team of moderators to monitor and review accounts (including photos and any other information uploaded onto user profiles) and messages for content that indicates breaches of our Terms and Conditions of Use. If an account or message meets certain criteria that demonstrate that the Terms and Conditions of Use are likely to have been breached, the relevant account will be subject to a warning and the user’s access restricted and/or blocked. Affected Users can contact Ved Vivah to contest the decision.
+          <h3 className="text-md font-semibold pb-4">Our Matching Approach</h3>
+          <p className="pb-4">
+            Ved Vivah aims to help users find suitable life partners in a
+            respectful and community-based environment. We currently use a
+            simple, manual matching process based on the basic details users
+            provide in their profiles—such as age, location, gender, and
+            preferences. This is not an automated or AI-based system. Our team
+            may also consider user feedback and reports to improve
+            recommendations over time.
           </p>
           <p className="pb-4">
-            If you post anything that is inconsistent with our Terms and Conditions of Use, we reserve the right to terminate or restrict access to your Account.
-
+            Users provide their general location manually (such as city or
+            region), which helps us display potential matches from nearby areas.
+            No precise GPS or automatic location tracking is used. Sensitive
+            information such as caste or religion, if shared, is used only for
+            internal matching visibility and is completely optional. Ved Vivah
+            does not use any third-party matching algorithms or automated
+            decision systems.
           </p>
-          <h3 className="text-md font-semibold pb-4">3. DISCLOSURE OF INFORMATION.</h3>
-          <p className="pb-4">Our policy is to not disclose your Registration Information or personal data, except in the limited circumstances described here:</p>
-          <p>Circumstances where data may be disclosed</p>
-          <p>Disclosed data</p>
-          <p>Service Providers – We engage certain   trusted third parties to perform functions and provide services to us. We may   share your Registration Information or personal data with these third   parties, but only for the purposes of performing these functions and   providing such services. More information about this is available directly   below.
-            This could include all   data, including all categories listed above
-            Moderators – To monitor   activity on the App or Site and approve content.
-            Name and user   registration details, profile information, content of messages and   photographs (Categories A, B, C, and H)
-            Payment Processing and   Telecommunications Companies – To facilitate payments for our subscription   services.
-            Cardholder name,   cardholder address, card number, payment amount, transaction date/time   (Categories A, B, and D)
-            Law and Harm – As we mentioned   in the Terms & Conditions, we think it is very   important that all Users behave whilst using the App. We will cooperate with   all third parties to enforce their intellectual property or other rights. We   will cooperate with lawfully made law enforcement requests for information   from within or outside your country of residence where we are required to by   law. This may include where there is an investigation into alleged criminal   behaviour or to protect the vital interests of a person. We may preserve or   disclose any of your information, including your Registration Information, if   we believe in good faith that it is necessary to comply with a law or   regulation, or when we believe in good faith that disclosure is necessary:</p>
 
-          <ul className="list-disc pl-4">
-            <li>to  comply with a binding direction court order, or lawful request;</li>
-            <li>to protect the safety of any person;</li>
-            <li>to address fraud, security or technical issues        e.g. through anti-spam providers to protect the service from criminal  activity; or</li>
-            <li>to protect our rights or property or those of        third parties.</li>
-          </ul>
-          <p>In such cases we may   raise or waive any legal objection or right available to us.
-            This could include any   personal data that Ved Vivah holds about you, depending on the nature of the   request or the issue that we are dealing with, including all categories   listed above</p>
-          <p>
-            Business Transfers – In the event that   a Ved Vivah Global Services undergoes a business transition or change of   ownership, such as a merger, acquisition by another company, re-organisation,   or sale of all or a portion of its assets, or in the event of insolvency or   administration, we may be required to disclose your personal data.
-            This could include all   personal data that Ved Vivah holds about you, including all categories listed   above
+          <h3 className="text-md font-semibold">Moderation Practices</h3>
+          <p className="pb-4">
+            To maintain a safe and respectful platform, we use a combination of
+            manual review and basic automated tools to detect and prevent
+            inappropriate content, fake accounts, or misuse of the app. Our
+            moderation team may review reported profiles, photos, or other
+            user-generated data to ensure compliance with our Terms and
+            Conditions. If an account is found to be in violation, it may be
+            temporarily restricted or permanently suspended.
           </p>
-          <p>
-            Marketing Services   Providers – To help us serve marketing and advertising   on third party websites and applications and measure the effectiveness of our   advertising campaigns. More information on this is available below
+          <p className="pb-4">
+            At this time, users cannot formally appeal moderation decisions
+            through a dedicated in-app feature. However, users may contact
+            customer support to discuss their account status or raise any
+            concerns.
           </p>
-          <p className="pb-4">More information on this is available below
-            Advertising identifier   associated with your device (Device ID), estimated location (based on your IP   address), age, gender and data about your visit to our Sites or App and   action taken on those (for example if you downloaded our App or created an   account with our App), hashed email address (for ‘custom audiences’ only)   (Categories B, C, G, F and K)
-            Anti-Spam and Anti-Fraud – Your data may be   shared within Ved Vivah Global Services App or Site for different products, for   example, to block accounts and suspected fraudulent payment transactions as   part of our anti-spam and anti-fraud procedures.
-            Email address, phone   number, IP address and IP session information, social network ID, username,   user agent string, and transaction and payment data (Categories B, F and D).
-            Aggregated Information – We may share aggregated information with third parties that includes your personal data (but which doesn’t identify you directly) together with other information including log data for industry analysis and demographic profiling.</p>
 
-          <h3 className="text-md font-bold pb-4">MORE INFORMATION ABOUT DISCLOSURES</h3>
-          <h4 className="text-md font-semibold ">Service Providers</h4>
-          <p>We engage certain trusted third parties to perform functions and provide services to us (“Service Providers”). The suppliers with which Ved Vivah shares User personal data vary depending on a variety of factors, such as which of our App, Sites and services a User engages with. For example, to provide our services to Users, we typically use the following suppliers:</p>
-
-          <ul className="list-disc pl-4">
-            <li>Billing services      – to allow customers to purchase paid features of our App (for example,      Google Play)</li>
-            <li>Authentication services – to allow customers to      authenticate their account (for example, Twilio)</li>
-            <li>Social media providers – to allow customers to      create/connect their Ved Vivah account with their account(s) on such      platforms (for example Facebook, Instagram or Spotify)</li>
-            <li>Product improvement and market research – we use      third party platforms (such as Typeform) and agencies (such as Kantar) to      carry out customer surveys and market research to improve our products and      services</li>
-            <li>IT services – some of the third-party software      providers used in the operation of our business may process Users’      personal data (for example, if a User contacts us via social media with a      support inquiry.</li>
-          </ul>
-          <p className="pb-4">We carry out due diligence on all Service Providers we engage to ensure they have adequate data protection and information security measures in place and only provide them with the personal data necessary to the service they are providing. Measures are taken to ensure that the data shared is non-attributable to the greatest extent possible and our suppliers are also subject to extensive obligations under our contractual arrangements, including strict data retention limits.</p>
-          <h3 className="text-md font-semibold pb-4">Marketing Services Providers</h3>
-          <p>We partner with providers of marketing services (such as Facebook for example) (‘Marketing Services Providers’) to help us market and advertise our App and services on third party websites and applications and measure the effectiveness of our advertising campaigns. For example:</p>
-          <ul className="list-disc pl-4">
-            <li>to exclude you      from advertising campaigns aimed at finding new users, if you already have      a Ved Vivah account;</li>
-            <li>to show Ved Vivah adverts to users who have visited      the Ved Vivah App/Sites but haven’t yet created a Ved Vivah account;</li>
-            <li>to create an audience for our advertisements of      other potential users who have similar characteristics to you based on the      information the Marketing Service Providers holds about you (also known as      a Lookalike Audience); or</li>
-            <li>to include you in a ‘custom audience’ that will      receive Ved Vivah advertising content (a custom audience is essentially a      list of people who we think are most likely to be interested in a      particular advertisement).</li>
-          </ul>
-          <p>We share a limited amount of your personal data with these Marketing Services Providers, such as:</p>
+          <h3 className="text-md font-semibold pb-4">
+            3. Disclosure of Information
+          </h3>
+          <p className="pb-4">
+            Ved Vivah respects user privacy and does not sell or trade personal
+            data. Your registration details and profile information are kept
+            strictly internal, with limited sharing only for operational
+            purposes. In specific cases, we may share limited data with trusted
+            third-party service providers to help us run the platform
+            smoothly—for example:
+          </p>
 
           <ul className="list-disc pl-4 pb-4">
-            <li>the advertising      identifier associated with your device (this is a random number assigned      by your mobile device manufacturer (for example Apple or Google) to your      device to help advertisers (including the manufacturer) know when an ad      has been viewed or clicked in an app, and when an ad causes a ‘conversion’      (for example, downloading the app advertised to you))</li>
-            <li>your estimated location (based on your IP      address)</li>
-            <li>age and gender</li>
-            <li>data about your visit to our Sites or App and      action taken on those (for example if you downloaded our App, created an      account with our App, or details of any purchases made on Site or in App)</li>
-            <li>a hashed* version of your email address (to      create ‘custom audiences’).</li>
+            <li>
+              <strong>Cloud Services:</strong> We use Firebase and Cloudinary to
+              store user data and profile photos securely.
+            </li>
+            <li>
+              <strong>Payment Processing:</strong> Payments for subscriptions or
+              premium features are handled by Razorpay, a secure third-party
+              payment gateway. Ved Vivah itself does not store your card or
+              payment details.
+            </li>
+            <li>
+              <strong>Moderation Tools:</strong> Automated or manual systems may
+              review data solely for the purpose of detecting fraudulent or
+              harmful activity.
+            </li>
           </ul>
 
+          <p className="pb-4">
+            We do not currently share user data with law enforcement or
+            government authorities unless legally compelled under applicable
+            law. Ved Vivah also does not use or share user information for
+            third-party advertising or marketing campaigns at this time. All
+            marketing, if any, is done internally.
+          </p>
+
+          <p className="pb-4">
+            In the event of a future change in ownership, merger, or
+            partnership, Ved Vivah does not automatically transfer user data to
+            another entity without clear notice and user consent. We also do not
+            publicly share or sell aggregated demographic data.
+          </p>
+          <h3 className="text-md font-bold pb-4">
+            MORE INFORMATION ABOUT DISCLOSURES
+          </h3>
+
+          <h4 className="text-md font-semibold">Service Providers</h4>
           <p>
-            Hashing is a way of encrypting information by turning it into a combination of random numbers and letters - this code cannot be traced back to the email address. When hashed email addresses are sent to a Marketing Service Provider, they’re then matched against the Provider’s own existing list of their own users’ hashed information and our ads are served to those of our users who have successfully been matched with the Provider’s. Matched and unmatched hashes are then deleted by the Provider.
-            For more information about how we use cookies and other tracking technologies, including how you can set and manage your preferences with regards to such technologies, please see our Cookie Policy.
-            In some cases, these third parties will also use the data that they collect for their own purposes, for example they may aggregate your data with other data they hold and use this to inform advertising related services provided to other clients.
+            Ved Vivah engages certain trusted third-party services (“Service
+            Providers”) to help us operate and deliver our App securely and
+            efficiently. These providers are carefully selected and only receive
+            the minimal information necessary to perform their functions. We do
+            not share any user data directly; all exchanges are handled securely
+            through encrypted systems.
           </p>
 
-          <h3 className="text-md font-semibold pb-4">4. WHAT OTHERS MAY SEE ABOUT YOU.</h3>
-          <p className="pb-4">Our App or Site is designed to make it easier for you to connect with other Users and to interact with them.</p>
-          <p className="pb-4">When using the Ved Vivah App or Site, you should assume that anything you post or submit on the App may be publicly-viewable and accessible, both by Users and non-users of the App or Site. We want our Users to be careful about posting information that may eventually be made public.</p>
+          <ul className="list-disc pl-4">
+            <li>
+              <strong>Firebase (by Google)</strong> – used for secure
+              authentication, database storage, and app hosting. Firebase safely
+              stores basic user information and uses encryption to protect data.
+            </li>
+            <li>
+              <strong>Cloudinary</strong> – used for hosting and optimizing
+              user-uploaded images (such as profile photos). Images are stored
+              anonymously; Cloudinary does not know which user an image belongs
+              to.
+            </li>
+            <li>
+              <strong>Razorpay</strong> – used to process payments. Razorpay
+              only receives the information needed to complete transactions and
+              does not have access to user profiles or personal account data.
+            </li>
+          </ul>
+
           <p className="pb-4">
-            Please be careful about posting sensitive details about yourself on your profile such as your religious denomination and health details. You may also choose to add sensitive information about yourself when you add certain Ved Vivah badges to your profile, such as your religion and political leanings. While you may voluntarily provide this information to us when you create your profile, including your sexual preferences, there is no requirement to do so. Please remember that photographs that you post on Ved Vivah may reveal information about yourself as well. Where you do upload and choose to tell us sensitive information about yourself, including through the addition of badges to your profile, you are explicitly consenting to our processing of this information and making it public to other Users.
-            Your Ved Vivah profile and other information you make available via the App or Site, including certain information added to your profile through third party accounts (such as Facebook, Instagram or Spotify – see section 7 of this Privacy Policy for more information about this) may be viewed and shared by Users with individuals who may or may not be users of the App or Site. For example, a User may recommend you as a match to his or her Facebook friend(s) by taking a screenshot of your profile picture and sharing it, regardless of whether such friend(s) is also a User of the App.
-            If you log in to or access the App or Site through your Facebook account or another third-party account on a device which you share with others, remember to log out of the App or Site and the relevant third-party account when you leave the device in order to prevent other users from accessing your Ved Vivah account.
+            Before using any third-party provider, Ved Vivah reviews their
+            privacy policies and security standards. All Service Providers are
+            contractually required to handle personal data responsibly, protect
+            it from unauthorized access, and only use it for the purposes of
+            providing their specific service. We do not allow any of our
+            providers to use user data for their own marketing or analytics.
           </p>
 
-          <h3 className="text-md font-semibold pb-4">5. OUR POLICY TOWARDS AGE.</h3>
-          <p className="pb-4">
-            Although we want as many people as possible to enjoy our creation, you have to be at least 18 years old to use Ved Vivah.
-            Ved Vivah does not knowingly collect any information about or market to children, minors or anyone under the age of 18. If we become aware that a child, minor or anyone under the age of 18 has registered with us and provided us with personal information, we will take steps to terminate that person’s registration.
-          </p>
           <h3 className="text-md font-semibold pb-4">
-            6. SECURITY.
+            Marketing Services Providers
           </h3>
           <p>
-            Here at Ved Vivah, we pride ourselves on taking all appropriate security measures to help protect your information against loss, misuse and unauthorised access, or disclosure. We use reasonable security measures to safeguard the confidentiality of your personal information such as secured servers using firewalls.
+            Ved Vivah currently{" "}
+            <strong>
+              does not partner with or share data with marketing or advertising
+              services
+            </strong>{" "}
+            such as Facebook Ads, Google Ads, or other marketing platforms.
           </p>
           <p>
-            Unfortunately, no website or Internet transmission is ever completely 100% secure and even we cannot guarantee that unauthorised access, hacking, data loss or other breaches will never occur, but here are some handy tips to help keep your data secure:
+            In the future, if marketing activities are introduced, they will be
+            limited to
+            <strong>registered Ved Vivah users only</strong> and will comply
+            with privacy laws. Users will always have the option to opt out of
+            such communications at any time.
           </p>
+
+          <h3 className="text-md font-semibold pb-4">
+            4. WHAT OTHERS MAY SEE ABOUT YOU.
+          </h3>
+          <p className="pb-4">
+            Ved Vivah is designed to help users connect through their profiles.
+            Registered users can view each other's profiles to find potential
+            matches.
+          </p>
+          <p className="pb-4">
+            Profile information, such as name, age, and basic details, is
+            visible to other registered users. Profile photos are also visible
+            by default. At this time, users cannot individually hide specific
+            profile fields, but they can edit or remove their information at any
+            time.
+          </p>
+          <p className="pb-4">
+            Please be cautious when sharing sensitive information such as
+            religion, caste, or location details in your profile. While this
+            information helps improve matchmaking, it is entirely optional. Ved
+            Vivah does not make any of this data public outside the app.
+          </p>
+
+          <h3 className="text-md font-semibold pb-4">
+            5. OUR POLICY TOWARDS AGE.
+          </h3>
+          <p className="pb-4">
+            You must be at least 18 years old to use Ved Vivah. We do not
+            knowingly collect or process any personal information from minors.
+            If we become aware that a person under 18 has registered with us, we
+            will immediately terminate their account and delete their data.
+          </p>
+
+          <h3 className="text-md font-semibold pb-4">6. SECURITY.</h3>
+          <p>
+            Ved Vivah uses industry-standard security measures such as
+            <strong>
+              HTTPS encryption, firewalls, and Firebase’s built-in data
+              protection
+            </strong>
+            to keep user information secure. We continuously monitor our systems
+            for unauthorized access or vulnerabilities.
+          </p>
+          <p>
+            While no online platform can guarantee 100% protection, we take all
+            reasonable steps to safeguard your data. You can help protect your
+            account by following these best practices:
+          </p>
+
           <ul className="list-decimal pl-4">
-            <li>Please make sure      you log out of your Account after use as you never know who may stumble      onto your Account!</li>
-            <li>Please don’t share the password you use to access      your Ved Vivah Account with anyone else!</li>
-            <li>Change your password periodically.</li>
+            <li>
+              Log out of your Ved Vivah account after use, especially on shared
+              devices.
+            </li>
+            <li>Never share your password with anyone.</li>
+            <li>
+              Update your password regularly to maintain account security.
+            </li>
           </ul>
-          <p>We cannot guarantee the security of your personal data while it is being transmitted to our site and any transmission is at your own risk.</p>
-          <h3>
-            7. LINKING OTHER ACCOUNTS TO Vedvivah.
+
+          <p>
+            Ved Vivah uses HTTPS to ensure that all data transmitted between
+            your device and our servers is encrypted. Any transmission of data
+            is done at your own risk, but we take all measures to reduce that
+            risk.
+          </p>
+
+          <h3 className="text-md font-semibold pb-4">
+            7. LINKING OTHER ACCOUNTS TO VED VIVAH.
           </h3>
           <p className="pb-4">
-            Using your social media details to sign in to Ved Vivah
-            When you sign in to our App or Site using your Facebook account, you give permission to Facebook to share with us your name and profile picture. Unless you opt-out, you also give permission to Facebook to share with us your email address (if there is one associated with your Facebook account), date of birth, profile photos, gender, Page likes and current town/city.
+            Currently, Ved Vivah does not support signing in through social
+            media accounts such as Facebook, Google, or Apple. Users can
+            register and log in only using their email or phone number.
           </p>
 
           <p className="pb-4">
-            If you register or sign in with your Apple ID, you give Apple permission to share your Apple login, a name (that can be edited by you) and an email (you can choose to hide your email and Apple will create a random email address so your personal email can stay private). This email address will be linked to your Ved Vivah account and will be used to retrieve your Ved Vivah account.
+            In the future, we may introduce optional integrations allowing users
+            to link social accounts (such as Instagram or Spotify) to enhance
+            their profiles. These integrations will always be opt-in and will
+            clearly describe what information is being shared before activation.
           </p>
-          <p className="pb-4">
-            We will then use this personal data to form your Ved Vivah account. If you remove the Ved Vivah app from your Facebook settings, or from your Apple ID, we will no longer have access to this data. However, we will still have the personal data that we received when you first set up your Ved Vivah account using your Facebook or Apple ID (you must delete your Ved Vivah account entirely for us to no longer have access to this data).
-          </p>
-          <h3 className="text-md font-semibold pb-4">Linking social media accounts to your Ved Vivah account</h3>
-          <p className="pb-4">You may link your Ved Vivah account with your Instagram, Facebook or Spotify accounts. This allows you to share some information from those accounts directly to your Ved Vivah account (for example, Instagram photos, or your top Spotify artists).</p>
-
-          <p className="pb-4">We only receive the limited information that Instagram or Spotify permits to be transferred (as detailed by Instagram/Facebook/Spotify and agreed by you when you first connect your account from such platforms with your Ved Vivah account).</p>
-
-          <p className="pb-4">If you no longer want to link your Ved Vivah account to your Instagram, Facebook or Spotify account, please visit the settings in your Instagram, Facebook or Spotify account and follow the instructions to remove the Ved Vivah app access permissions. Please note that any information already added to your Ved Vivah account from those platforms will not be deleted unless you delete it within your Ved Vivah account as well.</p>
 
           <h3 className="text-md font-semibold pb-4">8. YOUR RIGHTS.</h3>
-          <p className="pb-4">Privacy laws applicable may give you the following rights:</p>
+          <p className="pb-4">
+            Privacy laws may give you certain rights regarding your personal
+            data. At Ved Vivah, users can exercise these rights directly through
+            the app.
+          </p>
           <ul className="list-decimal pl-4 pb-4">
-            <li>Right to be informed:      what personal data an organisation is processing and why (we provide this      information to you in this Privacy Policy).</li>
-            <li>Right of access: you can request a copy of your      data.</li>
-            <li>Right of rectification: if the data held is      inaccurate, you have the right to have it corrected.</li>
-            <li>Right to erasure: you have the right to have your      data deleted in certain circumstances.</li>
-            <li> Right to restrict processing: in limited      circumstances, you have the right to request that processing is stopped      but the data retained.</li>
-            <li>Right to data portability: you can request a copy      of certain data in a machine-readable form that can be transferred to      another provider.</li>
-            <li>Right to object: in certain circumstances      (including where data is processed on the basis of legitimate interests or      for the purposes of marketing) you may object to that processing.</li>
-            <li>Rights related to automated decision-making      including profiling: there are several rights in this area where      processing carried out on a solely automated basis results in a decision      which has legal or significant effects for the individual. In these circumstances      your rights include the right to ensure that there is human intervention      in the decision-making process.</li>
+            <li>
+              <strong>Right to be informed:</strong> You have the right to know
+              what personal data we collect and why. This information is
+              explained in this Privacy Policy.
+            </li>
+            <li>
+              <strong>Right of access:</strong> You can view the data you have
+              provided directly through your account.
+            </li>
+            <li>
+              <strong>Right to erasure:</strong> You can permanently delete your
+              Ved Vivah account and data directly from the app at any time.
+            </li>
+            <li>
+              <strong>Right to object or restrict processing:</strong> You can
+              stop using the app and delete your account to prevent any further
+              processing of your data.
+            </li>
           </ul>
           <p className="pb-4">
-            The particular rights which are applicable to you (which might include other rights not listed above) may vary depending on your country. You should make yourself aware of the rights you have under applicable privacy laws in your country.
-            If you have a concern about how we have processed your request or your personal data, you should contact us in the first instance.
+            Users can delete their accounts directly from the Ved Vivah app.
+            Once deleted, all personal data, including your email address stored
+            in Firebase, will be removed from our systems within 7 days. We do
+            not manually modify or correct user data.
           </p>
 
           <h3 className="text-md font-semibold pb-4">9. DATA LOCATIONS.</h3>
-          <p className="pb-4">We want you to be able to access Ved Vivah wherever you happen to be in the world. To enable us to provide that service, we use cloud based hosting services, ensuring that the data is adequately protected by ensuring that valid, legal mechanisms are in place.</p>
-
-          <h3>10. DATA RETENTION AND DELETION.</h3>
-          <p className="pb-4">We keep your personal information only as long as we need it for the legal basis relied upon (as set out in Section 2 above) and as permitted by applicable law. Please see “Profile Verification Information (Including Biometric Information)” in Section 1, above, to learn about our retention policy with respect to biometric information.</p>
-          <ul className="list-decimal pl-4 pb-4">
-            <li>we must keep it      to comply with applicable law (for instance, if you make purchases within      the App, some personal data may be kept for tax and accounting purposes);</li>
-            <li>we must keep it to evidence our compliance with      applicable law (for example, if an account is blocked, we keep some      account information and a record of the behaviour that led to the block -      this information is retained for evidential purposes in case of queries or      legal claims concerning the block);</li>
-            <li>there is an outstanding issue, claim or dispute      requiring us to keep the relevant information until it is resolved; or</li>
-            <li>the information must be kept for our legitimate      business interests, such as fraud prevention and enhancing Users’ safety      and security (for example, information may need to be kept to prevent a      user who was banned for unsafe behaviour or security incidents from      opening a new account).</li>
-          </ul>
-
-          <p className="pb-4">Warning: Even after you remove information from your profile or delete your Account, copies of that information may still be viewable and/or accessed to the extent such information has been previously shared with others, or copied or stored by others. We cannot control this, nor do we accept any liability for this. If you have given third party applications or websites access to your personal information, they may retain such information to the extent permitted under their terms of service or privacy policies.</p>
-
-          <h3 className="text-md font-semibold pb-4">11. CHANGES TO THIS POLICY.</h3>
-          <p className="pb-4">As Ved Vivah evolves, we may revise this Privacy Policy from time to time. If we make a change to this policy that, in our sole discretion, is material, we will notify you, for example, via an email to the email associated with your Account or by posting a notice within Ved Vivah.</p>
-          <p>
-            Effective date
+          <p className="pb-4">
+            Ved Vivah uses secure, cloud-based hosting services to provide
+            reliable access to our platform. User data is primarily stored on{" "}
+            <strong>Firebase servers located in India</strong> and on
+            <strong>Cloudinary</strong> for image storage. These services
+            maintain industry-standard security measures and do not have access
+            to identifiable user information.
           </p>
-          <p>This Privacy Policy was last updated on: 7th August 2025</p>
+          <p className="pb-4">
+            While data may be processed or backed up in other secure global data
+            centers, we ensure that all transfers comply with strong legal and
+            security safeguards.
+          </p>
 
+          <h3 className="text-md font-semibold pb-4">
+            10. DATA RETENTION AND DELETION.
+          </h3>
+          <p className="pb-4">
+            We retain your personal data only as long as necessary for the
+            purposes outlined in this policy or as required by applicable law.
+            Once an account is deleted, user data is removed within 7 days.
+          </p>
+          <ul className="list-decimal pl-4 pb-4">
+            <li>
+              For <strong>payment transactions</strong> made through Razorpay,
+              limited data may be kept for as long as legally required for tax
+              and accounting purposes.
+            </li>
+            <li>
+              Support messages and complaint records may be retained for
+              compliance and verification until no longer legally necessary.
+            </li>
+          </ul>
+          <p className="pb-4">
+            Even after deletion, some non-identifiable data or cached copies may
+            remain temporarily due to technical or legal requirements.
+            Third-party services (like Cloudinary or Razorpay) may also retain
+            limited information under their own policies.
+          </p>
 
-
+          <h3 className="text-md font-semibold pb-4">
+            11. CHANGES TO THIS POLICY.
+          </h3>
+          <p className="pb-4">
+            Ved Vivah may update this Privacy Policy from time to time. If any
+            material changes are made, we will notify users through in-app
+            messages and/or by email. Continued use of the app after such
+            updates indicates your acceptance of the revised policy.
+          </p>
+          <p>
+            <strong>Effective date:</strong> This Privacy Policy was last
+            updated on 10th November 2025.
+          </p>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Privacy
-
+export default Privacy;
 
 import { Link } from "react-router-dom";
 
@@ -412,17 +719,14 @@ const sections = [
   { title: "COOKIES POLICY", links: "/cookies-policy" },
   { title: "Services", links: "/services" },
   { title: "Child Safety", links: "/child-safety-policy" },
-  { title: "Delete Account", links: "/delete-account" }
+  { title: "Delete Account", links: "/delete-account" },
 ];
 
 interface activeSectionProps {
   activeSectionData: string | null;
 }
 
-const Nav: React.FC<activeSectionProps> = ({
-}: activeSectionProps) => {
-
-
+const Nav: React.FC<activeSectionProps> = ({}: activeSectionProps) => {
   return (
     <div className="w-full md:w-72 p-4 bg-white shadow-md">
       {sections.map(({ title, links }) => (
