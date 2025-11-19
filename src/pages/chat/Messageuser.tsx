@@ -615,6 +615,7 @@ export default function MessageUser() {
         <div className="flex items-center gap-2">
           {!isBlocked && recipientUser && (
             <CallButton
+        
               userId={recipientId}
               userName={recipientUser.displayName}
               userImage={recipientUser.profilePic}

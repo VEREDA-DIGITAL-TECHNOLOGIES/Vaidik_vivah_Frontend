@@ -430,6 +430,7 @@ class CallService {
             this.userId!,
             this.userName!
         );
+        
 
         this.hasJoinedCall = true;
         this.zegoInstance = ZegoUIKitPrebuilt.create(token);
@@ -675,4 +676,5 @@ const styles = {
     } as React.CSSProperties,
 };
 
-export default CallService.getInstance();
+export const callService = CallService.getInstance();
+export default callService;

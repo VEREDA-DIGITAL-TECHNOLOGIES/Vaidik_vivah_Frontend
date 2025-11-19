@@ -136,9 +136,9 @@ function App() {
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
       const token = await getToken(messaging, {
-        vapidKey: 'BApCuSOwpyH42FM4URJTY9TZEB8pJHo-kL2bVBaICgGjaLQu3jK_Cwti8WLnAmUyhFMeT8KcrmoAFaXISXaq-qM'
+        vapidKey: 'BFNHvcxuMMAfJ6blC-OL5ovzHZ-pXme5oyqVI7o1iMYOtXHeF482MtoJMG7xfCnjLhOfSBYNLklefPVFbG6kalw'
       });
-
+        
       localStorage.setItem("fcmToken", token!);
 
     } else {
