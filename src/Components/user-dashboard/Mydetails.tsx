@@ -63,7 +63,7 @@ const MyDetails = () => {
 
     const [Percentage, setProfilePercentage] = useState(0);
     const { data: myDetailsData, isLoading: isLoading } = useMyDetailsQuery<any>();
-
+//  console.log("I look detailsssss",myDetailsData);
 
     useEffect(() => {
         if (myDetailsData) {
