@@ -26,7 +26,7 @@ import ChatRoom from "./pages/chat/ChatRoom";
 import Messageuser from "./pages/chat/Messageuser";
 
 
-import AboutVedvivah from "./pages/user-dashboard/AboutVedvivah";
+
 import HelpDashboard from "./pages/user-dashboard/Help";
 import AboutUs from "./pages/footer/AboutUs";
 import Advice from "./pages/footer/Advice"
@@ -236,7 +236,7 @@ function App() {
             <Route path="/child-safety-policy" element={<ChildSafety />} />
             <Route path="/delete-account" element={<DeleteAccount />} />
             <Route path="/mission" element={<Mission />} />
-            <Route path="/about-vedvivah" element={<AboutVedvivah />} />
+         
 
             
             

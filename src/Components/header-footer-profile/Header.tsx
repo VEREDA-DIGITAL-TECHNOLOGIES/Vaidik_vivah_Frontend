@@ -91,9 +91,7 @@ const Header = memo(() => {
 
     const profile = (
         <div className="flex flex-col gap-4">
-            <ul>
-                <li><Link to="/about-vedvivah">About Ved Vivah</Link></li>
-            </ul>
+           
             <ul>
                 <li><Link to="/help">Help</Link></li>
             </ul>

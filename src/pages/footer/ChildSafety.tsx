@@ -99,7 +99,7 @@ const ChildSafety = () => {
                             By using Ved Vivah, users agree to comply with our Child Safety Policy. Any violations may result in account termination, legal action, or reporting to authorities.
                         </li>
                     </ul>
-                    <h4>For any concerns related to child safety, please reach out to our Child Safety Team at <span className="font-semibold underline">info@vedvivah.au.</span> </h4>
+                    <h4>For any concerns related to child safety, please reach out to our Child Safety Team at <span className="font-semibold underline">info@vedvivah.com</span> </h4>
 
                 </div>
             </div>
