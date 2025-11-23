@@ -28,7 +28,8 @@ import ReligiousModel from "../user-dashboard-model/ReligiousModel";
 import LocationBackgroundModal from "../user-dashboard-model/LocationBackgroundModal";
 import EducationFinancialModal from "../user-dashboard-model/EducationFinancialModal";
 
-
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../../utils/firebaseConfig";
 
 
 const MyDetails = () => {
@@ -62,7 +63,7 @@ const MyDetails = () => {
 
     const [Percentage, setProfilePercentage] = useState(0);
     const { data: myDetailsData, isLoading: isLoading } = useMyDetailsQuery<any>();
-
+//  console.log("I look detailsssss",myDetailsData);
 
     useEffect(() => {
         if (myDetailsData) {
@@ -345,7 +346,14 @@ const MyDetails = () => {
 
     const capitalize = (str: string | undefined) =>
         str ? str.charAt(0).toUpperCase() + str.slice(1).toLowerCase() : "";
-
+    // After user signs up or logs in
+    if (auth.currentUser) {
+        updateProfile(auth.currentUser, {
+        displayName: myDetails?.basic_and_lifestyle?.firstName,  // set user name
+        photoURL: myDetails?.profileImage[0],// set profile pic
+        });
+        // console.log("name and photoUrl are", myDetails?.basic_and_lifestyle?.firstName, myDetails?.profileImage[0]);
+    }
 
     return (
 
