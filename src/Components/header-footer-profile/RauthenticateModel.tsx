@@ -20,7 +20,7 @@ const ReauthenticateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { user } = useSelector((state: RootState) => state.userReducer);
-    const { confirm } = Modal;
+    const [modal, contextHolder] = Modal.useModal();
 
     const [password, setPassword] = useState("");
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -30,7 +30,10 @@ const ReauthenticateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
 
     const handleDelete = async () => {
+        
         try {
+        
+
             if (!user?.uid) {
                 toast.error("User not authenticated.");
                 return;
@@ -39,12 +42,14 @@ const ReauthenticateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             // Delete user data from Firebase Realtime Database
             const userRef = ref(database, `users/${user.uid}`);
             await remove(userRef);
+       
 
             // Delete user from Firebase Authentication
             await auth.currentUser?.delete();
+        
 
             const response = await deleteUser().unwrap();
-
+                
             if (response?.success) {
                 toast.success(response.message);
 
@@ -75,7 +80,9 @@ const ReauthenticateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
     };
 
     const showDeleteConfirm = () => {
-        confirm({
+        
+
+        modal.confirm({
             title: "Are you sure you want to delete this account?",
             okText: "Delete",
             okType: "danger",
@@ -116,6 +123,9 @@ const ReauthenticateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
 
     return (
+        <>
+      
+        {contextHolder}
         <Modal
             title="Reauthentication Required"
             open={isOpen}
@@ -136,6 +146,7 @@ const ReauthenticateModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                 visibilityToggle={{ visible: passwordVisible, onVisibleChange: setPasswordVisible }}
             />
         </Modal>
+          </>
     );
 };
 
