@@ -6,40 +6,47 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const baseQuery = fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_BASE_URL}/api/v1/`,
     credentials: "include",
+
     prepareHeaders: (headers, { getState }) => {
         const accessToken = (getState() as RootState).userReducer.accessToken;
+
+        // 🔥 FINAL FIX — Correct Authorization header handling
         if (accessToken) {
-            headers.set('Authorization', accessToken);
+            headers.set("Authorization", `Bearer ${accessToken}`);
+        } else {
+            headers.delete("Authorization"); // prevent sending undefined/null token
         }
+
         return headers;
     }
 });
 
+export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> =
+    async (args, api, extraOptions) => {
 
-export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (args, api, extraOptions) => {
-    let result = await baseQuery(args, api, extraOptions);
-    if (result?.error?.status === 401) {
-        console.log("refreshing token");
-        const refreshResult = await baseQuery("/user/refresh", api, extraOptions);
-        console.log(refreshResult?.data, "refreshResult");
-        if (refreshResult?.data) {
-            api.dispatch(setCredentials({ ...refreshResult.data }));
-            result = await baseQuery(args, api, extraOptions);
-        } else {
-            console.log("refresh token failed");
-            api.dispatch(logout());
+        let result = await baseQuery(args, api, extraOptions);
+
+        // If access token expired → try refresh
+        if (result?.error?.status === 401) {
+            console.log("refreshing token");
+
+            const refreshResult = await baseQuery("/user/refresh", api, extraOptions);
+            console.log(refreshResult?.data, "refreshResult");
+
+            if (refreshResult?.data) {
+                api.dispatch(setCredentials({ ...refreshResult.data }));
+                result = await baseQuery(args, api, extraOptions);
+            } else {
+                console.log("refresh token failed");
+                api.dispatch(logout());
+            }
         }
-    }
 
-    return result;
-}
-
-
-
+        return result;
+    };
 
 export const apiSlice = createApi({
     reducerPath: "apiSlice",
     baseQuery: baseQueryWithReauth,
     endpoints: () => ({}),
 });
-
