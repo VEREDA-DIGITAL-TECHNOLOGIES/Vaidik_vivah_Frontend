@@ -66,27 +66,17 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handle
 
     console.log(user?.usertype, "userType");
 
-    const getBlurStyle = (currentUserType: string, targetUserType: string): string => {
-        if (currentUserType === "Standard" && targetUserType === "Standard") {
-            return " blur-[5px]";
-        }
-        if (currentUserType === "Standard" && targetUserType === "Premium") {
-            return "blur-[5px]";
-        }
-        if (currentUserType === "Standard" && targetUserType === "Exclusive") {
-            return "blur-[5px]";
-        }
+const getBlurStyle = (currentUserType: string): string => {
+  // If Standard → always blur every profile
+  if (currentUserType === "Standard") {
+    return "blur-[5px]";
+  }
 
-        if (currentUserType === "Premium" && targetUserType === "Standard") {
-            return "";
-        }
-        if (currentUserType === "Premium" && targetUserType === "Exclusive") {
-            return "blur-[5px]";
-        }
+  // Gold, Platinum, Diamond → view all
+  return "";
+};
 
 
-        return "";
-    };
 
 
 
@@ -113,10 +103,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handle
                     <img
                         src={data?.profileImages?.[0] ? data.profileImages[0] : 'path/to/default-image.jpg'}
                         alt="p"
-                        className={`absolute h-full w-full rounded-2xl object-cover ${getBlurStyle(user?.usertype || '', data.userType)}`} />
+                        className={`absolute h-full w-full rounded-2xl object-cover ${getBlurStyle(user?.usertype || '')}`} />
 
                     <div
-                        className={`relative p-5 text-white ${data.userType !== "Standard" ? "space-y-[12.5rem]" : ""} h-full space-y-[13.5rem] rounded-2xl bg-black bg-opacity-45`}
+                        className={`relative p-5 text-[#FD5C90] ${data.userType !== "Standard" ? "space-y-[12.5rem]" : ""} h-full space-y-[13.5rem] rounded-2xl `}
                     >
                         <div className="flex items-center justify-between">
                             <div className="rounded-full border-2 border-[#FFFFFF33] bg-transparent px-2">
@@ -131,7 +121,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handle
                                         handleFavouriteToggle(data.userId);
 
                                     }}
-                                > <FaStar className="text-2xl text-white" />  </button> :
+                                > <FaStar className="text-2xl text-[#FD5C90]" />  </button> :
 
 
                                     <button
@@ -149,7 +139,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handle
                         </div>
                         <div className="flex flex-col gap-4">
                             <div className="flex h-10 w-28 items-center justify-center rounded-lg bg-gradient-to-t from-[#FFD54266] to-[#C0970766] px-1">
-                                <h1 className="text-white">{data.match_percentage}% match</h1>
+                                <h1 className="text-[#FD5C90]">{data.match_percentage}% match</h1>
                             </div>
                             <div>
                                 <div className="flex items-center justify-between">

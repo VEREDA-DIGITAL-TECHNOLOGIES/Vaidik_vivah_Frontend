@@ -97,7 +97,7 @@ const ChangePassword = () => {
                         <img src="/confirm.png" alt="confirm" className="w-6 h-6" />
                     </div>
                 </div>
-                <div className="text-white mt-4 text-center">
+                <div className="text-black mt-4 text-center">
                     <h1 className="text-3xl font-[Bembo-MT-Pro-Bold]">Change your password</h1>
                     <p className="mt-4 md:text-lg font-[Bembo-MT-Pro-Light]">
                         Please choose a strong password that is long, random, and unique.

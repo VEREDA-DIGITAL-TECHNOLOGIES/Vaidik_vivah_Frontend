@@ -122,7 +122,7 @@ const VerifyOtp = () => {
                     <img src="/lock.png" alt="Lock" className="w-8 h-8" />
                 </div>
 
-                <div className="flex flex-col items-center justify-center text-white mt-4">
+                <div className="flex flex-col items-center justify-center text-black mt-4">
                     <h1 className="text-4xl font-bold text-center">One Time Password (OTP) verification code</h1>
                     <p className="mt-4 md:text-lg text-center">
                         Please enter a verification code sent to your email address

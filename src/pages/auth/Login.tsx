@@ -12,8 +12,7 @@ import { connectSocket } from "../../services/socketservice";
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { toast } from 'sonner'
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../utils/firebaseConfig.ts";
+
 
 import { z } from 'zod'
 
