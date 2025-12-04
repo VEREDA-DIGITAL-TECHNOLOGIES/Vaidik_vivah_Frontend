@@ -76,9 +76,9 @@ const Login = () => {
       }
 
       // Firebase authentication
-      // const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
-      // const user = userCredential.user;
-      // console.log("User signed in:", user);
+      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
+      const user = userCredential.user;
+      console.log("User signed in:", user);
 
       if ('data' in res && res.data) {
         const successData = res.data as ApiResponse;
