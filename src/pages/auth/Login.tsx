@@ -17,6 +17,8 @@ import { useNavigate } from "react-router-dom";
 import { z } from 'zod'
 
 import { LoadingOutlined } from '@ant-design/icons';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../utils/firebaseConfig.ts";
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),

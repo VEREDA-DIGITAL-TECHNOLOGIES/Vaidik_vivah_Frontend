@@ -275,7 +275,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 <div className="flex items-center justify-center gap-2">
                   {connectionStatus === "pending" && (
                     <>
-                      <div className="rounded-[0.5rem] bg-gray-400 px-4 py-2 text-white">
+                      <div className="rounded-[0.5rem] bg-gray-500 px-4 py-2 text-white">
 
                         Request Sent
 
@@ -298,7 +298,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
               {(connectionType === "receiver" || connectionType === "sender") &&
                 connectionStatus === "accepted" && (
                   <div className="flex items-center justify-center gap-2">
-                    <div className="rounded-[0.5rem] bg-gray-400 px-4 py-2 text-white">
+                    <div className="rounded-[0.5rem] bg-green-400 px-4 py-2 text-white">
                       {
                         isLoadingConnectionStatus && (
                           <FaSpinner className="animate-spin" />
