@@ -1,189 +1,175 @@
-// import React , { useState } from "react";
-import { FaRegStar } from "react-icons/fa";
+import React from "react";
+import { FaRegStar, FaStar } from "react-icons/fa";
 import { FaRegMap } from "react-icons/fa6";
 import { FaRegUser } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import type{ RootState } from "../../Redux/store";
-import { useSelector } from "react-redux";
-// import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 import { MdVerified } from "react-icons/md";
-import "../../font.css";
-import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import type { RootState } from "../../Redux/store";
+import { useSelector } from "react-redux";
 import { useUserProfileNotificationMutation } from "../../Redux/Api/profile.api";
-
+import "../../font.css";
 
 interface Profile {
-    id: string;
-    profileImages: Array<string>;
-    userId: string;
-    userType: string;
-    gender: string;
-    age: string;
-    match_percentage: string,
-    displayName: string,
-    firstName: string,
-    occupation: string;
-    religion: string;
-    verified: boolean;
-    country: string;
-    state: string;
-    maritalStatus: string;
+  id: string;
+  profileImages: Array<string>;
+  userId: string;
+  userType: string;
+  gender: string;
+  age: string;
+  match_percentage: string;
+  displayName: string;
+  firstName: string;
+  occupation: string;
+  religion: string;
+  verified: boolean;
+  country: string;
+  state: string;
+  maritalStatus: string;
 }
 
 interface ProfileCardProps {
-    profiles: Profile[];
-    isFavourite: boolean;
-    handleFavouriteToggle: (userId: string) => void;
-
+  profiles: Profile[];
+  isFavourite: boolean;
+  handleFavouriteToggle: (userId: string) => void;
 }
 
+const ProfileCard: React.FC<ProfileCardProps> = ({
+  profiles,
+  isFavourite,
+  handleFavouriteToggle,
+}) => {
+  const { user } = useSelector((state: RootState) => state.userReducer);
 
+  const [userprofilesdetailsnotification] =
+    useUserProfileNotificationMutation();
+  const navigate = useNavigate();
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ profiles, isFavourite, handleFavouriteToggle }) => {
-    const { user } = useSelector((state: RootState) => state.userReducer);
+  const getBorderColor = (userType: string) => {
+    switch (userType) {
+      case "Exclusive":
+        return "border-[#60457E]";
+      case "Premium":
+        return "border-[#007EAF]";
+      default:
+        return "";
+    }
+  };
 
-    const [userprofilesdetailsnotification] = useUserProfileNotificationMutation()
+  const getBlurStyle = (currentUserType: string): string => {
+    return currentUserType === "Standard" ? "blur-[5px]" : "";
+  };
 
+  const handleCardClick = (userId: string, name: string) => {
+    userprofilesdetailsnotification({ targetUserId: userId });
+    navigate(`/profile/${name}/${userId}`);
+  };
 
-    const navigate = useNavigate();
+  return (
+    <div className="w-full flex flex-wrap gap-6">
+      {profiles.map((data) => (
+        <div
+          key={data.id}
+          onClick={() => handleCardClick(data.userId, data.firstName)}
+          className={`
+            relative cursor-pointer rounded-3xl overflow-hidden 
+            shadow-lg bg-white transition-transform duration-300 
+            hover:scale-[1.02] hover:shadow-2xl 
+            w-full md:w-[22rem]
+            border-t-[12px]
+            ${getBorderColor(data.userType)}
+          `}
+        >
+          {/* IMAGE (auto height) */}
+          <div className="w-full h-64 sm:h-72 md:h-80 overflow-hidden">
+            <img
+              src={
+                data.profileImages?.[0] ||
+                "https://via.placeholder.com/300x300?text=No+Image"
+              }
+              alt="Profile"
+              className={`h-full w-full object-cover ${getBlurStyle(
+                user?.usertype || ""
+              )}`}
+            />
+          </div>
 
+          {/* DETAILS */}
+          <div className="p-5 flex flex-col gap-4">
+            {/* TOP ROW */}
+            <div className="flex items-center justify-between">
+              <span className="rounded-full px-3 py-1 bg-[#FFF1F6] text-[#FD5C90] font-bold text-sm">
+                {data.userType}
+              </span>
 
-
-
-
-    const getBorderColor = (userType: string) => {
-        switch (userType) {
-            case "Exclusive":
-                return "border-[#60457E]";
-            case "Premium":
-                return "border-[#007EAF]";
-            case "Standard":
-                return ""; // No border
-            default:
-                return "";
-        }
-    };
-
-    console.log(user?.usertype, "userType");
-
-const getBlurStyle = (currentUserType: string): string => {
-  // If Standard → always blur every profile
-  if (currentUserType === "Standard") {
-    return "blur-[5px]";
-  }
-
-  // Gold, Platinum, Diamond → view all
-  return "";
-};
-
-
-
-
-
-    const handleCardClick = (userId: string, name: string) => {
-        userprofilesdetailsnotification({ targetUserId: userId });
-        navigate(`/profile/${name}/${userId}`);
-        window.location.reload();
-    };
-
-
-
-
-    return (
-        <div className=" ">
-            {profiles.map((data) => (
-                <div
-                    onClick={() => handleCardClick(data.userId, data.firstName)}
-                   
-                    
-                    key={data.id}
-                    className={`relative w-full cursor-pointer md:w-[24rem] ${data.userType !== "Standard" ? "h-[33.1rem]" : "h-[33.1rem]"} rounded-[1.9rem] ${data.userType !== "Standard" ? "border-t-[1rem]" : ""
-                        } ${getBorderColor(data.userType)}`}
+              {isFavourite ? (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFavouriteToggle(data.userId);
+                  }}
                 >
-                    <img
-                        src={data?.profileImages?.[0] ? data.profileImages[0] : 'path/to/default-image.jpg'}
-                        alt="p"
-                        className={`absolute h-full w-full rounded-2xl object-cover ${getBlurStyle(user?.usertype || '')}`} />
+                  <FaStar className="text-2xl text-[#FD5C90]" />
+                </button>
+              ) : (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFavouriteToggle(data.userId);
+                  }}
+                >
+                  <FaRegStar className="text-2xl text-[#FD5C90]" />
+                </button>
+              )}
+            </div>
 
-                    <div
-                        className={`relative p-5 text-[#FD5C90] ${data.userType !== "Standard" ? "space-y-[12.5rem]" : ""} h-full space-y-[13.5rem] rounded-2xl `}
-                    >
-                        <div className="flex items-center justify-between">
-                            <div className="rounded-full border-2 border-[#FFFFFF33] bg-transparent px-2">
-                                <h1 className="font-bold">{data.userType}</h1>
-                            </div>
+            {/* Match % */}
+            <div className="w-max px-3 py-1 rounded-lg bg-gradient-to-t from-[#FFD54266] to-[#C0970766]">
+              <p className="text-[#FD5C90] text-sm font-medium">
+                {data.match_percentage}% match
+              </p>
+            </div>
 
-                            {
-                                isFavourite ? <button
-                                    className="flex items-center gap-2 "
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleFavouriteToggle(data.userId);
+            {/* NAME + AGE */}
+            <div className="flex items-center justify-between">
+              <h1 className="text-2xl font-bold flex items-center gap-2 text-black leading-tight">
+                {data.displayName || data.firstName}
+                {data.verified && (
+                  <MdVerified className="text-[#FD5C90] text-xl" />
+                )}
+              </h1>
 
-                                    }}
-                                > <FaStar className="text-2xl text-[#FD5C90]" />  </button> :
+              <p className="text-gray-700 font-semibold">
+                {`${data.gender === "Man" ? "M" : "F"}, ${data.age}`}
+              </p>
+            </div>
 
+            {/* OCCUPATION */}
+            <p className="text-lg font-semibold text-gray-800 leading-tight">
+              {data.occupation}
+            </p>
 
-                                    <button
-                                        className="flex items-center gap-2 "
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            handleFavouriteToggle(data.userId);
+            {/* RELIGION + MARITAL STATUS */}
+            <div className="flex items-center justify-between">
+              <p className="text-lg font-semibold text-gray-900">
+                {data.religion}
+              </p>
 
-                                        }}
-                                    >
-                                        <FaRegStar className="text-2xl" />
-                                    </button>
-                            }
+              <div className="flex items-center gap-2 text-gray-800">
+                <FaRegUser />
+                <p className="font-semibold">{data.maritalStatus}</p>
+              </div>
+            </div>
 
-                        </div>
-                        <div className="flex flex-col gap-4">
-                            <div className="flex h-10 w-28 items-center justify-center rounded-lg bg-gradient-to-t from-[#FFD54266] to-[#C0970766] px-1">
-                                <h1 className="text-[#FD5C90]">{data.match_percentage}% match</h1>
-                            </div>
-                            <div>
-                                <div className="flex items-center justify-between">
-                                    <h1 className="flex items-center gap-2 text-4xl font-bold">
-                                        {" "}
-                                        {data.displayName || data.firstName}{" "}
-                                        {data.verified ? (
-                                            <MdVerified className="text-2xl text-[#FD5C90]" />
-                                        ) : (
-                                            ""
-                                        )}
-                                    </h1>
-                                    <h1>{`${data.gender === 'Man' ? 'M' : 'F'},${data.age}`}</h1>
-                                </div>
-                                <div className="flex items-center justify-between">
-                                    <h1 className="text-xl font-semibold"> {data.occupation}</h1>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center justify-between">
-                                <h1 className="text-xl font-semibold">{data.religion}</h1>
-                                <div className="flex items-center gap-2">
-                                    <span>
-                                        <FaRegUser />{" "}
-                                    </span>
-                                    <h1 className="font-semibold">{data.maritalStatus}</h1>
-                                </div>
-                            </div>
-                            <div className="w-max rounded-full bg-[#F0F5FF] px-2 text-[#FD5C90]">
-                                <h1
-                                    className="flex items-center justify-around"
-                                    style={{ fontFamily: "Proxima-Nova-Semibold, sans-serif" }}
-                                >
-                                    {" "}
-                                    <FaRegMap className="mr-2" />
-                                    {` ${data.country} - ${data.state}`}
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ))}
+            {/* LOCATION */}
+            <div className="w-max px-3 py-1 rounded-full bg-[#F0F5FF] text-[#FD5C90] font-medium flex items-center gap-2">
+              <FaRegMap />
+              <span className="whitespace-nowrap">{`${data.country}, ${data.state}`}</span>
+            </div>
+          </div>
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
 export default ProfileCard;
