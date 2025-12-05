@@ -68,7 +68,9 @@ const ChildSafety = () => {
                         <li className="pb-4">
                             We have appointed a Child Safety Representative responsible for addressing safety concerns and responding to Google Play notifications related to CSAE.
                             <br />
-                            <strong>Child Safety Contact:</strong> <span className="underline">compliance@vedvivah.com</span>
+                            <strong>Child Safety  Officer Contact  Email:</strong> <span className="underline">compliance@vedvivah.com</span>
+
+                            <strong>Child Safety Officer Contact Number:</strong> <span className="underline">+91 6284704034</span>
                         </li>
                     </ul>
 
