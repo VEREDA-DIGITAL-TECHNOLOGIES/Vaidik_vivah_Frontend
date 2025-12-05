@@ -23,7 +23,7 @@ const ChildSafety = () => {
                 </div>
 
                 <div className="flex flex-col items-start md:pr-10">
-                    <h2 className="font-bold text-xl pb-4">Child Safety Policy</h2>
+                    <h2 className="font-bold text-xl pb-4">Child Safety Policy And Zero Tolerance Policy </h2>
                     <h3 className="font-bold text-md">Ved Vivah Child Safety Policy</h3>
 
                     <p className="#475467 pb-4">
@@ -70,7 +70,7 @@ const ChildSafety = () => {
                             <br />
                             <strong>Child Safety  Officer Contact  Email:</strong> <span className="underline">compliance@vedvivah.com</span>
 
-                            <strong>Child Safety Officer Contact Number:</strong> <span className="underline">+91 6284704034</span>
+                          <p>    <strong>Child Safety Officer Contact Number:</strong> <span className="underline">+91 6284704034</span> </p>
                         </li>
                     </ul>
 
