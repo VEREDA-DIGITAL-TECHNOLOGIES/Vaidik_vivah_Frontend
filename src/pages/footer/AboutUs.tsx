@@ -9,7 +9,7 @@ const AboutUs = () => {
         <h3 className="text-[#fa85aa] font-semibold text-base">
          Current as of {currentDate.toLocaleString()}
         </h3>
-        <h1 className=" text-2xl md:text-4xl font-semibold">About</h1>
+        <h1 className=" text-2xl md:text-4xl font-semibold">About Us</h1>
         <p className="text-[#475467] text-md md:text-xl text-balance">
           Leading and trusted matrimony platform, dedicated to uniting individuals with their ideal life partners.
 
