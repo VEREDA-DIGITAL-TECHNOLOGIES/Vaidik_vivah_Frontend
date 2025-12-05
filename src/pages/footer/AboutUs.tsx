@@ -49,9 +49,9 @@ import { Link } from "react-router-dom";
 const sections = [
   { title: "Community Guidelines", links: "/community-guidelines" },
   { title: "About", links: "/about-us" },
-  { title: "TERMS", links: "/terms-conditions" },
-  { title: "PRIVACY", links: "/privacy-policy" },
-  { title: "COOKIES POLICY", links: "/cookies-policy" },
+  { title: "Terms", links: "/terms-conditions" },
+  { title: "Privacy", links: "/privacy-policy" },
+  { title: "Cookies Policy", links: "/cookies-policy" },
   { title: "Services", links: "/services" },
   { title: "Child Safety", links: "/child-safety-policy" },
   { title: "Delete Account", links: "/delete-account" }
