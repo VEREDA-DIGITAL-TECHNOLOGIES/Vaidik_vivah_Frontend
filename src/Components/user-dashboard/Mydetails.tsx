@@ -390,7 +390,8 @@ const MyDetails = () => {
                     <ImageUploadModal
                         open={modalOpen}
                         onClose={() => setModalOpen(false)}
-                        onSuccess={() => refetch()} // refresh profile details
+                        onSuccess={() => refetch()}
+                        oldImages={myDetails?.profileImage || []}     // ⬅ send old images
                     />
                     </div>
 

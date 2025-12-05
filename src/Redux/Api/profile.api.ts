@@ -64,11 +64,12 @@ export interface ProfilePercentage {
     }),
         updatePhotoUpload: builder.mutation({
       query: (formData) => ({
-        url: 'profile/updatephotoUpload',
+        url: 'profile/updatephotoUploadForWed',
         method: 'PUT',
         body: formData, // FormData
       }),
     }),
+      
 
     getProfiles : builder.query({
       query: (filters) => ({
