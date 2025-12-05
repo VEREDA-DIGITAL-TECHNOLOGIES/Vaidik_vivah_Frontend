@@ -138,7 +138,7 @@ const VerifyOtp = () => {
                                         label=""
                                         {...register(fieldNames[index])}
                                         ref={(el) => {inputRefs.current[index] = el}} // Assign ref to input
-                                        className={`w-16 h-16 text-center rounded-xl text-3xl text-[#007EAF] placeholder-[#007EAF] outline-gray-400 ${errors[fieldNames[index] as typeof fieldNames[number]] ? 'border-red-500' : ''}`}
+                                        className={`w-16 h-16 text-center rounded-xl text-3xl text-[#FD5C90] placeholder-[#007EAF] outline-gray-400 ${errors[fieldNames[index] as typeof fieldNames[number]] ? 'border-red-500' : ''}`}
                                         type="text"
                                         inputMode="numeric"
                                         maxLength={1}

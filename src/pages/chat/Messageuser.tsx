@@ -596,7 +596,7 @@ export default function MessageUser() {
       className="flex flex-col max-w-4xl mx-auto my-6 border border-[#007EAF] rounded-3xl bg-white/90 backdrop-blur shadow-xl overflow-hidden"
     >
       {/* Header */}
-      <div className="sticky top-0 z-40 bg-[#007EAF] flex justify-between items-center px-5 py-4 text-white">
+      <div className="sticky top-0 z-40 bg-[#FD5C90] flex justify-between items-center px-5 py-4 text-white">
         <div className="flex items-center gap-3">
           <img
             src={recipientUser?.profilePic || "/default-avatar.png"}
@@ -715,7 +715,7 @@ export default function MessageUser() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.2 }}
                         className={`max-w-[75%] px-4 py-2 rounded-2xl text-sm shadow ${msg.senderId === currentUserId
-                          ? "bg-[#007EAF] text-white self-end"
+                          ? "bg-[#FD5C90] text-white self-end"
                           : "bg-gray-200 text-gray-800 self-start"
                           }`}
                       >
@@ -764,7 +764,7 @@ export default function MessageUser() {
             />
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="p-2 text-gray-600 hover:text-[#007EAF] transition"
+              className="p-2 text-gray-600 hover:text-[#FD5C90] transition"
               disabled={uploadingFile}
             >
               <File className="w-5 h-5" />
@@ -772,7 +772,7 @@ export default function MessageUser() {
 
             <button
               onClick={handleSendLocation}
-              className="p-2 text-gray-600 hover:text-[#007EAF] transition"
+              className="p-2 text-gray-600 hover:text-[#FD5C90] transition"
               disabled={uploadingFile}
             >
               <MapPin className="w-5 h-5" />
@@ -790,7 +790,7 @@ export default function MessageUser() {
 
             <button
               onClick={handleSendMessage}
-              className="bg-[#007EAF] text-white px-4 py-2 rounded-full hover:bg-[#005f88] transition disabled:opacity-50"
+              className="bg-[#FD5C90] text-white px-4 py-2 rounded-full hover:bg-[#FD5C90] transition disabled:opacity-50"
               disabled={
                 loading ||
                 uploadingFile ||

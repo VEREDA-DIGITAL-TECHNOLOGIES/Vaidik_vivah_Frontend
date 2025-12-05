@@ -138,14 +138,14 @@ export default function ChatScreen() {
                 <img
                     src={myDetails?.data || "/default-avatar.png"}
                     alt="Avatar"
-                    className="w-12 h-12 rounded-full border-2 border-[#007EAF] mr-4"
+                    className="w-12 h-12 rounded-full border-2 border-[#FD5C90] mr-4"
                 />
-                <h1 className="text-3xl font-bold text-[#007EAF]">Messages</h1>
+                <h1 className="text-3xl font-bold text-[#FD5C90]">Messages</h1>
             </div>
 
             <div className="mb-6">
                 <div className="flex items-center bg-[#f0f9fc] p-3 rounded-lg shadow">
-                    <FaSearch className="text-[#007EAF] mx-2" />
+                    <FaSearch className="text-[#FD5C90] mx-2" />
                     <input
                         type="text"
                         value={searchTerm}
@@ -153,19 +153,19 @@ export default function ChatScreen() {
                         placeholder="Search connections..."
                         className="bg-transparent outline-none flex-1 text-gray-700"
                     />
-                    <FaMicrophone className="text-[#007EAF] mr-2" />
+                    <FaMicrophone className="text-[#FD5C90] mr-2" />
                 </div>
             </div>
 
             <div className="flex mb-4 border-b border-gray-200">
                 <button
-                    className={`px-4 py-2 font-medium ${activeTab === 'connected' ? 'text-[#007EAF] border-b-2 border-[#007EAF]' : 'text-gray-500'}`}
+                    className={`px-4 py-2 font-medium ${activeTab === 'connected' ? 'text-[#FD5C90]border-b-2 border-[#007EAF]' : 'text-gray-500'}`}
                     onClick={() => setActiveTab('connected')}
                 >
                     Connected People
                 </button>
                 <button
-                    className={`px-4 py-2 font-medium ${activeTab === 'blocked' ? 'text-[#007EAF] border-b-2 border-[#007EAF]' : 'text-gray-500'}`}
+                    className={`px-4 py-2 font-medium ${activeTab === 'blocked' ? 'text-[#FD5C90] border-b-2 border-[#FD5C90]' : 'text-gray-500'}`}
                     onClick={() => setActiveTab('blocked')}
                 >
                     Blocked Users
@@ -232,7 +232,7 @@ export default function ChatScreen() {
                 </>
             ) : (
                 <div className="bg-white rounded-lg shadow p-4">
-                    <h2 className="text-lg font-semibold text-[#007EAF] mb-4">Blocked Users</h2>
+                    <h2 className="text-lg font-semibold text-[#FD5C90] mb-4">Blocked Users</h2>
                     {blockedUsersData?.data?.length === 0 ? (
                         <p className="text-gray-500">No users blocked.</p>
                     ) : (
@@ -252,7 +252,7 @@ export default function ChatScreen() {
                                     </div>
                                     <button
                                         onClick={() => handleUnblockUser(user.userId)}
-                                        className="bg-[#007EAF] text-white px-3 py-1 rounded-md text-sm hover:bg-[#006494] transition"
+                                        className="bg-[#FD5C90] text-white px-3 py-1 rounded-md text-sm hover:bg-[#FD5C90] transition"
                                     >
                                         Unblock
                                     </button>
