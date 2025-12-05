@@ -21,10 +21,15 @@ const AboutUs = () => {
         </div>
         <div className=" flex flex-col items-start md:pr-10">
           <h2 className="font-bold text-xl pb-4 "> About us</h2>
-          <p>Ved Vivah, launched in 2025, is emerging as India’s fastest-growing matrimonial platform — available as both a mobile application and website — dedicated to delivering an exceptional matchmaking experience. We aim to expand opportunities for individuals to meet potential life partners from diverse communities and cultural backgrounds.
+        <p> Ved Vivah is a modern, value-driven matrimony platform built to help individuals and families find the right life partner with trust, clarity, and cultural authenticity. We combine technology with tradition to create a reliable and respectful matchmaking experience for adults across India and abroad.
 
-            Our vision is to create a world-renowned matchmaking service that touches the lives of millions across the globe. Ved Vivah is built on thorough research and analysis, with a strong focus on protecting user privacy and security. Featuring simple, engaging, and easy-to-use navigation, it offers the most advanced AI-powered matchmaking service to bring people closer to their perfect match.
-                   </p>
+Our platform is designed for adults aged <b> 18 </b>and above who want meaningful, long-term relationships. Every profile is verified, every interaction is safeguarded, and every feature is built with privacy and security at the core.
+
+At Ved Vivah, we believe that matchmaking should be simple, safe, and rooted in the values that matter. Whether you’re searching based on community, profession, or horoscope compatibility, we make the process smooth and thoughtful through secure chat, advanced filters, and guided profile creation.
+
+We are committed to maintaining a safe digital ecosystem, strong data protection practices, and a zero-tolerance policy toward any form of inappropriate behavior. Our compliance and moderation team ensures that users enjoy a respectful, secure, and meaningful experience throughout their journey.
+
+ <b>Ved Vivah</b> isn’t just a matrimony app — it’s a trusted platform created to bring good people together with confidence, transparency, and dignity.</p>
           
 
         </div>

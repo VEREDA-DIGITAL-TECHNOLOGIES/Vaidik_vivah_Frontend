@@ -97,7 +97,7 @@ const Mission = () => {
 
       {/* value in action end */}
 
-      {/* wedlock difference */}
+
 
       <div className="bg-white text-[#061C3D] py-12 px-4 md:px-28 lg:px-40 3xl:px-60 py-16">
         <div className="container mx-auto ">
