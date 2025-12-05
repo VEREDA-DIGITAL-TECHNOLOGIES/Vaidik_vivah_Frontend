@@ -15,7 +15,7 @@ const Mission = () => {
         </div>
         <div className="w-full">
           <img
-            src="/mission.jpg"
+            src="/vedviahmission.jpeg"
             alt="mission"
             className="w-full h-auto sm:h-[30rem] md:h-[35rem] lg:h-[40rem] xl:h-auto  object-center "
           />

@@ -62,6 +62,13 @@ export interface ProfilePercentage {
         body: data,
       }),
     }),
+        updatePhotoUpload: builder.mutation({
+      query: (formData) => ({
+        url: 'profile/updatephotoUpload',
+        method: 'PUT',
+        body: formData, // FormData
+      }),
+    }),
 
     getProfiles : builder.query({
       query: (filters) => ({
@@ -129,5 +136,6 @@ export interface ProfilePercentage {
   useUpdatePersonalBackgroundMutation,useUpdatePersonalDetailsMutation,
   useUpdateReligiousBackgroundMutation,useGetProfilesQuery,useUserByidMutation ,
   useFilterProflesMutation,useFilterFieldCountQuery,useGetUserImageQuery,
-  useGetProfilePercentageQuery,useUserProfileNotificationMutation} = profileApi;
+  useGetProfilePercentageQuery,useUserProfileNotificationMutation,useUpdatePhotoUploadMutation
+} = profileApi;
 

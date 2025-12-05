@@ -30,6 +30,7 @@ import EducationFinancialModal from "../user-dashboard-model/EducationFinancialM
 
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../../utils/firebaseConfig";
+import ImageUploadModal from "../ImageUpdate/ImageUploadModal";
 
 
 const MyDetails = () => {
@@ -45,7 +46,7 @@ const MyDetails = () => {
     const [isFamilyDetails, setIsFamilyDetails] = useState(false);
     const [isEducationFinancial, setIsEducationFinancial] = useState(false);
     const [isLocationBackground, setIsLocationBackground] = useState(false);
-
+    const [modalOpen, setModalOpen] = useState(false);
     console.log(myDetails?.toggleStatus);
     useEffect(() => {
         if (myDetails?.toggleStatus) {
@@ -364,17 +365,33 @@ const MyDetails = () => {
                 </div>
             ) : (
                 <div className="min-w-screen flex min-h-screen flex-col gap-4 md:gap-10 lg:flex-row ">
-                    <div className="mb-4 space-y-5 lg:grid grid-cols-1 gap-5  md:mb-0 h-full  auto-rows-[10rem] ">
-                        {myDetails?.profileImage.map(
-                            (imageUrl: string, index: number) => (
-                                <img
-                                    key={index}
-                                    src={imageUrl}
-                                    alt="profile image"
-                                    className="max-lg:object-cover w-full h-full rounded-md"
-                                />
-                            )
-                        )}
+                                    <div>
+                    {/* Image Grid */}
+                    <div className="mb-4 space-y-5 lg:grid grid-cols-1 gap-5 auto-rows-[10rem]">
+                        {myDetails?.profileImage?.map((src: string, i: number) => (
+                        <img
+                            key={i}
+                            src={src}
+                            alt="profile"
+                            className="object-cover w-full h-full rounded-md"
+                        />
+                        ))}
+                    </div>
+
+                    {/* Update Button */}
+                    <button
+                        onClick={() => setModalOpen(true)}
+                        className="px-2 py-2 bg-[#FD5C90] text-white rounded-md cursor-pointer"
+                    >
+                         <FaEdit />
+                    </button>
+
+                    {/* Modal Component */}
+                    <ImageUploadModal
+                        open={modalOpen}
+                        onClose={() => setModalOpen(false)}
+                        onSuccess={() => refetch()} // refresh profile details
+                    />
                     </div>
 
                     <div className="col-span-1 xl:grid w-full md:col-span-2 gap-10">
