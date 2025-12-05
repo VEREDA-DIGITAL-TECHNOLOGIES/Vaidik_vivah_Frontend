@@ -214,6 +214,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/user-suspended" element={<UserSuspended />} />
 
+          <Route path="/help" element={<HelpDashboard />} />
+
           <Route element={<ProtectedRoute isAuthenticated={!accessToken} />}>
             <Route path="/questions" element={<Question />} />
             <Route path="/register" element={<Register />} />
