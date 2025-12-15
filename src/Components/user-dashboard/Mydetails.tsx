@@ -31,6 +31,7 @@ import EducationFinancialModal from "../user-dashboard-model/EducationFinancialM
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../../utils/firebaseConfig";
 import ImageUploadModal from "../ImageUpdate/ImageUploadModal";
+import ContactNumberView from "./ContactNumberView";
 
 
 const MyDetails = () => {
@@ -39,7 +40,7 @@ const MyDetails = () => {
     const [toggle, { isLoading: isToggleLoading }] = useToggleMutation();
 
     const { user, myDetails } = useSelector((state: RootState) => state.userReducer);
-//    console.log("I look details",myDetails);
+   console.log("I look details",myDetails);
 
     const [isPersonalDetails, setIsPersonalDetails] = useState(false);
     const [isReligiousDetails, setIsReligiousDetails] = useState(false);
@@ -47,7 +48,9 @@ const MyDetails = () => {
     const [isEducationFinancial, setIsEducationFinancial] = useState(false);
     const [isLocationBackground, setIsLocationBackground] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
-    console.log(myDetails?.toggleStatus);
+    console.log("all deatisl",myDetails?.toggleStatus);
+
+
     useEffect(() => {
         if (myDetails?.toggleStatus) {
             setIsPersonalDetails(myDetails.toggleStatus.personal_details);
@@ -467,6 +470,14 @@ const MyDetails = () => {
                                             </div>
                                             <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
                                                 {myDetails?.basic_and_lifestyle?.postedBy}
+                                            </div>
+                                        </div>
+                                        <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
+                                                <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
+                                                Phone {" "}
+                                            </div>
+                                            <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
+                                               <ContactNumberView userId={user?.userId}/>
                                             </div>
                                         </div>
                                     </div>

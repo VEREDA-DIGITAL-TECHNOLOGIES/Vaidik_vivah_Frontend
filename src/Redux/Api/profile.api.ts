@@ -127,8 +127,24 @@ export interface ProfilePercentage {
       method: 'POST',
       body: { targetUserId },
     }),
-  })
+  }),
+  contactNumberByUserId: builder.query({
+  query: (userId) => ({
+    url: 'profile/contact/' + userId,
+    method: 'GET',
+  }),
 }),
+
+updateContactNumber: builder.mutation({
+  query: ({ userId, contactNumber }) => ({
+    url: 'profile/contact/' + userId,
+    method: 'PUT',
+    body: { contactNumber },
+  }),
+}),
+
+}),
+
  
 });
 
@@ -137,6 +153,7 @@ export interface ProfilePercentage {
   useUpdatePersonalBackgroundMutation,useUpdatePersonalDetailsMutation,
   useUpdateReligiousBackgroundMutation,useGetProfilesQuery,useUserByidMutation ,
   useFilterProflesMutation,useFilterFieldCountQuery,useGetUserImageQuery,
-  useGetProfilePercentageQuery,useUserProfileNotificationMutation,useUpdatePhotoUploadMutation
+  useGetProfilePercentageQuery,useUserProfileNotificationMutation,useUpdatePhotoUploadMutation,
+  useContactNumberByUserIdQuery,useUpdateContactNumberMutation
 } = profileApi;
 

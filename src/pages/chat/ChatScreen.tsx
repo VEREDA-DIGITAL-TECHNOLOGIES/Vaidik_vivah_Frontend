@@ -7,6 +7,10 @@ import { format } from "date-fns";
 import { useGetConnectionStatusMutation } from "../../Redux/Api/connection.api";
 import { useUnblockUserMutation, useGetBlockedUsersByMeQuery } from "../../Redux/Api/block.api";
 import { useGetUserImageQuery } from "../../Redux/Api/profile.api";
+import { useMyDetailsQuery } from "../../Redux/Api/profile.api";
+import type { RootState } from "../../Redux/store";
+import { useSelector } from "react-redux";
+import { toast } from "sonner";
 
 interface UserModel {
     id: string;
@@ -40,6 +44,13 @@ export default function ChatScreen() {
     const { data: myDetails } = useGetUserImageQuery<any>();
     const [unblockUser] = useUnblockUserMutation();
     const { data: blockedUsersData, refetch: refetchBlockedUsers } = useGetBlockedUsersByMeQuery("");
+   
+     // fetch gender
+      const { data: myDetailsData } = useMyDetailsQuery<any>();
+      const gender = myDetailsData?.data?.[0]?.basic_and_lifestyle?.gender;
+     const usertype = useSelector(
+    (state: RootState) => state.userReducer.user?.usertype
+  );
     useEffect(() => {
         const auth = getAuth();
         const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
@@ -109,14 +120,36 @@ export default function ChatScreen() {
     };
 
     const handleChatOpen = (user: UserModel) => {
-        navigate(`/chat/${user.id}`, {
-            state: {
-                user,
-                userIdToBlock: user.userId,
-                currentUserId: currentUser.uid
-            }
-        });
-    };
+  // Block: Woman + Standard
+  if (gender === "Man" && usertype === "Standard") {
+    toast.warning(
+      "Activation of this feature is contingent upon approval of your request and your enrollment in the Ved Vivah subscription plan."
+    );
+    return;
+  }else if (gender === "Woman") {
+    navigate(`/chat/${user.id}`, {
+      state: {
+        user,
+        userIdToBlock: user.userId,
+        currentUserId: currentUser.uid,
+      },
+    });
+    return;
+  }else{
+     navigate(`/chat/${user.id}`, {
+      state: {
+        user,
+        userIdToBlock: user.userId,
+        currentUserId: currentUser.uid,
+      },
+    });
+    return;
+  }
+
+  // Optional: Block others
+  toast.warning("Chat feature is currently unavailable for your account.");
+};
+
 
     const searchedUsers = connectedUsers.filter(
         (user) =>

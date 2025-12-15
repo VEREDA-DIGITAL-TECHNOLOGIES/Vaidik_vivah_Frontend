@@ -1,6 +1,12 @@
 import { apiSlice } from './apiSlice';
 
 
+  type SubscriptionHistoryData = {
+        success: boolean;
+        message: string;
+        data?: any;
+    };
+
 export const checkoutApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         // Stripe (existing)
@@ -39,7 +45,7 @@ export const checkoutApi = apiSlice.injectEndpoints({
             }),
         }),
 
-        getSubscriptionHistory: builder.query<void, void>({
+        getSubscriptionHistory: builder.query<SubscriptionHistoryData, void>({
             query: () => ({
                 url: 'subscription/getSubscriptionHistory',
                 method: 'GET',
