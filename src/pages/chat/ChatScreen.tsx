@@ -126,7 +126,7 @@ export default function ChatScreen() {
       "Activation of this feature is contingent upon approval of your request and your enrollment in the Ved Vivah subscription plan."
     );
     return;
-  }else if (gender === "Woman") {
+  }else if (gender === "Woman" && usertype === "Standard") {
     navigate(`/chat/${user.id}`, {
       state: {
         user,

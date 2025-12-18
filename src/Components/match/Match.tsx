@@ -28,6 +28,8 @@ import { useDispatch } from "react-redux";
 import ProfileSection from "./profileSection";
 
 import ContactNumberOnlyView from "../user-dashboard/ContactNumberOnlyView";
+import { Link } from "react-router-dom";
+import { MessageCircle } from "lucide-react";
 interface MatchProps {
   userId: string;
 }
@@ -212,7 +214,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
       
       </div>
       <div className="col-span-1 xl:grid w-full md:col-span-2 gap-10">
-        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-white p-6 md:col-span-2   md:w-auto  xl:h-[25rem]">
+        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-white p-6 md:col-span-2   md:w-auto  xl:h-[22rem]">
           <div className="self-start text-sm font-semibold  leading-5 text-zinc-900">
             <h1>Basic & Lifestyle</h1>
           </div>
@@ -311,7 +313,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                     </div>
                     <button
                       onClick={() => removeConnection(userId)}
-                      className="rounded-full bg-red-600 px-4 py-2 text-white w-12"
+                      className="rounded-full bg-red-600 px-4 py-2 text-white w-12 cursor-pointer"
                     >
                       {isLoadingRemove ? (
                         <FaSpinner className="animate-spin" />
@@ -319,6 +321,25 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                         <FaUserXmark />
                       )}
                     </button>
+                    <Link
+                            to="/user-dashboard?tab=Chats"
+                            className="
+                              inline-flex items-center gap-2
+                              rounded-full
+                              bg-[#FD5C90]
+                              px-5 py-2.5
+                              text-sm font-semibold 
+                              shadow-md
+                              transition-all duration-200
+                              hover:bg-[#fb437d]
+                              hover:shadow-lg
+                              active:scale-95
+                              focus:outline-none focus:ring-2 focus:ring-[#FD5C90]/40
+                            "
+                          >
+                            <MessageCircle size={16} className="text-[#fb437d]" />
+                           <span className="text-[#fb437d]">Chat</span> 
+                          </Link>
                   </div>
                 )}
 
@@ -377,17 +398,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 {profileData?.basic_and_lifestyle?.maritalStatus}
               </div>
             </div>
-            <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
-              <div
-                className="text-md flex-1 font-normal leading-8 tracking-wide text-gray-900 text-opacity-90 max-md:max-w-full md:text-lg"
-                style={{ fontFamily: "Proxima-Nova-Semibold, sans-serif" }}
-              >
-                Phone
-              </div>
-              <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
-               <ContactNumberOnlyView userId={userId} />
-              </div>
-            </div>
+            
             <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
               <div
                 className="text-md flex-1 font-normal leading-8 tracking-wide text-gray-900 text-opacity-90 max-md:max-w-full md:text-lg"
