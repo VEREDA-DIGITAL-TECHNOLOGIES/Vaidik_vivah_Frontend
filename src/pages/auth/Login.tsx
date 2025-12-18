@@ -74,11 +74,11 @@ const Login = () => {
       const errorData = res.error as FetchBaseQueryErrorWithData;
 
       if (errorData.status === 403) {
+        navigate("/user-suspended");
         localStorage.setItem(
           "block_reason",
           errorData.data?.message || "Account blocked by admin"
         );
-        navigate("/user-suspended");
         return;
       }
 
