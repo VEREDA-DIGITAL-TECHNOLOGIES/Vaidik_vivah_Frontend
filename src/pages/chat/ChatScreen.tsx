@@ -129,7 +129,7 @@ export default function ChatScreen() {
   }else if (gender === "Woman" && usertype === "Standard") {
     navigate(`/chat/${user.id}`, {
       state: {
-        user,
+        userr:user,
         userIdToBlock: user.userId,
         currentUserId: currentUser.uid,
       },
@@ -138,7 +138,7 @@ export default function ChatScreen() {
   }else{
      navigate(`/chat/${user.id}`, {
       state: {
-        user,
+        userr:user,
         userIdToBlock: user.userId,
         currentUserId: currentUser.uid,
       },
@@ -209,7 +209,7 @@ export default function ChatScreen() {
                 <>
                     <div className="overflow-x-auto flex space-x-4 mb-6 pb-2">
                         {searchedUsers.map((user) => (
-                            <div
+                            <div  
                                 key={user.id}
                                 className="flex flex-col items-center cursor-pointer hover:scale-105 transition"
                                 onClick={() => handleChatOpen(user)}

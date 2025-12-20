@@ -3,7 +3,7 @@ import { CiMap } from "react-icons/ci";
 import { IoLanguage } from "react-icons/io5";
 import { FaSmoking } from "react-icons/fa";
 import { FaWineGlassAlt } from "react-icons/fa";
-import { useUserByidMutation } from "../../Redux/Api/profile.api";
+import { useMyDetailsQuery, useUserByidMutation } from "../../Redux/Api/profile.api";
 import { FaUserGraduate } from "react-icons/fa";
 import {
   setConnectionStatus,
@@ -28,8 +28,10 @@ import { useDispatch } from "react-redux";
 import ProfileSection from "./profileSection";
 
 
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getUidFromUserId } from "./GetUidbyId";
 interface MatchProps {
   userId: string;
 }
@@ -190,6 +192,73 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
       toast.error("Failed to accept connection. Please try again later.");
     }
   }, [accept, getStatus]);
+  const navigate = useNavigate();
+  // fetch gender
+        const { data: myDetailsData } = useMyDetailsQuery<any>();
+  const gender = myDetailsData?.data?.[0]?.basic_and_lifestyle?.gender;
+      
+      const [currentUser, setCurrentUser] = useState<any>(null);
+      const usertype = useSelector(
+          (state: RootState) => state.userReducer.user?.usertype
+        );
+  
+   useEffect(() => {
+          const auth = getAuth();
+          const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+              setCurrentUser(user);
+              // console.log("User bata de ",currentUser)
+              
+              if (!user) {
+                  navigate('/login');
+              }
+          });
+          return () => unsubscribeAuth();
+      }, [navigate]);
+
+      const chatOpen = async() => {
+        
+        if (!user || !currentUser) return;
+
+       
+                      const userr = {
+                userId: user.userId || user.id,
+                displayName:
+                 profileData?.basic_and_lifestyle?.displayName ||
+                  profileData?.basic_and_lifestyle?.firstName +
+                  " " +
+                  profileData?.basic_and_lifestyle?.lastName,
+                profilePic:profileData?.profileImage[0],
+                firstName: profileData?.basic_and_lifestyle?.firstName,
+                lastName: profileData?.basic_and_lifestyle?.lastName,
+              };
+              const uid= await getUidFromUserId(userId);
+//  console.log("chat user all data are ",userId,user.userId,currentUser?.uid,uid);
+                      // Block: Woman + Standard
+          if (gender === "Man" && usertype === "Standard") {
+            toast.warning(
+              "Activation of this feature is contingent upon approval of your request and your enrollment in the Ved Vivah subscription plan."
+            );
+            return;
+          }  else if (gender === "Woman" && usertype === "Standard") {
+        navigate(`/chat/${uid}`, {
+          state: {
+            userr,                     // full user object
+            userIdToBlock:userId, // target user id
+            currentUserId: currentUser?.uid, // logged-in user id
+          },
+        });
+        return;
+     }else{
+      navigate(`/chat/${uid}`, {
+          state: {
+            userr,                     // full user object
+            userIdToBlock:userId, // target user id
+            currentUserId: currentUser?.uid, // logged-in user id
+          },
+        });
+        return;
+     }
+      };
 
   // Loading & Error Handling
   if (isLoading) return <Loading />;
@@ -321,10 +390,10 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                         <FaUserXmark />
                       )}
                     </button>
-                    <Link
-                            to="/user-dashboard?tab=Chats"
+                    <button
+                           onClick={chatOpen}
                             className="
-                              inline-flex items-center gap-2
+                              inline-flex items-center gap-2 cursor-pointer
                               rounded-full
                               bg-[#FD5C90]
                               px-5 py-2.5
@@ -337,9 +406,9 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                               focus:outline-none focus:ring-2 focus:ring-[#FD5C90]/40
                             "
                           >
-                            <MessageCircle size={16} className="text-[#fb437d]" />
-                           <span className="text-[#fb437d]">Chat</span> 
-                          </Link>
+                            <MessageCircle size={16}  />
+                           <span >Chat</span> 
+                          </button>
                   </div>
                 )}
 
