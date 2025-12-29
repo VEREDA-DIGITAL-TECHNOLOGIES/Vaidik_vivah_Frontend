@@ -1,93 +1,128 @@
-import React from 'react';
-import Select from 'react-select';
+import React from "react";
+import Select from "react-select";
 
-const question = [
-    {
-        id: 4,
-        text: "I am of age",
-        summary:
-            "Knowing your age allows us to create matches that are compatible and appropriate for your life stage",
-        options: Array.from({ length: 85 - 18 + 1 }, (_, i) => String(i + 18)),
-    },
-];
+/* ===================== TYPES ===================== */
 
-type SelectedOption = { questionId: number; answerValue: string | string[] };
-
-type QuestionProps = {
-    selectedOptions: SelectedOption[];
-    handleOptionChange: (questionId: number, answerValue: string | string[]) => void;
+type SelectedOption = {
+  questionId: number;
+  answerValue: string | string[];
 };
 
-const Question6: React.FC<QuestionProps> = ({ selectedOptions, handleOptionChange }) => {
-    const ageOptions = question[0].options.map((option) => ({
-        value: option,
-        label: option,
-    }));
+type QuestionProps = {
+  selectedOptions: SelectedOption[];
+  handleOptionChange: (
+    questionId: number,
+    answerValue: string | string[]
+  ) => void;
+};
 
-    const selectedOption = selectedOptions.find(
-        (selected) => selected.questionId === question[0].id
-    );
+/* ===================== CONSTANTS ===================== */
 
-    return (
-        <div>
-            {question.map((ques) => (
-                <div className="text-left md:text-center" key={ques.id}>
-                    <h2 className="w-full text-2xl font-bold md:text-3xl mb-4">
-                        {ques.text}
-                    </h2>
-                    <p className="text-[#FFFFFF90]">{ques.summary}</p>
+// Mapping Q3 answer → Question text
+const AGE_QUESTION_MAP: Record<string, string> = {
+  child: "Age of child",
+  myself: "I am of age",
+  sibling: "Age of sibling",
+  friend: "Age of Friend",
+  relative: "Age of Relative",
+};
 
-                    <div className="md:w-auto py-4">
-                        <Select
-                            options={ageOptions}
-                            value={ageOptions.find(option => option.value === selectedOption?.answerValue)}
-                            onChange={(selected) =>
-                                handleOptionChange(ques.id, selected?.value || "")
-                            }
-                            className="w-full"
-                            placeholder="Select your age"
-                            styles={{
-                                control: (baseStyles, state) => ({
-                                    ...baseStyles,
-                                    backgroundColor: '#FD5C90', // Dark background
-                                    color: 'white',
-                                    borderColor: state.isFocused ? '#3b82f6' : '#374151', // Tailwind-like blue on focus
-                                    boxShadow: 'none',
-                                }),
-                                singleValue: (baseStyles) => ({
-                                    ...baseStyles,
-                                    color: 'white',
-                                }),
-                                menu: (baseStyles) => ({
-                                    ...baseStyles,
-                                    backgroundColor: '#1f2937',
-                                }),
-                                option: (baseStyles, state) => ({
-                                    ...baseStyles,
-                                    backgroundColor: state.isSelected
-                                        ? '#FD5C90'
-                                        : state.isFocused
-                                            ? '#ffffff'
-                                            : '#FD5C90',
-                                    color: 'black',
-                                    cursor: 'pointer',
-                                }),
-                                placeholder: (baseStyles) => ({
-                                    ...baseStyles,
-                                    color: 'white', // Tailwind-like gray-400
-                                }),
-                                input: (baseStyles) => ({
-                                    ...baseStyles,
-                                    color: 'white',
-                                }),
-                            }}
-                        />
+// Summary text (same for all)
+const AGE_SUMMARY =
+  "Knowing the age allows us to create matches that are compatible and appropriate for the life stage";
 
-                    </div>
-                </div>
-            ))}
-        </div>
-    );
+/* ===================== COMPONENT ===================== */
+
+const Question6: React.FC<QuestionProps> = ({
+  selectedOptions,
+  handleOptionChange,
+}) => {
+  /* ---------- Get Q3 Answer ---------- */
+  const q3Answer = selectedOptions
+    .find((a) => a.questionId === 3)
+    ?.answerValue?.toString()
+    .toLowerCase();
+
+  /* ---------- Dynamic Question ---------- */
+  const question = {
+    id: 4,
+    text: AGE_QUESTION_MAP[q3Answer ?? "myself"] ?? "I am of age",
+    summary: AGE_SUMMARY,
+    options:
+      q3Answer === "child"
+        ? Array.from({ length: 85 - 18 + 1  }, (_, i) => String(i + 18)) // child age
+        : Array.from({ length: 85 - 18 + 1 }, (_, i) => String(i + 18)), // adult age
+  };
+
+  /* ---------- React Select Options ---------- */
+  const ageOptions = question.options.map((option) => ({
+    value: option,
+    label: option,
+  }));
+
+  /* ---------- Selected Value ---------- */
+  const selectedOption = selectedOptions.find(
+    (selected) => selected.questionId === question.id
+  );
+
+  return (
+    <div className="text-left md:text-center">
+      <h2 className="w-full text-2xl font-bold md:text-3xl mb-4">
+        {question.text}
+      </h2>
+
+      <p className="text-[#FFFFFF90] mb-6">{question.summary}</p>
+
+      <div className="md:w-auto py-4">
+        <Select
+          options={ageOptions}
+          value={ageOptions.find(
+            (option) => option.value === selectedOption?.answerValue
+          )}
+          onChange={(selected) =>
+            handleOptionChange(question.id, selected?.value || "")
+          }
+          placeholder="Select age"
+          className="w-full"
+          styles={{
+            control: (base, state) => ({
+              ...base,
+              backgroundColor: "#FD5C90",
+              color: "white",
+              borderColor: state.isFocused ? "#3b82f6" : "#374151",
+              boxShadow: "none",
+            }),
+            singleValue: (base) => ({
+              ...base,
+              color: "white",
+            }),
+            menu: (base) => ({
+              ...base,
+              backgroundColor: "#1f2937",
+            }),
+            option: (base, state) => ({
+              ...base,
+              backgroundColor: state.isSelected
+                ? "#FD5C90"
+                : state.isFocused
+                ? "#ffffff"
+                : "#FD5C90",
+              color: "black",
+              cursor: "pointer",
+            }),
+            placeholder: (base) => ({
+              ...base,
+              color: "white",
+            }),
+            input: (base) => ({
+              ...base,
+              color: "white",
+            }),
+          }}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Question6;
