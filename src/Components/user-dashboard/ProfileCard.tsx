@@ -39,7 +39,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   handleFavouriteToggle,
 }) => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  
+  // console.log("profile data ",profiles);
 
   const [userprofilesdetailsnotification] =
     useUserProfileNotificationMutation();

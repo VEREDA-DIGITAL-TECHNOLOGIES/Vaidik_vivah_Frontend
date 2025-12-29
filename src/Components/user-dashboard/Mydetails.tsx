@@ -432,6 +432,9 @@ const MyDetails = () => {
                                         <div className="my-auto justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-3 py-1.5 text-center capitalize tracking-normal">
                                             {myDetails?.basic_and_lifestyle?.age}
                                         </div>
+                                        <div className="my-auto justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-3 py-1.5 text-center capitalize tracking-normal">
+                                             {myDetails?.basic_and_lifestyle?.publicUserId}
+                                        </div>
                                           
                                     </div>
                                         <div className="mt-6 flex flex-col rounded-xl bg-[#FFF0F5] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
@@ -480,14 +483,7 @@ const MyDetails = () => {
                                                <ContactNumberView userId={user?.userId}/>
                                             </div>
                                         </div>
-                                        <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
-                                                <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
-                                                Public ID {" "}
-                                            </div>
-                                            <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
-                                               {myDetails?.basic_and_lifestyle?.publicUserId}
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                     <div className="h-[28rem] xl:w-[30%]  w-auto mr-4 rounded-lg bg-[#fcf2f2] text-[#FD5C90]  md:p-5 md:h-[26rem]">

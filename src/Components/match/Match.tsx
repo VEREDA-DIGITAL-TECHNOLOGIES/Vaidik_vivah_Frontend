@@ -308,6 +308,9 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
             <div className=" my-auto text-md justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-1 py-1.5 text-center capitalize trackingl md:px-3">
               {profileData?.basic_and_lifestyle?.age}
             </div>
+            <div className=" my-auto text-md justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-1 py-1.5 text-center capitalize trackingl md:px-3">
+              {profileData?.publicUserId}
+            </div>
             
 
             <div>
@@ -435,6 +438,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
           </div>
 
           <div className="mt-6 flex flex-col rounded-xl bg-[#FD5C90] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
+            
             <div className="text-base font-bold leading-6 tracking-wide text-gray-900 text-opacity-90 max-md:max-w-full">
               About{" "}
               {profileData?.basic_and_lifestyle?.displayName ||
@@ -481,17 +485,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 {profileData?.basic_and_lifestyle?.postedBy}
               </div>
             </div>
-            <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
-              <div
-                className="text-md flex-1 font-normal leading-8 tracking-wide text-gray-900 text-opacity-90 max-md:max-w-full md:text-lg"
-                style={{ fontFamily: "Proxima-Nova-Semibold, sans-serif" }}
-              >
-                Public ID
-              </div>
-              <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
-                {profileData?.publicUserId}
-              </div>
-            </div>
+           
             
           </div>
         </div>

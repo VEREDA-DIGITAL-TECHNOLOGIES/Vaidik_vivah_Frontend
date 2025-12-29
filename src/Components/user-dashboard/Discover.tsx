@@ -39,6 +39,7 @@ const Discover = () => {
 
   const { data, isLoading, error } = useGetProfilesQuery(queryString);
   const { data: favData, refetch } = useGetFavQuery({});
+  console.log("profile data are",data)
 
   useEffect(() => {
     if (error && "status" in error) {
