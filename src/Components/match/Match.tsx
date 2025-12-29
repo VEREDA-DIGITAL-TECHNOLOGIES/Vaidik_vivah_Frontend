@@ -195,6 +195,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
   const navigate = useNavigate();
   // fetch gender
         const { data: myDetailsData } = useMyDetailsQuery<any>();
+        
   const gender = myDetailsData?.data?.[0]?.basic_and_lifestyle?.gender;
       
       const [currentUser, setCurrentUser] = useState<any>(null);
@@ -283,7 +284,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
       
       </div>
       <div className="col-span-1 xl:grid w-full md:col-span-2 gap-10">
-        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-white p-6 md:col-span-2   md:w-auto  xl:h-[22rem]">
+        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-white p-6 md:col-span-2   md:w-auto  xl:h-[24rem]">
           <div className="self-start text-sm font-semibold  leading-5 text-zinc-900">
             <h1>Basic & Lifestyle</h1>
           </div>
@@ -307,6 +308,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
             <div className=" my-auto text-md justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-1 py-1.5 text-center capitalize trackingl md:px-3">
               {profileData?.basic_and_lifestyle?.age}
             </div>
+            
 
             <div>
               {connectionType === "receiver" && (
@@ -477,6 +479,17 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
               </div>
               <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
                 {profileData?.basic_and_lifestyle?.postedBy}
+              </div>
+            </div>
+            <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
+              <div
+                className="text-md flex-1 font-normal leading-8 tracking-wide text-gray-900 text-opacity-90 max-md:max-w-full md:text-lg"
+                style={{ fontFamily: "Proxima-Nova-Semibold, sans-serif" }}
+              >
+                Public ID
+              </div>
+              <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
+                {profileData?.publicUserId}
               </div>
             </div>
             
