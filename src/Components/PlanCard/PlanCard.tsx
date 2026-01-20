@@ -142,43 +142,53 @@ const PlanCard = ({
         </div>
 
         <div className="mt-auto flex justify-start">
-            <div className="flex flex-col items-center gap-2">
-              <button
-                className={`flex w-80 items-center justify-center gap-4 rounded-lg border-2 p-2 font-semibold transition-all duration-300
-                  ${
-                    isDisabled
-                      ? "cursor-not-allowed border-gray-400 bg-gray-200 text-gray-600"
-                      : isDiamondPlan
-                      ? "border-[#0a0809] bg-white text-[#FD5C90] hover:bg-[#FD5C90] hover:text-white"
-                      : "border-[#FD5C90] bg-white text-[#FD5C90] hover:bg-[#FD5C90] hover:text-white"
-                  }
-                `}
-                onClick={() => !isDisabled && onClick(id)}
-                disabled={isDisabled}
-              >
-                {isDisabled ? (
-                  <>
-                    <FaBan className="text-xl" />
-                    <span>Purchased</span>
-                  </>
-                ) : (
-                  <>
-                    <span>{isDiamondPlan ? "Apply Now" : "Get Started"}</span>
-                    <FaArrowRightLong className="text-xl" />
-                  </>
-                )}
-              </button>
+           <div className="mt-auto flex justify-start">
+  <div className="flex flex-col items-center gap-2">
+    <button
+      className={`flex w-80 items-center justify-center gap-4 rounded-lg border-2 p-2 font-semibold transition-all duration-300
+        ${
+          isDisabled
+            ? "cursor-not-allowed border-gray-400 bg-gray-200 text-gray-600"
+            : isDiamondPlan
+            ? "border-[#0a0809] bg-white text-[#FD5C90] hover:bg-[#FD5C90] hover:text-white"
+            : "border-[#FD5C90] bg-white text-[#FD5C90] hover:bg-[#FD5C90] hover:text-white"
+        }
+      `}
+      onClick={() => {
+            if (isDisabled) return;
 
-              {isDiamondPlan && (
-                <Link
-                  to="/terms-and-conditions"
-                  className="text-sm text-gray-500 underline hover:text-[#FD5C90]"
-                >
-                  Terms & Conditions apply
-                </Link>
-              )}
-            </div>
-          </div>
+            if (isDiamondPlan) {
+              handleApplyNow();
+            } else {
+              onClick(id);
+            }
+          }}
+      disabled={isDisabled}
+    >
+      {isDisabled ? (
+        <>
+          <FaBan className="text-xl" />
+          <span>Purchased</span>
+        </>
+      ) : (
+        <>
+          <span>{isDiamondPlan ? "Apply Now" : "Get Started"}</span>
+          <FaArrowRightLong className="text-xl" />
+        </>
+      )}
+    </button>
+
+    {isDiamondPlan && (
+      <Link
+        to="/terms-and-conditions"
+        className="text-sm text-gray-500 underline hover:text-[#FD5C90]"
+      >
+        Terms & Conditions apply
+      </Link>
+    )}
+  </div>
+</div>
+</div>
   </div>
 
       {showApplicationForm && isDiamondPlan && (
