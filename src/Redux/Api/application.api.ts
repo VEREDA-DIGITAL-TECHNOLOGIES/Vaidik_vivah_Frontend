@@ -13,11 +13,11 @@ interface ApplicationResponse {
 export const applicationApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // Create new application
-    createApplication: builder.mutation<ApplicationResponse, FormData>({
-      query: (formData) => ({
+    createApplication: builder.mutation<ApplicationResponse, any>({
+      query: (payload) => ({
         url: 'application-plan/applications-create',
         method: 'POST',
-        body: formData,
+        body: payload,
         // Note: For file uploads, we need to handle FormData differently
         // RTK Query automatically sets Content-Type to multipart/form-data for FormData
       }),

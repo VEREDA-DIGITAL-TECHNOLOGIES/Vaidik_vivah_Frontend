@@ -44,6 +44,7 @@ interface MyDetails {
   fcmToken: string;
   profileImage: string[];
   basic_and_lifestyle: {
+    publicUserId:string;
     firstName: string;
     lastName: string;
     displayName: string;

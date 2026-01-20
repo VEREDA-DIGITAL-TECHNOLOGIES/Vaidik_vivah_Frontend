@@ -104,10 +104,10 @@ const AccountSuspended: React.FC = () => {
           <p className="text-xs text-gray-500">
             Support email:{" "}
             <a 
-              href="mailto:vaidikvivaah@gmail.com" 
+              href="mailto:vedvivah@gmail.com" 
               className="text-pink-600 hover:text-pink-700 underline"
             >
-              vaidikvivaah@gmail.com
+              vedvivah@gmail.com
             </a>
           </p>
         </div>

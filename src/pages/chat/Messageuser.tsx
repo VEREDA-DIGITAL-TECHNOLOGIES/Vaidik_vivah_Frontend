@@ -30,7 +30,7 @@ export default function MessageUser() {
   const { id: recipientId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const recipientUser = location.state?.user as User | undefined;
+  const recipientUser = location.state?.userr as User | undefined;
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");

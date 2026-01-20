@@ -3,7 +3,7 @@ import { CiMap } from "react-icons/ci";
 import { IoLanguage } from "react-icons/io5";
 import { FaSmoking } from "react-icons/fa";
 import { FaWineGlassAlt } from "react-icons/fa";
-import { useUserByidMutation } from "../../Redux/Api/profile.api";
+import { useMyDetailsQuery, useUserByidMutation } from "../../Redux/Api/profile.api";
 import { FaUserGraduate } from "react-icons/fa";
 import {
   setConnectionStatus,
@@ -26,6 +26,12 @@ import type{ RootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import ProfileSection from "./profileSection";
+
+
+import {  useNavigate } from "react-router-dom";
+import { MessageCircle } from "lucide-react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getUidFromUserId } from "./GetUidbyId";
 interface MatchProps {
   userId: string;
 }
@@ -186,6 +192,74 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
       toast.error("Failed to accept connection. Please try again later.");
     }
   }, [accept, getStatus]);
+  const navigate = useNavigate();
+  // fetch gender
+        const { data: myDetailsData } = useMyDetailsQuery<any>();
+        
+  const gender = myDetailsData?.data?.[0]?.basic_and_lifestyle?.gender;
+      
+      const [currentUser, setCurrentUser] = useState<any>(null);
+      const usertype = useSelector(
+          (state: RootState) => state.userReducer.user?.usertype
+        );
+  
+   useEffect(() => {
+          const auth = getAuth();
+          const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+              setCurrentUser(user);
+              // console.log("User bata de ",currentUser)
+              
+              if (!user) {
+                  navigate('/login');
+              }
+          });
+          return () => unsubscribeAuth();
+      }, [navigate]);
+
+      const chatOpen = async() => {
+        
+        if (!user || !currentUser) return;
+
+       
+                      const userr = {
+                userId: user.userId || user.id,
+                displayName:
+                 profileData?.basic_and_lifestyle?.displayName ||
+                  profileData?.basic_and_lifestyle?.firstName +
+                  " " +
+                  profileData?.basic_and_lifestyle?.lastName,
+                profilePic:profileData?.profileImage[0],
+                firstName: profileData?.basic_and_lifestyle?.firstName,
+                lastName: profileData?.basic_and_lifestyle?.lastName,
+              };
+              const uid= await getUidFromUserId(userId);
+//  console.log("chat user all data are ",userId,user.userId,currentUser?.uid,uid);
+                      // Block: Woman + Standard
+          if (gender === "Man" && usertype === "Standard") {
+            toast.warning(
+              "Activation of this feature is contingent upon approval of your request and your enrollment in the Ved Vivah subscription plan."
+            );
+            return;
+          }  else if (gender === "Woman" && usertype === "Standard") {
+        navigate(`/chat/${uid}`, {
+          state: {
+            userr,                     // full user object
+            userIdToBlock:userId, // target user id
+            currentUserId: currentUser?.uid, // logged-in user id
+          },
+        });
+        return;
+     }else{
+      navigate(`/chat/${uid}`, {
+          state: {
+            userr,                     // full user object
+            userIdToBlock:userId, // target user id
+            currentUserId: currentUser?.uid, // logged-in user id
+          },
+        });
+        return;
+     }
+      };
 
   // Loading & Error Handling
   if (isLoading) return <Loading />;
@@ -210,7 +284,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
       
       </div>
       <div className="col-span-1 xl:grid w-full md:col-span-2 gap-10">
-        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-white p-6 md:col-span-2   md:w-auto  xl:h-[22rem]">
+        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-white p-6 md:col-span-2   md:w-auto  xl:h-[24rem]">
           <div className="self-start text-sm font-semibold  leading-5 text-zinc-900">
             <h1>Basic & Lifestyle</h1>
           </div>
@@ -234,6 +308,10 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
             <div className=" my-auto text-md justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-1 py-1.5 text-center capitalize trackingl md:px-3">
               {profileData?.basic_and_lifestyle?.age}
             </div>
+            <div className=" my-auto text-md justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-1 py-1.5 text-center capitalize trackingl md:px-3">
+              {profileData?.publicUserId}
+            </div>
+            
 
             <div>
               {connectionType === "receiver" && (
@@ -309,7 +387,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                     </div>
                     <button
                       onClick={() => removeConnection(userId)}
-                      className="rounded-full bg-red-600 px-4 py-2 text-white w-12"
+                      className="rounded-full bg-red-600 px-4 py-2 text-white w-12 cursor-pointer"
                     >
                       {isLoadingRemove ? (
                         <FaSpinner className="animate-spin" />
@@ -317,6 +395,25 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                         <FaUserXmark />
                       )}
                     </button>
+                    <button
+                           onClick={chatOpen}
+                            className="
+                              inline-flex items-center gap-2 cursor-pointer
+                              rounded-full
+                              bg-[#FD5C90]
+                              px-5 py-2.5
+                              text-sm font-semibold 
+                              shadow-md
+                              transition-all duration-200
+                              hover:bg-[#fb437d]
+                              hover:shadow-lg
+                              active:scale-95
+                              focus:outline-none focus:ring-2 focus:ring-[#FD5C90]/40
+                            "
+                          >
+                            <MessageCircle size={16}  />
+                           <span >Chat</span> 
+                          </button>
                   </div>
                 )}
 
@@ -341,6 +438,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
           </div>
 
           <div className="mt-6 flex flex-col rounded-xl bg-[#FD5C90] bg-opacity-20 px-6 py-3 max-md:max-w-full max-md:px-5">
+            
             <div className="text-base font-bold leading-6 tracking-wide text-gray-900 text-opacity-90 max-md:max-w-full">
               About{" "}
               {profileData?.basic_and_lifestyle?.displayName ||
@@ -375,6 +473,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 {profileData?.basic_and_lifestyle?.maritalStatus}
               </div>
             </div>
+            
             <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
               <div
                 className="text-md flex-1 font-normal leading-8 tracking-wide text-gray-900 text-opacity-90 max-md:max-w-full md:text-lg"
@@ -386,6 +485,8 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
                 {profileData?.basic_and_lifestyle?.postedBy}
               </div>
             </div>
+           
+            
           </div>
         </div>
 

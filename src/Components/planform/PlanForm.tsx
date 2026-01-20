@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useCreateApplicationMutation } from '../../Redux/Api/application.api';
 import { toast } from "sonner";
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../Redux/store';
 
 interface FormData {
-  userId:string;
+  userId: string;
   planId: string;
   nom: string;
   fatherName: string;
@@ -18,13 +18,13 @@ interface FormData {
   partnerAddress: string;
   yourMobNo: string;
   partnerMobNo: string;
-  yourIdPost: File | null;
-  parentsIdPost: File | null;
+  yourIdNumber: string; // Changed from File to string
+  parentsIdNumber: string; // Changed from File to string
   parentsCertified: boolean;
   parentsMobNo: string;
   partnerParentsMobNo: string;
-  partnerIdPost: File | null;
-  partnerParentsIdPost: File | null;
+  partnerIdNumber: string; // Changed from File to string
+  partnerParentsIdNumber: string; // Changed from File to string
   partnerParentsCertified: boolean;
 }
 
@@ -42,15 +42,15 @@ type Plan = {
 interface DiamondPlanApplicationProps {
   plan: Plan;
   onClose: () => void;
-  onSubmit: (formData: FormData) => void; // Add onSubmit prop
+  onSubmit: (formData: FormData) => void;
 }
 
 const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubmit }) => {
   const [createApplication, { isLoading }] = useCreateApplicationMutation();
-   const { user } = useSelector((state: RootState) => state.userReducer);
+  const { user } = useSelector((state: RootState) => state.userReducer);
   const [formData, setFormData] = useState<FormData>({
     planId: plan.id,
-    userId:user!.userId,
+    userId: user!.userId,
     nom: '',
     fatherName: '',
     loginId: '',
@@ -62,27 +62,25 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
     partnerAddress: '',
     yourMobNo: '',
     partnerMobNo: '',
-    yourIdPost: null,
-    parentsIdPost: null,
+    yourIdNumber: '', // Changed from null to empty string
+    parentsIdNumber: '', // Changed from null to empty string
     parentsCertified: false,
     parentsMobNo: '',
     partnerParentsMobNo: '',
-    partnerIdPost: null,
-    partnerParentsIdPost: null,
+    partnerIdNumber: '', // Changed from null to empty string
+    partnerParentsIdNumber: '', // Changed from null to empty string
     partnerParentsCertified: false,
   });
   
-  // console.log("user data",user?.userId);
   const [currentSection, setCurrentSection] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isAnimating, setIsAnimating] = useState(false);
-  const fileInputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({});
 
   const sections = [
     { title: 'Personal Information', fields: ['nom', 'fatherName', 'loginId', 'address'] },
     { title: 'Penalty Type', fields: ['penaltyType'] },
     { title: 'Partner Information', fields: ['partnerName', 'partnerFatherName', 'partnerLoginId', 'partnerAddress', 'yourMobNo', 'partnerMobNo'] },
-    { title: 'ID and Certification', fields: ['yourIdPost', 'parentsIdPost', 'parentsCertified', 'parentsMobNo', 'partnerParentsMobNo', 'partnerIdPost', 'partnerParentsIdPost', 'partnerParentsCertified'] },
+    { title: 'ID and Certification', fields: ['yourIdNumber', 'parentsIdNumber', 'parentsCertified', 'parentsMobNo', 'partnerParentsMobNo', 'partnerIdNumber', 'partnerParentsIdNumber', 'partnerParentsCertified'] },
   ];
 
   const validateSection = (sectionIndex: number): boolean => {
@@ -90,19 +88,27 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
     const newErrors: Record<string, string> = {};
 
     sectionFields.forEach(field => {
-      if (field.includes('IdPost')) {
-        if (!formData[field as keyof FormData]) {
-          const fieldName = field.replace(/([A-Z])/g, ' $1').toLowerCase();
-          newErrors[field] = `${fieldName} is required`;
-        }
-      } else if (field === 'parentsMobNo' || field === 'partnerParentsMobNo' || field === 'yourMobNo' || field === 'partnerMobNo') {
+      // Mobile number validation
+      if (field === 'parentsMobNo' || field === 'partnerParentsMobNo' || field === 'yourMobNo' || field === 'partnerMobNo') {
         const value = formData[field as keyof FormData] as string;
         if (!value) {
           newErrors[field] = 'Mobile number is required';
         } else if (!/^\d{10}$/.test(value)) {
           newErrors[field] = 'Please enter a valid 10-digit mobile number';
         }
-      } else if (field !== 'parentsCertified' && field !== 'partnerParentsCertified') {
+      }
+      // ID number validation
+      else if (field.includes('IdNumber')) {
+        const value = formData[field as keyof FormData] as string;
+        if (!value) {
+          const fieldName = field.replace('IdNumber', ' ID Number').replace(/([A-Z])/g, ' $1');
+          newErrors[field] = `${fieldName} is required`;
+        } else if (value.length < 3) {
+          newErrors[field] = 'ID number must be at least 3 characters long';
+        }
+      }
+      // Other required fields
+      else if (field !== 'parentsCertified' && field !== 'partnerParentsCertified') {
         const value = formData[field as keyof FormData] as string;
         if (!value) {
           const fieldName = field.replace(/([A-Z])/g, ' $1').toLowerCase();
@@ -131,42 +137,6 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
     }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
-    const file = e.target.files?.[0] || null;
-    
-    if (file && file.size > 5 * 1024 * 1024) {
-      setErrors(prev => ({
-        ...prev,
-        [fieldName]: 'File size must be less than 5MB'
-      }));
-      return;
-    }
-
-    if (file) {
-      const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-      if (!allowedTypes.includes(file.type)) {
-        setErrors(prev => ({
-          ...prev,
-          [fieldName]: 'File type not supported. Please upload JPG, PNG, PDF, or DOC files'
-        }));
-        return;
-      }
-    }
-
-    setFormData(prev => ({
-      ...prev,
-      [fieldName]: file
-    }));
-
-    if (errors[fieldName]) {
-      setErrors(prev => {
-        const newErrors = { ...prev };
-        delete newErrors[fieldName];
-        return newErrors;
-      });
-    }
-  };
-
   const handleNext = () => {
     if (validateSection(currentSection)) {
       setIsAnimating(true);
@@ -186,164 +156,40 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateSection(currentSection)) {
-      return;
+  e.preventDefault();
+
+  if (!validateSection(currentSection)) return;
+
+  try {
+    const payload = {
+      ...formData,
+      planId: plan.id,
+      userId: user!.userId,
+      planName: plan.name,
+      applicationFee: 1000,
+      applicationDate: new Date().toISOString(),
+    };
+
+    console.log("🚀 SUBMIT PAYLOAD:", payload);
+
+    const result = await createApplication(payload).unwrap();
+    if(result){
+        console.log("submit done !");
     }
 
-    try {
-      // Create FormData object for file uploads
-      const submissionFormData = new FormData();
-      
-      // Add all form fields
-      submissionFormData.append('planId', plan.id);
-      submissionFormData.append('userId', user!.userId);
+    toast.success("✅ Application submitted successfully!");
+    onSubmit(formData);
+  } catch (error: any) {
+    console.error("❌ Submission failed:", error);
 
-      submissionFormData.append('planName', plan.name);
-      submissionFormData.append('nom', formData.nom);
-      submissionFormData.append('fatherName', formData.fatherName);
-      submissionFormData.append('loginId', formData.loginId);
-      submissionFormData.append('address', formData.address);
-      submissionFormData.append('penaltyType', formData.penaltyType);
-      submissionFormData.append('partnerName', formData.partnerName);
-      submissionFormData.append('partnerFatherName', formData.partnerFatherName);
-      submissionFormData.append('partnerLoginId', formData.partnerLoginId);
-      submissionFormData.append('partnerAddress', formData.partnerAddress);
-      submissionFormData.append('yourMobNo', formData.yourMobNo);
-      submissionFormData.append('partnerMobNo', formData.partnerMobNo);
-      submissionFormData.append('parentsCertified', formData.parentsCertified.toString());
-      submissionFormData.append('parentsMobNo', formData.parentsMobNo);
-      submissionFormData.append('partnerParentsMobNo', formData.partnerParentsMobNo);
-      submissionFormData.append('partnerParentsCertified', formData.partnerParentsCertified.toString());
-      
-      // Add files if they exist
-      if (formData.yourIdPost) {
-        submissionFormData.append('yourIdPost', formData.yourIdPost);
-      }
-      if (formData.parentsIdPost) {
-        submissionFormData.append('parentsIdPost', formData.parentsIdPost);
-      }
-      if (formData.partnerIdPost) {
-        submissionFormData.append('partnerIdPost', formData.partnerIdPost);
-      }
-      if (formData.partnerParentsIdPost) {
-        submissionFormData.append('partnerParentsIdPost', formData.partnerParentsIdPost);
-      }
+    let message = "Submission failed. Please try again.";
 
-      // Add metadata
-      submissionFormData.append('applicationDate', new Date().toISOString());
-      submissionFormData.append('applicationFee', '1000');
+    if (error?.data?.message) message = error.data.message;
 
-      console.log('🚀 ===== VIVAH SANSAKAR APPLICATION SUBMISSION =====', {
-        userId:user?.userId,
-        planId: plan.id,
-        plan: plan.name,
-        applicant: formData.nom,
-        partner: formData.partnerName,
-        penaltyType: formData.penaltyType,
-        contactNumbers: {
-          applicant: formData.yourMobNo,
-          partner: formData.partnerMobNo,
-          parents: formData.parentsMobNo,
-          partnerParents: formData.partnerParentsMobNo
-        },
-        filesUploaded: [
-          formData.yourIdPost?.name,
-          formData.parentsIdPost?.name,
-          formData.partnerIdPost?.name,
-          formData.partnerParentsIdPost?.name
-        ].filter(Boolean).length,
-        timestamp: new Date().toLocaleString()
-      });
+    toast.error(`❌ ${message}`);
+  }
+};
 
-      // Call the mutation to save application
-      const result = await createApplication(submissionFormData).unwrap();
-
-      console.log('✅ Application submitted successfully:', result);
-
-      // Show success message
-      toast.success("✅ Application submitted successfully! Redirecting to payment...");
-      
-      // Call the onSubmit callback with form data
-      onSubmit(formData);
-      
-    } catch (error: any) {
-      console.error('❌ Application submission failed:', error);
-      
-      let errorMessage = 'Submission failed. Please check your connection and try again.';
-      
-      if (error?.data?.message) {
-        errorMessage = error.data.message;
-      } else if (error?.status === 413) {
-        errorMessage = 'File size too large. Please ensure each file is less than 5MB.';
-      } else if (error?.status === 415) {
-        errorMessage = 'Unsupported file type. Please upload only JPG, PNG, PDF, or DOC files.';
-      } else if (error?.status === 400) {
-        errorMessage = 'Invalid form data. Please check all fields and try again.';
-      } else if (error?.status === 401) {
-        errorMessage = 'Authentication required. Please login and try again.';
-      } else if (error?.status === 500) {
-        errorMessage = 'Server error. Please try again later.';
-      }
-      
-      toast.error(`❌ Submission Error: ${errorMessage}`);
-    }
-  };
-
-  const triggerFileInput = (fieldName: string) => {
-    fileInputRefs.current[fieldName]?.click();
-  };
-
-  const FileUploadField = ({ fieldName, label, required = true }: { fieldName: string; label: string; required?: boolean }) => {
-    const file = formData[fieldName as keyof FormData] as File | null;
-    
-    return (
-      <div className="file-upload-field">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          {label} {required && '*'}
-        </label>
-        <input
-          type="file"
-          ref={(el) => {fileInputRefs.current[fieldName] = el}}
-          onChange={(e) => handleFileChange(e, fieldName)}
-          accept="image/*,.pdf,.doc,.docx"
-          className="hidden"
-        />
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => triggerFileInput(fieldName)}
-            className="px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-300 rounded-lg hover:from-gray-200 hover:to-gray-100 transition-all duration-200 text-sm font-medium shadow-sm"
-          >
-            📁 Choose File
-          </button>
-          <div className="flex-1 min-w-0">
-            <span className="text-sm text-gray-700 truncate block">
-              {file ? (
-                <span className="text-green-600 font-medium">✓ {file.name}</span>
-              ) : (
-                <span className="text-gray-500">No file chosen</span>
-              )}
-            </span>
-            {file && (
-              <span className="text-xs text-gray-500">
-                {(file.size / 1024 / 1024).toFixed(2)} MB
-              </span>
-            )}
-          </div>
-        </div>
-        {errors[fieldName] && (
-          <p className="text-red-500 text-xs mt-1 flex items-center">
-            ⚠️ {errors[fieldName]}
-          </p>
-        )}
-        <p className="text-xs text-gray-500 mt-1">
-          Supported: JPG, PNG, PDF, DOC (Max 5MB)
-        </p>
-      </div>
-    );
-  };
 
   const animationStyles: React.CSSProperties = {
     animation: isAnimating ? 'none' : 'fadeIn 0.3s ease-out'
@@ -470,7 +316,6 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
               </div>
             )}
 
-            {/* Other sections remain the same */}
             {/* Penalty Type Section */}
             {currentSection === 1 && (
               <div 
@@ -637,23 +482,75 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
                 </h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FileUploadField fieldName="yourIdPost" label="Your ID Proof" />
-                  <FileUploadField fieldName="parentsIdPost" label="Parents ID Proof" />
+                  <div>
+                    <label htmlFor="yourIdNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                      Your ID Number *
+                    </label>
+                    <input
+                      type="text"
+                      id="yourIdNumber"
+                      name="yourIdNumber"
+                      value={formData.yourIdNumber}
+                      onChange={handleInputChange}
+                      disabled={isLoading}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FD5C90] focus:border-transparent transition-all duration-200 disabled:bg-gray-100"
+                      placeholder="Enter your ID/Aadhar number"
+                    />
+                    {errors.yourIdNumber && <p className="text-red-500 text-xs mt-1 flex items-center">⚠️ {errors.yourIdNumber}</p>}
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="partnerIdNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                      Partner ID Number *
+                    </label>
+                    <input
+                      type="text"
+                      id="partnerIdNumber"
+                      name="partnerIdNumber"
+                      value={formData.partnerIdNumber}
+                      onChange={handleInputChange}
+                      disabled={isLoading}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FD5C90] focus:border-transparent transition-all duration-200 disabled:bg-gray-100"
+                      placeholder="Enter partner's ID/Aadhar number"
+                    />
+                    {errors.partnerIdNumber && <p className="text-red-500 text-xs mt-1 flex items-center">⚠️ {errors.partnerIdNumber}</p>}
+                  </div>
                 </div>
 
-                <div className="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <input
-                    type="checkbox"
-                    id="parentsCertified"
-                    name="parentsCertified"
-                    checked={formData.parentsCertified}
-                    onChange={handleInputChange}
-                    disabled={isLoading}
-                    className="h-5 w-5 text-[#FD5C90] focus:ring-[#FD5C90] border-gray-300 rounded disabled:bg-gray-200"
-                  />
-                  <label htmlFor="parentsCertified" className="ml-3 block text-sm text-gray-700">
-                    Parents certified with stamped document
-                  </label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="parentsIdNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                      Parents ID Number *
+                    </label>
+                    <input
+                      type="text"
+                      id="parentsIdNumber"
+                      name="parentsIdNumber"
+                      value={formData.parentsIdNumber}
+                      onChange={handleInputChange}
+                      disabled={isLoading}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FD5C90] focus:border-transparent transition-all duration-200 disabled:bg-gray-100"
+                      placeholder="Enter parents' ID/Aadhar number"
+                    />
+                    {errors.parentsIdNumber && <p className="text-red-500 text-xs mt-1 flex items-center">⚠️ {errors.parentsIdNumber}</p>}
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="partnerParentsIdNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                      Partner Parents ID Number *
+                    </label>
+                    <input
+                      type="text"
+                      id="partnerParentsIdNumber"
+                      name="partnerParentsIdNumber"
+                      value={formData.partnerParentsIdNumber}
+                      onChange={handleInputChange}
+                      disabled={isLoading}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FD5C90] focus:border-transparent transition-all duration-200 disabled:bg-gray-100"
+                      placeholder="Enter partner parents' ID/Aadhar number"
+                    />
+                    {errors.partnerParentsIdNumber && <p className="text-red-500 text-xs mt-1 flex items-center">⚠️ {errors.partnerParentsIdNumber}</p>}
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -695,23 +592,35 @@ const PlanForm: React.FC<DiamondPlanApplicationProps> = ({ plan, onClose, onSubm
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FileUploadField fieldName="partnerIdPost" label="Partner ID Proof" />
-                  <FileUploadField fieldName="partnerParentsIdPost" label="Partner Parents ID Proof" />
-                </div>
-
-                <div className="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
-                  <input
-                    type="checkbox"
-                    id="partnerParentsCertified"
-                    name="partnerParentsCertified"
-                    checked={formData.partnerParentsCertified}
-                    onChange={handleInputChange}
-                    disabled={isLoading}
-                    className="h-5 w-5 text-[#FD5C90] focus:ring-[#FD5C90] border-gray-300 rounded disabled:bg-gray-200"
-                  />
-                  <label htmlFor="partnerParentsCertified" className="ml-3 block text-sm text-gray-700">
-                    Partner parents certified with stamped document
-                  </label>
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="parentsCertified"
+                      name="parentsCertified"
+                      checked={formData.parentsCertified}
+                      onChange={handleInputChange}
+                      disabled={isLoading}
+                      className="w-4 h-4 text-[#FD5C90] border-gray-300 rounded focus:ring-[#FD5C90]"
+                    />
+                    <label htmlFor="parentsCertified" className="ml-2 text-sm text-gray-700">
+                      Parents have certified the information
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="partnerParentsCertified"
+                      name="partnerParentsCertified"
+                      checked={formData.partnerParentsCertified}
+                      onChange={handleInputChange}
+                      disabled={isLoading}
+                      className="w-4 h-4 text-[#FD5C90] border-gray-300 rounded focus:ring-[#FD5C90]"
+                    />
+                    <label htmlFor="partnerParentsCertified" className="ml-2 text-sm text-gray-700">
+                      Partner's parents have certified the information
+                    </label>
+                  </div>
                 </div>
               </div>
             )}

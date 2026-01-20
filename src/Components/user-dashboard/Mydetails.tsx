@@ -31,6 +31,7 @@ import EducationFinancialModal from "../user-dashboard-model/EducationFinancialM
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../../utils/firebaseConfig";
 import ImageUploadModal from "../ImageUpdate/ImageUploadModal";
+import ContactNumberView from "./ContactNumberView";
 
 
 const MyDetails = () => {
@@ -39,7 +40,7 @@ const MyDetails = () => {
     const [toggle, { isLoading: isToggleLoading }] = useToggleMutation();
 
     const { user, myDetails } = useSelector((state: RootState) => state.userReducer);
-//    console.log("I look details",myDetails);
+   console.log("I look details",myDetails);
 
     const [isPersonalDetails, setIsPersonalDetails] = useState(false);
     const [isReligiousDetails, setIsReligiousDetails] = useState(false);
@@ -47,7 +48,9 @@ const MyDetails = () => {
     const [isEducationFinancial, setIsEducationFinancial] = useState(false);
     const [isLocationBackground, setIsLocationBackground] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
-    console.log(myDetails?.toggleStatus);
+    console.log("all deatisl",myDetails?.toggleStatus);
+
+
     useEffect(() => {
         if (myDetails?.toggleStatus) {
             setIsPersonalDetails(myDetails.toggleStatus.personal_details);
@@ -396,7 +399,7 @@ const MyDetails = () => {
                     </div>
 
                     <div className="col-span-1 xl:grid w-full md:col-span-2 gap-10">
-                        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-[#ffffff] p-6 md:col-span-2   md:w-auto  xl:h-[29rem]">
+                        <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-[#ffffff] p-6 md:col-span-2   md:w-auto  xl:h-[33rem]">
                             <div className="flex w-full flex-col  items-center justify-between gap-10 xl:flex-row">
                                 <div className=" xl:w-[70%] w-full ">
                                     <div className="flex items-center justify-between self-start  text-xl font-semibold leading-5 text-gray-800">
@@ -428,6 +431,9 @@ const MyDetails = () => {
                                         </div>
                                         <div className="my-auto justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-3 py-1.5 text-center capitalize tracking-normal">
                                             {myDetails?.basic_and_lifestyle?.age}
+                                        </div>
+                                        <div className="my-auto justify-center self-stretch whitespace-nowrap rounded-[100px] bg-orange-100 px-3 py-1.5 text-center capitalize tracking-normal">
+                                             {myDetails?.basic_and_lifestyle?.publicUserId}
                                         </div>
                                           
                                     </div>
@@ -469,6 +475,15 @@ const MyDetails = () => {
                                                 {myDetails?.basic_and_lifestyle?.postedBy}
                                             </div>
                                         </div>
+                                        <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
+                                                <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
+                                                Phone {" "}
+                                            </div>
+                                            <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
+                                               <ContactNumberView userId={user?.userId}/>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                     <div className="h-[28rem] xl:w-[30%]  w-auto mr-4 rounded-lg bg-[#fcf2f2] text-[#FD5C90]  md:p-5 md:h-[26rem]">
@@ -1009,7 +1024,7 @@ const MyDetails = () => {
                                         <div className="justify-center rounded-[100px] bg-orange-100 px-3 py-1.5 text-center text-[12px] font-medium capitalize leading-7 text-slate-900 md:text-md">
 
                                             <span className="">
-                                                {myDetails?.education_and_financial?.income}
+                                                {myDetails?.education_and_financial?.income} per annum
                                             </span>
                                         </div>
                                     </div>

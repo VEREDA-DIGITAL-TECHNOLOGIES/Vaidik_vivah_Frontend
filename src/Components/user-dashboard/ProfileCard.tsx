@@ -13,6 +13,7 @@ interface Profile {
   id: string;
   profileImages: Array<string>;
   userId: string;
+  public_user_id:string;
   userType: string;
   gender: string;
   age: string;
@@ -39,6 +40,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   handleFavouriteToggle,
 }) => {
   const { user } = useSelector((state: RootState) => state.userReducer);
+  console.log("profile data ",profiles);
 
   const [userprofilesdetailsnotification] =
     useUserProfileNotificationMutation();
@@ -100,6 +102,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               <span className="rounded-full px-3 py-1 bg-[#FFF1F6] text-[#FD5C90] font-bold text-sm">
                 {data.userType}
               </span>
+              
 
               {isFavourite ? (
                 <button
@@ -120,13 +123,24 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   <FaRegStar className="text-2xl text-[#FD5C90]" />
                 </button>
               )}
+              
             </div>
 
             {/* Match % */}
+            <div className="flex justify-between">
+
             <div className="w-max px-3 py-1 rounded-lg bg-gradient-to-t from-[#FFD54266] to-[#C0970766]">
               <p className="text-[#FD5C90] text-sm font-medium">
                 {data.match_percentage}% match
               </p>
+                 
+            </div>
+            <div className="w-max px-3 py-1 rounded-lg bg-gradient-to-t from-[#FFD54266] to-[#C0970766]">
+              <p className="text-[#FD5C90] text-sm font-medium">
+              Public user id:  {data.public_user_id}
+              </p>
+                
+            </div>
             </div>
 
             {/* NAME + AGE */}

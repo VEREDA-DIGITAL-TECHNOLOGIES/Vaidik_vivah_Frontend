@@ -69,13 +69,24 @@ const Login = () => {
     try {
       const res = await login(data);
 
-      if ('error' in res && res.error) {
-        const errorData = res.error as FetchBaseQueryErrorWithData;
-        if (errorData.data?.success === false) {
-          toast.error(errorData.data.message);
-          return;
-        }
+       // ❌ HANDLE BLOCKED USER
+    if ("error" in res && res.error) {
+      const errorData = res.error as FetchBaseQueryErrorWithData;
+
+      if (errorData.status === 403) {
+        navigate("/user-suspended");
+        localStorage.setItem(
+          "block_reason",
+          errorData.data?.message || "Account blocked by admin"
+        );
+        return;
       }
+
+      if (errorData.data?.success === false) {
+        toast.error(errorData.data.message);
+        return;
+      }
+    }
 
       // Firebase authentication
       const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);

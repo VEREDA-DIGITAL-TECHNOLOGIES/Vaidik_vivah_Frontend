@@ -106,14 +106,7 @@ const Notification = () => {
             key={notification.notificationId}
             className="p-4 bg-white border rounded-lg shadow-md mb-4"
           >
-            <div className="flex justify-end">
-              <button
-                className="mt-2 text-red-500"
-                onClick={() => handleRemoveNotification(notification.notificationId)}
-              >
-                Remove
-              </button>
-            </div>
+            
 
             {notification.body?.type === "connection_request" ? (
 
@@ -158,11 +151,18 @@ const Notification = () => {
 
             ) : (
 
-              <ConnectionAccepted senderImage={notification.body?.senderImage} senderName={notification.body?.senderName} />
+              <ConnectionAccepted senderImage={notification.body?.senderImage} senderName={notification.body?.senderName} id={notification.body?.senderId} />
 
             )}
             
-          
+          <div className="flex justify-end">
+              <button
+                className="mt-2 text-red-500 cursor-pointer"
+                onClick={() => handleRemoveNotification(notification.notificationId)}
+              >
+                Remove
+              </button>
+            </div>
           
           </div>
           
@@ -177,7 +177,7 @@ const Notification = () => {
               <p>{notification.title}</p>
             <div className="flex justify-end">
               <button
-                className="mt-2 text-red-500"
+                className="mt-2 text-red-500 cursor-pointer"
                 onClick={() => handleRemoveNotification(notification.notificationId)}
               >
                 Remove
@@ -188,7 +188,7 @@ const Notification = () => {
              notification?.message?.split(" viewed")[0]
         } */}
             <Link to={`/profile/${notification?.message?.split(" viewed")[0]}/${notification.body?.senderId}`}>
-        See Profiles
+        View Profile
         </Link>
       </div>
        )))}
