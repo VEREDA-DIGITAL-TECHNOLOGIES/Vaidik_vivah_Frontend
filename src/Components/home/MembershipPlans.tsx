@@ -85,18 +85,19 @@ const MembershipPlans: React.FC = () => {
     "Platinum": 2,
     "Vivah Sansakar": 3
   };
+  console.log("Plan data are ", data);
 
   const plans: Plan[] = data.data
     .map((p: ApiPlan) => {
       const isVivahSansakar = p.planName === "Diamond";
-      const monthlyPrice = Number(p.price) + 5000;
+      const monthlyPrice = Number(p.price) + 500;
       const discountPrice = Number(p.price);
       
       return {
         id: p.id,
         name: isVivahSansakar ? "Registration for vedvivah" : p.planName,
-        monthly: isVivahSansakar ? "₹1000" : `₹${monthlyPrice}`,
-        discount: isVivahSansakar ? "₹1000" : `₹${discountPrice}`,
+        monthly: isVivahSansakar ? `₹${monthlyPrice}` : `₹${monthlyPrice}`,
+        discount: isVivahSansakar ? `₹${discountPrice}` : `₹${discountPrice}`,
         features: p.featureList.map((f: string) => ({
           text: f,
           included: true,
@@ -163,8 +164,7 @@ const MembershipPlans: React.FC = () => {
                     <p className="text-gray-600 mt-2 text-sm text-center">{plan.description}</p>
                   </div>
 
-                  {/* Price Section - Hidden for Vivah Sansakar */}
-                  {!isVivahSansakar && (
+                  
                     <div className="p-6 border-b border-gray-200">
                       <div className="flex items-center justify-center gap-4 mb-2">
                         <del className="text-gray-500 text-lg">
@@ -173,10 +173,10 @@ const MembershipPlans: React.FC = () => {
                         <span className="text-3xl font-bold text-gray-900">{plan.discount}</span>
                       </div>
                       <div className="text-green-600 font-semibold text-sm text-center">
-                        Save ₹5000 ({Math.round((5000 / Number(plan.monthly.replace('₹', ''))) * 100)}% OFF)
+                        Save ₹500 ({Math.round((500 / Number(plan.monthly.replace('₹', ''))) * 100)}% OFF)
                       </div>
                     </div>
-                  )}
+                  
 
                   {/* Features List */}
                   <div className="p-6 flex-grow">
@@ -198,20 +198,8 @@ const MembershipPlans: React.FC = () => {
                       onClick={() => navigate("/login")}
                       className="w-full py-3 bg-[#FD5C90] text-white rounded-lg font-semibold hover:bg-[#e04a7d] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
                     >
-                      Apply Now - ₹1000
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                        />
-                      </svg>
+                      Apply Now 
+                      
                     </button>
                   </div>
                 )}

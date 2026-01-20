@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdDone } from "react-icons/md";
 import { FaArrowRightLong, FaBan } from "react-icons/fa6";
 import PlanForm from "../planform/PlanForm";
+import { Link } from "react-router-dom";
 
 type Plan = {
   id: string;
@@ -92,7 +93,7 @@ const PlanCard = ({
     return {
       id: id,
       name: displayTitle,
-      monthly: "₹1000", // Fixed price for Diamond plan
+      monthly: price, 
       discount: "₹0",
       features: features.map(feature => ({ text: feature, included: true })),
       duration: "Custom Plan",
@@ -104,7 +105,7 @@ const PlanCard = ({
   return (
     <>
       <div
-        className={`space-y-4 flex flex-col rounded-lg p-6 h-full ${
+        className={`space-y-3 flex flex-col rounded-lg p-4 h-full ${
           isHighlighted ? "bg-[#f63371] text-white" : "bg-[#fe80a8] shadow text-white border"
         }`}
       >
@@ -113,11 +114,7 @@ const PlanCard = ({
             <h1 className={`font-semibold text-3xl ${isHighlighted ? "" : "text-white"}`}>
               {displayTitle}
             </h1>
-            {isDiamondPlan && (
-              <span className="bg-white text-black text-xs font-bold px-2 py-1 rounded-full">
-                1 time use plan
-              </span>
-            )}
+            
           </div>
           <h1 className={`text-4xl font-bold ${isHighlighted ? "" : "text-white"}`}>
             {price !== "Free" ? `INR ₹${price}` : price}
@@ -145,38 +142,44 @@ const PlanCard = ({
         </div>
 
         <div className="mt-auto flex justify-start">
-          {isDiamondPlan ? (
-            <button
-              className="flex w-80 items-center justify-center gap-4 rounded-lg border-2 border-[#FD5C90] bg-white text-[#FD5C90] p-2 font-semibold hover:bg-[#FD5C90] hover:text-white transition-all duration-300"
-              onClick={handleApplyNow}
-            >
-              Apply Now 
-            </button>
-          ) : (
-            <button
-              className={`flex w-80 items-center justify-center gap-4 rounded-lg border-2 ${
-                isDisabled
-                  ? "border-gray-400 bg-gray-200 text-gray-600 cursor-not-allowed"
-                  : "border-[#FD5C90] bg-white text-[#FD5C90] hover:bg-[#FD5C90] hover:text-white transition-all duration-300"
-              } p-2`}
-              onClick={() => !isDisabled && onClick(id)}
-              disabled={isDisabled}
-            >
-              {isDisabled ? (
-                <>
-                  <FaBan className="text-xl" />
-                  <p className="font-semibold">Purchased</p>
-                </>
-              ) : (
-                <>
-                  <p className="font-semibold">Get Started</p>
-                  <FaArrowRightLong className="text-xl" />
-                </>
+            <div className="flex flex-col items-center gap-2">
+              <button
+                className={`flex w-80 items-center justify-center gap-4 rounded-lg border-2 p-2 font-semibold transition-all duration-300
+                  ${
+                    isDisabled
+                      ? "cursor-not-allowed border-gray-400 bg-gray-200 text-gray-600"
+                      : isDiamondPlan
+                      ? "border-[#0a0809] bg-white text-[#FD5C90] hover:bg-[#FD5C90] hover:text-white"
+                      : "border-[#FD5C90] bg-white text-[#FD5C90] hover:bg-[#FD5C90] hover:text-white"
+                  }
+                `}
+                onClick={() => !isDisabled && onClick(id)}
+                disabled={isDisabled}
+              >
+                {isDisabled ? (
+                  <>
+                    <FaBan className="text-xl" />
+                    <span>Purchased</span>
+                  </>
+                ) : (
+                  <>
+                    <span>{isDiamondPlan ? "Apply Now" : "Get Started"}</span>
+                    <FaArrowRightLong className="text-xl" />
+                  </>
+                )}
+              </button>
+
+              {isDiamondPlan && (
+                <Link
+                  to="/terms-and-conditions"
+                  className="text-sm text-gray-500 underline hover:text-[#FD5C90]"
+                >
+                  Terms & Conditions apply
+                </Link>
               )}
-            </button>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+  </div>
 
       {showApplicationForm && isDiamondPlan && (
         <PlanForm

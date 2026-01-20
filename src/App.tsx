@@ -41,6 +41,7 @@ import ChildSafety from "./pages/footer/ChildSafety";
 import DeleteAccount from "./pages/footer/DeleteAccount";
 import Mission from "./pages/footer/Mission";
 import UserSuspended from "./pages/auth/UserSuspended";
+import TermsAndConditions from "./pages/footer/TermAndConditions";
 
 
 
@@ -238,6 +239,8 @@ function App() {
             <Route path="/child-safety-policy" element={<ChildSafety />} />
             <Route path="/delete-account" element={<DeleteAccount />} />
             <Route path="/mission" element={<Mission />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+
          
 
             

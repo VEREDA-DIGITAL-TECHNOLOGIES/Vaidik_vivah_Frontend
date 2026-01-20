@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate, Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { motion } from "framer-motion";
 import { Ban, Trash2, MapPin, File, Mic, MicOff, Eye, Check } from "lucide-react";
@@ -9,6 +9,7 @@ import { db } from "../../../utils/firebaseConfig";
 import { ref, push, onValue, remove } from "firebase/database";
 import CallButton from "./CallButton";
 import { useUploadFileMutation } from "../../Redux/Api/fileupload.api";
+import { HiXMark } from "react-icons/hi2";
 
 interface Message {
   senderId: string;
@@ -588,6 +589,22 @@ export default function MessageUser() {
   }
 
   return (
+    <>
+  <div className="mt-8 flex justify-center">
+      <Link
+        to="/user-dashboard?tab=Chats"
+        className="group flex  items-center gap-2 text-sm font-medium text-[#fa6896] transition hover:text-[#FD5C90]"
+        aria-label="Close chat"
+      >
+    <button
+      aria-label="Close"
+      className="group flex cursor-pointer h-10 w-10 items-center justify-center rounded-full bg-[#FD5C90] text-white transition-all duration-300 hover:bg-[#FD5C90] hover:text-white"
+    >
+      <HiXMark className="text-xl transition-transform duration-300 group-hover:rotate-90" />
+    </button>
+      </Link>
+    </div>
+   
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
@@ -595,6 +612,7 @@ export default function MessageUser() {
       transition={{ duration: 0.4 }}
       className="flex flex-col max-w-4xl mx-auto my-6 border border-[#007EAF] rounded-3xl bg-white/90 backdrop-blur shadow-xl overflow-hidden"
     >
+        
       {/* Header */}
       <div className="sticky top-0 z-40 bg-[#FD5C90] flex justify-between items-center px-5 py-4 text-white">
         <div className="flex items-center gap-3">
@@ -829,5 +847,7 @@ export default function MessageUser() {
         </div>
       )}
     </motion.div>
+
+     </>
   );
 }

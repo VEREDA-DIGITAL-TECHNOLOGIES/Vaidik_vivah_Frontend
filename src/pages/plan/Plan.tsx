@@ -200,7 +200,7 @@ const PricingPage = () => {
             </p>
           </div>
           <div className="mt-5 flex h-16 w-60 items-center gap-8 rounded-full bg-[#FFF9EE] p-3 xl:mt-0">
-            {["Monthly", "Yearly"].map((tab) => (
+            {["Monthly"].map((tab) => (
               <button
                 key={tab}
                 className={`flex h-10 w-32 items-center justify-center p-2 rounded-full transition-all duration-300 ${activeTab === tab ? "bg-[#f98daf] w-52" : "bg-transparent"
@@ -218,7 +218,17 @@ const PricingPage = () => {
           </div>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 justify-items-center content-center gap-4 md:grid-cols-2 lg:gap-8 xl:gap-24">
+   <div  className="
+    mt-5
+    grid
+    grid-cols-1
+    gap-4
+    sm:grid-cols-2
+    md:grid-cols-2
+    xl:grid-cols-3
+    place-items-stretch
+  "  >
+
           {filteredPlans.map((plan: any) => (
             <PlanCard
               key={plan.id}
