@@ -150,7 +150,7 @@ const PlanCard = ({
               className="flex w-80 items-center justify-center gap-4 rounded-lg border-2 border-[#FD5C90] bg-white text-[#FD5C90] p-2 font-semibold hover:bg-[#FD5C90] hover:text-white transition-all duration-300"
               onClick={handleApplyNow}
             >
-              Apply Now ₹1000
+              Apply Now 
             </button>
           ) : (
             <button
