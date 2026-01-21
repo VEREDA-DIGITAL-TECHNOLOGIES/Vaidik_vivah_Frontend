@@ -152,6 +152,7 @@ export default function MessageUser() {
 
     return 'text';
   };
+  
 
   useEffect(() => {
     if (!currentUserId || !recipientId) return;

@@ -36,6 +36,7 @@ const PlanCard = ({
   onClick,
   isDisabled = false,
 }: PlanCardProps) => {
+  // console.log("is Disabled plan are ",isDisabled)
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   
   const isDiamondPlan = title === "Diamond";

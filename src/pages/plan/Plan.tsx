@@ -125,6 +125,11 @@ const PricingPage = () => {
       if (b.planName === "Premium") return 1;
       return 0;
     });
+    // console.log("plan data are",filteredPlans);
+    // console.log("plan data user and active tab are",user?.usertype,activeTab);
+    // console.log("plan user data are",user);
+
+
 
   const handleCheckout = async (id: string) => {
     try {
@@ -185,6 +190,7 @@ const PricingPage = () => {
       toast.error("Payment failed. Please try again.");
     }
   };
+  
 
   if (isLoading) return <Loading />;
   if (error || !planData?.data) return <div>Error loading plans</div>;

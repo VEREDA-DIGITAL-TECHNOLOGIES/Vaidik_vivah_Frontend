@@ -11,7 +11,7 @@ import { useMyDetailsQuery } from "../../Redux/Api/profile.api";
 import type { RootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
-
+import { get, update } from "firebase/database";
 interface UserModel {
     id: string;
     userId: string;
@@ -33,8 +33,8 @@ interface BlockedUser {
 export default function ChatScreen() {
     const [connectedUsers, setConnectedUsers] = useState<UserModel[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [unseenCount] = useState<{ [key: string]: number }>({});
-    const [lastMessages] = useState<{ [key: string]: any }>({});
+  const [unseenCount, setUnseenCount] = useState<Record<string, number>>({});
+  const [lastMessages, setLastMessages] = useState<Record<string, any>>({});
     const [currentUser, setCurrentUser] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState<'connected' | 'blocked'>('connected');
@@ -107,6 +107,83 @@ export default function ChatScreen() {
 
         return () => unsubscribeDB();
     }, [currentUser, getConnectionStatus]);
+    const normalizeTimestamp = (ts: any): number => {
+  if (!ts) return 0;
+
+  // Already number
+  if (typeof ts === "number") return ts;
+
+  // String ISO date
+  if (typeof ts === "string") return new Date(ts).getTime();
+
+  return 0;
+};
+
+
+    /* ================= UNREAD + LAST MESSAGE ================= */
+  useEffect(() => {
+    if (!currentUser || connectedUsers.length === 0) return;
+
+    const db = getDatabase();
+
+    connectedUsers.forEach((user) => {
+      /* Incoming messages */
+      const incomingRef = rtdbRef(
+        db,
+        `messages/${user.id}/${currentUser.uid}`
+      );
+
+      onValue(incomingRef, (snapshot) => {
+        let unread = 0;
+        let lastMsg: any = null;
+
+        snapshot.forEach((child) => {
+          const msg = child.val();
+          if (msg.seen === false) unread++;
+        if (
+                    !lastMsg ||
+                    normalizeTimestamp(msg.timestamp) >
+                        normalizeTimestamp(lastMsg.timestamp)
+                    ) {
+                    lastMsg = msg;
+                    }
+
+        });
+
+        setUnseenCount((prev) => ({ ...prev, [user.id]: unread }));
+        if (lastMsg) {
+          setLastMessages((prev) => ({ ...prev, [user.id]: lastMsg }));
+        }
+      });
+
+      /* Outgoing messages (for last preview) */
+      const outgoingRef = rtdbRef(
+        db,
+        `messages/${currentUser.uid}/${user.id}`
+      );
+
+      onValue(outgoingRef, (snapshot) => {
+        let lastMsg: any = null;
+
+        snapshot.forEach((child) => {
+          const msg = child.val();
+          if (!lastMsg || msg.timestamp > lastMsg.timestamp) {
+            lastMsg = msg;
+          }
+        });
+
+        if (lastMsg) {
+          setLastMessages((prev) => {
+            const existing = prev[user.id];
+            if (!existing || lastMsg.timestamp > existing.timestamp) {
+              return { ...prev, [user.id]: lastMsg };
+            }
+            return prev;
+          });
+        }
+      });
+    });
+  }, [connectedUsers, currentUser]);
 
 
 
@@ -119,7 +196,38 @@ export default function ChatScreen() {
         }
     };
 
-    const handleChatOpen = (user: UserModel) => {
+
+
+
+
+    const handleChatOpen = async(user: UserModel) => {
+        try {
+    const db = getDatabase();
+
+    const incomingRef = rtdbRef(
+      db,
+      `messages/${user.id}/${currentUser.uid}`
+    );
+
+    const snapshot = await get(incomingRef);
+
+    snapshot.forEach((child) => {
+      const msg = child.val();
+
+      // mark only unseen messages
+      if (msg.seen !== true) {
+        update(
+          rtdbRef(
+            db,
+            `messages/${user.id}/${currentUser.uid}/${child.key}`
+          ),
+          { seen: true }
+        );
+      }
+    });
+  } catch (err) {
+    console.error("Failed to mark messages as seen", err);
+  }
   // Block: Woman + Standard
   if (gender === "Man" && usertype === "Standard") {
     toast.warning(
@@ -227,9 +335,13 @@ export default function ChatScreen() {
                     <div className="divide-y divide-gray-200">
                         {searchedUsers.map((user) => {
                             const message = lastMessages[user.id] || {};
-                            const formattedTime = message.timestamp
-                                ? format(new Date(message.timestamp), "hh:mm a")
-                                : "";
+                            const formattedTime = message?.timestamp
+                                        ? format(
+                                            new Date(normalizeTimestamp(message.timestamp)),
+                                            "hh:mm a"
+                                            )
+                                        : "";
+
 
                             return (
                                 <div
@@ -256,6 +368,7 @@ export default function ChatScreen() {
                                             <div className="bg-[#007EAF] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center mx-auto mt-1">
                                                 {unseenCount[user.id]}
                                             </div>
+                                            
                                         )}
                                     </div>
                                 </div>

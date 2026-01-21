@@ -41,6 +41,7 @@ const MyDetails = () => {
 
     const { user, myDetails } = useSelector((state: RootState) => state.userReducer);
    console.log("I look details",myDetails);
+  
 
     const [isPersonalDetails, setIsPersonalDetails] = useState(false);
     const [isReligiousDetails, setIsReligiousDetails] = useState(false);
