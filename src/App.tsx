@@ -27,7 +27,7 @@ import Messageuser from "./pages/chat/Messageuser";
 
 
 
-import HelpDashboard from "./pages/user-dashboard/Help";
+
 import AboutUs from "./pages/footer/AboutUs";
 import Advice from "./pages/footer/Advice"
 import Services from "./pages/footer/Services";
@@ -42,6 +42,7 @@ import DeleteAccount from "./pages/footer/DeleteAccount";
 import Mission from "./pages/footer/Mission";
 import UserSuspended from "./pages/auth/UserSuspended";
 import TermsAndConditions from "./pages/footer/TermAndConditions";
+import HelpDashboard from "./pages/user-dashboard/Help";
 
 
 
@@ -100,7 +101,7 @@ function App() {
     } else {
       setIsAuthenticated(true);
     }
-  }, [accessToken, refreshToken]);
+  }, [accessToken, refreshToken,user]);
 
   useEffect(() => {
     if (accessToken) {
