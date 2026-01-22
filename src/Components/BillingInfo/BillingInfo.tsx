@@ -183,19 +183,19 @@ const PlanProgress = ({
 // Fees Registration Card
 const FeesRegistrationCard = () => (
     <div className="mb-4 mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
-        <h4 className="text-lg font-semibold text-blue-800 mb-2">
+        <h4 className="text-lg font-semibold text-[#FD5C90] mb-2">
             Vedvivah  Free features
         </h4>
-        <p className="text-blue-700 mb-2">
+        <p className="text-[#FD5C90] mb-2">
             You have registered for Vedvivah with basic features:
         </p>
-        <ul className="list-disc pl-5 text-blue-600 space-y-1">
+        <ul className="list-disc pl-5 text-[#FD5C90] space-y-1">
             <li>Basic profile creation</li>
             <li>Limited matches viewing</li>
             <li>Standard search functionality</li>
             <li>Basic communication tools</li>
         </ul>
-        <p className="text-blue-700 mt-3">
+        <p className="text-[#FD5C90] mt-3">
             Upgrade to a paid plan for unlimited matches, advanced search, and premium features.
         </p>
     </div>
@@ -510,7 +510,7 @@ const BillingInfo = () => {
                                 )}
 
                                 {isFeesRegistration && (
-                                    <div className="text-blue-600">
+                                    <div className="text-[#FD5C90]">
                                         Enjoy your basic registration features. Consider upgrading for more benefits.
                                     </div>
                                 )}
