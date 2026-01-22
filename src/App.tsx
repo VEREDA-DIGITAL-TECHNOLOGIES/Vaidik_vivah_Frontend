@@ -77,7 +77,7 @@ const UserDashboard = lazy(() => import("./pages/user-dashboard/UserDashboard"))
 
 function App() {
   const { accessToken, refreshToken, user } = useSelector((state: RootState) => state.userReducer);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!accessToken || !!refreshToken);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!accessToken || !!refreshToken||!!user);
 
   const dispatch = useDispatch();
 
@@ -93,9 +93,9 @@ function App() {
     }
   }, [data, dispatch]);
 
-
+// to check (!accessToken && !refreshToken && !user) if fase to go login page
   useEffect(() => {
-    if (!accessToken && !refreshToken) {
+    if (!accessToken && !refreshToken && !user) {
       localStorage.clear();
       setIsAuthenticated(false);
     } else {
