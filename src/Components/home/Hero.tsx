@@ -3,10 +3,47 @@ import { Link } from "react-router-dom";
 import heroImg from "../../assets/Banner-8.png";
 import Archive from "./Archive";
 import { ArrowRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 
 function Hero() {
   return (
+    <>
+     {/* ✅ SEO META */}
+      <Helmet>
+       
+        
+
+        <meta
+          name="keywords"
+          content="Vedvivah, matrimony, शादी, विवाह, kundli matching, Indian marriage"
+        />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Vedvivah - Find Your Perfect Match"
+        />
+        <meta
+          property="og:description"
+          content="जहाँ कुंडली भी मिलेगी और विचार भी - Vedvivah"
+        />
+        <meta property="og:image" content="/logotest3.png" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vedvivah" />
+        <meta
+          name="twitter:description"
+          content="Find your perfect life partner with Vedvivah"
+        />
+        <meta name="twitter:image" content="/preview.png" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://vedvivah.com/" />
+      </Helmet>
+ 
     <div
       className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{
@@ -55,6 +92,7 @@ function Hero() {
       </div>
       <Archive/>
     </div>
+       </>
   );
 }
 

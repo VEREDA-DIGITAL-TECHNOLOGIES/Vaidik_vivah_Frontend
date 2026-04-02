@@ -1,6 +1,57 @@
+import { Helmet } from "react-helmet-async";
 
 const Mission = () => {
   return (
+    <>
+     {/* ✅ SEO META */}
+      <Helmet>
+        <title>Our Mission | Vedvivah - Shaping the Future of Matrimony</title>
+
+        <meta
+          name="description"
+          content="Discover Vedvivah's mission to create meaningful relationships through safe, inclusive, and technology-driven matchmaking. Find your perfect life partner with trust and compatibility."
+        />
+
+        <meta
+          name="keywords"
+          content="Vedvivah mission, matrimony platform India, matchmaking service, Indian marriage, kundli matching"
+        />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Vedvivah Mission - Meaningful Matchmaking"
+        />
+        <meta
+          property="og:description"
+          content="We connect hearts through technology, trust, and compatibility. Learn about Vedvivah's mission."
+        />
+        <meta
+          property="og:image"
+          content="https://vedvivah.com/logotest3.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://vedvivah.com/mission" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Vedvivah Mission - Modern Matrimony"
+        />
+        <meta
+          name="twitter:description"
+          content="Safe, inclusive, and smart matchmaking for meaningful relationships."
+        />
+        <meta
+          name="twitter:image"
+          content="https://vedvivah.com//logotest3.png"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://vedvivah.com/mission" />
+      </Helmet>
+   
     <div className="pt-[83.5px] ">
       <div className=" pt-5 mb-4 md:mb-0 md:pt-16 space-y-14">
         <div className=" flex flex-col md:flex-row justify-between items-center w-[79%] m-auto ">
@@ -150,6 +201,7 @@ const Mission = () => {
       </div>
 
     </div>
+     </>
   );
 }
 

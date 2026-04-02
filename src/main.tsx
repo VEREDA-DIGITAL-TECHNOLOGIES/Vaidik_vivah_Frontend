@@ -5,12 +5,15 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store,persistor } from "./Redux/store.ts";
 import { Toaster } from "sonner";
 
-
+import { HelmetProvider } from "react-helmet-async";
 
 import "./index.css";
 
 
 createRoot(document.getElementById("root")!).render(
+    <HelmetProvider>
+
+  
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
 
@@ -21,4 +24,5 @@ createRoot(document.getElementById("root")!).render(
       </div>
       </PersistGate>
     </Provider>
+      </HelmetProvider>
 );
