@@ -1,6 +1,58 @@
+
+import { Helmet } from "react-helmet-async";
 const Privacy = () => {
   const currentDate = new Date().toDateString();
   return (
+    <>
+
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Privacy Policy | Vedvivah Data Protection & Security</title>
+
+    <meta
+      name="description"
+      content="Read Vedvivah Privacy Policy to understand how we collect, use, and protect your personal data. Secure, transparent, and compliant matrimony platform."
+    />
+
+    <meta
+      name="keywords"
+      content="Vedvivah privacy policy, data protection India, matrimony privacy, user data security"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Vedvivah Privacy Policy" />
+    <meta
+      property="og:description"
+      content="Learn how Vedvivah protects your personal data and ensures privacy."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://vedvivah.com/privacy-policy"
+    />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vedvivah Privacy Policy" />
+    <meta
+      name="twitter:description"
+      content="Secure and transparent data protection practices."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link
+      rel="canonical"
+      href="https://vedvivah.com/privacy-policy"
+    />
+  </Helmet>
     <div className="flex flex-col ">
       <div className="bg-[#fac5d6] text-center px-6 py-6 md:p-24 space-y-8">
         <h3 className="text-[#fa85aa] font-semibold text-base">
@@ -704,6 +756,7 @@ const Privacy = () => {
         </div>
       </div>
     </div>
+     </>
   );
 };
 

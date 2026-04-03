@@ -1,9 +1,53 @@
 import { CiSearch } from "react-icons/ci";
 // import FAQ from '../../components/faqs/Faqs';
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Help = () => {
   return (
+    <>
+   {/* ✅ SEO META */}
+      <Helmet>
+        <title>Help & FAQs | Vedvivah Support</title>
+
+        <meta
+          name="description"
+          content="Find answers to common questions about Vedvivah. Get help with matchmaking, profiles, security, and using our matrimony platform."
+        />
+
+        <meta
+          name="keywords"
+          content="Vedvivah help, matrimony FAQ, marriage site support, matchmaking help, shaadi help"
+        />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Vedvivah Help & FAQs" />
+        <meta
+          property="og:description"
+          content="Get answers to your questions about Vedvivah matrimony services."
+        />
+        <meta
+          property="og:image"
+          content="https://vedvivah.com/logotest3.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://vedvivah.com/help" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vedvivah Help Center" />
+        <meta
+          name="twitter:description"
+          content="Need help? Find answers and support here."
+        />
+        <meta
+          name="twitter:image"
+          content="https://vedvivah.com/logotest3.png"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://vedvivah.com/help" />
+      </Helmet>
     <div className=' font-lato'>
       <div className='flex flex-col items-center justify-center py-16 gap-9'>
         <span className='text-pink-500'>FAQs</span>
@@ -24,6 +68,7 @@ const Help = () => {
 
       </div>
     </div>
+     </>
   )
 }
 

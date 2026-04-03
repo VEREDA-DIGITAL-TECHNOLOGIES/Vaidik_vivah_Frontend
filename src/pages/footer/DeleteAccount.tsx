@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const DeleteAccount = () => {
     const currentDate = new Date().toDateString();
@@ -11,6 +12,55 @@ const DeleteAccount = () => {
     };
 
     return (
+        <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Delete Account Policy | Vedvivah Data Removal</title>
+
+    <meta
+      name="description"
+      content="Learn how to delete your Vedvivah account and understand what happens to your data after deletion. Secure and transparent data removal process."
+    />
+
+    <meta
+      name="keywords"
+      content="delete account Vedvivah, remove profile, data deletion policy, matrimony account delete"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Vedvivah Delete Account Policy" />
+    <meta
+      property="og:description"
+      content="Understand how to permanently delete your account and data from Vedvivah."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://vedvivah.com/delete-account"
+    />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Delete Account | Vedvivah" />
+    <meta
+      name="twitter:description"
+      content="Step-by-step guide to delete your Vedvivah account."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link
+      rel="canonical"
+      href="https://vedvivah.com/delete-account"
+    />
+  </Helmet>
         <div className="flex flex-col">
             <Hero {...HeroData} />
             <div className="flex flex-col md:flex-row flex-grow gap-5 p-4 md:p-16">
@@ -63,6 +113,7 @@ const DeleteAccount = () => {
                 </div>
             </div>
         </div>
+          </>
     );
 };
 

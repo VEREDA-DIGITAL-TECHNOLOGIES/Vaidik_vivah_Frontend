@@ -14,7 +14,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { setActivationToken } from "../../Redux/Reducers/user.reducer";
 import type{ FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { z } from 'zod';
-
+import { Helmet } from "react-helmet-async";
 
 const schema = z.object({
     email: z.string().email({ message: "Invalid email address" }),
@@ -90,6 +90,53 @@ const ForgotPassword = () => {
 
 
     return (
+        <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Forgot Password | Vedvivah Account Recovery</title>
+
+    <meta
+      name="description"
+      content="Reset your Vedvivah account password securely using OTP verification. Quick and safe account recovery process."
+    />
+
+    <meta
+      name="keywords"
+      content="forgot password Vedvivah, reset password matrimony, account recovery, OTP verification"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Vedvivah Password Recovery" />
+    <meta
+      property="og:description"
+      content="Recover your account securely using OTP verification."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vedvivah.com/forgot-password" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Forgot Password | Vedvivah" />
+    <meta
+      name="twitter:description"
+      content="Reset your password securely."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link rel="canonical" href="https://vedvivah.com/forgot-password" />
+
+    {/* ❗ VERY IMPORTANT */}
+    <meta name="robots" content="noindex, nofollow" />
+  </Helmet>
+        
         <div className={`min-w-screen min-h-screen flex flex-col items-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]`}>
             
             <div className="flex items-center justify-center mb-14 w-[268px] h-[90px]">
@@ -142,6 +189,7 @@ const ForgotPassword = () => {
 
             </div>
         </div>
+        </>
     )
 }
 

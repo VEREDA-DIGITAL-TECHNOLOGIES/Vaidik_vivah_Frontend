@@ -1,7 +1,56 @@
 import { Link } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async";
 const TermsAndConditions = () => {
   return (
+    <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Terms & Conditions | Vedvivah Legal Policies</title>
+
+    <meta
+      name="description"
+      content="Read Vedvivah Terms & Conditions to understand user responsibilities, eligibility, account policies, and legal guidelines for using our matrimony platform."
+    />
+
+    <meta
+      name="keywords"
+      content="Vedvivah terms, matrimony terms and conditions, user agreement, marriage site policies"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Vedvivah Terms & Conditions" />
+    <meta
+      property="og:description"
+      content="Understand the legal terms and user responsibilities for using Vedvivah."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://vedvivah.com/terms-conditions"
+    />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vedvivah Terms & Conditions" />
+    <meta
+      name="twitter:description"
+      content="Legal terms for using Vedvivah matrimony platform."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link
+      rel="canonical"
+      href="https://vedvivah.com/terms-conditions"
+    />
+  </Helmet>
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm">
@@ -136,6 +185,7 @@ const TermsAndConditions = () => {
         </div>
       </div>
     </div>
+      </>
   );
 };
 

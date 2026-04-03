@@ -1,10 +1,65 @@
-
+import { Helmet } from "react-helmet-async";
 
 
 const Community = () => {
  
   const currentDate = new Date().toDateString();
   return (
+    <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Community Guidelines | Vedvivah Safety & Policies</title>
+
+    <meta
+      name="description"
+      content="Read Vedvivah community guidelines to understand our rules on safety, respectful behavior, privacy, and secure matchmaking. Ensuring a safe matrimony platform for everyone."
+    />
+
+    <meta
+      name="keywords"
+      content="Vedvivah guidelines, matrimony rules, community guidelines, safe matchmaking, dating safety rules"
+    />
+
+    {/* Open Graph */}
+    <meta
+      property="og:title"
+      content="Vedvivah Community Guidelines"
+    />
+    <meta
+      property="og:description"
+      content="Learn about our safety policies, respectful behavior rules, and secure matchmaking guidelines."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://vedvivah.com/community-guidelines"
+    />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Vedvivah Community Guidelines"
+    />
+    <meta
+      name="twitter:description"
+      content="Safe, respectful, and secure matrimony platform guidelines."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link
+      rel="canonical"
+      href="https://vedvivah.com/community-guidelines"
+    />
+  </Helmet>
     <div className="flex flex-col ">
           <div className="bg-[#fac5d6] text-center px-6 py-6 md:p-24 space-y-8">
               <h3 className="text-[#fa85aa] font-semibold text-base">
@@ -263,6 +318,7 @@ const Community = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

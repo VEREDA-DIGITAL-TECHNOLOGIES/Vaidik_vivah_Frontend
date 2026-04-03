@@ -26,7 +26,7 @@ import {
 import ChatScreen from "../chat/ChatScreen";
 import BannerPage from "../../Components/Banner/Banner";
 
-
+import { Helmet } from "react-helmet-async";
 
 
 const UserDashboard: React.FC = () => {
@@ -134,6 +134,26 @@ const UserDashboard: React.FC = () => {
 
 
   return (
+    <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>User Dashboard | Vedvivah</title>
+
+    <meta
+      name="description"
+      content="Manage your Vedvivah profile, explore matches, chat, and track your matchmaking journey."
+    />
+
+    {/* ❗ VERY IMPORTANT: Private page */}
+    <meta name="robots" content="noindex, nofollow" />
+
+    {/* Optional OG */}
+    <meta property="og:title" content="Vedvivah Dashboard" />
+    <meta
+      property="og:description"
+      content="Access your profile, matches, and chats."
+    />
+  </Helmet>
     <div className="flex min-h-screen flex-col ">
       <BannerPage/>
       <Header />
@@ -173,6 +193,7 @@ const UserDashboard: React.FC = () => {
       </div>
       <Footer />
     </div>
+     </>
   );
 };
 

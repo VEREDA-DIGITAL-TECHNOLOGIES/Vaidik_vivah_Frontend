@@ -13,7 +13,7 @@ import type { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { toast } from 'sonner'
 import { useNavigate } from "react-router-dom";
 
-
+import { Helmet } from "react-helmet-async";
 import { z } from 'zod'
 
 import { LoadingOutlined } from '@ant-design/icons';
@@ -134,6 +134,52 @@ const Login = () => {
   };
 
   return (
+    <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Login | Vedvivah Account Access</title>
+
+    <meta
+      name="description"
+      content="Login to your Vedvivah account to continue your matchmaking journey. Secure and trusted matrimony platform."
+    />
+
+    <meta
+      name="keywords"
+      content="login Vedvivah, matrimony login, user account login, marriage site login"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Vedvivah Login" />
+    <meta
+      property="og:description"
+      content="Access your Vedvivah account securely."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vedvivah.com/login" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vedvivah Login" />
+    <meta
+      name="twitter:description"
+      content="Login to your matrimony account."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link rel="canonical" href="https://vedvivah.com/login" />
+
+    {/* ❗ VERY IMPORTANT: Prevent indexing */}
+    <meta name="robots" content="noindex, nofollow" />
+  </Helmet>
     <div className={`min-w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]`}>
       <div className="flex items-center justify-center mb-10">
         <Link to={"/"} className="mx-auto mb-2 fixed top-5">
@@ -195,6 +241,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+        </>
   );
 }
 

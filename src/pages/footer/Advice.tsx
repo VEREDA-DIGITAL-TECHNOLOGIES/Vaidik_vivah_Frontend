@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const adviceCardData = [
@@ -36,6 +37,56 @@ const adviceCardData = [
 
 const Advice = () => {
   return (
+    <>
+    {/* ✅ SEO META */}
+      <Helmet>
+        <title>Relationship Advice | Vedvivah - Build Meaningful Connections</title>
+
+        <meta
+          name="description"
+          content="Get expert relationship advice on compatibility, communication, emotional intimacy, and finding the right partner. Vedvivah helps you build lasting and meaningful relationships."
+        />
+
+        <meta
+          name="keywords"
+          content="relationship advice, matrimony tips, compatibility, communication in relationships, Vedvivah"
+        />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Vedvivah Relationship Advice"
+        />
+        <meta
+          property="og:description"
+          content="Discover expert tips on building strong and lasting relationships with Vedvivah."
+        />
+        <meta
+          property="og:image"
+          content="https://vedvivah.com/logotest3.png"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://vedvivah.com/advice" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Relationship Advice | Vedvivah"
+        />
+        <meta
+          name="twitter:description"
+          content="Learn how to build meaningful relationships with expert advice."
+        />
+        <meta
+          name="twitter:image"
+          content="https://vedvivah.com/logotest3.png"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://vedvivah.com/advice" />
+      </Helmet>
+
     <div className="pt-8 font-lato">
       <div className="px-4 sm:px-20 py-16">
         <div className="py-16 space-y-8 xl:px-6 2xl:px-28 text-center">
@@ -64,6 +115,7 @@ const Advice = () => {
         </div>
       </div>
     </div>
+        </>
   );
 };
 

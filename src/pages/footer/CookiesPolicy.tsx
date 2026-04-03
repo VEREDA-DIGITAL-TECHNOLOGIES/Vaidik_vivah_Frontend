@@ -1,7 +1,7 @@
 
 
 import { Link } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async";
 
 const Cookiespage = () => {
   const currentDate = new Date().toDateString();
@@ -13,6 +13,55 @@ const Cookiespage = () => {
   };
 
   return (
+    <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Cookies Policy | Vedvivah Data & Tracking Transparency</title>
+
+    <meta
+      name="description"
+      content="Learn how Vedvivah uses cookies and tracking technologies to improve user experience, ensure security, and provide better matchmaking services."
+    />
+
+    <meta
+      name="keywords"
+      content="cookies policy Vedvivah, tracking policy, matrimony cookies, website cookies India"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Vedvivah Cookies Policy" />
+    <meta
+      property="og:description"
+      content="Understand how cookies and tracking technologies are used on Vedvivah."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://vedvivah.com/cookies-policy"
+    />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vedvivah Cookies Policy" />
+    <meta
+      name="twitter:description"
+      content="Transparent cookie usage for better experience."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link
+      rel="canonical"
+      href="https://vedvivah.com/cookies-policy"
+    />
+  </Helmet>
     <div className="flex flex-col ">
       <Hero {...HeroData} />
       <div className="flex flex-col md:flex-row flex-grow gap-5 p-4 md:p-16">
@@ -131,6 +180,7 @@ const Cookiespage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

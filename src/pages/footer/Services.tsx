@@ -1,9 +1,57 @@
-
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const currentDate = new Date().toDateString();
 
   return (
+    <>
+    <Helmet>
+  <title>Vedvivah Services | Best Matrimony App in India</title>
+
+  <meta
+    name="description"
+    content="Explore Vedvivah services – India's trusted matrimony platform with AI matchmaking, verified profiles, video calls, and secure partner search across communities and locations."
+  />
+
+  <meta
+    name="keywords"
+    content="matrimony services India, marriage app, matchmaking platform, Vedvivah, AI matchmaking, shaadi app"
+  />
+
+  {/* Open Graph */}
+  <meta
+    property="og:title"
+    content="Vedvivah Services - Trusted Matrimony Platform"
+  />
+  <meta
+    property="og:description"
+    content="Discover AI-powered matchmaking, verified profiles, and secure matrimony services with Vedvivah."
+  />
+  <meta
+    property="og:image"
+    content="https://vedvivah.com/logotest3.png"
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vedvivah.com/services" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="Vedvivah Services | Matrimony App"
+  />
+  <meta
+    name="twitter:description"
+    content="AI-driven matchmaking with verified profiles and secure connections."
+  />
+  <meta
+    name="twitter:image"
+    content="https://vedvivah.com/logotest3.png"
+  />
+
+  {/* Canonical */}
+  <link rel="canonical" href="https://vedvivah.com/services" />
+</Helmet>
     <div className="flex flex-col ">
       <div className="bg-[#fac5d6]  text-center px-6 py-6 md:p-24 space-y-8">
         <h3 className="text-[#fa85aa] font-semibold text-base">
@@ -93,6 +141,7 @@ const Services = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

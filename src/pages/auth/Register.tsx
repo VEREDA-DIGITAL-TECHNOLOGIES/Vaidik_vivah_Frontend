@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from 'sonner'
 import { z } from 'zod';
 
-
+import { Helmet } from "react-helmet-async";
 
 
 const schema = z.object({
@@ -85,6 +85,52 @@ const Register = () => {
 
 
   return (
+    <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Create Account | Vedvivah Matrimony Signup</title>
+
+    <meta
+      name="description"
+      content="Create your Vedvivah account and start your journey to find a compatible life partner. Secure and trusted matrimony platform."
+    />
+
+    <meta
+      name="keywords"
+      content="signup Vedvivah, matrimony registration, create account marriage site, join matrimony India"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Vedvivah Signup" />
+    <meta
+      property="og:description"
+      content="Join Vedvivah and start your matchmaking journey today."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vedvivah.com/register" />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vedvivah Signup" />
+    <meta
+      name="twitter:description"
+      content="Create your matrimony profile easily."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link rel="canonical" href="https://vedvivah.com/register" />
+
+    {/* ❗ Prevent indexing (VERY IMPORTANT for signup pages) */}
+    <meta name="robots" content="noindex, nofollow" />
+  </Helmet>
     <div className={`min-w-screen min-h-screen flex flex-col items-center justify-center  bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]`}>
       <div className='bg-white/50 p-6 rounded-3xl'>
 
@@ -134,6 +180,7 @@ const Register = () => {
       </div>
       </div>
     </div>
+    </>
   );
 };
 

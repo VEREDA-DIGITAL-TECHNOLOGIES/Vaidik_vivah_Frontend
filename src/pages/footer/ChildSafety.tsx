@@ -1,9 +1,59 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ChildSafety = () => {
   const currentDate = new Date().toDateString();
 
   return (
+    <>
+  {/* ✅ SEO META */}
+  <Helmet>
+    <title>Child Safety Policy | Vedvivah 18+ Platform Protection</title>
+
+    <meta
+      name="description"
+      content="Vedvivah Child Safety Policy ensures strict 18+ access, zero tolerance for child exploitation, and compliance with global safety laws including COPPA and GDPR-K."
+    />
+
+    <meta
+      name="keywords"
+      content="child safety policy, CSAM prevention, Vedvivah safety, 18+ platform rules, online safety matrimony"
+    />
+
+    {/* Open Graph */}
+    <meta property="og:title" content="Vedvivah Child Safety Policy" />
+    <meta
+      property="og:description"
+      content="Zero tolerance for child exploitation. Safe and secure matrimony platform."
+    />
+    <meta
+      property="og:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://vedvivah.com/child-safety-policy"
+    />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Child Safety Policy | Vedvivah" />
+    <meta
+      name="twitter:description"
+      content="Strict 18+ platform with zero tolerance for abuse."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vedvivah.com/logotest3.png"
+    />
+
+    {/* Canonical */}
+    <link
+      rel="canonical"
+      href="https://vedvivah.com/child-safety-policy"
+    />
+  </Helmet>
     <div className="flex flex-col ">
       <div className="bg-[#fac5d6] text-center px-6 py-6 md:p-24 space-y-8">
         <h3 className="text-[#fa85aa] font-semibold text-base">
@@ -150,6 +200,7 @@ const ChildSafety = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
