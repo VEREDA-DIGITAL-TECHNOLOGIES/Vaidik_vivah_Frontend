@@ -98,7 +98,7 @@ const Notification = () => {
         <p className="text-center">No notifications yet</p>
       ) : (
         notifications?.map((notification) => (
-          console.log(notification, "notification"),
+          
          
 
          
@@ -110,50 +110,79 @@ const Notification = () => {
 
             {notification.body?.type === "connection_request" ? (
 
-              <Connection
-                senderImage={notification.body?.senderImage}
-                senderName={notification.body?.senderName}
-                AcceptButton={
-                  <button
-                    onClick={() =>
-                      acceptConnection(
-                        notification.notificationId,
-                        notification.body?.senderId
-                      )
-                    }
-                    disabled={isLoadingAccept || isLoadingCancel}
-                    className={`px-4 py-2 text-white rounded ${isLoadingAccept
-                        ? "bg-green-300 cursor-not-allowed"
-                        : "bg-green-500"
-                      }`}
-                  >
-                    {isLoadingAccept ? "Accepting..." : "Accept"}
-                  </button>
-                }
-                RejectButton={
-                  <button
-                    className={`px-4 py-2 text-white rounded ${isLoadingCancel
-                        ? "bg-red-300 cursor-not-allowed"
-                        : "bg-red-500"
-                      }`}
-                    onClick={() =>
-                      rejectConnection(
-                        notification.notificationId,
-                        notification.body?.senderId
-                      )
-                    }
-                    disabled={isLoadingAccept || isLoadingCancel}
-                  >
-                    {isLoadingCancel ? "Rejecting..." : "Reject"}
-                  </button>
-                }
-              />
+<Connection
+  senderImage={notification.body?.senderImage}
+  senderName={notification.body?.senderName}
+  AcceptButton={
+    <button
+      onClick={() =>
+        acceptConnection(
+          notification.notificationId,
+          notification.body?.senderId
+        )
+      }
+      disabled={isLoadingAccept || isLoadingCancel}
+      className={`px-4 py-2 text-white rounded ${
+        isLoadingAccept
+          ? "bg-green-300 cursor-not-allowed"
+          : "bg-green-500"
+      }`}
+    >
+      {isLoadingAccept ? "Accepting..." : "Accept"}
+    </button>
+  }
+  RejectButton={
+    <button
+      className={`px-4 py-2 text-white rounded ${
+        isLoadingCancel
+          ? "bg-red-300 cursor-not-allowed"
+          : "bg-red-500"
+      }`}
+      onClick={() =>
+        rejectConnection(
+          notification.notificationId,
+          notification.body?.senderId
+        )
+      }
+      disabled={isLoadingAccept || isLoadingCancel}
+    >
+      {isLoadingCancel ? "Rejecting..." : "Reject"}
+    </button>
+  }
+/>
 
-            ) : (
+) : notification.body?.type === "connection_accepted" ? (
 
-              <ConnectionAccepted senderImage={notification.body?.senderImage} senderName={notification.body?.senderName} id={notification.body?.senderId} />
+<ConnectionAccepted
+  senderImage={notification.body?.senderImage}
+  senderName={notification.body?.senderName}
+  id={notification.body?.senderId}
+/>
 
-            )}
+) : (
+
+// 🔥 GENERIC FALLBACK FOR ANY TYPE
+<div className="p-3">
+  <p className="font-semibold">
+    {notification.title || "Notification"}
+  </p>
+
+  <p className="text-sm text-gray-600">
+    {notification.message || notification.body?.message || "You have a new update"}
+  </p>
+
+  {/* optional navigation if sender exists */}
+  {notification.body?.senderId && (
+    <Link
+      to={`/profile/${notification.body?.senderName || "user"}/${notification.body?.senderId}`}
+      className="text-blue-500 text-sm mt-2 inline-block"
+    >
+      View Profile
+    </Link>
+  )}
+</div>
+
+)}
             
           <div className="flex justify-end">
               <button

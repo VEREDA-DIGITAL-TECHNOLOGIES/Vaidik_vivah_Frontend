@@ -13,7 +13,7 @@ import { connectSocket, disconnectSocket } from "./services/socketservice";
 import { useGetUserSubscriptionStatusQuery } from "./Redux/Api/checkout.api";
 import { setUserType } from "./Redux/Reducers/user.reducer";
 import { useDispatch } from "react-redux";
-
+import { initFCMListener } from "./services/fcmListener";
 
 import './App.css'
 import ScrollToTop from "./Components/ScrollTop/ScrollToTop";
@@ -25,7 +25,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import ChatRoom from "./pages/chat/ChatRoom";
 import Messageuser from "./pages/chat/Messageuser";
 
-
+import WhatsAppLogin from "./pages/auth/WhatsAppLogin";
 
 
 import AboutUs from "./pages/footer/AboutUs";
@@ -201,6 +201,9 @@ function App() {
     requestPermission();
   }, [])
   
+  useEffect(() => {
+    initFCMListener();
+  }, []);
 
   return (
     <Router>
@@ -221,7 +224,7 @@ function App() {
           <Route element={<ProtectedRoute isAuthenticated={!accessToken} />}>
             <Route path="/questions" element={<Question />} />
             <Route path="/register" element={<Register />} />
-            
+            <Route path="/login-whatsapp" element={<WhatsAppLogin />} />
 
             <Route path="/create-password" element={<CreatePassword />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />

@@ -101,8 +101,25 @@ export const userApi = apiSlice.injectEndpoints({
       })
     }),
 
+    sendWhatsAppOtp: builder.mutation({
+      query: (data) => ({
+        url: 'user/whatsapp/send-otp',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    
+    verifyWhatsAppOtp: builder.mutation({
+      query: (data) => ({
+        url: 'user/whatsapp/verify-otp',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+
   }),
 
 });
 
-export const { useRegisterUserMutation,useVerifyOtpMutation,useSetPasswordMutation,useLoginMutation,useLogoutUserMutation,useForgotpasswordMutation,useVerifyMutation,useResetpasswordMutation,useDeleteUserMutation,useUpdateFcmTokenMutation} = userApi;
+export const { useRegisterUserMutation, useSendWhatsAppOtpMutation,
+  useVerifyWhatsAppOtpMutation,useVerifyOtpMutation,useSetPasswordMutation,useLoginMutation,useLogoutUserMutation,useForgotpasswordMutation,useVerifyMutation,useResetpasswordMutation,useDeleteUserMutation,useUpdateFcmTokenMutation} = userApi;

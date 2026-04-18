@@ -20,7 +20,7 @@ export const blockApi = apiSlice.injectEndpoints({
 
     getBlockedUsersByMe: builder.query({
       query: () => ({
-        url: 'block/blocked-by-me',
+url: 'block/blocked',
         method: 'GET',
       }),
     }),

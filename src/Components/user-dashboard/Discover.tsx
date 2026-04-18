@@ -137,7 +137,7 @@ const Discover = () => {
           ) : profiles.length > 0 ? (
             profiles.map((profile: any) => (
               <ProfileCard
-                key={profile.id}
+               key={profile.userId || profile.public_user_id}
                 profiles={[profile]}
                 isFavourite={isFavourite(profile.userId)}
                 handleFavouriteToggle={handleToggleFav}

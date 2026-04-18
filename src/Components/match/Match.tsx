@@ -203,18 +203,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
           (state: RootState) => state.userReducer.user?.usertype
         );
   
-   useEffect(() => {
-          const auth = getAuth();
-          const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-              setCurrentUser(user);
-              // console.log("User bata de ",currentUser)
-              
-              if (!user) {
-                  navigate('/login');
-              }
-          });
-          return () => unsubscribeAuth();
-      }, [navigate]);
+ 
 
       const chatOpen = async() => {
         
@@ -703,14 +692,19 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
               Interest and hobbies
             </div>
             <div className="mt-4 flex gap-2.5 whitespace-nowrap text-center capitalize tracking-wide max-md:pr-5 md:flex-wrap">
-              {profileData?.interest_and_hobbies?.map((interest: string) => (
-                <div
-                  key={interest}
-                  className="justify-center rounded-[100px] bg-gray-200 px-3 py-1.5"
-                >
-                  {interest}
-                </div>
-              ))}
+            {(Array.isArray(profileData?.interest_and_hobbies)
+  ? profileData.interest_and_hobbies
+  : typeof profileData?.interest_and_hobbies === "string"
+    ? profileData.interest_and_hobbies.split(",")
+    : []
+).map((interest: string, index: number) => (
+  <div
+    key={index}
+    className="justify-center rounded-[100px] bg-gray-200 px-3 py-1.5"
+  >
+    {interest}
+  </div>
+))}
             </div>
           </div>
         </div>

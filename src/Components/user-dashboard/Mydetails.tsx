@@ -33,7 +33,7 @@ import { auth } from "../../../utils/firebaseConfig";
 import ImageUploadModal from "../ImageUpdate/ImageUploadModal";
 import ContactNumberView from "./ContactNumberView";
 
-
+import { useAddOrUpdateWhatsAppMutation } from "../../Redux/Api/profile.api";
 const MyDetails = () => {
     const dispatch = useDispatch();
 
@@ -50,7 +50,9 @@ const MyDetails = () => {
     const [isLocationBackground, setIsLocationBackground] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     console.log("all deatisl",myDetails?.toggleStatus);
-
+    const [updateWhatsApp, { isLoading: isUpdating }] = useAddOrUpdateWhatsAppMutation();
+    const [whatsappInput, setWhatsappInput] = useState("");
+    const [isEditingWhatsapp, setIsEditingWhatsapp] = useState(false);
 
     useEffect(() => {
         if (myDetails?.toggleStatus) {
@@ -483,10 +485,132 @@ const MyDetails = () => {
                                             <div className="justify-center self-start rounded-[100px] bg-purple-100 px-3 py-1.5 text-center text-base font-medium capitalize leading-4 tracking-normal text-violet-600">
                                                <ContactNumberView userId={user?.userId}/>
                                             </div>
+
+                                            
+
+
+
                                         </div>
+
+                                        <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
+  <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
+    FCM Token
+  </div>
+
+  <div className="flex items-center gap-2 max-w-[300px]">
+
+    {/* Token Box */}
+    <div className="truncate rounded-[100px] bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 max-w-[200px]">
+      {myDetails?.fcmToken || "Not available"}
+    </div>
+
+    {/* COPY BUTTON */}
+    <button
+      onClick={() => {
+        if (!myDetails?.fcmToken) {
+          toast.error("No token to copy");
+          return;
+        }
+
+        navigator.clipboard.writeText(myDetails.fcmToken);
+        toast.success("FCM Token copied");
+      }}
+      className="px-2 py-1 text-xs bg-[#FD5C90] text-white rounded-md hover:opacity-90"
+    >
+      Copy
+    </button>
+
+  </div>
+</div>
                                         
+                                        
+                                        
+<div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
+  <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
+    WhatsApp
+  </div>
+  
+
+  <div className="flex items-center gap-2">
+
+    {/* WhatsApp Icon */}
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+      className="w-5 h-5"
+    />
+
+    {isEditingWhatsapp ? (
+      <>
+        <input
+          type="text"
+          value={whatsappInput}
+          onChange={(e) => setWhatsappInput(e.target.value)}
+          placeholder="Enter number"
+          className="border px-2 py-1 rounded-md text-sm"
+        />
+
+        <button
+          onClick={async () => {
+            const res = await updateWhatsApp(whatsappInput);
+
+            if ("error" in res) {
+              // ✅ ONLY backend error
+              const err = res.error as any;
+              toast.error(err?.data?.message);
+              return;
+            }
+
+            // success message from backend
+            toast.success(res.data?.message);
+
+            setIsEditingWhatsapp(false);
+            setWhatsappInput("");
+          }}
+          className="text-green-600 text-sm font-semibold"
+        >
+          Save
+        </button>
+      </>
+    ) : (
+      <>
+        <div className="justify-center rounded-[100px] bg-green-100 px-3 py-1.5 text-sm font-medium text-green-700">
+          {myDetails?.whatsapp?.number || "Not added"}
+        </div>
+
+        {myDetails?.whatsapp?.isVerified && (
+          <span className="text-xs text-green-600 font-semibold">
+            Verified
+          </span>
+        )}
+
+        {/* ✏️ EDIT ICON BUTTON */}
+        <button
+          onClick={() => {
+            setWhatsappInput(myDetails?.whatsapp?.number || "");
+            setIsEditingWhatsapp(true);
+          }}
+          className="p-1 hover:scale-105 transition"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"
+            className="w-4 h-4"
+          />
+        </button>
+      </>
+    )}
+  </div>
+
+  
+</div>
+
+
+
+
+
                                     </div>
+                                    
                                 </div>
+                                
                                     <div className="h-[28rem] xl:w-[30%]  w-auto mr-4 rounded-lg bg-[#fcf2f2] text-[#FD5C90]  md:p-5 md:h-[26rem]">
                                         <h2 className="font-[Bembo-MT-Pro-Bold] text-xl md:text-2xl text-center mt-2 md:text-start">Complete your profile</h2>
                                     <div className="flex flex-col items-center justify-center p-5 ">
@@ -933,16 +1057,15 @@ const MyDetails = () => {
                                 </div>
 
                                 <div className="mt-4 flex  gap-2.5 whitespace-nowrap  capitalize tracking-wide max-md:pr-5 flex-wrap">
-                                     {myDetails?.interest_and_hobbies?.map(
-                                       (interest: string) => (
-                                           <div
-                                               key={interest}
-                                               className="justify-center rounded-[100px] bg-gray-200 px-3 py-1.5"
-                                           >
-                                               {interest}
-                                           </div>
-                                       )
-                                   )} 
+                                {Array.isArray(myDetails?.interest_and_hobbies) &&
+  myDetails.interest_and_hobbies.map((interest: string, index: number) => (
+    <div
+      key={index}
+      className="justify-center rounded-[100px] bg-gray-200 px-3 py-1.5"
+    >
+      {interest}
+    </div>
+  ))}
                                        
                                     
                                         

@@ -6,7 +6,7 @@ import { MdVerified } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import type { RootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
-import { useUserProfileNotificationMutation } from "../../Redux/Api/profile.api";
+
 import "../../font.css";
 
 interface Profile {
@@ -42,8 +42,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   const { user } = useSelector((state: RootState) => state.userReducer);
   console.log("profile data ",profiles);
 
-  const [userprofilesdetailsnotification] =
-    useUserProfileNotificationMutation();
+
   const navigate = useNavigate();
 
   const getBorderColor = (userType: string) => {
@@ -62,7 +61,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   };
 
   const handleCardClick = (userId: string, name: string) => {
-    userprofilesdetailsnotification({ targetUserId: userId });
+
     navigate(`/profile/${name}/${userId}`);
   };
 
@@ -70,7 +69,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
     <div className="w-full flex flex-wrap gap-6">
       {profiles.map((data) => (
         <div
-          key={data.id}
+        key={data.userId || data.public_user_id}
           onClick={() => handleCardClick(data.userId, data.firstName)}
           className={`
             relative cursor-pointer rounded-3xl overflow-hidden 

@@ -4,7 +4,7 @@ import { setConnectionStatus } from "../Redux/Reducers/connection.reducer";
 import { store } from "../Redux/store";
 
 let socket: Socket | null = null;
-
+const receivedIds = new Set<string>();
 const initializeSocket = (token: string) => {
   if (socket) return;
 
@@ -35,8 +35,39 @@ const initializeSocket = (token: string) => {
     
   })
 
+  socket.on("notification", (data) => {
+    try {
+      const notificationId =
+        data?.notificationId ||
+        data?.id ||
+        Date.now().toString();
   
-
+      // ✅ prevent duplicate (same as FCM)
+      if (receivedIds.has(notificationId)) return;
+      receivedIds.add(notificationId);
+  
+      const normalized = {
+        notificationId,
+        title: data?.title || "Notification",
+        message:
+          data?.message ||
+          data?.body?.message ||
+          "You have a new update",
+  
+        body:
+          typeof data?.body === "object"
+            ? data.body
+            : typeof data === "object"
+            ? data
+            : {},
+      };
+  
+      store.dispatch(setsocketNotification(normalized));
+  
+    } catch (error) {
+      console.error("Socket notification error:", error);
+    }
+  });
   socket.on("disconnect", () => {
     console.log("Disconnected from Socket.io server");
   });

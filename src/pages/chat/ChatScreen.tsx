@@ -51,19 +51,7 @@ export default function ChatScreen() {
      const usertype = useSelector(
     (state: RootState) => state.userReducer.user?.usertype
   );
-    useEffect(() => {
-        const auth = getAuth();
-        const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user);
-            // console.log("User bata de ",currentUser)
-            setLoading(false);
-            if (!user) {
-                navigate('/login');
-            }
-        });
-        return () => unsubscribeAuth();
-    }, [navigate]);
-
+    
     useEffect(() => {
         if (!currentUser) return;
 
@@ -118,7 +106,16 @@ export default function ChatScreen() {
 
   return 0;
 };
-
+useEffect(() => {
+    const auth = getAuth();
+  
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setLoading(false);   // ✅ THIS IS IMPORTANT
+    });
+  
+    return () => unsubscribe();
+  }, []);
 
     /* ================= UNREAD + LAST MESSAGE ================= */
   useEffect(() => {

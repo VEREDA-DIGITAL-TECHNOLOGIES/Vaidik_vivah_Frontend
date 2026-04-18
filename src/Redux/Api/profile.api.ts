@@ -135,6 +135,16 @@ export interface ProfilePercentage {
   }),
 }),
 
+
+addOrUpdateWhatsApp: builder.mutation({
+  query: (whatsappNumber) => ({
+    url: 'profile/whatsapp',
+    method: 'POST',
+    body: { whatsappNumber },
+  }),
+}),
+
+
 updateContactNumber: builder.mutation({
   query: ({ userId, contactNumber }) => ({
     url: 'profile/contact/' + userId,
@@ -154,6 +164,6 @@ updateContactNumber: builder.mutation({
   useUpdateReligiousBackgroundMutation,useGetProfilesQuery,useUserByidMutation ,
   useFilterProflesMutation,useFilterFieldCountQuery,useGetUserImageQuery,
   useGetProfilePercentageQuery,useUserProfileNotificationMutation,useUpdatePhotoUploadMutation,
-  useContactNumberByUserIdQuery,useUpdateContactNumberMutation
+  useContactNumberByUserIdQuery,useUpdateContactNumberMutation,useAddOrUpdateWhatsAppMutation
 } = profileApi;
 

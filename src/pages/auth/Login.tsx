@@ -238,6 +238,7 @@ const Login = () => {
           >
             Create an account
           </button>
+          <button onClick={() => navigate("/login-whatsapp")} className="border w-full h-12 mt-2 rounded-md text-[#FD5C90] flex items-center justify-center gap-2 hover:bg-[#FD5C90]/5 transition" > <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" className="w-5 h-5" /> Login with WhatsApp </button>
         </div>
       </div>
     </div>
