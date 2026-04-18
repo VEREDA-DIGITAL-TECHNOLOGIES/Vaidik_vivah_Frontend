@@ -98,8 +98,11 @@ interface MyDetails {
     income: string;
   };
   interest_and_hobbies: string[];
-  whatsapp:number;
-  isVerified: boolean;
+  whatsapp:{
+    isVerified:boolean;
+    number:number;
+  };
+ 
 }
 
 interface ReauthenticatePassword {
