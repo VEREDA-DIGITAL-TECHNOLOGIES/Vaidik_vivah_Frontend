@@ -30,7 +30,7 @@ import ProfileSection from "./profileSection";
 
 import {  useNavigate } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 import { getUidFromUserId } from "./GetUidbyId";
 interface MatchProps {
   userId: string;
@@ -198,7 +198,7 @@ const Match: React.FC<MatchProps> = ({ userId }) => {
         
   const gender = myDetailsData?.data?.[0]?.basic_and_lifestyle?.gender;
       
-      const [currentUser, setCurrentUser] = useState<any>(null);
+      const [currentUser] = useState<any>(null);
       const usertype = useSelector(
           (state: RootState) => state.userReducer.user?.usertype
         );

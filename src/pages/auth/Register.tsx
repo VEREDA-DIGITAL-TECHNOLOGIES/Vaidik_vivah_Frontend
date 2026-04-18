@@ -33,6 +33,7 @@ type FormData = z.infer<typeof schema>;
 
 const Register = () => {
   const [isExclusive, setExclusive] = useState(false);
+  console.log(isExclusive)
   const [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => {

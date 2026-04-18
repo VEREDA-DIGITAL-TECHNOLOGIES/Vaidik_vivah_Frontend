@@ -40,7 +40,7 @@ const MyDetails = () => {
     const [toggle, { isLoading: isToggleLoading }] = useToggleMutation();
 
     const { user, myDetails } = useSelector((state: RootState) => state.userReducer);
-   console.log("I look details",myDetails);
+//    console.log("I look details",myDetails);
   
 
     const [isPersonalDetails, setIsPersonalDetails] = useState(false);
@@ -49,8 +49,8 @@ const MyDetails = () => {
     const [isEducationFinancial, setIsEducationFinancial] = useState(false);
     const [isLocationBackground, setIsLocationBackground] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
-    console.log("all deatisl",myDetails?.toggleStatus);
-    const [updateWhatsApp, { isLoading: isUpdating }] = useAddOrUpdateWhatsAppMutation();
+    // console.log("all deatisl",myDetails?.toggleStatus);
+    const [updateWhatsApp] = useAddOrUpdateWhatsAppMutation();
     const [whatsappInput, setWhatsappInput] = useState("");
     const [isEditingWhatsapp, setIsEditingWhatsapp] = useState(false);
 
@@ -574,10 +574,10 @@ const MyDetails = () => {
     ) : (
       <>
         <div className="justify-center rounded-[100px] bg-green-100 px-3 py-1.5 text-sm font-medium text-green-700">
-          {myDetails?.whatsapp?.number || "Not added"}
+          {myDetails?.whatsapp || "Not added"}
         </div>
 
-        {myDetails?.whatsapp?.isVerified && (
+        {myDetails?.whatsapp && (
           <span className="text-xs text-green-600 font-semibold">
             Verified
           </span>
@@ -586,7 +586,7 @@ const MyDetails = () => {
         {/* ✏️ EDIT ICON BUTTON */}
         <button
           onClick={() => {
-            setWhatsappInput(myDetails?.whatsapp?.number || "");
+            setWhatsappInput((myDetails as any)?.whatsapp || "");
             setIsEditingWhatsapp(true);
           }}
           className="p-1 hover:scale-105 transition"

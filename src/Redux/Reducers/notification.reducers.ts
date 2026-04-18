@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit';
 interface INotification {
-    notificationId: string;
-    title: string;
-    message: string;
-    body: IBody;
+  notificationId: string;
+  title: string;
+  message: string;
+  body: IBody;
 }
 
-
-
 interface IBody {
-    type:string,
-    senderId:string,
-    senderName: string,
-    senderImage:string
+  notificationId: string;
+  type: string;
+  senderId: string;
+  senderName: string;
+  senderImage: string;
+  message: string;
 }
 
 interface InitialState {
