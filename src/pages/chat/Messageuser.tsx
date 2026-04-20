@@ -261,7 +261,7 @@ export default function MessageUser() {
   
       // 2. Trigger notification (Backend)
       console.log("🔔 Triggering notification...", { identifier: recipientId });
-      await enqueueNotification({ identifier: recipientId }).unwrap();
+      await enqueueNotification({ identifier: recipientId! }).unwrap();
       console.log("🚀 Notification enqueued successfully");
   
     } catch (err) {
