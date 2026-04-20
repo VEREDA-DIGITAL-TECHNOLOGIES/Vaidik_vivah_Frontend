@@ -54,9 +54,9 @@ export default function MessageUser() {
   const [unblockUser] = useUnblockUserMutation();
   const [uploadFile] = useUploadFileMutation();
 
-  const generateTimestamp = (): string => {
-    return new Date().toISOString();
-  };
+  // const generateTimestamp = (): string => {
+  //   return new Date().toISOString();
+  // };
 
   const parseTimestamp = (timestamp: string): Date => {
     return new Date(timestamp);
@@ -246,7 +246,7 @@ export default function MessageUser() {
   
     const message = {
       senderId: currentUserId,
-      receiverId: recipientId,
+      receiverId: recipientId!,
       text,
       timestamp: Date.now(),
       seen: false
