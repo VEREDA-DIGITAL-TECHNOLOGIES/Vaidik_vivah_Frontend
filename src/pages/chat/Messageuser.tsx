@@ -10,7 +10,7 @@ import { ref, push, onValue, remove } from "firebase/database";
 import CallButton from "./CallButton";
 import { useUploadFileMutation } from "../../Redux/Api/fileupload.api";
 import { HiXMark } from "react-icons/hi2";
-
+import { useEnqueueNotificationMutation } from "../../Redux/Api/notificationFcmApi.js";
 interface Message {
   senderId: string;
   receiverId: string;
@@ -32,7 +32,7 @@ export default function MessageUser() {
   const location = useLocation();
   const navigate = useNavigate();
   const recipientUser = location.state?.userr as User | undefined;
-
+  const [enqueueNotification] = useEnqueueNotificationMutation();
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const [showMenu, setShowMenu] = useState(false);
@@ -238,22 +238,35 @@ export default function MessageUser() {
     }
   };
 
-  const sendMessage = (text: string) => {
-    if (!currentUserId || !recipientId) return;
-
+  const sendMessage = async (text: string) => {
+    console.log("💬 Sending message...", { to: recipientId });
+  
     const myPath = ref(db, `messages/${currentUserId}/${recipientId}`);
     const theirPath = ref(db, `messages/${recipientId}/${currentUserId}`);
-
-    const message: Message = {
+  
+    const message = {
       senderId: currentUserId,
       receiverId: recipientId,
       text,
-      timestamp: generateTimestamp(),
+      timestamp: Date.now(),
       seen: false
     };
-
-    push(myPath, message);
-    push(theirPath, message);
+  
+    try {
+      // 1. Send message (Firebase)
+      console.log("📤 Pushing to Firebase...");
+      await push(myPath, message);
+      await push(theirPath, message);
+      console.log("✅ Message stored in Firebase");
+  
+      // 2. Trigger notification (Backend)
+      console.log("🔔 Triggering notification...", { identifier: recipientId });
+      await enqueueNotification({ identifier: recipientId }).unwrap();
+      console.log("🚀 Notification enqueued successfully");
+  
+    } catch (err) {
+      console.error("❌ Error in sendMessage flow:", err);
+    }
   };
 
   const getFileType = (file: File): 'image' | 'audio' | 'video' | 'document' => {
