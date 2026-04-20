@@ -648,7 +648,7 @@ export default function MessageUser() {
           {!isBlocked && recipientUser && (
             <CallButton
         
-              userId={recipientId}
+              userId={recipientId!}
               userName={recipientUser.displayName}
               userImage={recipientUser.profilePic}
               onRecordingStart={() => {
