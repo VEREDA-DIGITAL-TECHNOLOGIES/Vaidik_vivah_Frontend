@@ -1,4 +1,4 @@
-import Input from "../../Components/input/Input.tsx";
+
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 
@@ -11,7 +11,7 @@ import {
 import { setUser } from "../../Redux/Reducers/user.reducer";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { connectSocket } from "../../services/socketservice";
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
@@ -38,15 +38,18 @@ const WhatsAppLogin = () => {
   const dispatch = useDispatch();
 
   const [step, setStep] = useState<"phone" | "otp">("phone");
+  const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const [sendOtp, { isLoading: sendingOtp }] =
     useSendWhatsAppOtpMutation();
+
   const [verifyOtp, { isLoading: verifyingOtp }] =
     useVerifyWhatsAppOtpMutation();
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormData>({
     defaultValues: {
@@ -66,19 +69,64 @@ const WhatsAppLogin = () => {
     data?: ApiResponse;
   };
 
+  /* ================= OTP HANDLER ================= */
+
+  const handleOtpChange = (
+    value: string,
+    index: number
+  ) => {
+    value = value.replace(/\D/g, "");
+
+    if (!otpRefs.current[index]) return;
+
+    otpRefs.current[index]!.value = value;
+
+    if (value && index < 5) {
+      otpRefs.current[index + 1]?.focus();
+    }
+
+    updateOtpValue();
+  };
+
+  const handleOtpKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (
+      e.key === "Backspace" &&
+      !otpRefs.current[index]?.value &&
+      index > 0
+    ) {
+      otpRefs.current[index - 1]?.focus();
+    }
+  };
+
+  const updateOtpValue = () => {
+    const otp = otpRefs.current
+      .map((input) => input?.value || "")
+      .join("");
+
+    setValue("otp", otp);
+  };
+
   /* ================= SUBMIT ================= */
 
-  const onSubmit: SubmitHandler<FormData> = async (data, event) => {
+  const onSubmit: SubmitHandler<FormData> = async (
+    data,
+    event
+  ) => {
     try {
       event?.preventDefault();
 
-      /* ================= STEP 1 ================= */
+      /* STEP 1 */
       if (step === "phone") {
         const res = await sendOtp({ phone: data.phone });
 
         if ("error" in res) {
           const err = res.error as FetchError;
-          toast.error(err?.data?.message || "Failed to send OTP");
+          toast.error(
+            err?.data?.message || "Failed to send OTP"
+          );
           return;
         }
 
@@ -87,7 +135,7 @@ const WhatsAppLogin = () => {
         return;
       }
 
-      /* ================= STEP 2 ================= */
+      /* STEP 2 */
       if (step === "otp") {
         const res = await verifyOtp({
           phone: data.phone,
@@ -109,18 +157,16 @@ const WhatsAppLogin = () => {
         if ("data" in res && res.data) {
           const successData = res.data;
 
-          /* ================= FIREBASE ================= */
           try {
             await signInWithCustomToken(
               auth,
               successData.user.firebaseToken
             );
-          } catch (err) {
+          } catch {
             toast.error("Firebase login failed");
             return;
           }
 
-          /* ================= REDUX ================= */
           dispatch(setUser(successData));
           connectSocket();
 
@@ -128,8 +174,6 @@ const WhatsAppLogin = () => {
 
           const user = successData.user;
 
-          /* ================= FIXED REDIRECT ================= */
-          // ✅ wait for redux to update BEFORE navigating
           await Promise.resolve();
 
           if (!user.isPersonalFormFilled) {
@@ -147,7 +191,7 @@ const WhatsAppLogin = () => {
           }
         }
       }
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong");
     }
   };
@@ -156,7 +200,6 @@ const WhatsAppLogin = () => {
     <>
       <Helmet>
         <title>WhatsApp Login | Vedvivah</title>
-        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="min-w-screen h-screen flex items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]">
@@ -165,7 +208,10 @@ const WhatsAppLogin = () => {
           {/* LOGO */}
           <div className="flex justify-center mb-6">
             <Link to="/">
-              <img src="/logotest3.png" className="h-20" />
+              <img
+                src="/logotest3.png"
+                className="h-20"
+              />
             </Link>
           </div>
 
@@ -179,17 +225,22 @@ const WhatsAppLogin = () => {
           </p>
 
           {/* FORM */}
-          <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
-
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="mt-6 space-y-4"
+          >
             {/* PHONE */}
             <div>
-              <label className="text-sm font-medium">WhatsApp Number</label>
+              <label className="text-sm font-medium">
+                WhatsApp Number
+              </label>
 
               <div className="flex items-center border rounded-xl px-3 py-2">
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
                   className="w-5 h-5 mr-2"
                 />
+
                 <input
                   {...register("phone")}
                   placeholder="Enter 10 digit number"
@@ -204,13 +255,39 @@ const WhatsAppLogin = () => {
               )}
             </div>
 
-            {/* OTP FIELD */}
+            {/* OTP BOXES */}
             {step === "otp" && (
               <div>
-                <Input
+                <label className="text-sm font-medium block mb-2">
+                  Enter OTP
+                </label>
+
+                <div className="flex justify-between gap-2">
+                  {[0, 1, 2, 3, 4, 5].map(( index) => (
+                    <input
+                      key={index}
+                      ref={(el) =>{
+                        (otpRefs.current[index] = el)}
+                      }
+                      type="text"
+                      maxLength={1}
+                      onChange={(e) =>
+                        handleOtpChange(
+                          e.target.value,
+                          index
+                        )
+                      }
+                      onKeyDown={(e) =>
+                        handleOtpKeyDown(e, index)
+                      }
+                      className="w-12 h-12 text-center text-xl border rounded-xl outline-none focus:border-[#FD5C90]"
+                    />
+                  ))}
+                </div>
+
+                <input
+                  type="hidden"
                   {...register("otp")}
-                  placeholder="Enter OTP"
-                  label="OTP"
                 />
               </div>
             )}
@@ -219,7 +296,9 @@ const WhatsAppLogin = () => {
             <button
               type="submit"
               className="w-full h-12 bg-[#FD5C90] text-white rounded-md"
-              disabled={sendingOtp || verifyingOtp}
+              disabled={
+                sendingOtp || verifyingOtp
+              }
             >
               {sendingOtp || verifyingOtp ? (
                 <LoadingOutlined className="animate-spin" />
@@ -231,9 +310,12 @@ const WhatsAppLogin = () => {
             </button>
           </form>
 
-          {/* SWITCH LOGIN */}
+          {/* LOGIN SWITCH */}
           <div className="text-center mt-4">
-            <Link to="/login" className="text-[#FD5C90] text-sm">
+            <Link
+              to="/login"
+              className="text-[#FD5C90] text-sm"
+            >
               Login with Email & Password
             </Link>
           </div>

@@ -17,6 +17,7 @@ import {
   useCreateRazorpayOrderMutation,
   useVerifyRazorpayPaymentMutation,
 } from "../../Redux/Api/checkout.api";
+import { FaGift } from "react-icons/fa";
 
 
 
@@ -204,6 +205,15 @@ const PricingPage = () => {
             <p className="mt-4 text-2xl max-md:text-md text-[#000000] md:mt-0">
               Upgrade to Premium or Exclusive for an enhanced Vaidik Vivah experience.
             </p>
+            {/* Free Gold Offer Banner */}
+  <div className="mt-4 rounded-2xl border-2 border-green-500 bg-green-50 px-6 py-5 flex items-center gap-4">
+   <div className="text-green-600 text-4xl">
+  <FaGift />
+</div>
+    <p className="text-green-600 text-xl max-md:text-sm font-semibold">
+      As we are offering <span className="font-bold">FREE Gold plan</span> to women.
+    </p>
+  </div>
           </div>
           <div className="mt-5 flex h-16 w-60 items-center gap-8 rounded-full bg-[#FFF9EE] p-3 xl:mt-0">
             {["Monthly"].map((tab) => (
