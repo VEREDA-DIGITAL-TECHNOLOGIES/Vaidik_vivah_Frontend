@@ -235,7 +235,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                     >
                         Cancel
                     </Button>
-                    <Button onClick={() => form.submit()} className={`w-44 ${isExclusive ? 'bg-[#60457E]' : 'bg-[#007EAF]'} text-white`}>
+                    <Button onClick={() => form.submit()} className={`w-44 ${isExclusive ? 'bg-[#FD5C90]' : 'bg-[#FD5C90]'} text-white`}>
                         Find Members
                     </Button>
                 </div>
@@ -266,7 +266,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                             label={
                                 <label
                                     style={{
-                                        color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                        color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                         fontStyle: "Proxima-Nova-Semibold",
                                         fontWeight: "bold",
                                     }}
@@ -316,7 +316,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                             label={
                                 <label
                                     style={{
-                                        color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                        color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                         fontStyle: "Proxima-Nova-Semibold",
                                         fontWeight: "bold",
                                     }}
@@ -363,7 +363,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                             label={
                                 <label
                                     style={{
-                                        color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                        color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                         fontStyle: "Proxima-Nova-Semibold",
                                         fontWeight: "bold",
                                     }}
@@ -388,7 +388,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                             label={
                                 <label
                                     style={{
-                                        color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                        color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                         fontStyle: "Proxima-Nova-Semibold",
                                         fontWeight: "bold",
                                     }}
@@ -403,7 +403,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                     value="no"
                                     style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                     className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${selectedRadio === "no"
-                                        ? "border border-[#007EAF] text-[#53389E]"
+                                        ? "border border-[#FD5C90] text-[#53389E]"
                                         : ""
                                         }`}
                                 >
@@ -413,7 +413,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                     value="yes"
                                     style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                     className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${selectedRadio === "yes"
-                                        ? "border border-[#007EAF] text-[#53389E]"
+                                        ? "border border-[#FD5C90] text-[#53389E]"
                                         : ""
                                         }`}
                                 >
@@ -424,7 +424,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                     value="notInHousehold"
                                     style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                     className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${selectedRadio === "notInHousehold"
-                                        ? "border border-[#007EAF] text-[#53389E]"
+                                        ? "border border-[#FD5C90] text-[#53389E]"
                                         : ""
                                         }`}
                                 >
@@ -438,7 +438,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                             label={
                                 <label
                                     style={{
-                                        color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                        color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                         fontStyle: "Proxima-Nova-Semibold",
                                         fontWeight: "bold",
                                     }}
@@ -462,7 +462,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                             style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                             value={rel.value}
                                             className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${checkedValues.includes(rel.value)
-                                                ? "border border-[#007EAF] text-[#53389E]"
+                                                ? "border border-[#FD5C90] text-[#53389E]"
                                                 : ""
                                                 }`}
                                         >
@@ -480,7 +480,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                     label={
                                         <label
                                             style={{
-                                                color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                                color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                                 fontStyle: "Proxima-Nova-Semibold",
                                                 fontWeight: "bold",
                                             }}
@@ -506,7 +506,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                                     style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                                     value={eth.value}
                                                     className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${checkedValues.includes(eth.value)
-                                                        ? "border border-[#007EAF] text-[#53389E]"
+                                                        ? "border border-[#FD5C90] text-[#53389E]"
                                                         : ""
                                                         }`}
                                                 >
@@ -526,7 +526,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                     label={
                                         <label
                                             style={{
-                                                color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                                color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                                 fontStyle: "Proxima-Nova-Semibold",
                                                 fontWeight: "bold",
                                             }}
@@ -554,7 +554,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                                         style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                                         value={qual.value}
                                                         className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${checkedValues.includes(qual.value)
-                                                            ? "border border-[#007EAF] text-[#53389E]"
+                                                            ? "border border-[#FD5C90] text-[#53389E]"
                                                             : ""
                                                             }`}
                                                     >
@@ -577,7 +577,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                             label={
                                 <label
                                     style={{
-                                        color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                        color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                         fontStyle: "Proxima-Nova-Semibold",
                                         fontWeight: "bold",
                                     }}
@@ -601,7 +601,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                                 value={smoke.value}
                                                 style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                                 className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${selectedRadio === smoke.value
-                                                    ? "border border-[#007EAF] text-[#53389E]"
+                                                    ? "border border-[#FD5C90] text-[#53389E]"
                                                     : ""
                                                     }`}
                                             >
@@ -621,7 +621,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                 label={
                                     <label
                                         style={{
-                                            color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                            color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                             fontStyle: "Proxima-Nova-Semibold",
                                             fontWeight: "bold",
                                         }}
@@ -646,7 +646,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                                     style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                                     value={occ.value}
                                                     className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${checkedValues.includes(occ.value)
-                                                        ? "border border-[#007EAF] text-[#53389E]"
+                                                        ? "border border-[#FD5C90] text-[#53389E]"
                                                         : ""
                                                         }`}
                                                 >
@@ -675,7 +675,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                     label={
                                         <label
                                             style={{
-                                                color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                                color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                                 fontStyle: "Proxima-Nova-Semibold",
                                                 fontWeight: "bold",
                                             }}
@@ -699,7 +699,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                                     style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                                     value={marital.value}
                                                     className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${checkedValues.includes(marital.value)
-                                                        ? "border border-[#007EAF] text-[#53389E]"
+                                                        ? "border border-[#FD5C90] text-[#53389E]"
                                                         : ""
                                                         }`}
                                                 >
@@ -721,7 +721,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                     label={
                                         <label
                                             style={{
-                                                color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                                color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                                 fontStyle: "Proxima-Nova-Semibold",
                                                 fontWeight: "bold",
                                             }}
@@ -745,7 +745,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                                     style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                                     value={diet.value}
                                                     className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${checkedValues.includes(diet.value)
-                                                        ? "border border-[#007EAF] text-[#53389E]"
+                                                        ? "border border-[#FD5C90] text-[#53389E]"
                                                         : ""
                                                         }`}
                                                 >
@@ -763,7 +763,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                             label={
                                 <label
                                     style={{
-                                        color: `${isExclusive ? "#60457E" : "#007EAF"}`,
+                                        color: `${isExclusive ? "#FD5C90" : "#FD5C90"}`,
                                         fontStyle: "Proxima-Nova-Semibold",
                                         fontWeight: "bold",
                                     }}
@@ -785,7 +785,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                                             style={{ flexDirection: "row-reverse", alignItems: "center" }}
                                             value={community.value}
                                             className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${checkedValues.includes(community.value)
-                                                ? "border border-[#007EAF] text-[#53389E]"
+                                                ? "border border-[#FD5C90] text-[#53389E]"
                                                 : ""
                                                 }`}
                                         >
@@ -799,7 +799,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
                         {/* <Form.Item className="rounded-md border border-[#E4E7EC] p-4">
           <Row align="middle" justify="space-between">
             <Col className="flex items-center">
-              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F4EBFF] p-4 text-[#007EAF]">
+              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F4EBFF] p-4 text-[#FD5C90]">
                 <span>
                   <FiLayers className="text-2xl" />
                 </span>
@@ -807,7 +807,7 @@ const DiscoverModal: React.FC<DiscoverModalProps> = ({
               <span
                 className={`rounded-md bg-[#ffff] p-1 text-[#344054] ${
                   selectedRadio === "relative"
-                    ? "border border-[#007EAF] text-[#53389E]"
+                    ? "border border-[#FD5C90] text-[#53389E]"
                     : ""
                 }`}
               >

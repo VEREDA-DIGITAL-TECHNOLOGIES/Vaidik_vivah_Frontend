@@ -388,7 +388,7 @@ const MyDetails = () => {
           </div>
 
           <div className="col-span-1 xl:grid w-full md:col-span-2 gap-10">
-            <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-[#ffffff] p-6 md:col-span-2   md:w-auto  xl:h-[37rem]">
+            <div className="col-span-1 mb-4 xl:mb-0 rounded-xl bg-[#ffffff] p-6 md:col-span-2   md:w-auto  xl:h-[34rem]">
               <div className="flex w-full flex-col  items-center justify-between gap-10 xl:flex-row">
                 <div className=" xl:w-[70%] w-full ">
                   <div className="flex items-center justify-between self-start  text-xl font-semibold leading-5 text-gray-800">
@@ -474,34 +474,7 @@ const MyDetails = () => {
                       </div>
                     </div>
 
-                    <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
-                      <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
-                        FCM Token
-                      </div>
-
-                      <div className="flex items-center gap-2 max-w-[300px]">
-                        {/* Token Box */}
-                        <div className="truncate rounded-[100px] bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700 max-w-[200px]">
-                          {myDetails?.fcmToken || "Not available"}
-                        </div>
-
-                        {/* COPY BUTTON */}
-                        <button
-                          onClick={() => {
-                            if (!myDetails?.fcmToken) {
-                              toast.error("No token to copy");
-                              return;
-                            }
-
-                            navigator.clipboard.writeText(myDetails.fcmToken);
-                            toast.success("FCM Token copied");
-                          }}
-                          className="px-2 py-1 text-xs bg-[#FD5C90] text-white rounded-md hover:opacity-90"
-                        >
-                          Copy
-                        </button>
-                      </div>
-                    </div>
+                    
 
                     <div className="mt-2 flex justify-between gap-0 max-md:flex-wrap">
                       <div className="flex-1 text-lg leading-8 tracking-wide text-slate-900 text-opacity-90 max-md:max-w-full">
