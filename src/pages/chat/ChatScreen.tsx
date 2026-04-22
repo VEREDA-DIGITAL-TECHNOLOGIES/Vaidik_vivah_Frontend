@@ -14,7 +14,7 @@ import { toast } from "sonner";
 import { signInWithCustomToken } from "firebase/auth";
 import { useRefreshSessionMutation } from "../../Redux/Api/user.api";
 import { get, update } from "firebase/database";
-import { signOut } from "firebase/auth";
+
 interface UserModel {
     id: string;
     userId: string;
