@@ -14,7 +14,7 @@ import { toast } from "sonner";
 import { signInWithCustomToken } from "firebase/auth";
 import { useRefreshSessionMutation } from "../../Redux/Api/user.api";
 import { get, update } from "firebase/database";
-
+import { signOut } from "firebase/auth";
 interface UserModel {
     id: string;
     userId: string;
@@ -343,6 +343,9 @@ useEffect(() => {
                 />
                 <h1 className="text-3xl font-bold text-[#FD5C90]">Messages</h1>
             </div>
+            <button onClick={() => signOut(getAuth())}>
+  Test Logout
+</button>
          
 
             <div className="mb-6">
