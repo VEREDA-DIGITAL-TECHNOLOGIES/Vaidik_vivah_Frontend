@@ -11,7 +11,10 @@ import { useMyDetailsQuery } from "../../Redux/Api/profile.api";
 import type { RootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
+import { signInWithCustomToken } from "firebase/auth";
+import { useRefreshSessionMutation } from "../../Redux/Api/user.api";
 import { get, update } from "firebase/database";
+
 interface UserModel {
     id: string;
     userId: string;
@@ -31,6 +34,7 @@ interface BlockedUser {
 }
 
 export default function ChatScreen() {
+  const [refreshSession] = useRefreshSessionMutation();
     const [connectedUsers, setConnectedUsers] = useState<UserModel[]>([]);
     const [searchTerm, setSearchTerm] = useState("");
   const [unseenCount, setUnseenCount] = useState<Record<string, number>>({});
@@ -44,7 +48,7 @@ export default function ChatScreen() {
     const { data: myDetails } = useGetUserImageQuery<any>();
     const [unblockUser] = useUnblockUserMutation();
     const { data: blockedUsersData, refetch: refetchBlockedUsers } = useGetBlockedUsersByMeQuery("");
-   
+    const [isRestoring, setIsRestoring] = useState(false);
      // fetch gender
       const { data: myDetailsData } = useMyDetailsQuery<any>();
       const gender = myDetailsData?.data?.[0]?.basic_and_lifestyle?.gender;
@@ -107,80 +111,133 @@ export default function ChatScreen() {
   return 0;
 };
 useEffect(() => {
-    const auth = getAuth();
-  
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);   // ✅ THIS IS IMPORTANT
-    });
-  
-    return () => unsubscribe();
-  }, []);
+  const auth = getAuth();
+
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+
+    // 🔥 If Firebase session is gone → restore it
+    if (!user && !isRestoring) {
+      setIsRestoring(true);
+    
+      try {
+        const res: any = await refreshSession({}).unwrap();
+    
+        if (res?.firebaseToken) {
+          await signInWithCustomToken(auth, res.firebaseToken);
+        }
+      } catch (err) {
+        setCurrentUser(null);
+      } finally {
+        setIsRestoring(false);
+        setLoading(false);
+      }
+    
+      return;
+    }
+
+    // ✅ normal case
+    setCurrentUser(user);
+    setLoading(false);
+  });
+
+  return () => unsubscribe();
+}, [refreshSession,isRestoring]);
 
     /* ================= UNREAD + LAST MESSAGE ================= */
-  useEffect(() => {
-    if (!currentUser || connectedUsers.length === 0) return;
-
-    const db = getDatabase();
-
-    connectedUsers.forEach((user) => {
-      /* Incoming messages */
-      const incomingRef = rtdbRef(
-        db,
-        `messages/${user.id}/${currentUser.uid}`
-      );
-
-      onValue(incomingRef, (snapshot) => {
-        let unread = 0;
-        let lastMsg: any = null;
-
-        snapshot.forEach((child) => {
-          const msg = child.val();
-          if (msg.seen === false) unread++;
-        if (
-                    !lastMsg ||
-                    normalizeTimestamp(msg.timestamp) >
-                        normalizeTimestamp(lastMsg.timestamp)
-                    ) {
-                    lastMsg = msg;
-                    }
-
-        });
-
-        setUnseenCount((prev) => ({ ...prev, [user.id]: unread }));
-        if (lastMsg) {
-          setLastMessages((prev) => ({ ...prev, [user.id]: lastMsg }));
-        }
-      });
-
-      /* Outgoing messages (for last preview) */
-      const outgoingRef = rtdbRef(
-        db,
-        `messages/${currentUser.uid}/${user.id}`
-      );
-
-      onValue(outgoingRef, (snapshot) => {
-        let lastMsg: any = null;
-
-        snapshot.forEach((child) => {
-          const msg = child.val();
-          if (!lastMsg || msg.timestamp > lastMsg.timestamp) {
-            lastMsg = msg;
+    useEffect(() => {
+      if (!currentUser || connectedUsers.length === 0) return;
+    
+      const db = getDatabase();
+    
+      // store unsubscribe functions
+      const unsubscribes: (() => void)[] = [];
+    
+      connectedUsers.forEach((user) => {
+        /* ================= INCOMING ================= */
+        const incomingRef = rtdbRef(
+          db,
+          `messages/${user.id}/${currentUser.uid}`
+        );
+    
+        const unsubIncoming = onValue(incomingRef, (snapshot) => {
+          let unread = 0;
+          let lastMsg: any = null;
+    
+          snapshot.forEach((child) => {
+            const msg = child.val();
+    
+            if (msg.seen === false) unread++;
+    
+            if (
+              !lastMsg ||
+              normalizeTimestamp(msg.timestamp) >
+                normalizeTimestamp(lastMsg.timestamp)
+            ) {
+              lastMsg = msg;
+            }
+          });
+    
+          setUnseenCount((prev) => ({
+            ...prev,
+            [user.id]: unread,
+          }));
+    
+          if (lastMsg) {
+            setLastMessages((prev) => ({
+              ...prev,
+              [user.id]: lastMsg,
+            }));
           }
         });
-
-        if (lastMsg) {
-          setLastMessages((prev) => {
-            const existing = prev[user.id];
-            if (!existing || lastMsg.timestamp > existing.timestamp) {
-              return { ...prev, [user.id]: lastMsg };
+    
+        /* ================= OUTGOING ================= */
+        const outgoingRef = rtdbRef(
+          db,
+          `messages/${currentUser.uid}/${user.id}`
+        );
+    
+        const unsubOutgoing = onValue(outgoingRef, (snapshot) => {
+          let lastMsg: any = null;
+    
+          snapshot.forEach((child) => {
+            const msg = child.val();
+    
+            if (
+              !lastMsg ||
+              normalizeTimestamp(msg.timestamp) >
+                normalizeTimestamp(lastMsg.timestamp)
+            ) {
+              lastMsg = msg;
             }
-            return prev;
           });
-        }
+    
+          if (lastMsg) {
+            setLastMessages((prev) => {
+              const existing = prev[user.id];
+    
+              if (
+                !existing ||
+                normalizeTimestamp(lastMsg.timestamp) >
+                  normalizeTimestamp(existing.timestamp)
+              ) {
+                return { ...prev, [user.id]: lastMsg };
+              }
+    
+              return prev;
+            });
+          }
+        });
+    
+        // store both unsubscribers
+        unsubscribes.push(unsubIncoming, unsubOutgoing);
       });
-    });
-  }, [connectedUsers, currentUser]);
+    
+      // 🔥 CLEANUP (MOST IMPORTANT PART)
+      return () => {
+        unsubscribes.forEach((unsubscribe) => unsubscribe());
+      };
+    
+    }, [connectedUsers, currentUser]);
 
 
 
@@ -266,8 +323,14 @@ useEffect(() => {
         return <div className="p-6 max-w-5xl mx-auto">Loading...</div>;
     }
 
+    
+    
+    if (!currentUser && isRestoring) {
+      return <div>Reconnecting chat...</div>;
+    }
+    
     if (!currentUser) {
-        return <div className="p-6 max-w-5xl mx-auto">Not authenticated</div>;
+      return <div>Session expired. Please Re-login.</div>;
     }
 
     return (
@@ -280,6 +343,8 @@ useEffect(() => {
                 />
                 <h1 className="text-3xl font-bold text-[#FD5C90]">Messages</h1>
             </div>
+   
+         
 
             <div className="mb-6">
                 <div className="flex items-center bg-[#f0f9fc] p-3 rounded-lg shadow">
@@ -313,20 +378,31 @@ useEffect(() => {
             {activeTab === 'connected' ? (
                 <>
                     <div className="overflow-x-auto flex space-x-4 mb-6 pb-2">
-                        {searchedUsers.map((user) => (
-                            <div  
-                                key={user.id}
-                                className="flex flex-col items-center cursor-pointer hover:scale-105 transition"
-                                onClick={() => handleChatOpen(user)}
-                            >
-                                <img
-                                    src={user.profilePic || "/default-avatar.png"}
-                                    alt={user.displayName}
-                                    className="w-16 h-16 rounded-full border-2 border-[#007EAF] mb-2"
-                                />
-                                <span className="text-sm text-gray-700">{user.firstName}</span>
-                            </div>
-                        ))}
+                    {searchedUsers.length === 0 ? (
+  <div className="text-center py-10 text-gray-500">
+    <p className="text-lg font-medium">No connected users found</p>
+    <p className="text-sm mt-2">
+      They are not matched with you yet.
+    </p>
+  </div>
+) : (
+  searchedUsers.map((user) => (
+    <div  
+      key={user.id}
+      className="flex flex-col items-center cursor-pointer hover:scale-105 transition"
+      onClick={() => handleChatOpen(user)}
+    >
+      <img
+        src={user.profilePic || "/default-avatar.png"}
+        alt={user.displayName}
+        className="w-16 h-16 rounded-full border-2 border-[#007EAF] mb-2"
+      />
+      <span className="text-sm text-gray-700">
+        {user.firstName}
+      </span>
+    </div>
+  ))
+)}
                     </div>
 
                     <div className="divide-y divide-gray-200">
@@ -376,33 +452,37 @@ useEffect(() => {
             ) : (
                 <div className="bg-white rounded-lg shadow p-4">
                     <h2 className="text-lg font-semibold text-[#FD5C90] mb-4">Blocked Users</h2>
-                    {blockedUsersData?.data?.length === 0 ? (
-                        <p className="text-gray-500">No users blocked.</p>
-                    ) : (
-                        <div className="space-y-4">
-                            {blockedUsersData?.data?.map((user: BlockedUser) => (
-                                <div key={user.userId} className="flex items-center justify-between p-3 border rounded-lg">
-                                    <div className="flex items-center">
-                                        <img
-                                            src={user.profileImage || "/default-avatar.png"}
-                                            alt={user.name}
-                                            className="w-10 h-10 rounded-full mr-3"
-                                        />
-                                        <div>
-                                            <p className="font-medium">{user.name}</p>
-                                            <p className="text-sm text-gray-500">{user.email}</p>
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={() => handleUnblockUser(user.userId)}
-                                        className="bg-[#FD5C90] text-white px-3 py-1 rounded-md text-sm hover:bg-[#FD5C90] transition"
-                                    >
-                                        Unblock
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    )}
+                    {!Array.isArray(blockedUsersData?.data) || blockedUsersData.data.length === 0 ? (
+  <p className="text-gray-500">No users blocked.</p>
+) : (
+  <div className="space-y-4">
+    {blockedUsersData.data.map((user: BlockedUser) => (
+      <div
+        key={user.userId}
+        className="flex items-center justify-between p-3 border rounded-lg"
+      >
+        <div className="flex items-center">
+          <img
+            src={user.profileImage || "/default-avatar.png"}
+            alt={user.name}
+            className="w-10 h-10 rounded-full mr-3"
+          />
+          <div>
+            <p className="font-medium">{user.name}</p>
+            <p className="text-sm text-gray-500">{user.email}</p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => handleUnblockUser(user.userId)}
+          className="bg-[#FD5C90] text-white px-3 py-1 rounded-md text-sm hover:bg-[#FD5C90] transition"
+        >
+          Unblock
+        </button>
+      </div>
+    ))}
+  </div>
+)}
                 </div>
             )}
         </div>

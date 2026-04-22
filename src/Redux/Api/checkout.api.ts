@@ -46,11 +46,15 @@ export const checkoutApi = apiSlice.injectEndpoints({
         }),
 
         getSubscriptionHistory: builder.query<SubscriptionHistoryData, void>({
-            query: () => ({
-                url: 'subscription/getSubscriptionHistory',
+            query: () => {
+              const url = 'subscription/getSubscriptionHistory';
+              console.log("FINAL URL:", `${import.meta.env.VITE_BASE_URL}/api/v1/${url}`);
+              return {
+                url,
                 method: 'GET',
-            }),
-        }),
+              };
+            },
+          }),
     }),
 });
 

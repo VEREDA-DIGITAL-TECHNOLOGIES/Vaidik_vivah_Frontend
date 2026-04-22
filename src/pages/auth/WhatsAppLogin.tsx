@@ -59,6 +59,26 @@ const WhatsAppLogin = () => {
     resolver: zodResolver(schema),
   });
 
+  const [otpValues, setOtpValues] = useState(Array(6).fill(""));
+
+  const handleOtpChange = (value: string, index: number) => {
+    if (!/^\d?$/.test(value)) return;
+
+    const newOtp = [...otpValues];
+    newOtp[index] = value;
+    setOtpValues(newOtp);
+
+    const combined = newOtp.join("");
+    setValue("otp", combined);
+
+    if (value && index < 5) {
+      const next = document.getElementById(`otp-${index + 1}`);
+      next?.focus();
+    }
+  };
+
+ 
+
   type ApiResponse = {
     success: boolean;
     message: string;
@@ -71,22 +91,7 @@ const WhatsAppLogin = () => {
 
   /* ================= OTP HANDLER ================= */
 
-  const handleOtpChange = (
-    value: string,
-    index: number
-  ) => {
-    value = value.replace(/\D/g, "");
-
-    if (!otpRefs.current[index]) return;
-
-    otpRefs.current[index]!.value = value;
-
-    if (value && index < 5) {
-      otpRefs.current[index + 1]?.focus();
-    }
-
-    updateOtpValue();
-  };
+  
 
   const handleOtpKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -101,13 +106,7 @@ const WhatsAppLogin = () => {
     }
   };
 
-  const updateOtpValue = () => {
-    const otp = otpRefs.current
-      .map((input) => input?.value || "")
-      .join("");
-
-    setValue("otp", otp);
-  };
+  
 
   /* ================= SUBMIT ================= */
 
@@ -118,7 +117,6 @@ const WhatsAppLogin = () => {
     try {
       event?.preventDefault();
 
-      /* STEP 1 */
       if (step === "phone") {
         const res = await sendOtp({ phone: data.phone });
 
@@ -135,7 +133,6 @@ const WhatsAppLogin = () => {
         return;
       }
 
-      /* STEP 2 */
       if (step === "otp") {
         const res = await verifyOtp({
           phone: data.phone,
@@ -205,7 +202,6 @@ const WhatsAppLogin = () => {
       <div className="min-w-screen h-screen flex items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]">
         <div className="bg-white/60 backdrop-blur-md p-6 rounded-2xl w-full max-w-md">
 
-          {/* LOGO */}
           <div className="flex justify-center mb-6">
             <Link to="/">
               <img
@@ -215,7 +211,6 @@ const WhatsAppLogin = () => {
             </Link>
           </div>
 
-          {/* HEADER */}
           <h1 className="text-2xl font-bold text-center">
             Login with WhatsApp
           </h1>
@@ -224,12 +219,8 @@ const WhatsAppLogin = () => {
             Enter your WhatsApp number to receive OTP
           </p>
 
-          {/* FORM */}
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="mt-6 space-y-4"
-          >
-            {/* PHONE */}
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-4">
+
             <div>
               <label className="text-sm font-medium">
                 WhatsApp Number
@@ -255,44 +246,31 @@ const WhatsAppLogin = () => {
               )}
             </div>
 
-            {/* OTP BOXES */}
+            {/* ✅ 6 DIGIT OTP BOX */}
             {step === "otp" && (
               <div>
-                <label className="text-sm font-medium block mb-2">
-                  Enter OTP
-                </label>
-
-                <div className="flex justify-between gap-2">
-                  {[0, 1, 2, 3, 4, 5].map(( index) => (
+                <label className="text-sm font-medium">Enter OTP</label>
+                <div className="flex justify-between gap-2 mt-2">
+                  {otpValues.map((val, i) => (
                     <input
-                      key={index}
-                      ref={(el) =>{
-                        (otpRefs.current[index] = el)}
-                      }
+                      key={i}
+                      id={`otp-${i}`}
                       type="text"
                       maxLength={1}
+                      value={val}
                       onChange={(e) =>
-                        handleOtpChange(
-                          e.target.value,
-                          index
-                        )
+                        handleOtpChange(e.target.value, i)
                       }
                       onKeyDown={(e) =>
-                        handleOtpKeyDown(e, index)
+                        handleOtpKeyDown(e, i)
                       }
-                      className="w-12 h-12 text-center text-xl border rounded-xl outline-none focus:border-[#FD5C90]"
+                      className="w-10 h-12 text-center border rounded-md text-lg outline-none focus:ring-2 focus:ring-[#FD5C90]"
                     />
                   ))}
                 </div>
-
-                <input
-                  type="hidden"
-                  {...register("otp")}
-                />
               </div>
             )}
 
-            {/* BUTTON */}
             <button
               type="submit"
               className="w-full h-12 bg-[#FD5C90] text-white rounded-md"
@@ -310,7 +288,6 @@ const WhatsAppLogin = () => {
             </button>
           </form>
 
-          {/* LOGIN SWITCH */}
           <div className="text-center mt-4">
             <Link
               to="/login"
