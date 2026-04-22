@@ -67,6 +67,12 @@ export const userApi = apiSlice.injectEndpoints({
 
       })
     }),
+    refreshSession: builder.mutation({
+      query: () => ({
+        url: 'user/refresh-session',
+        method: 'GET',
+      }),
+    }),
 
     resetpassword:builder.mutation({
       query:(data) =>({
@@ -121,5 +127,5 @@ export const userApi = apiSlice.injectEndpoints({
 
 });
 
-export const { useRegisterUserMutation, useSendWhatsAppOtpMutation,
+export const { useRegisterUserMutation,useRefreshSessionMutation, useSendWhatsAppOtpMutation,
   useVerifyWhatsAppOtpMutation,useVerifyOtpMutation,useSetPasswordMutation,useLoginMutation,useLogoutUserMutation,useForgotpasswordMutation,useVerifyMutation,useResetpasswordMutation,useDeleteUserMutation,useUpdateFcmTokenMutation} = userApi;
