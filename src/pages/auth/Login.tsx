@@ -156,12 +156,19 @@ const Login = () => {
       <div className="min-w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#f6f6f6] to-[#FD5C90]">
         
         <div className="flex items-center justify-center mb-10">
-          <Link to={"/"} className="mx-auto mb-2 fixed top-5">
-            <img src="/logotest3.png" alt="logo" className="h-24 w-auto md:h-24 ml-3" />
-          </Link>
-        </div>
+    <Link
+      to={"/"}
+      className="mx-auto mb-2 fixed top-0 z-50"
+    >
+      <img
+        src="/logotest3.png"
+        alt="logo"
+        className="h-auto w-30 md:w-34 object-contain"
+      />
+    </Link>
+  </div>
 
-        <div className='bg-white/60 backdrop-blur-md px-5 py-6 rounded-2xl shadow-xl w-full max-w-md'>
+        <div className='bg-white/60 backdrop-blur-md mt-18 px-5 py-6 rounded-2xl shadow-xl w-full max-w-md'>
 
           <div className="flex flex-col items-center justify-center mt-4">
             <div className="bg-white flex items-center justify-center rounded-xl w-14 h-14 shadow-md">

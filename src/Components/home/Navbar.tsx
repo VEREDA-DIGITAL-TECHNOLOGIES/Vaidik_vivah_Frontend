@@ -102,7 +102,7 @@ const Navbar: React.FC = () => {
         {/* Overlay */}
         {isSidebarOpen && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-30"
+            className="fixed inset-0 bg-blue-500/30 bg-opacity-50 z-30"
             onClick={toggleSidebar}
           ></div>
         )}
