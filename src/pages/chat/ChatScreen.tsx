@@ -343,9 +343,7 @@ useEffect(() => {
                 />
                 <h1 className="text-3xl font-bold text-[#FD5C90]">Messages</h1>
             </div>
-            <button onClick={() => signOut(getAuth())}>
-  Test Logout
-</button>
+   
          
 
             <div className="mb-6">
