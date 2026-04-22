@@ -120,7 +120,7 @@ useEffect(() => {
       setIsRestoring(true);
     
       try {
-        const res: any = await refreshSession().unwrap();
+        const res: any = await refreshSession({}).unwrap();
     
         if (res?.firebaseToken) {
           await signInWithCustomToken(auth, res.firebaseToken);
