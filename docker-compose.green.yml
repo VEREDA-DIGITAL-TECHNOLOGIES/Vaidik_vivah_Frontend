@@ -1,25 +1,28 @@
+version: '3.8'
+
 services:
-    web_green:
-        build:
-            context: .
-            dockerfile: ${DOCKERFILE}
-        image: frontend:green
-        container_name: frontend-green
-        ports:
-            - '5174:5173'
-        networks:
-            - backend
-        restart: always
-        env_file:
-            - .env
-        environment:
-            - TZ=Asia/Kolkata
-        healthcheck:
-          test: ["CMD", "curl", "-f", "http://localhost:5173"]
-          interval: 10s
-          timeout: 5s
-          retries: 5
-          start_period: 10s
+  frontend-green:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: frontend:green
+    container_name: frontend-green
+    ports:
+      - "5174:5173"
+    env_file:
+      - .env
+    networks:
+      - backend
+    restart: always
+    environment:
+      - TZ=Asia/Kolkata
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5173"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
 networks:
-    backend:
-        external: true
+  backend:
+    external: true

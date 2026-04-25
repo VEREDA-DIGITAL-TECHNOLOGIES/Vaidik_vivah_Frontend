@@ -164,17 +164,32 @@ export default function MessageUser() {
 
     return () => unsubscribe();
   }, [currentUserId, recipientId]);
-
   useEffect(() => {
     if (!currentUserId || !recipientId) return;
-
+  
+    console.log("=== CHAT INIT ===");
+    console.log("My UID:", currentUserId);
+    console.log("Recipient ID:", recipientId);
+    console.log("My path:", `messages/${currentUserId}/${recipientId}`);
+    console.log("Their path:", `messages/${recipientId}/${currentUserId}`);
+  
     const myPath = ref(db, `messages/${currentUserId}/${recipientId}`);
     const theirPath = ref(db, `messages/${recipientId}/${currentUserId}`);
-
-    let all: Message[] = [];
-
-    const updateMessages = () => {
-      const deduped = all.filter(
+  
+    let myMessages: Message[] = [];
+    let theirMessages: Message[] = [];
+  
+    const mergeAndSet = () => {
+      console.log("=== MERGE CALLED ===");
+      console.log("myMessages count:", myMessages.length);
+      console.log("theirMessages count:", theirMessages.length);
+      console.log("myMessages:", JSON.stringify(myMessages));
+      console.log("theirMessages:", JSON.stringify(theirMessages));
+  
+      const combined = [...myMessages, ...theirMessages];
+      console.log("combined count:", combined.length);
+  
+      const deduped = combined.filter(
         (msg, index, self) =>
           index ===
           self.findIndex(
@@ -184,37 +199,45 @@ export default function MessageUser() {
               m.senderId === msg.senderId
           )
       );
-      deduped.sort((a, b) =>
-        parseTimestamp(a.timestamp).getTime() - parseTimestamp(b.timestamp).getTime()
+  
+      console.log("deduped count:", deduped.length);
+      console.log("final messages:", JSON.stringify(deduped));
+  
+      deduped.sort(
+        (a, b) =>
+          parseTimestamp(a.timestamp).getTime() -
+          parseTimestamp(b.timestamp).getTime()
       );
+  
       setMessages(deduped);
       setLoading(false);
     };
-
+  
     const unsubMe = onValue(myPath, (snapshot) => {
+      console.log("=== MY PATH FIRED ===");
+      console.log("snapshot exists:", snapshot.exists());
+      console.log("raw data:", snapshot.val());
       const data = snapshot.val();
-      if (data) {
-        const mine = Object.values(data) as Message[];
-        all = [...all.filter((m) => m.senderId !== currentUserId), ...mine];
-        updateMessages();
-      }
+      myMessages = data ? (Object.values(data) as Message[]) : [];
+      console.log("myMessages after update:", myMessages.length);
+      mergeAndSet();
     });
-
+  
     const unsubThem = onValue(theirPath, (snapshot) => {
+      console.log("=== THEIR PATH FIRED ===");
+      console.log("snapshot exists:", snapshot.exists());
+      console.log("raw data:", snapshot.val());
       const data = snapshot.val();
-      if (data) {
-        const theirs = Object.values(data) as Message[];
-        all = [...all.filter((m) => m.senderId !== recipientId), ...theirs];
-        updateMessages();
-      }
+      theirMessages = data ? (Object.values(data) as Message[]) : [];
+      console.log("theirMessages after update:", theirMessages.length);
+      mergeAndSet();
     });
-
+  
     return () => {
       unsubMe();
       unsubThem();
     };
   }, [currentUserId, recipientId]);
-
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
