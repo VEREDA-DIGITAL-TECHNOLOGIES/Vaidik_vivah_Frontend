@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ SSH KEY (same as backend)
+      # ✅ SSH KEY (RAW key, no base64)
       - name: Setup SSH key
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > key.pem
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
           chmod 600 key.pem
 
       # ✅ DEPLOY
       - name: Deploy Frontend to VPS
         run: |
-          ssh -i key.pem -o StrictHostKeyChecking=no root@31.97.60.154 << 'EOF'
+          ssh -tt -i key.pem -o StrictHostKeyChecking=no root@31.97.60.154 << 'EOF'
             set -x
 
             cd ~/Vaidik_vivah_Frontend || exit 1
