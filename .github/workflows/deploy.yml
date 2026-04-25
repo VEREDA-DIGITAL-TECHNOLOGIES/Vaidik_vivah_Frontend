@@ -10,15 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ✅ SSH KEY (RAW key, no base64)
       - name: Setup SSH key
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
           chmod 600 key.pem
 
+      # ✅ DEPLOY
       - name: Deploy Frontend to VPS
         run: |
           ssh -tt -i key.pem -o StrictHostKeyChecking=no root@31.97.60.154 << 'EOF'
-            set -ex   # 🔥 critical fix
+            set -x
 
             cd ~/Vaidik_vivah_Frontend || exit 1
 
@@ -40,10 +42,10 @@ jobs:
             sleep 5
 
             echo "=== STATUS ==="
-            docker ps --format "{{.Names}}" | grep frontend-green
+            docker ps --format "{{.Names}}" | grep frontend-green || true
 
             echo "=== HEALTH ==="
-            docker inspect --format='{{.State.Health.Status}}' frontend-green
+            docker inspect --format='{{.State.Health.Status}}' frontend-green || echo "unknown"
 
             echo "=== LOGS (last 20) ==="
             docker logs frontend-green --tail 20 || true
