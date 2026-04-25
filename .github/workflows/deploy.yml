@@ -10,17 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ SSH KEY (RAW key, no base64)
       - name: Setup SSH key
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key.pem
           chmod 600 key.pem
 
-      # ✅ DEPLOY
       - name: Deploy Frontend to VPS
         run: |
-          ssh -tt -i key.pem -o StrictHostKeyChecking=no root@31.97.60.154 << 'EOF'
-            set -x
+          ssh -i key.pem -o StrictHostKeyChecking=no root@31.97.60.154 << 'EOF'
+            set -e
 
             cd ~/Vaidik_vivah_Frontend || exit 1
 
@@ -33,7 +31,7 @@ jobs:
             docker rm -f frontend-green || true
 
             echo "=== BUILD ==="
-            docker compose -f docker-compose.green.yml build --no-cache --progress=plain
+            docker compose -f docker-compose.green.yml build --no-cache
 
             echo "=== START ==="
             docker compose -f docker-compose.green.yml up -d
@@ -50,5 +48,7 @@ jobs:
             echo "=== LOGS (last 20) ==="
             docker logs frontend-green --tail 20 || true
 
-            echo "✅ FRONTEND DEPLOY SUCCESS"
+            echo " FRONTEND DEPLOY SUCCESS"
+
+            exit
           EOF
