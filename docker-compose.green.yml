@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   frontend-green:
     build:
@@ -26,3 +24,4 @@ services:
 networks:
   backend:
     external: true
+    name: vaidik_vivah_backend_app-network   # 🔥 THIS LINE IS REQUIRED

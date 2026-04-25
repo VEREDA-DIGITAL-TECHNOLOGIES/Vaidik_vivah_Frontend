@@ -1,26 +1,27 @@
 services:
-    web_blue:
-        build:
-            context: .
-            dockerfile: ${DOCKERFILE}
-        image: frontend:blue
-        container_name: frontend-blue
-        ports:
-            - '5173:5173'
-        networks:
-            - backend
-        restart: always
-        env_file:
-            - .env
-        environment:
-            - TZ=Asia/Kolkata
-        healthcheck:
-          test: ["CMD", "curl", "-f", "http://localhost:5173"]
-          interval: 10s
-          timeout: 5s
-          retries: 5
-          start_period: 10s
+  frontend-blue:
+    build:
+      context: .
+      dockerfile: ${DOCKERFILE}
+    image: frontend:blue
+    container_name: frontend-blue
+    ports:
+      - "5173:5173"
+    networks:
+      - backend
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Kolkata
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5173"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
 networks:
-    backend:
-        external: true
+  backend:
+    external: true
+    name: vaidik_vivah_backend_app-network   # 🔥 same fix
