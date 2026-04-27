@@ -352,23 +352,7 @@ npm run dev
 
 ---
 
-## Limitations
 
-- No offline caching strategy implemented  
-- No role-based routing  
-- Some components tightly coupled with API responses  
-
----
-
-## Future Improvements
-
-- Add PWA support  
-- Add role-based access control  
-- Improve caching  
-- Add error boundary per route  
-- Optimize bundle size  
-
----
 
 ## Summary
 
