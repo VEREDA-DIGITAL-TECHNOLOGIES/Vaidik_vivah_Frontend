@@ -1,25 +1,29 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { lazy, Suspense, useState } from "react";
 import "./App.css";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import type{ RootState } from "./Redux/store";
+import type { RootState } from "./Redux/store";
 import { messaging } from "../utils/firebaseConfig";
 import { getToken } from "firebase/messaging";
 import { useUpdateFcmTokenMutation } from "./Redux/Api/user.api";
-import {database} from "../utils/firebaseConfig";
-import {ref,update} from "firebase/database";
+import { database } from "../utils/firebaseConfig";
+import { ref, update } from "firebase/database";
 import { connectSocket, disconnectSocket } from "./services/socketservice";
 import { useGetUserSubscriptionStatusQuery } from "./Redux/Api/checkout.api";
 import { setUserType } from "./Redux/Reducers/user.reducer";
 import { useDispatch } from "react-redux";
 import { initFCMListener } from "./services/fcmListener";
 
-import './App.css'
+import "./App.css";
 import ScrollToTop from "./Components/ScrollTop/ScrollToTop";
 import Loading from "./Components/Loading";
 import Footer from "./Components/home/Footer";
-
 
 import ProtectedRoute from "./Components/ProtectedRoute";
 import ChatRoom from "./pages/chat/ChatRoom";
@@ -27,9 +31,8 @@ import Messageuser from "./pages/chat/Messageuser";
 
 import WhatsAppLogin from "./pages/auth/WhatsAppLogin";
 
-
 import AboutUs from "./pages/footer/AboutUs";
-import Advice from "./pages/footer/Advice"
+import Advice from "./pages/footer/Advice";
 import Services from "./pages/footer/Services";
 import ContactUs from "./pages/footer/ContactUs";
 import Help from "./pages/footer/Help";
@@ -44,11 +47,8 @@ import UserSuspended from "./pages/auth/UserSuspended";
 import TermsAndConditions from "./pages/footer/TermAndConditions";
 import HelpDashboard from "./pages/user-dashboard/Help";
 
-
-
 const Home = lazy(() => import("./pages/home/Home"));
 const Login = lazy(() => import("./pages/auth/Login"));
-
 
 const Question = lazy(() => import("./pages/questionare/Questionare"));
 const Register = lazy(() => import("./pages/auth/Register"));
@@ -59,31 +59,29 @@ const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
 const CreatePassword = lazy(() => import("./pages/auth/CreatePassword"));
 const Personal = lazy(() => import("./pages/forms/PersonalDetails"));
 
-const Sucessfull = lazy(() => import("./pages/sucessfull/Sucessfull"))
-const Profile = lazy(() => import("./pages/profile/Profile"))
+const Sucessfull = lazy(() => import("./pages/sucessfull/Sucessfull"));
+const Profile = lazy(() => import("./pages/profile/Profile"));
 
 const Qualification = lazy(() => import("./pages/forms/QualificationDetails"));
 const Location = lazy(() => import("./pages/forms/LocationDetails"));
 const Photoupload = lazy(() => import("./pages/forms/PhotoUpload"));
 const Other = lazy(() => import("./pages/forms/OtherDetails"));
 const Success = lazy(() => import("./pages/forms/SuccessPage"));
-const UserDashboard = lazy(() => import("./pages/user-dashboard/UserDashboard"));
-
-
-
-
-
-
+const UserDashboard = lazy(
+  () => import("./pages/user-dashboard/UserDashboard"),
+);
 
 function App() {
-  const { accessToken, refreshToken, user } = useSelector((state: RootState) => state.userReducer);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!accessToken || !!refreshToken||!!user);
+  const { accessToken, refreshToken, user } = useSelector(
+    (state: RootState) => state.userReducer,
+  );
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
+    !!accessToken || !!refreshToken || !!user,
+  );
 
   const dispatch = useDispatch();
 
-
   const { data } = useGetUserSubscriptionStatusQuery(null);
-
 
   useEffect(() => {
     if (data?.usertype) {
@@ -93,7 +91,7 @@ function App() {
     }
   }, [data, dispatch]);
 
-// to check (!accessToken && !refreshToken && !user) if fase to go login page
+  // to check (!accessToken && !refreshToken && !user) if fase to go login page
   useEffect(() => {
     if (!accessToken && !refreshToken && !user) {
       localStorage.clear();
@@ -101,7 +99,7 @@ function App() {
     } else {
       setIsAuthenticated(true);
     }
-  }, [accessToken, refreshToken,user]);
+  }, [accessToken, refreshToken, user]);
 
   useEffect(() => {
     if (accessToken) {
@@ -111,26 +109,19 @@ function App() {
     }
   }, [accessToken]);
 
-
-
-
-
-
-
-
-
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/firebase-messaging-sw.js')
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("/firebase-messaging-sw.js")
       .then((registration) => {
-        console.log('Service Worker registered with scope:', registration.scope);
+        console.log(
+          "Service Worker registered with scope:",
+          registration.scope,
+        );
       })
       .catch((error) => {
-        console.error('Service Worker registration failed:', error);
+        console.error("Service Worker registration failed:", error);
       });
   }
-
-
 
   const [updateFcmToken] = useUpdateFcmTokenMutation();
 
@@ -138,17 +129,15 @@ function App() {
     const permission = await Notification.requestPermission();
     if (permission === "granted") {
       const token = await getToken(messaging, {
-        vapidKey: 'BFNHvcxuMMAfJ6blC-OL5ovzHZ-pXme5oyqVI7o1iMYOtXHeF482MtoJMG7xfCnjLhOfSBYNLklefPVFbG6kalw'
+        vapidKey:
+          "BFNHvcxuMMAfJ6blC-OL5ovzHZ-pXme5oyqVI7o1iMYOtXHeF482MtoJMG7xfCnjLhOfSBYNLklefPVFbG6kalw",
       });
-        
-      localStorage.setItem("fcmToken", token!);
 
+      localStorage.setItem("fcmToken", token!);
     } else {
       alert("You denied for notification");
     }
   }
-
-
 
   // useEffect(() => {
   //   const useruid = user?.uid;
@@ -180,7 +169,7 @@ function App() {
     const data = {
       fcmToken,
       uid,
-      userStatus
+      userStatus,
     };
 
     console.log("data fcm uid userStatus are", data);
@@ -195,28 +184,41 @@ function App() {
       updateFcmToken(data);
     }
   }, [user]);
-  
 
   useEffect(() => {
     requestPermission();
-  }, [])
-  
+  }, []);
+
   useEffect(() => {
     initFCMListener();
   }, []);
 
   return (
     <Router>
-     
       <ScrollToTop />
 
-      
-      <Suspense fallback={<div className="flex justify-center items-center min-h-screen"><Loading /></div>}>
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center min-h-screen">
+            <Loading />
+          </div>
+        }
+      >
         <Routes>
-          <Route path="/" element={isAuthenticated ? <Navigate to="/user-dashboard" replace /> : <Home />} />
+          <Route
+            path="/"
+            element={
+              isAuthenticated ? (
+                <Navigate to="/user-dashboard" replace />
+              ) : (
+                <Home />
+              )
+            }
+          />
           {/* <Route path="/" element={  <Home />} /> */}
-          
+
           <Route path="/login" element={<Login />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/user-suspended" element={<UserSuspended />} />
 
           <Route path="/help" element={<HelpDashboard />} />
@@ -238,62 +240,40 @@ function App() {
             <Route path="/faqs" element={<Help />} />
             <Route path="/community-guidelines" element={<Community />} />
             <Route path="/terms-conditions" element={<Terms />} />
-            <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/cookies-policy" element={<Cookiespage />} />
             <Route path="/child-safety-policy" element={<ChildSafety />} />
             <Route path="/delete-account" element={<DeleteAccount />} />
             <Route path="/mission" element={<Mission />} />
-            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-
-         
-
-            
-            
-            
+            <Route
+              path="/terms-and-conditions"
+              element={<TermsAndConditions />}
+            />
           </Route>
 
-          <Route element={<ProtectedRoute isAuthenticated={!!accessToken}  />}>
-           <Route path="/user-dashboard" element={<UserDashboard />} />
-           <Route path="/personal-details" element={<Personal />} />
-            
+          <Route element={<ProtectedRoute isAuthenticated={!!accessToken} />}>
+            <Route path="/user-dashboard" element={<UserDashboard />} />
+            <Route path="/personal-details" element={<Personal />} />
+
             <Route path="/profile/:name/:userId" element={<Profile />} />
-           <Route path="/qualification-details" element={<Qualification />} />
-           <Route path="/location-details" element={<Location />} />
-           <Route path="/photoupload" element={<Photoupload />} />
-           <Route path="/other-details" element={<Other />} /> 
-           <Route path="/success" element={<Success />} />
+            <Route path="/qualification-details" element={<Qualification />} />
+            <Route path="/location-details" element={<Location />} />
+            <Route path="/photoupload" element={<Photoupload />} />
+            <Route path="/other-details" element={<Other />} />
+            <Route path="/success" element={<Success />} />
             <Route path="/Payment-Success" element={<Sucessfull />} />
-            
+
             <Route path="/help" element={<HelpDashboard />} />
 
+            {/* call Route */}
 
-          {/* call Route */}
-          
-           
-           
-            
-          
-           
-           
             <Route path="/chats" element={<ChatRoom />} />
-            <Route path="/chat/:id" element={<Messageuser />} /> 
-            
-
-
-
-
-           
-          
+            <Route path="/chat/:id" element={<Messageuser />} />
           </Route>
-
-
-
-          </Routes>
-          </Suspense>
-          <Footer/>
-          </Router>
-
-  )
+        </Routes>
+      </Suspense>
+      <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
